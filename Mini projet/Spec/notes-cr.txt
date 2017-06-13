@@ -1,0 +1,12 @@
+Documentation :
+alim
+utilisation des capteurs
+
+communication :
+
+J'ai un obstacle devant moi, est ce que tu bouge ?
+J'ai trouvé !
+Je suis immobile.
+Je me déplace.
+Position déterminée.
+Es tu en telle position ?
