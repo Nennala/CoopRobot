@@ -50,8 +50,9 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-/* USER CODE BEGIN Includes */
+/* USER CODE BEGIN Includes */     
 #include <string.h>
+#include <ctype.h>
 #include "stm32f3xx_hal.h"
 #include "cmsis_os.h"
 #include "main.h"
@@ -61,11 +62,41 @@
 
 /* USER CODE BEGIN Variables */
 extern UART_HandleTypeDef huart2;
+extern ADC_HandleTypeDef hadc1;
+
+volatile int run = 1;
+char rx;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
 
 /* USER CODE BEGIN FunctionPrototypes */
+
+int _write(int file, char *ptr, int len) {
+    UNUSED(file);
+
+    HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
+
+    return len;
+}
+
+
+int flag = 0;
+ uint32_t adcResult;
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(hadc);
+
+  /* Note : This function is defined into this file for library reference. */
+  /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
+  adcResult = HAL_ADC_GetValue(hadc);
+
+flag = 1;
+
+}
+
 
 /* USER CODE END FunctionPrototypes */
 
@@ -76,12 +107,14 @@ extern UART_HandleTypeDef huart2;
 void pcCOM(void const * argument)
 {
   /* USER CODE BEGIN pcCOM */
-  char *msg = "Hello\n\r";
+
+    printf("Hello world\r\n");
+  UNUSED(argument);
   /* Infinite loop */
-  for(;;)
+  while (1)
   {
-    HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 0xFFFF);
-    osDelay(1000);
+      HAL_ADC_Start_IT(&hadc1);
+      osDelay(300);
   }
   /* USER CODE END pcCOM */
 }

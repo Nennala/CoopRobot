@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccFfuzl3.s 			page 1
+ARM GAS  /tmp/ccgzDQnD.s 			page 1
 
 
    1              		.syntax unified
@@ -21,12 +21,12 @@ ARM GAS  /tmp/ccFfuzl3.s 			page 1
   18              		.text
   19              	.Ltext0:
   20              		.cfi_sections	.debug_frame
-  21              		.section	.text.pcCOM,"ax",%progbits
+  21              		.section	.text._write,"ax",%progbits
   22              		.align	2
-  23              		.global	pcCOM
+  23              		.global	_write
   24              		.thumb
   25              		.thumb_func
-  27              	pcCOM:
+  27              	_write:
   28              	.LFB129:
   29              		.file 1 "Src/freertos.c"
    1:Src/freertos.c **** /**
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccFfuzl3.s 			page 1
   27:Src/freertos.c ****   *    software, must execute solely and exclusively on microcontroller or
   28:Src/freertos.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
   29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
-ARM GAS  /tmp/ccFfuzl3.s 			page 2
+ARM GAS  /tmp/ccgzDQnD.s 			page 2
 
 
   30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
@@ -84,99 +84,238 @@ ARM GAS  /tmp/ccFfuzl3.s 			page 1
   50:Src/freertos.c **** #include "FreeRTOS.h"
   51:Src/freertos.c **** #include "task.h"
   52:Src/freertos.c **** 
-  53:Src/freertos.c **** /* USER CODE BEGIN Includes */
+  53:Src/freertos.c **** /* USER CODE BEGIN Includes */     
   54:Src/freertos.c **** #include <string.h>
-  55:Src/freertos.c **** #include "stm32f3xx_hal.h"
-  56:Src/freertos.c **** #include "cmsis_os.h"
-  57:Src/freertos.c **** #include "main.h"
-  58:Src/freertos.c **** /* USER CODE END Includes */
-  59:Src/freertos.c **** 
-  60:Src/freertos.c **** /* Variables -----------------------------------------------------------------*/
-  61:Src/freertos.c **** 
-  62:Src/freertos.c **** /* USER CODE BEGIN Variables */
-  63:Src/freertos.c **** extern UART_HandleTypeDef huart2;
-  64:Src/freertos.c **** /* USER CODE END Variables */
-  65:Src/freertos.c **** 
-  66:Src/freertos.c **** /* Function prototypes -------------------------------------------------------*/
-  67:Src/freertos.c **** 
-  68:Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
-  69:Src/freertos.c **** 
-  70:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
-  71:Src/freertos.c **** 
-  72:Src/freertos.c **** /* Hook prototypes */
-  73:Src/freertos.c **** 
-  74:Src/freertos.c **** /* USER CODE BEGIN Application */
-  75:Src/freertos.c **** /* pcCOM function */
-  76:Src/freertos.c **** void pcCOM(void const * argument)
-  77:Src/freertos.c **** {
-  30              		.loc 1 77 0
+  55:Src/freertos.c **** #include <ctype.h>
+  56:Src/freertos.c **** #include "stm32f3xx_hal.h"
+  57:Src/freertos.c **** #include "cmsis_os.h"
+  58:Src/freertos.c **** #include "main.h"
+  59:Src/freertos.c **** /* USER CODE END Includes */
+  60:Src/freertos.c **** 
+  61:Src/freertos.c **** /* Variables -----------------------------------------------------------------*/
+  62:Src/freertos.c **** 
+  63:Src/freertos.c **** /* USER CODE BEGIN Variables */
+  64:Src/freertos.c **** extern UART_HandleTypeDef huart2;
+  65:Src/freertos.c **** extern ADC_HandleTypeDef hadc1;
+  66:Src/freertos.c **** 
+  67:Src/freertos.c **** volatile int run = 1;
+  68:Src/freertos.c **** char rx;
+  69:Src/freertos.c **** /* USER CODE END Variables */
+  70:Src/freertos.c **** 
+  71:Src/freertos.c **** /* Function prototypes -------------------------------------------------------*/
+  72:Src/freertos.c **** 
+  73:Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  74:Src/freertos.c **** 
+  75:Src/freertos.c **** int _write(int file, char *ptr, int len) {
+  30              		.loc 1 75 0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              	.LVL0:
-  35 0000 08B5     		push	{r3, lr}
+  35 0000 10B5     		push	{r4, lr}
   36              	.LCFI0:
   37              		.cfi_def_cfa_offset 8
-  38              		.cfi_offset 3, -8
-ARM GAS  /tmp/ccFfuzl3.s 			page 3
-
-
+  38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
-  40              	.LVL1:
-  41              	.L2:
-  78:Src/freertos.c ****   /* USER CODE BEGIN pcCOM */
-  79:Src/freertos.c ****   char *msg = "Hello\n\r";
-  80:Src/freertos.c ****   /* Infinite loop */
-  81:Src/freertos.c ****   for(;;)
-  82:Src/freertos.c ****   {
-  83:Src/freertos.c ****     HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 0xFFFF);
-  42              		.loc 1 83 0 discriminator 1
-  43 0002 4FF6FF73 		movw	r3, #65535
-  44 0006 0722     		movs	r2, #7
-  45 0008 0449     		ldr	r1, .L4
-  46 000a 0548     		ldr	r0, .L4+4
+  40 0002 1446     		mov	r4, r2
+ARM GAS  /tmp/ccgzDQnD.s 			page 3
+
+
+  76:Src/freertos.c ****     UNUSED(file);
+  77:Src/freertos.c **** 
+  78:Src/freertos.c ****     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
+  41              		.loc 1 78 0
+  42 0004 42F21073 		movw	r3, #10000
+  43 0008 92B2     		uxth	r2, r2
+  44              	.LVL1:
+  45 000a 0248     		ldr	r0, .L3
+  46              	.LVL2:
   47 000c FFF7FEFF 		bl	HAL_UART_Transmit
-  48              	.LVL2:
-  84:Src/freertos.c ****     osDelay(1000);
-  49              		.loc 1 84 0 discriminator 1
-  50 0010 4FF47A70 		mov	r0, #1000
-  51 0014 FFF7FEFF 		bl	osDelay
-  52              	.LVL3:
-  53 0018 F3E7     		b	.L2
-  54              	.L5:
-  55 001a 00BF     		.align	2
-  56              	.L4:
-  57 001c 00000000 		.word	.LC0
-  58 0020 00000000 		.word	huart2
-  59              		.cfi_endproc
-  60              	.LFE129:
-  62              		.section	.rodata.str1.4,"aMS",%progbits,1
-  63              		.align	2
-  64              	.LC0:
-  65 0000 48656C6C 		.ascii	"Hello\012\015\000"
-  65      6F0A0D00 
-  66              		.text
-  67              	.Letext0:
-  68              		.file 2 "/usr/include/newlib/machine/_default_types.h"
-  69              		.file 3 "/usr/include/newlib/sys/_stdint.h"
-  70              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
-  71              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
-  72              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
-  73              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
-  74              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
-  75              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
-ARM GAS  /tmp/ccFfuzl3.s 			page 4
+  48              	.LVL3:
+  79:Src/freertos.c **** 
+  80:Src/freertos.c ****     return len;
+  81:Src/freertos.c **** }
+  49              		.loc 1 81 0
+  50 0010 2046     		mov	r0, r4
+  51 0012 10BD     		pop	{r4, pc}
+  52              	.LVL4:
+  53              	.L4:
+  54              		.align	2
+  55              	.L3:
+  56 0014 00000000 		.word	huart2
+  57              		.cfi_endproc
+  58              	.LFE129:
+  60              		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
+  61              		.align	2
+  62              		.global	HAL_ADC_ConvCpltCallback
+  63              		.thumb
+  64              		.thumb_func
+  66              	HAL_ADC_ConvCpltCallback:
+  67              	.LFB130:
+  82:Src/freertos.c **** 
+  83:Src/freertos.c **** 
+  84:Src/freertos.c **** 
+  85:Src/freertos.c **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+  86:Src/freertos.c **** {
+  68              		.loc 1 86 0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              	.LVL5:
+  73 0000 08B5     		push	{r3, lr}
+  74              	.LCFI1:
+  75              		.cfi_def_cfa_offset 8
+  76              		.cfi_offset 3, -8
+  77              		.cfi_offset 14, -4
+  87:Src/freertos.c ****   /* Prevent unused argument(s) compilation warning */
+  88:Src/freertos.c ****   UNUSED(hadc);
+  89:Src/freertos.c **** 
+  90:Src/freertos.c ****   /* Note : This function is defined into this file for library reference. */
+  91:Src/freertos.c ****   /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
+  92:Src/freertos.c ****   uint32_t adcResult = HAL_ADC_GetValue(hadc);
+  78              		.loc 1 92 0
+  79 0002 FFF7FEFF 		bl	HAL_ADC_GetValue
+  80              	.LVL6:
+  93:Src/freertos.c **** 
+  94:Src/freertos.c ****   printf("\r\nValue : %lu\r\n", adcResult);
+ARM GAS  /tmp/ccgzDQnD.s 			page 4
+
+
+  81              		.loc 1 94 0
+  82 0006 0146     		mov	r1, r0
+  83 0008 0148     		ldr	r0, .L7
+  84              	.LVL7:
+  85 000a FFF7FEFF 		bl	printf
+  86              	.LVL8:
+  87 000e 08BD     		pop	{r3, pc}
+  88              	.L8:
+  89              		.align	2
+  90              	.L7:
+  91 0010 00000000 		.word	.LC0
+  92              		.cfi_endproc
+  93              	.LFE130:
+  95              		.section	.text.pcCOM,"ax",%progbits
+  96              		.align	2
+  97              		.global	pcCOM
+  98              		.thumb
+  99              		.thumb_func
+ 101              	pcCOM:
+ 102              	.LFB131:
+  95:Src/freertos.c **** 
+  96:Src/freertos.c **** }
+  97:Src/freertos.c **** 
+  98:Src/freertos.c **** 
+  99:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+ 100:Src/freertos.c **** 
+ 101:Src/freertos.c **** /* Hook prototypes */
+ 102:Src/freertos.c **** 
+ 103:Src/freertos.c **** /* USER CODE BEGIN Application */
+ 104:Src/freertos.c **** /* pcCOM function */
+ 105:Src/freertos.c **** void pcCOM(void const * argument)
+ 106:Src/freertos.c **** {
+ 103              		.loc 1 106 0
+ 104              		.cfi_startproc
+ 105              		@ Volatile: function does not return.
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108              	.LVL9:
+ 109 0000 08B5     		push	{r3, lr}
+ 110              	.LCFI2:
+ 111              		.cfi_def_cfa_offset 8
+ 112              		.cfi_offset 3, -8
+ 113              		.cfi_offset 14, -4
+ 107:Src/freertos.c ****   /* USER CODE BEGIN pcCOM */
+ 108:Src/freertos.c **** 
+ 109:Src/freertos.c ****     printf("Hello world\r\n");
+ 114              		.loc 1 109 0
+ 115 0002 0548     		ldr	r0, .L12
+ 116              	.LVL10:
+ 117 0004 FFF7FEFF 		bl	puts
+ 118              	.LVL11:
+ 119              	.L10:
+ 110:Src/freertos.c ****   UNUSED(argument);
+ 111:Src/freertos.c ****   /* Infinite loop */
+ 112:Src/freertos.c ****   while (1)
+ 113:Src/freertos.c ****   {
+ 114:Src/freertos.c ****       HAL_ADC_Start_IT(&hadc1);
+ARM GAS  /tmp/ccgzDQnD.s 			page 5
+
+
+ 120              		.loc 1 114 0 discriminator 1
+ 121 0008 0448     		ldr	r0, .L12+4
+ 122 000a FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 123              	.LVL12:
+ 115:Src/freertos.c ****       osDelay(300);
+ 124              		.loc 1 115 0 discriminator 1
+ 125 000e 4FF49670 		mov	r0, #300
+ 126 0012 FFF7FEFF 		bl	osDelay
+ 127              	.LVL13:
+ 128 0016 F7E7     		b	.L10
+ 129              	.L13:
+ 130              		.align	2
+ 131              	.L12:
+ 132 0018 10000000 		.word	.LC1
+ 133 001c 00000000 		.word	hadc1
+ 134              		.cfi_endproc
+ 135              	.LFE131:
+ 137              		.comm	rx,1,1
+ 138              		.global	run
+ 139              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 140              		.align	2
+ 141              	.LC0:
+ 142 0000 0D0A5661 		.ascii	"\015\012Value : %lu\015\012\000"
+ 142      6C756520 
+ 142      3A20256C 
+ 142      750D0A00 
+ 143              	.LC1:
+ 144 0010 48656C6C 		.ascii	"Hello world\015\000"
+ 144      6F20776F 
+ 144      726C640D 
+ 144      00
+ 145              		.section	.data.run,"aw",%progbits
+ 146              		.align	2
+ 149              	run:
+ 150 0000 01000000 		.word	1
+ 151              		.text
+ 152              	.Letext0:
+ 153              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 154              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 155              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 156              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 157              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 158              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 159              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ 160              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 161              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
+ 162              		.file 11 "/usr/include/newlib/stdio.h"
+ 163              		.file 12 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 164              		.file 13 "<built-in>"
+ARM GAS  /tmp/ccgzDQnD.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertos.c
-     /tmp/ccFfuzl3.s:22     .text.pcCOM:0000000000000000 $t
-     /tmp/ccFfuzl3.s:27     .text.pcCOM:0000000000000000 pcCOM
-     /tmp/ccFfuzl3.s:57     .text.pcCOM:000000000000001c $d
-     /tmp/ccFfuzl3.s:63     .rodata.str1.4:0000000000000000 $d
+     /tmp/ccgzDQnD.s:22     .text._write:0000000000000000 $t
+     /tmp/ccgzDQnD.s:27     .text._write:0000000000000000 _write
+     /tmp/ccgzDQnD.s:56     .text._write:0000000000000014 $d
+     /tmp/ccgzDQnD.s:61     .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccgzDQnD.s:66     .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccgzDQnD.s:91     .text.HAL_ADC_ConvCpltCallback:0000000000000010 $d
+     /tmp/ccgzDQnD.s:96     .text.pcCOM:0000000000000000 $t
+     /tmp/ccgzDQnD.s:101    .text.pcCOM:0000000000000000 pcCOM
+     /tmp/ccgzDQnD.s:132    .text.pcCOM:0000000000000018 $d
+                            *COM*:0000000000000001 rx
+     /tmp/ccgzDQnD.s:149    .data.run:0000000000000000 run
+     /tmp/ccgzDQnD.s:140    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccgzDQnD.s:146    .data.run:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Transmit
-osDelay
 huart2
+HAL_ADC_GetValue
+printf
+puts
+HAL_ADC_Start_IT
+osDelay
+hadc1

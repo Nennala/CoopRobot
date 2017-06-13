@@ -58,6 +58,8 @@
 
 #define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOF
+#define sharp_Pin GPIO_PIN_0
+#define sharp_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
