@@ -56,40 +56,8 @@
 
 /* Private define ------------------------------------------------------------*/
 
-#define ain2_Pin GPIO_PIN_0
-#define ain2_GPIO_Port GPIOF
-#define ain1_Pin GPIO_PIN_1
-#define ain1_GPIO_Port GPIOF
-#define capteur_Pin GPIO_PIN_0
-#define capteur_GPIO_Port GPIOA
-#define trigger_Pin GPIO_PIN_1
-#define trigger_GPIO_Port GPIOA
-#define VCP_TX_Pin GPIO_PIN_2
-#define VCP_TX_GPIO_Port GPIOA
-#define sharp1_Pin GPIO_PIN_3
-#define sharp1_GPIO_Port GPIOA
-#define sharp2_Pin GPIO_PIN_4
-#define sharp2_GPIO_Port GPIOA
-#define led_Pin GPIO_PIN_7
-#define led_GPIO_Port GPIOA
-#define pwm1_Pin GPIO_PIN_1
-#define pwm1_GPIO_Port GPIOB
-#define stby_Pin GPIO_PIN_8
-#define stby_GPIO_Port GPIOA
-#define bin1_Pin GPIO_PIN_11
-#define bin1_GPIO_Port GPIOA
-#define SWDIO_Pin GPIO_PIN_13
-#define SWDIO_GPIO_Port GPIOA
-#define SWCLK_Pin GPIO_PIN_14
-#define SWCLK_GPIO_Port GPIOA
-#define VCP_RX_Pin GPIO_PIN_15
-#define VCP_RX_GPIO_Port GPIOA
-#define pwm2_Pin GPIO_PIN_4
-#define pwm2_GPIO_Port GPIOB
-#define bin2_Pin GPIO_PIN_5
-#define bin2_GPIO_Port GPIOB
-#define servCmd_Pin GPIO_PIN_6
-#define servCmd_GPIO_Port GPIOB
+#define led_Pin GPIO_PIN_3
+#define led_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

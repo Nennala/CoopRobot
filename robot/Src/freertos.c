@@ -61,6 +61,7 @@
 
 /* USER CODE BEGIN Variables */
 extern TIM_HandleTypeDef htim3;
+extern TIM_HandleTypeDef huart2;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -166,27 +167,19 @@ void deccelerer() {
 /* Hook prototypes */
 
 /* USER CODE BEGIN Application */
-void moteurCtrl(void const * argument)
-{
-  /* USER CODE BEGIN moteurCtrl */
-  HAL_TIM_Base_Start(&htim3);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
-  HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
+/* pcCommunication function */
+void pcCommunication(void const * argument)
+{
+  /* USER CODE BEGIN pcCommunication */
+  char *msg = "Hello Nucleo Fun\n\r";
+  HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 0xFFFF);
   /* Infinite loop */
   for(;;)
   {
-    avancer_dix_cm();
-    osDelay(2000);
-    reculer_dix_cm();
-    osDelay(2000);
-    tourner_droite();
-    osDelay(2000);
-    tourner_gauche();
-    osDelay(2000);
+    osDelay(1);
   }
-  /* USER CODE END moteurCtrl */
+  /* USER CODE END pcCommunication */
 }
 /* USER CODE END Application */
 
