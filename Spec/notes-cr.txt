@@ -1,0 +1,9 @@
+Système décentralisé : les robtos traitent eux même l'information de leurs capteurs
+et communique les résultats avec les autres robots.
+
+Localisation coopérative décentralisée
+
+trois utilisations possibles de la communication :
+- Echange direct de mesures -> mesure de la vitesse d'un robot par un autre
+- Suplément d'information -> déplacement d'un robot, identification d'un robot par un autre
+- Etat global -> complétion de la carte
