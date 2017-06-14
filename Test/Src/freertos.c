@@ -50,8 +50,16 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-/* USER CODE BEGIN Includes */     
 
+
+/* USER CODE BEGIN Includes */     
+#include "main.h"
+#include "stm32f3xx_hal.h"
+#include "cmsis_os.h"
+
+UART_HandleTypeDef huart1;
+
+osThreadId defaultTaskHandle;
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -61,7 +69,106 @@
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
+void EnvoiMessage(uint8_t data){
+      uint8_t eun, b, edeux, equatre, ehuit,eseize, etrentedeux, esoixantequatre, ecentvingthuit, k, z;
 
+      eun = (data & 0x01);
+      edeux = (data & 0x02)/2;
+      equatre =(data & 0x04)/4;
+      ehuit = (data & 0x08)/8;
+     eseize = (data & 0x10)/16;
+      etrentedeux = (data & 0x20)/32;
+      esoixantequatre = (data & 0x40)/64;
+      ecentvingthuit = (data & 0x80)/128;
+
+     b =  (ecentvingthuit^etrentedeux)*32 + (ecentvingthuit^esoixantequatre)*16 + (esoixantequatre^etrentedeux)*8 +ecentvingthuit*4 + esoixantequatre*2 + etrentedeux;
+     k = (eseize^equatre)*32 +  (eseize^ehuit)*16 + (ehuit^equatre)*8 + eseize*4  + ehuit*2 + equatre;
+     z = (0^eun)*32 + (0^edeux)*16 + (eun^edeux)*8 +edeux*2  + eun;
+
+     HAL_UART_Transmit(&huart1, &b, sizeof(data), 0xEEEE);
+     osDelay(2);
+     HAL_UART_Transmit(&huart1, &k, sizeof(data), 0xEEEE);
+     osDelay(2);
+     HAL_UART_Transmit(&huart1, &z, sizeof(data), 0xEEEE);
+     osDelay(2);
+
+}
+
+int ReceptionMessage(){
+   uint8_t r, m, n, v, run, rdeux, rquatre, rhuit, rseize, rtrentedeux, ok, i;
+   uint8_t rec[3];
+   HAL_UART_Receive(&huart1, &r, sizeof(uint8_t), 0xEEEE);
+   HAL_UART_Receive(&huart1, &m, sizeof(uint8_t), 0xEEEE);
+   HAL_UART_Receive(&huart1, &n, sizeof(uint8_t), 0xEEEE);
+
+   rec[0] = r;
+   rec[1] = m;
+   rec[2] = n;
+   ok = 1;
+    for (i =0; i<3; i++){
+    run = (rec[i] & 0x01);
+    rdeux = (rec[i] & 0x02)/2;
+    rquatre =(rec[i] & 0x04)/4;
+    rhuit = (rec[i] & 0x08)/8;
+    rseize = (rec[i] & 0x10)/16;
+    rtrentedeux = (rec[i] & 0x20)/32;
+   if ((run^rdeux) != rhuit) ok =0;
+   if ((rdeux^rquatre) != rseize) ok =0;
+   if ((rquatre^run) != rtrentedeux) ok = 0;
+
+}
+r =  (r & 0x07)*32;
+ m =  (m & 0x07)*4;
+  n =  (n & 0x07);
+v =  r + m + n;
+if (ok == 1)
+return(v);
+else
+    return(0);
+
+}
+
+   void Traduction(uint8_t z){
+       if (z == 0x74){
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(400);
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(400);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+       }
+       if (z == 0x95){
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(200);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(200);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(200);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(200);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(200);
+       }
+       if (z==0x65){
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, del_Pin);
+           osDelay(150);
+           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+           osDelay(150);
+       }
+   }
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */

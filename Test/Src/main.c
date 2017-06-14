@@ -280,91 +280,9 @@ static void MX_GPIO_Init(void)
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
-  uint8_t a, b, c, k, ok, d, i, e, f, g, h, j;
-  /* USER CODE BEGIN 5 */
-  /* Infinite loop */
   for(;;)
   {
-      k = 0x75;
-      HAL_UART_Transmit(&huart1, &k, sizeof(k), 0xEEEE);
-      HAL_UART_Receive(&huart1, &b, sizeof(k), 0xEEEE);
-   ok = 1;
-   a = b & 0x01;
-   c = (b & 0x02);
-   d =(b & 0x04);
-   e = (b & 0x08);
-   f = (b & 0x10);
-   g = (b & 0x20);
-   h = (b & 0x40);
-   j = (b & 0x80);
-
-   if ((a ^ (c/2)) != f/16) ok = 0;
-    if ((d/4 ^ (c/2)) != g/32) ok = 0;
-     if ((d/4 ^ (e/8)) != h/64) ok = 0;
-      if ((a ^ (e/8)) != j/128) ok = 0;
-
-    if (ok == 1) {
-        HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-        osDelay(1000);
-        HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-        osDelay(1000);
-        HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-        osDelay(1000);
-        HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-        osDelay(1000);}
-    else
-    {
-        HAL_GPIO_TogglePin(GPIOA, del_Pin);
-        osDelay(1500);
-        HAL_GPIO_TogglePin(GPIOA, del_Pin);
-        osDelay(1500);
-        HAL_GPIO_TogglePin(GPIOA, del_Pin);
-        osDelay(1500);
-        HAL_GPIO_TogglePin(GPIOA, del_Pin);
-        osDelay(1500);
-        HAL_GPIO_TogglePin(GPIOA, del_Pin);
-        osDelay(1500);}
-    i= 0x65;
-  HAL_UART_Transmit(&huart1, &i, sizeof(k), 0xEEEE);
-    HAL_UART_Receive(&huart1, &b, sizeof(k), 0xEEEE);
-  ok = 1;
-  a = b & 0x01;
-  c = (b & 0x02);
-  d =(b & 0x04);
-  e = (b & 0x08);
-  f = (b & 0x10);
-  g = (b & 0x20);
-  h = (b & 0x40);
-  j = (b & 0x80);
-
-  if ((a ^ (c/2)) != f/16) ok = 0;
-   if ((d/4 ^ (c/2)) != g/32) ok = 0;
-    if ((d/4 ^ (e/8)) != h/64) ok = 0;
-     if ((a ^ (e/8)) != j/128) ok = 0;
-  if (ok == 1)
-      {
-          HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-          osDelay(1000);
-          HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-          osDelay(1000);
-          HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-          osDelay(1000);
-          HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-          osDelay(1000);
-      }
-  else
-      {
-          HAL_GPIO_TogglePin(GPIOA, del_Pin);
-          osDelay(1500);
-          HAL_GPIO_TogglePin(GPIOA, del_Pin);
-          osDelay(1500);
-          HAL_GPIO_TogglePin(GPIOA, del_Pin);
-          osDelay(1500);
-          HAL_GPIO_TogglePin(GPIOA, del_Pin);
-          osDelay(1500);
-          HAL_GPIO_TogglePin(GPIOA, del_Pin);
-          osDelay(1500);
-      }
+        Traduction(ReceptionMessage());
   }
 }
 /**
