@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccgzDQnD.s 			page 1
+ARM GAS  /tmp/cc6n9CD9.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccgzDQnD.s 			page 1
   27:Src/freertos.c ****   *    software, must execute solely and exclusively on microcontroller or
   28:Src/freertos.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
   29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
-ARM GAS  /tmp/ccgzDQnD.s 			page 2
+ARM GAS  /tmp/cc6n9CD9.s 			page 2
 
 
   30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
@@ -98,8 +98,8 @@ ARM GAS  /tmp/ccgzDQnD.s 			page 1
   64:Src/freertos.c **** extern UART_HandleTypeDef huart2;
   65:Src/freertos.c **** extern ADC_HandleTypeDef hadc1;
   66:Src/freertos.c **** 
-  67:Src/freertos.c **** volatile int run = 1;
-  68:Src/freertos.c **** char rx;
+  67:Src/freertos.c **** int flag = 0;
+  68:Src/freertos.c **** uint32_t adcResult;
   69:Src/freertos.c **** /* USER CODE END Variables */
   70:Src/freertos.c **** 
   71:Src/freertos.c **** /* Function prototypes -------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccgzDQnD.s 			page 1
   38              		.cfi_offset 4, -8
   39              		.cfi_offset 14, -4
   40 0002 1446     		mov	r4, r2
-ARM GAS  /tmp/ccgzDQnD.s 			page 3
+ARM GAS  /tmp/cc6n9CD9.s 			page 3
 
 
   76:Src/freertos.c ****     UNUSED(file);
@@ -153,11 +153,9 @@ ARM GAS  /tmp/ccgzDQnD.s 			page 1
   66              	HAL_ADC_ConvCpltCallback:
   67              	.LFB130:
   82:Src/freertos.c **** 
-  83:Src/freertos.c **** 
-  84:Src/freertos.c **** 
-  85:Src/freertos.c **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
-  86:Src/freertos.c **** {
-  68              		.loc 1 86 0
+  83:Src/freertos.c **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+  84:Src/freertos.c **** {
+  68              		.loc 1 84 0
   69              		.cfi_startproc
   70              		@ args = 0, pretend = 0, frame = 0
   71              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -167,155 +165,180 @@ ARM GAS  /tmp/ccgzDQnD.s 			page 1
   75              		.cfi_def_cfa_offset 8
   76              		.cfi_offset 3, -8
   77              		.cfi_offset 14, -4
-  87:Src/freertos.c ****   /* Prevent unused argument(s) compilation warning */
-  88:Src/freertos.c ****   UNUSED(hadc);
-  89:Src/freertos.c **** 
-  90:Src/freertos.c ****   /* Note : This function is defined into this file for library reference. */
-  91:Src/freertos.c ****   /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
-  92:Src/freertos.c ****   uint32_t adcResult = HAL_ADC_GetValue(hadc);
-  78              		.loc 1 92 0
+  85:Src/freertos.c ****   /* Prevent unused argument(s) compilation warning */
+  86:Src/freertos.c ****   UNUSED(hadc);
+  87:Src/freertos.c **** 
+  88:Src/freertos.c ****   /* Note : This function is defined into this file for library reference. */
+  89:Src/freertos.c ****   /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
+  90:Src/freertos.c ****   adcResult = HAL_ADC_GetValue(hadc);
+  78              		.loc 1 90 0
   79 0002 FFF7FEFF 		bl	HAL_ADC_GetValue
   80              	.LVL6:
-  93:Src/freertos.c **** 
-  94:Src/freertos.c ****   printf("\r\nValue : %lu\r\n", adcResult);
-ARM GAS  /tmp/ccgzDQnD.s 			page 4
+  81 0006 034B     		ldr	r3, .L7
+  82 0008 1860     		str	r0, [r3]
+  91:Src/freertos.c **** 
+  92:Src/freertos.c ****   flag = 1;
+ARM GAS  /tmp/cc6n9CD9.s 			page 4
 
 
-  81              		.loc 1 94 0
-  82 0006 0146     		mov	r1, r0
-  83 0008 0148     		ldr	r0, .L7
-  84              	.LVL7:
-  85 000a FFF7FEFF 		bl	printf
-  86              	.LVL8:
-  87 000e 08BD     		pop	{r3, pc}
+  83              		.loc 1 92 0
+  84 000a 0122     		movs	r2, #1
+  85 000c 024B     		ldr	r3, .L7+4
+  86 000e 1A60     		str	r2, [r3]
+  87 0010 08BD     		pop	{r3, pc}
   88              	.L8:
-  89              		.align	2
+  89 0012 00BF     		.align	2
   90              	.L7:
-  91 0010 00000000 		.word	.LC0
-  92              		.cfi_endproc
-  93              	.LFE130:
-  95              		.section	.text.pcCOM,"ax",%progbits
-  96              		.align	2
-  97              		.global	pcCOM
-  98              		.thumb
-  99              		.thumb_func
- 101              	pcCOM:
- 102              	.LFB131:
+  91 0014 00000000 		.word	adcResult
+  92 0018 00000000 		.word	.LANCHOR0
+  93              		.cfi_endproc
+  94              	.LFE130:
+  96              		.section	.text.pcCOM,"ax",%progbits
+  97              		.align	2
+  98              		.global	pcCOM
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	pcCOM:
+ 103              	.LFB131:
+  93:Src/freertos.c **** }
+  94:Src/freertos.c **** 
   95:Src/freertos.c **** 
-  96:Src/freertos.c **** }
+  96:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
   97:Src/freertos.c **** 
-  98:Src/freertos.c **** 
-  99:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
- 100:Src/freertos.c **** 
- 101:Src/freertos.c **** /* Hook prototypes */
- 102:Src/freertos.c **** 
- 103:Src/freertos.c **** /* USER CODE BEGIN Application */
- 104:Src/freertos.c **** /* pcCOM function */
- 105:Src/freertos.c **** void pcCOM(void const * argument)
- 106:Src/freertos.c **** {
- 103              		.loc 1 106 0
- 104              		.cfi_startproc
- 105              		@ Volatile: function does not return.
- 106              		@ args = 0, pretend = 0, frame = 0
- 107              		@ frame_needed = 0, uses_anonymous_args = 0
- 108              	.LVL9:
- 109 0000 08B5     		push	{r3, lr}
- 110              	.LCFI2:
- 111              		.cfi_def_cfa_offset 8
- 112              		.cfi_offset 3, -8
- 113              		.cfi_offset 14, -4
- 107:Src/freertos.c ****   /* USER CODE BEGIN pcCOM */
- 108:Src/freertos.c **** 
- 109:Src/freertos.c ****     printf("Hello world\r\n");
- 114              		.loc 1 109 0
- 115 0002 0548     		ldr	r0, .L12
- 116              	.LVL10:
- 117 0004 FFF7FEFF 		bl	puts
- 118              	.LVL11:
- 119              	.L10:
- 110:Src/freertos.c ****   UNUSED(argument);
- 111:Src/freertos.c ****   /* Infinite loop */
- 112:Src/freertos.c ****   while (1)
- 113:Src/freertos.c ****   {
- 114:Src/freertos.c ****       HAL_ADC_Start_IT(&hadc1);
-ARM GAS  /tmp/ccgzDQnD.s 			page 5
+  98:Src/freertos.c **** /* Hook prototypes */
+  99:Src/freertos.c **** 
+ 100:Src/freertos.c **** /* USER CODE BEGIN Application */
+ 101:Src/freertos.c **** /* pcCOM function */
+ 102:Src/freertos.c **** void pcCOM(void const * argument)
+ 103:Src/freertos.c **** {
+ 104              		.loc 1 103 0
+ 105              		.cfi_startproc
+ 106              		@ Volatile: function does not return.
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              	.LVL7:
+ 110 0000 08B5     		push	{r3, lr}
+ 111              	.LCFI2:
+ 112              		.cfi_def_cfa_offset 8
+ 113              		.cfi_offset 3, -8
+ 114              		.cfi_offset 14, -4
+ 104:Src/freertos.c ****   /* USER CODE BEGIN pcCOM */
+ 105:Src/freertos.c **** 
+ 106:Src/freertos.c ****   printf("Hello world\r\n");
+ 115              		.loc 1 106 0
+ 116 0002 0B48     		ldr	r0, .L13
+ 117              	.LVL8:
+ 118 0004 FFF7FEFF 		bl	puts
+ 119              	.LVL9:
+ 120              	.L10:
+ 107:Src/freertos.c ****   UNUSED(argument);
+ 108:Src/freertos.c ****   /* Infinite loop */
+ 109:Src/freertos.c ****   while (1)
+ 110:Src/freertos.c ****   {
+ 111:Src/freertos.c ****       HAL_ADC_Start_IT(&hadc1);
+ 121              		.loc 1 111 0
+ 122 0008 0A48     		ldr	r0, .L13+4
+ARM GAS  /tmp/cc6n9CD9.s 			page 5
 
 
- 120              		.loc 1 114 0 discriminator 1
- 121 0008 0448     		ldr	r0, .L12+4
- 122 000a FFF7FEFF 		bl	HAL_ADC_Start_IT
- 123              	.LVL12:
- 115:Src/freertos.c ****       osDelay(300);
- 124              		.loc 1 115 0 discriminator 1
- 125 000e 4FF49670 		mov	r0, #300
- 126 0012 FFF7FEFF 		bl	osDelay
- 127              	.LVL13:
- 128 0016 F7E7     		b	.L10
- 129              	.L13:
- 130              		.align	2
- 131              	.L12:
- 132 0018 10000000 		.word	.LC1
- 133 001c 00000000 		.word	hadc1
- 134              		.cfi_endproc
- 135              	.LFE131:
- 137              		.comm	rx,1,1
- 138              		.global	run
- 139              		.section	.rodata.str1.4,"aMS",%progbits,1
- 140              		.align	2
- 141              	.LC0:
- 142 0000 0D0A5661 		.ascii	"\015\012Value : %lu\015\012\000"
- 142      6C756520 
- 142      3A20256C 
- 142      750D0A00 
- 143              	.LC1:
- 144 0010 48656C6C 		.ascii	"Hello world\015\000"
- 144      6F20776F 
- 144      726C640D 
- 144      00
- 145              		.section	.data.run,"aw",%progbits
+ 123 000a FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 124              	.LVL10:
+ 112:Src/freertos.c ****       osDelay(300);
+ 125              		.loc 1 112 0
+ 126 000e 4FF49670 		mov	r0, #300
+ 127 0012 FFF7FEFF 		bl	osDelay
+ 128              	.LVL11:
+ 113:Src/freertos.c ****       if (flag == 1) {
+ 129              		.loc 1 113 0
+ 130 0016 084B     		ldr	r3, .L13+8
+ 131 0018 1B68     		ldr	r3, [r3]
+ 132 001a 012B     		cmp	r3, #1
+ 133 001c F4D1     		bne	.L10
+ 114:Src/freertos.c ****           printf("Value : %lu", adcResult);
+ 134              		.loc 1 114 0
+ 135 001e 074B     		ldr	r3, .L13+12
+ 136 0020 1968     		ldr	r1, [r3]
+ 137 0022 0748     		ldr	r0, .L13+16
+ 138 0024 FFF7FEFF 		bl	printf
+ 139              	.LVL12:
+ 115:Src/freertos.c ****           flag = 0;
+ 140              		.loc 1 115 0
+ 141 0028 0022     		movs	r2, #0
+ 142 002a 034B     		ldr	r3, .L13+8
+ 143 002c 1A60     		str	r2, [r3]
+ 144 002e EBE7     		b	.L10
+ 145              	.L14:
  146              		.align	2
- 149              	run:
- 150 0000 01000000 		.word	1
- 151              		.text
- 152              	.Letext0:
- 153              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 154              		.file 3 "/usr/include/newlib/sys/_stdint.h"
- 155              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
- 156              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 157              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 158              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
- 159              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
- 160              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
- 161              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
- 162              		.file 11 "/usr/include/newlib/stdio.h"
- 163              		.file 12 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 164              		.file 13 "<built-in>"
-ARM GAS  /tmp/ccgzDQnD.s 			page 6
+ 147              	.L13:
+ 148 0030 00000000 		.word	.LC0
+ 149 0034 00000000 		.word	hadc1
+ 150 0038 00000000 		.word	.LANCHOR0
+ 151 003c 00000000 		.word	adcResult
+ 152 0040 10000000 		.word	.LC1
+ 153              		.cfi_endproc
+ 154              	.LFE131:
+ 156              		.comm	adcResult,4,4
+ 157              		.global	flag
+ 158              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 159              		.align	2
+ 160              	.LC0:
+ 161 0000 48656C6C 		.ascii	"Hello world\015\000"
+ 161      6F20776F 
+ 161      726C640D 
+ 161      00
+ 162 000d 000000   		.space	3
+ 163              	.LC1:
+ 164 0010 56616C75 		.ascii	"Value : %lu\000"
+ 164      65203A20 
+ 164      256C7500 
+ 165              		.section	.bss.flag,"aw",%nobits
+ 166              		.align	2
+ 167              		.set	.LANCHOR0,. + 0
+ 170              	flag:
+ 171 0000 00000000 		.space	4
+ 172              		.text
+ 173              	.Letext0:
+ARM GAS  /tmp/cc6n9CD9.s 			page 6
+
+
+ 174              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 175              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 176              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 177              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 178              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 179              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 180              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ 181              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 182              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
+ 183              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 184              		.file 12 "/usr/include/newlib/stdio.h"
+ 185              		.file 13 "<built-in>"
+ARM GAS  /tmp/cc6n9CD9.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertos.c
-     /tmp/ccgzDQnD.s:22     .text._write:0000000000000000 $t
-     /tmp/ccgzDQnD.s:27     .text._write:0000000000000000 _write
-     /tmp/ccgzDQnD.s:56     .text._write:0000000000000014 $d
-     /tmp/ccgzDQnD.s:61     .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccgzDQnD.s:66     .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccgzDQnD.s:91     .text.HAL_ADC_ConvCpltCallback:0000000000000010 $d
-     /tmp/ccgzDQnD.s:96     .text.pcCOM:0000000000000000 $t
-     /tmp/ccgzDQnD.s:101    .text.pcCOM:0000000000000000 pcCOM
-     /tmp/ccgzDQnD.s:132    .text.pcCOM:0000000000000018 $d
-                            *COM*:0000000000000001 rx
-     /tmp/ccgzDQnD.s:149    .data.run:0000000000000000 run
-     /tmp/ccgzDQnD.s:140    .rodata.str1.4:0000000000000000 $d
-     /tmp/ccgzDQnD.s:146    .data.run:0000000000000000 $d
+     /tmp/cc6n9CD9.s:22     .text._write:0000000000000000 $t
+     /tmp/cc6n9CD9.s:27     .text._write:0000000000000000 _write
+     /tmp/cc6n9CD9.s:56     .text._write:0000000000000014 $d
+     /tmp/cc6n9CD9.s:61     .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/cc6n9CD9.s:66     .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/cc6n9CD9.s:91     .text.HAL_ADC_ConvCpltCallback:0000000000000014 $d
+                            *COM*:0000000000000004 adcResult
+     /tmp/cc6n9CD9.s:97     .text.pcCOM:0000000000000000 $t
+     /tmp/cc6n9CD9.s:102    .text.pcCOM:0000000000000000 pcCOM
+     /tmp/cc6n9CD9.s:148    .text.pcCOM:0000000000000030 $d
+     /tmp/cc6n9CD9.s:170    .bss.flag:0000000000000000 flag
+     /tmp/cc6n9CD9.s:159    .rodata.str1.4:0000000000000000 $d
+     /tmp/cc6n9CD9.s:166    .bss.flag:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Transmit
 huart2
 HAL_ADC_GetValue
-printf
 puts
 HAL_ADC_Start_IT
 osDelay
+printf
 hadc1

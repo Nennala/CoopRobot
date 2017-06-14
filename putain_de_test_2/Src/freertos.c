@@ -64,8 +64,8 @@
 extern UART_HandleTypeDef huart2;
 extern ADC_HandleTypeDef hadc1;
 
-volatile int run = 1;
-char rx;
+int flag = 0;
+uint32_t adcResult;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -80,10 +80,6 @@ int _write(int file, char *ptr, int len) {
     return len;
 }
 
-
-int flag = 0;
- uint32_t adcResult;
-
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -93,8 +89,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
   /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
   adcResult = HAL_ADC_GetValue(hadc);
 
-flag = 1;
-
+  flag = 1;
 }
 
 
@@ -108,13 +103,17 @@ void pcCOM(void const * argument)
 {
   /* USER CODE BEGIN pcCOM */
 
-    printf("Hello world\r\n");
+  printf("Hello world\r\n");
   UNUSED(argument);
   /* Infinite loop */
   while (1)
   {
       HAL_ADC_Start_IT(&hadc1);
       osDelay(300);
+      if (flag == 1) {
+          printf("Value : %lu", adcResult);
+          flag = 0;
+      }
   }
   /* USER CODE END pcCOM */
 }

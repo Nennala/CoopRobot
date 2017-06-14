@@ -62,7 +62,6 @@ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim16;
 
 UART_HandleTypeDef huart1;
-UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
 osThreadId moteurHandle;
@@ -81,7 +80,6 @@ static void MX_TIM16_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_ADC2_Init(void);
 static void MX_ADC1_Init(void);
-static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void moteurCtrl(void const * argument);
 void pcCommunication(void const * argument);
@@ -129,7 +127,6 @@ int main(void)
   MX_USART1_UART_Init();
   MX_ADC2_Init();
   MX_ADC1_Init();
-  MX_USART2_UART_Init();
 
   /* USER CODE BEGIN 2 */
 
@@ -453,32 +450,14 @@ static void MX_USART1_UART_Init(void)
 
 }
 
-/* USART2 init function */
-static void MX_USART2_UART_Init(void)
-{
-
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 38400;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  huart2.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
-  huart2.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-}
-
 /** Configure pins as 
         * Analog 
         * Input 
         * Output
         * EVENT_OUT
         * EXTI
+     PA2   ------> USART2_TX
+     PA15   ------> USART2_RX
 */
 static void MX_GPIO_Init(void)
 {
@@ -505,6 +484,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA2 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_2|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Alternate = GPIO_AF7_USART2;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PA7 PA8 PA11 */
   GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_11;
@@ -562,6 +549,27 @@ __weak void pcCommunication(void const * argument)
     osDelay(1);
   }
   /* USER CODE END pcCommunication */
+}
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM15 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+/* USER CODE BEGIN Callback 0 */
+
+/* USER CODE END Callback 0 */
+  if (htim->Instance == TIM15) {
+    HAL_IncTick();
+  }
+/* USER CODE BEGIN Callback 1 */
+
+/* USER CODE END Callback 1 */
 }
 
 /**

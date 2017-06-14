@@ -50,7 +50,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-/* USER CODE BEGIN Includes */
+/* USER CODE BEGIN Includes */     
 #include <string.h>
 #include "cmsis_os.h"
 #include "main.h"
@@ -61,7 +61,6 @@
 
 /* USER CODE BEGIN Variables */
 extern TIM_HandleTypeDef htim3;
-extern UART_HandleTypeDef huart2;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -168,18 +167,7 @@ void deccelerer() {
 
 /* USER CODE BEGIN Application */
 /* pcCommunication function */
-void pcCommunication(void const * argument)
-{
-  /* USER CODE BEGIN pcCommunication */
-  char *msg = "Hello Nucleo Fun\n\r";
-  /* Infinite loop */
-  for(;;)
-  {
-    HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 0xFFFF);
-    osDelay(1000);
-  }
-  /* USER CODE END pcCommunication */
-}
+
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
