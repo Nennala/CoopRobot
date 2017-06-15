@@ -2200,7 +2200,7 @@ LOAD /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
 .iplt           0x0000000008004ea0        0x0
  .iplt          0x0000000008004ea0        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
-.rodata         0x0000000008004ea0      0x148
+.rodata         0x0000000008004ea0      0x14c
                 0x0000000008004ea0                . = ALIGN (0x4)
  *(.rodata)
  .rodata        0x0000000008004ea0       0x28 build/main.o
@@ -2218,61 +2218,62 @@ LOAD /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
                 0x0000000008004f3c        0x8 build/system_stm32f3xx.o
                 0x0000000008004f3c                APBPrescTable
  .rodata.str1.4
-                0x0000000008004f44       0x1c build/freertos.o
+                0x0000000008004f44       0x1e build/freertos.o
+ *fill*         0x0000000008004f62        0x2 
  .rodata.str1.4
-                0x0000000008004f60        0x5 build/tasks.o
- *fill*         0x0000000008004f65        0x3 
+                0x0000000008004f64        0x5 build/tasks.o
+ *fill*         0x0000000008004f69        0x3 
  .rodata.aPredivFactorTable
-                0x0000000008004f68       0x10 build/stm32f3xx_hal_rcc.o
-                0x0000000008004f68                aPredivFactorTable
+                0x0000000008004f6c       0x10 build/stm32f3xx_hal_rcc.o
+                0x0000000008004f6c                aPredivFactorTable
  .rodata.aPLLMULFactorTable
-                0x0000000008004f78       0x10 build/stm32f3xx_hal_rcc.o
-                0x0000000008004f78                aPLLMULFactorTable
+                0x0000000008004f7c       0x10 build/stm32f3xx_hal_rcc.o
+                0x0000000008004f7c                aPLLMULFactorTable
  .rodata.str1.4
-                0x0000000008004f88       0x20 build/main.o
+                0x0000000008004f8c       0x20 build/main.o
  .rodata.str1.4
-                0x0000000008004fa8        0x2 /usr/lib/gcc/arm-none-eabi/5.4.1/../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-impure.o)
- *fill*         0x0000000008004faa        0x2 
+                0x0000000008004fac        0x2 /usr/lib/gcc/arm-none-eabi/5.4.1/../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-impure.o)
+ *fill*         0x0000000008004fae        0x2 
  .rodata.str1.4
-                0x0000000008004fac       0x13 /usr/lib/gcc/arm-none-eabi/5.4.1/../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf.o)
- *fill*         0x0000000008004fbf        0x1 
+                0x0000000008004fb0       0x13 /usr/lib/gcc/arm-none-eabi/5.4.1/../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf.o)
+ *fill*         0x0000000008004fc3        0x1 
  .rodata.str1.4
-                0x0000000008004fc0       0x28 /usr/lib/gcc/arm-none-eabi/5.4.1/../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x0000000008004fc4       0x28 /usr/lib/gcc/arm-none-eabi/5.4.1/../../../arm-none-eabi/lib/armv7e-m/fpu/libc_nano.a(lib_a-nano-vfprintf_i.o)
                                          0x25 (size before relaxing)
-                0x0000000008004fe8                . = ALIGN (0x4)
+                0x0000000008004fec                . = ALIGN (0x4)
 
-.rel.dyn        0x0000000008004fe8        0x0
- .rel.iplt      0x0000000008004fe8        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+.rel.dyn        0x0000000008004fec        0x0
+ .rel.iplt      0x0000000008004fec        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000000008004fe8        0x0
-                0x0000000008004fe8                __exidx_start = .
+.ARM            0x0000000008004fec        0x0
+                0x0000000008004fec                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008004fe8                __exidx_end = .
+                0x0000000008004fec                __exidx_end = .
 
-.preinit_array  0x0000000008004fe8        0x0
-                0x0000000008004fe8                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000000008004fec        0x0
+                0x0000000008004fec                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0000000008004fe8                PROVIDE (__preinit_array_end, .)
+                0x0000000008004fec                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000000008004fe8        0x4
-                0x0000000008004fe8                PROVIDE (__init_array_start, .)
+.init_array     0x0000000008004fec        0x4
+                0x0000000008004fec                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008004fe8        0x4 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
-                0x0000000008004fec                PROVIDE (__init_array_end, .)
+ .init_array    0x0000000008004fec        0x4 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+                0x0000000008004ff0                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000000008004fec        0x4
-                0x0000000008004fec                PROVIDE (__fini_array_start, .)
+.fini_array     0x0000000008004ff0        0x4
+                0x0000000008004ff0                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008004fec        0x4 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
-                0x0000000008004ff0                PROVIDE (__fini_array_end, .)
-                0x0000000008004ff0                _sidata = LOADADDR (.data)
+ .fini_array    0x0000000008004ff0        0x4 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
+                0x0000000008004ff4                PROVIDE (__fini_array_end, .)
+                0x0000000008004ff4                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000       0x6c load address 0x0000000008004ff0
+.data           0x0000000020000000       0x6c load address 0x0000000008004ff4
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2286,22 +2287,22 @@ LOAD /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtn.o
                 0x0000000020000068        0x4 build/port.o
                 0x000000002000006c                . = ALIGN (0x4)
                 0x000000002000006c                _edata = .
-                0x000000000800505c                _siccmram = LOADADDR (.ccmram)
+                0x0000000008005060                _siccmram = LOADADDR (.ccmram)
 
-.jcr            0x000000002000006c        0x0 load address 0x000000000800505c
+.jcr            0x000000002000006c        0x0 load address 0x0000000008005060
  .jcr           0x000000002000006c        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
 .tm_clone_table
-                0x000000002000006c        0x0 load address 0x000000000800505c
+                0x000000002000006c        0x0 load address 0x0000000008005060
  .tm_clone_table
                 0x000000002000006c        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
  .tm_clone_table
                 0x000000002000006c        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtend.o
 
-.igot.plt       0x000000002000006c        0x0 load address 0x000000000800505c
+.igot.plt       0x000000002000006c        0x0 load address 0x0000000008005060
  .igot.plt      0x000000002000006c        0x0 /usr/lib/gcc/arm-none-eabi/5.4.1/armv7e-m/fpu/crtbegin.o
 
-.ccmram         0x0000000010000000        0x0 load address 0x000000000800505c
+.ccmram         0x0000000010000000        0x0 load address 0x0000000008005060
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _sccmram = .
  *(.ccmram)

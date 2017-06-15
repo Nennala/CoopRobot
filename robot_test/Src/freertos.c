@@ -66,19 +66,6 @@ extern TIM_HandleTypeDef htim3;
 /* Function prototypes -------------------------------------------------------*/
 
 /* USER CODE BEGIN FunctionPrototypes */
-void alumer_gauche();
-void eteindre_gauche();
-
-void alumer_droite();
-void eteindre_droite();
-
-void avancer_dix_cm();
-void reculer_dix_cm();
-void tourner_droite();
-void tourner_gauche();
-
-void accelerer();
-void deccelerer();
 
 void alumer_gauche(int sens) {
     HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, !sens);
@@ -103,9 +90,9 @@ void eteindre_droite() {
 void avancer_dix_cm() {
     alumer_droite(1);
     alumer_gauche(1);
-    accelerer();
+    //accelerer();
     osDelay(2000);
-    deccelerer();
+    //deccelerer();
     eteindre_droite();
     eteindre_gauche();
 }
@@ -113,9 +100,9 @@ void avancer_dix_cm() {
 void reculer_dix_cm() {
     alumer_droite(0);
     alumer_gauche(0);
-    accelerer();
+    //accelerer();
     osDelay(2000);
-    deccelerer();
+    //deccelerer();
     eteindre_droite();
     eteindre_gauche();
 
@@ -124,9 +111,9 @@ void reculer_dix_cm() {
 void tourner_droite() {
     alumer_gauche(1);
     alumer_droite(0);
-    accelerer();
+    //accelerer();
     osDelay(1000);
-    deccelerer();
+    //deccelerer();
     eteindre_droite();
     eteindre_gauche();
 }
@@ -134,9 +121,9 @@ void tourner_droite() {
 void tourner_gauche() {
     alumer_droite(1);
     alumer_gauche(0);
-    accelerer();
+    //accelerer();
     osDelay(1000);
-    deccelerer();
+    //deccelerer();
     eteindre_droite();
     eteindre_gauche();
 }
@@ -169,6 +156,11 @@ void deccelerer() {
 void motor(void const * argument)
 {
   /* USER CODE BEGIN motor */
+  HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
+  HAL_TIM_Base_Start(&htim3);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+
   /* Infinite loop */
   for(;;)
   {
@@ -176,9 +168,9 @@ void motor(void const * argument)
     osDelay(500);
     reculer_dix_cm();
     osDelay(500);
-    tourner_droite();
-    osDelay(500);
     tourner_gauche();
+    osDelay(500);
+    tourner_droite();
     osDelay(500);
   }
   /* USER CODE END motor */

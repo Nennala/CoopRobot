@@ -62,8 +62,8 @@
 #define ain1_GPIO_Port GPIOF
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
-#define pwm1_Pin GPIO_PIN_1
-#define pwm1_GPIO_Port GPIOB
+#define pwm2_Pin GPIO_PIN_1
+#define pwm2_GPIO_Port GPIOB
 #define stby_Pin GPIO_PIN_8
 #define stby_GPIO_Port GPIOA
 #define bin1_Pin GPIO_PIN_11
@@ -76,8 +76,8 @@
 #define VCP_RX_GPIO_Port GPIOA
 #define led_Pin GPIO_PIN_3
 #define led_GPIO_Port GPIOB
-#define pwm2_Pin GPIO_PIN_4
-#define pwm2_GPIO_Port GPIOB
+#define pwm1_Pin GPIO_PIN_4
+#define pwm1_GPIO_Port GPIOB
 #define bin2_Pin GPIO_PIN_5
 #define bin2_GPIO_Port GPIOB
 

@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=/home/daphne/Documents/Mini projet/robot_test/Inc
+HeaderPath=/home/daphne/Documents/Mini projet/CoopRobot/robot_test/Inc
 HeaderFiles=FreeRTOSConfig.h;stm32f3xx_it.h;stm32f3xx_hal_conf.h;main.h;
-SourcePath=/home/daphne/Documents/Mini projet/robot_test/Src
+SourcePath=/home/daphne/Documents/Mini projet/CoopRobot/robot_test/Src
 SourceFiles=FreeRTOSConfig.h;stm32f3xx_it.h;stm32f3xx_hal_conf.h;main.h;freertos.c;stm32f3xx_it.c;stm32f3xx_hal_msp.c;stm32f3xx_hal_timebase_TIM.c;main.c;
 
 [PreviousLibFiles]

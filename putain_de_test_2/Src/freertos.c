@@ -111,7 +111,7 @@ void pcCOM(void const * argument)
       HAL_ADC_Start_IT(&hadc1);
       osDelay(300);
       if (flag == 1) {
-          printf("Value : %lu", adcResult);
+          printf("Value : %lu\r\n", adcResult);
           flag = 0;
       }
   }
