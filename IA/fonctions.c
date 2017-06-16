@@ -403,7 +403,7 @@ void deplacement(int *posx, int *posy, int orientation, int distance)
   }
   else
   {
-    for (size_t i = 0; i < distance; i++)
+    for (size_t i = 0; i < -distance; i++)
     {
       reculer_robot(posx, posy, orientation);
       affichage(1);
@@ -416,6 +416,7 @@ bool test_deplacement(int posx, int posy)//retourne true si un bloc est sur cett
   if (tab0[posx][posy] == 'X')
   {
     printf("déplacement impossible\n\n");
+    put(1,posx,posy,'X');
     return true;
   }
   else
@@ -436,7 +437,7 @@ bool trouver_coin(int *posx, int *posy, int orientation)//retoune true quand le 
 
     pivoter_droite(posx,posy,&orientation);
 
-    while (!suis_je_dans_un_coin(posx,posy,&orientation))
+    while (presence_bloc(posx,posy,orientation))
       {
         avancer_robot(posx,posy, orientation);
       }
@@ -449,14 +450,28 @@ bool trouver_coin(int *posx, int *posy, int orientation)//retoune true quand le 
 bool suis_je_dans_un_coin(int *posx, int *posy, int *orientation)// version 1 retourne true si l'on est dans un coin, false sinon
 {
   int somme_ponderee = 0;
-  presence_bloc(posx+1,posy,*orientation);
-  presence_bloc(posx-1,posy,*orientation);
-  presence_bloc(posx,posy+1,*orientation);
-  presence_bloc(posx,posy-1,*orientation);
+
+  if (tab0[*posx+1][*posy] == 'X')
+  {
+    somme_ponderee += 1;
+  }
+  if (tab0[*posx][*posy+1] == 'X')
+  {
+    somme_ponderee += 2;
+  }
+  if (tab0[*posx-1][*posy] == 'X')
+  {
+    somme_ponderee += 1;
+  }
+  if (tab0[*posx][*posy-1] == 'X')
+  {
+    somme_ponderee += 2;
+  }
+  printf("somme = %d\n", somme_ponderee);
   return (somme_ponderee == 3);
 }
-
-/*bool suis_je_dans_un_coin(int *posx, int *posy, int *orientation)// version 1 retourne true si l'on est dans un coin, false sinon
+/*
+bool suis_je_dans_un_coin(int *posx, int *posy, int *orientation)// version 1 retourne true si l'on est dans un coin, false sinon
 {
   int i=0;
   int somme_ponderee = 0;
@@ -529,35 +544,60 @@ int lire_distance(int *posx, int *posy, int orientation)//simulation : retourne 
 
   if (test_deplacement(*posx,*posy))// test si il y a une bloc demain
     {
+      switch (orientation)//remet les bonnes valeurs dans posx et posy
+        {
+          case 0:
+          break;
+
+          case 6:
+          *posy = (*posy)-1;
+          break;
+
+          case 8:
+          *posx = (*posx)+1;
+          break;
+
+          case 4:
+          *posy = (*posy)+1;
+          break;
+
+          case 2:
+          *posx = (*posx)-1;
+          break;
+
+          default:
+          break;
+        }
       return 1;
     }
   else
     {
+      switch (orientation)//remet les bonnes valeurs dans posx et posy
+        {
+          case 0:
+          break;
+
+          case 6:
+          *posy = (*posy)-1;
+          break;
+
+          case 8:
+          *posx = (*posx)+1;
+          break;
+
+          case 4:
+          *posy = (*posy)+1;
+          break;
+
+          case 2:
+          *posx = (*posx)-1;
+          break;
+
+          default:
+          break;
+        }
       return 0;
     }
 
-  switch (orientation)//remet les bonnes valeurs dans posx et posy
-  {
-    case 0:
-    break;
 
-    case 6:
-    *posy = (*posy)-1;
-    break;
-
-    case 8:
-    *posx = (*posx)+1;
-    break;
-
-    case 4:
-    *posy = (*posy)+1;
-    break;
-
-    case 2:
-    *posx = (*posx)-1;
-    break;
-
-    default:
-    break;
-  }
 }

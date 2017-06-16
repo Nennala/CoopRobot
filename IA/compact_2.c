@@ -22,9 +22,11 @@ int main(void)
   reculer_robot(&posx,&posy,orientation);
   affichage(1);
   reculer_robot(&posx,&posy,orientation);
-  affichage(1);*/
-  //deplacement(&posx,&posy,orientation,-1);
+  affichage(1);
+  deplacement(&posx,&posy,orientation,-1);*/
+  trouver_coin(&posx, &posy, orientation);
   printf("%s\n", (suis_je_dans_un_coin(&posx, &posy, &orientation) ? "oui":"non"));
+  affichage(1);
   return 0;
 }
 
