@@ -63,8 +63,8 @@ TIM_HandleTypeDef htim3;
 UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
-osThreadId motor_cmdHandle;
-osThreadId adc_taskHandle;
+osThreadId motor_taskHandle;
+osThreadId adc_dma_taskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -145,13 +145,13 @@ int main(void)
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
-  /* definition and creation of motor_cmd */
-  osThreadDef(motor_cmd, motor, osPriorityIdle, 0, 256);
-  motor_cmdHandle = osThreadCreate(osThread(motor_cmd), NULL);
+  /* definition and creation of motor_task */
+  osThreadDef(motor_task, motor, osPriorityIdle, 0, 256);
+  motor_taskHandle = osThreadCreate(osThread(motor_task), NULL);
 
-  /* definition and creation of adc_task */
-  osThreadDef(adc_task, adcControl, osPriorityIdle, 0, 256);
-  adc_taskHandle = osThreadCreate(osThread(adc_task), NULL);
+  /* definition and creation of adc_dma_task */
+  osThreadDef(adc_dma_task, adcControl, osPriorityIdle, 0, 256);
+  adc_dma_taskHandle = osThreadCreate(osThread(adc_dma_task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -240,7 +240,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = DISABLE;
+  hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T3_TRGO;

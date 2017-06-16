@@ -135,20 +135,20 @@ void tourner_gauche() {
 
 void accelerer() {
     int pwm = 0;
-    while (pwm != 320) {
+    while (pwm != 100) {
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
-        pwm += 20;
+        pwm += 10;
         osDelay(100);
     }
 }
 
 void deccelerer() {
-    int pwm = 320;
+    int pwm = 100;
     while (pwm != 0) {
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
-        pwm -= 20;
+        pwm -= 10;
         osDelay(100);
     }
 }
@@ -156,7 +156,8 @@ void deccelerer() {
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     UNUSED(hadc);
 
-    adcBuffer = HAL_ADC_GetValue(hadc);
+    char* message = "Hello";
+    HAL_UART_Transmit(&huart2, (uint8_t *)message, strlen(message), 0xFFFF);
     flag = 1;
 }
 
@@ -173,9 +174,30 @@ int _write(int file, char *ptr, int len) {
 /* Hook prototypes */
 
 /* USER CODE BEGIN Application */
+void adcControl(void const * argument)
+{
+  /* USER CODE BEGIN adcControl */
+  UNUSED(argument);
+
+  HAL_TIM_Base_Start(&htim3);
+  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
+  /* Infinite loop */
+  for(;;)
+  {
+    printf("Value : %lu\n\r", adcBuffer);
+    if (flag == 1) {
+        //printf("Value : %lu\r\n", adcBuffer);
+    }
+    osDelay(2000);
+  }
+  /* USER CODE END adcControl */
+}
+
 void motor(void const * argument)
 {
   /* USER CODE BEGIN motor */
+  UNUSED(argument);
+
   HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
   HAL_TIM_Base_Start(&htim3);
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
@@ -196,20 +218,6 @@ void motor(void const * argument)
   /* USER CODE END motor */
 }
 
-void adcControl(void const * argument)
-{
-  /* USER CODE BEGIN adcControl */
-  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
-  /* Infinite loop */
-  for(;;)
-  {
-    if (flag == 1) {
-        printf("Value : %lu\r\n", adcBuffer);
-    }
-    osDelay(1);
-  }
-  /* USER CODE END adcControl */
-}
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

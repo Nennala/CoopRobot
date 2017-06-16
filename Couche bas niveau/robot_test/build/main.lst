@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccbBOTwG.s 			page 1
+ARM GAS  /tmp/ccFjr7Es.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
   28:Src/main.c    ****   *    microprocessor devices manufactured by or for STMicroelectronics.
   29:Src/main.c    ****   * 5. Redistribution and use of this software other than as permitted under 
   30:Src/main.c    ****   *    this license is void and will automatically terminate your rights under 
-ARM GAS  /tmp/ccbBOTwG.s 			page 2
+ARM GAS  /tmp/ccFjr7Es.s 			page 2
 
 
   31:Src/main.c    ****   *    this license. 
@@ -96,8 +96,8 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
   63:Src/main.c    **** UART_HandleTypeDef huart2;
   64:Src/main.c    **** 
   65:Src/main.c    **** osThreadId defaultTaskHandle;
-  66:Src/main.c    **** osThreadId motor_cmdHandle;
-  67:Src/main.c    **** osThreadId adc_taskHandle;
+  66:Src/main.c    **** osThreadId motor_taskHandle;
+  67:Src/main.c    **** osThreadId adc_dma_taskHandle;
   68:Src/main.c    **** 
   69:Src/main.c    **** /* USER CODE BEGIN PV */
   70:Src/main.c    **** /* Private variables ---------------------------------------------------------*/
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
   85:Src/main.c    **** void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
   86:Src/main.c    ****                                 
   87:Src/main.c    **** 
-ARM GAS  /tmp/ccbBOTwG.s 			page 3
+ARM GAS  /tmp/ccFjr7Es.s 			page 3
 
 
   88:Src/main.c    **** /* USER CODE BEGIN PFP */
@@ -178,19 +178,19 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  142:Src/main.c    **** 
  143:Src/main.c    ****   /* Create the thread(s) */
  144:Src/main.c    ****   /* definition and creation of defaultTask */
-ARM GAS  /tmp/ccbBOTwG.s 			page 4
+ARM GAS  /tmp/ccFjr7Es.s 			page 4
 
 
  145:Src/main.c    ****   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
  146:Src/main.c    ****   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
  147:Src/main.c    **** 
- 148:Src/main.c    ****   /* definition and creation of motor_cmd */
- 149:Src/main.c    ****   osThreadDef(motor_cmd, motor, osPriorityIdle, 0, 256);
- 150:Src/main.c    ****   motor_cmdHandle = osThreadCreate(osThread(motor_cmd), NULL);
+ 148:Src/main.c    ****   /* definition and creation of motor_task */
+ 149:Src/main.c    ****   osThreadDef(motor_task, motor, osPriorityIdle, 0, 256);
+ 150:Src/main.c    ****   motor_taskHandle = osThreadCreate(osThread(motor_task), NULL);
  151:Src/main.c    **** 
- 152:Src/main.c    ****   /* definition and creation of adc_task */
- 153:Src/main.c    ****   osThreadDef(adc_task, adcControl, osPriorityIdle, 0, 256);
- 154:Src/main.c    ****   adc_taskHandle = osThreadCreate(osThread(adc_task), NULL);
+ 152:Src/main.c    ****   /* definition and creation of adc_dma_task */
+ 153:Src/main.c    ****   osThreadDef(adc_dma_task, adcControl, osPriorityIdle, 0, 256);
+ 154:Src/main.c    ****   adc_dma_taskHandle = osThreadCreate(osThread(adc_dma_task), NULL);
  155:Src/main.c    **** 
  156:Src/main.c    ****   /* USER CODE BEGIN RTOS_THREADS */
  157:Src/main.c    ****   /* add threads, ... */
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  199:Src/main.c    ****   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
  200:Src/main.c    ****   {
  201:Src/main.c    ****     _Error_Handler(__FILE__, __LINE__);
-ARM GAS  /tmp/ccbBOTwG.s 			page 5
+ARM GAS  /tmp/ccFjr7Es.s 			page 5
 
 
  202:Src/main.c    ****   }
@@ -282,7 +282,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  240:Src/main.c    ****   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
  241:Src/main.c    ****   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
  242:Src/main.c    ****   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
- 243:Src/main.c    ****   hadc1.Init.ContinuousConvMode = DISABLE;
+ 243:Src/main.c    ****   hadc1.Init.ContinuousConvMode = ENABLE;
  244:Src/main.c    ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
  245:Src/main.c    ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
  246:Src/main.c    ****   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T3_TRGO;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  256:Src/main.c    ****   }
  257:Src/main.c    **** 
  258:Src/main.c    ****     /**Configure the ADC multi-mode 
-ARM GAS  /tmp/ccbBOTwG.s 			page 6
+ARM GAS  /tmp/ccFjr7Es.s 			page 6
 
 
  259:Src/main.c    ****     */
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  313:Src/main.c    ****   }
  314:Src/main.c    **** 
  315:Src/main.c    ****   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_4) != HAL_OK)
-ARM GAS  /tmp/ccbBOTwG.s 			page 7
+ARM GAS  /tmp/ccFjr7Es.s 			page 7
 
 
  316:Src/main.c    ****   {
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
   31              		@ args = 0, pretend = 0, frame = 32
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33 0000 F0B5     		push	{r4, r5, r6, r7, lr}
-ARM GAS  /tmp/ccbBOTwG.s 			page 8
+ARM GAS  /tmp/ccFjr7Es.s 			page 8
 
 
   34              	.LCFI0:
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
   78 0040 0321     		movs	r1, #3
   79 0042 3846     		mov	r0, r7
   80 0044 FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  /tmp/ccbBOTwG.s 			page 9
+ARM GAS  /tmp/ccFjr7Es.s 			page 9
 
 
   81              	.LVL0:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  117 0080 0594     		str	r4, [sp, #20]
  396:Src/main.c    ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  118              		.loc 1 396 0
-ARM GAS  /tmp/ccbBOTwG.s 			page 10
+ARM GAS  /tmp/ccFjr7Es.s 			page 10
 
 
  119 0082 0694     		str	r4, [sp, #24]
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  164              		@ frame_needed = 0, uses_anonymous_args = 0
  165 0000 00B5     		push	{lr}
  166              	.LCFI3:
-ARM GAS  /tmp/ccbBOTwG.s 			page 11
+ARM GAS  /tmp/ccFjr7Es.s 			page 11
 
 
  167              		.cfi_def_cfa_offset 4
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  412:Src/main.c    **** /* StartDefaultTask function */
  413:Src/main.c    **** void StartDefaultTask(void const * argument)
  414:Src/main.c    **** {
-ARM GAS  /tmp/ccbBOTwG.s 			page 12
+ARM GAS  /tmp/ccFjr7Es.s 			page 12
 
 
  214              		.loc 1 414 0
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  256              	.LVL12:
  257 0000 08B5     		push	{r3, lr}
  258              	.LCFI7:
-ARM GAS  /tmp/ccbBOTwG.s 			page 13
+ARM GAS  /tmp/ccFjr7Es.s 			page 13
 
 
  259              		.cfi_def_cfa_offset 8
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  298              	.LFE138:
  300 000a 00BF     		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
  301              		.align	2
-ARM GAS  /tmp/ccbBOTwG.s 			page 14
+ARM GAS  /tmp/ccFjr7Es.s 			page 14
 
 
  302              		.global	HAL_TIM_PeriodElapsedCallback
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  339              		.thumb_func
  341              	_Error_Handler:
  342              	.LFB140:
-ARM GAS  /tmp/ccbBOTwG.s 			page 15
+ARM GAS  /tmp/ccFjr7Es.s 			page 15
 
 
  465:Src/main.c    ****   }
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  381              		.loc 1 290 0
  382 0010 0023     		movs	r3, #0
  383 0012 8360     		str	r3, [r0, #8]
-ARM GAS  /tmp/ccbBOTwG.s 			page 16
+ARM GAS  /tmp/ccFjr7Es.s 			page 16
 
 
  291:Src/main.c    ****   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  426 0054 0292     		str	r2, [sp, #8]
  309:Src/main.c    ****   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
  427              		.loc 1 309 0
-ARM GAS  /tmp/ccbBOTwG.s 			page 17
+ARM GAS  /tmp/ccFjr7Es.s 			page 17
 
 
  428 0056 0492     		str	r2, [sp, #16]
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  478              	MX_ADC1_Init:
  479              	.LFB131:
  232:Src/main.c    **** 
-ARM GAS  /tmp/ccbBOTwG.s 			page 18
+ARM GAS  /tmp/ccFjr7Es.s 			page 18
 
 
  480              		.loc 1 232 0
@@ -1045,29 +1045,29 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  498              		.loc 1 241 0
  499 0012 0023     		movs	r3, #0
  500 0014 8360     		str	r3, [r0, #8]
- 242:Src/main.c    ****   hadc1.Init.ContinuousConvMode = DISABLE;
+ 242:Src/main.c    ****   hadc1.Init.ContinuousConvMode = ENABLE;
  501              		.loc 1 242 0
  502 0016 0361     		str	r3, [r0, #16]
  243:Src/main.c    ****   hadc1.Init.DiscontinuousConvMode = DISABLE;
  503              		.loc 1 243 0
- 504 0018 C361     		str	r3, [r0, #28]
+ 504 0018 0122     		movs	r2, #1
+ 505 001a C261     		str	r2, [r0, #28]
  244:Src/main.c    ****   hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
- 505              		.loc 1 244 0
- 506 001a 4362     		str	r3, [r0, #36]
+ 506              		.loc 1 244 0
+ 507 001c 4362     		str	r3, [r0, #36]
  245:Src/main.c    ****   hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T3_TRGO;
- 507              		.loc 1 245 0
- 508 001c 4FF48062 		mov	r2, #1024
- 509 0020 0263     		str	r2, [r0, #48]
+ 508              		.loc 1 245 0
+ 509 001e 4FF48061 		mov	r1, #1024
+ 510 0022 0163     		str	r1, [r0, #48]
  246:Src/main.c    ****   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
- 510              		.loc 1 246 0
- 511 0022 4FF48072 		mov	r2, #256
- 512 0026 C262     		str	r2, [r0, #44]
+ 511              		.loc 1 246 0
+ 512 0024 4FF48071 		mov	r1, #256
+ 513 0028 C162     		str	r1, [r0, #44]
  247:Src/main.c    ****   hadc1.Init.NbrOfConversion = 1;
- 513              		.loc 1 247 0
- 514 0028 C360     		str	r3, [r0, #12]
+ 514              		.loc 1 247 0
+ 515 002a C360     		str	r3, [r0, #12]
  248:Src/main.c    ****   hadc1.Init.DMAContinuousRequests = ENABLE;
- 515              		.loc 1 248 0
- 516 002a 0122     		movs	r2, #1
+ 516              		.loc 1 248 0
  517 002c 0262     		str	r2, [r0, #32]
  249:Src/main.c    ****   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
  518              		.loc 1 249 0
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  522 0032 4261     		str	r2, [r0, #20]
  251:Src/main.c    ****   hadc1.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
  523              		.loc 1 251 0
-ARM GAS  /tmp/ccbBOTwG.s 			page 19
+ARM GAS  /tmp/ccFjr7Es.s 			page 19
 
 
  524 0034 8361     		str	r3, [r0, #24]
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  566 0070 0693     		str	r3, [sp, #24]
  274:Src/main.c    ****   {
  567              		.loc 1 274 0
-ARM GAS  /tmp/ccbBOTwG.s 			page 20
+ARM GAS  /tmp/ccFjr7Es.s 			page 20
 
 
  568 0072 01A9     		add	r1, sp, #4
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  618 0010 C360     		str	r3, [r0, #12]
  331:Src/main.c    ****   huart2.Init.Mode = UART_MODE_TX_RX;
  619              		.loc 1 331 0
-ARM GAS  /tmp/ccbBOTwG.s 			page 21
+ARM GAS  /tmp/ccFjr7Es.s 			page 21
 
 
  620 0012 0361     		str	r3, [r0, #16]
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  668 0002 91B0     		sub	sp, sp, #68
  669              	.LCFI18:
  670              		.cfi_def_cfa_offset 72
-ARM GAS  /tmp/ccbBOTwG.s 			page 22
+ARM GAS  /tmp/ccFjr7Es.s 			page 22
 
 
  193:Src/main.c    ****   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  712 003e 0593     		str	r3, [sp, #20]
  213:Src/main.c    ****   {
  713              		.loc 1 213 0
-ARM GAS  /tmp/ccbBOTwG.s 			page 23
+ARM GAS  /tmp/ccFjr7Es.s 			page 23
 
 
  714 0040 01A8     		add	r0, sp, #4
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  764              		.loc 1 98 0
  765              		.cfi_startproc
  766              		@ args = 0, pretend = 0, frame = 64
-ARM GAS  /tmp/ccbBOTwG.s 			page 24
+ARM GAS  /tmp/ccFjr7Es.s 			page 24
 
 
  767              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1437,8 +1437,8 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  811              	.LVL53:
  812 0036 104B     		ldr	r3, .L56+4
  813 0038 1860     		str	r0, [r3]
- 149:Src/main.c    ****   motor_cmdHandle = osThreadCreate(osThread(motor_cmd), NULL);
-ARM GAS  /tmp/ccbBOTwG.s 			page 25
+ 149:Src/main.c    ****   motor_taskHandle = osThreadCreate(osThread(motor_task), NULL);
+ARM GAS  /tmp/ccFjr7Es.s 			page 25
 
 
  814              		.loc 1 149 0
@@ -1456,7 +1456,7 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  825              	.LVL54:
  826 0050 0A4B     		ldr	r3, .L56+8
  827 0052 1860     		str	r0, [r3]
- 153:Src/main.c    ****   adc_taskHandle = osThreadCreate(osThread(adc_task), NULL);
+ 153:Src/main.c    ****   adc_dma_taskHandle = osThreadCreate(osThread(adc_dma_task), NULL);
  828              		.loc 1 153 0
  829 0054 01AD     		add	r5, sp, #4
  830 0056 2834     		adds	r4, r4, #40
@@ -1483,12 +1483,12 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  849              	.L56:
  850 0074 00000000 		.word	.LANCHOR0
  851 0078 00000000 		.word	defaultTaskHandle
- 852 007c 00000000 		.word	motor_cmdHandle
- 853 0080 00000000 		.word	adc_taskHandle
+ 852 007c 00000000 		.word	motor_taskHandle
+ 853 0080 00000000 		.word	adc_dma_taskHandle
  854              		.cfi_endproc
  855              	.LFE129:
- 857              		.comm	adc_taskHandle,4,4
- 858              		.comm	motor_cmdHandle,4,4
+ 857              		.comm	adc_dma_taskHandle,4,4
+ 858              		.comm	motor_taskHandle,4,4
  859              		.comm	defaultTaskHandle,4,4
  860              		.comm	huart2,112,4
  861              		.comm	htim3,64,4
@@ -1498,17 +1498,17 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  865              		.align	2
  866              		.set	.LANCHOR0,. + 0
  867              	.LC7:
-ARM GAS  /tmp/ccbBOTwG.s 			page 26
+ARM GAS  /tmp/ccFjr7Es.s 			page 26
 
 
- 868 0000 24000000 		.word	.LC0
+ 868 0000 28000000 		.word	.LC0
  869 0004 00000000 		.word	StartDefaultTask
  870 0008 0000     		.short	0
  871 000a 0000     		.space	2
  872 000c 00000000 		.word	0
  873 0010 80000000 		.word	128
  874              	.LC8:
- 875 0014 18000000 		.word	.LC2
+ 875 0014 1C000000 		.word	.LC2
  876 0018 00000000 		.word	motor
  877 001c FDFF     		.short	-3
  878 001e 0000     		.space	2
@@ -1529,17 +1529,18 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  891      2E6300
  892 000b 00       		.space	1
  893              	.LC4:
- 894 000c 6164635F 		.ascii	"adc_task\000"
+ 894 000c 6164635F 		.ascii	"adc_dma_task\000"
+ 894      646D615F 
  894      7461736B 
  894      00
- 895 0015 000000   		.space	3
+ 895 0019 000000   		.space	3
  896              	.LC2:
- 897 0018 6D6F746F 		.ascii	"motor_cmd\000"
- 897      725F636D 
- 897      6400
- 898 0022 0000     		.space	2
+ 897 001c 6D6F746F 		.ascii	"motor_task\000"
+ 897      725F7461 
+ 897      736B00
+ 898 0027 00       		.space	1
  899              	.LC0:
- 900 0024 64656661 		.ascii	"defaultTask\000"
+ 900 0028 64656661 		.ascii	"defaultTask\000"
  900      756C7454 
  900      61736B00 
  901              		.text
@@ -1557,61 +1558,61 @@ ARM GAS  /tmp/ccbBOTwG.s 			page 1
  913              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
  914              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim_ex.h"
  915              		.file 14 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ARM GAS  /tmp/ccFjr7Es.s 			page 27
+
+
  916              		.file 15 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
-ARM GAS  /tmp/ccbBOTwG.s 			page 27
-
-
  917              		.file 16 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
  918              		.file 17 "Drivers/CMSIS/Include/core_cm4.h"
  919              		.file 18 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_cortex.h"
  920              		.file 19 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal.h"
-ARM GAS  /tmp/ccbBOTwG.s 			page 28
+ARM GAS  /tmp/ccFjr7Es.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccbBOTwG.s:22     .text.MX_GPIO_Init:0000000000000000 $t
-     /tmp/ccbBOTwG.s:26     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
-     /tmp/ccbBOTwG.s:148    .text.MX_GPIO_Init:00000000000000a4 $d
-     /tmp/ccbBOTwG.s:155    .text.MX_DMA_Init:0000000000000000 $t
-     /tmp/ccbBOTwG.s:159    .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
-     /tmp/ccbBOTwG.s:202    .text.MX_DMA_Init:0000000000000030 $d
-     /tmp/ccbBOTwG.s:207    .text.StartDefaultTask:0000000000000000 $t
-     /tmp/ccbBOTwG.s:212    .text.StartDefaultTask:0000000000000000 StartDefaultTask
-     /tmp/ccbBOTwG.s:240    .text.StartDefaultTask:0000000000000014 $d
-     /tmp/ccbBOTwG.s:245    .text.motor:0000000000000000 $t
-     /tmp/ccbBOTwG.s:250    .text.motor:0000000000000000 motor
-     /tmp/ccbBOTwG.s:273    .text.adcControl:0000000000000000 $t
-     /tmp/ccbBOTwG.s:278    .text.adcControl:0000000000000000 adcControl
-     /tmp/ccbBOTwG.s:301    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
-     /tmp/ccbBOTwG.s:306    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
-     /tmp/ccbBOTwG.s:331    .text.HAL_TIM_PeriodElapsedCallback:0000000000000010 $d
-     /tmp/ccbBOTwG.s:336    .text._Error_Handler:0000000000000000 $t
-     /tmp/ccbBOTwG.s:341    .text._Error_Handler:0000000000000000 _Error_Handler
-     /tmp/ccbBOTwG.s:356    .text.MX_TIM3_Init:0000000000000000 $t
-     /tmp/ccbBOTwG.s:360    .text.MX_TIM3_Init:0000000000000000 MX_TIM3_Init
-     /tmp/ccbBOTwG.s:467    .text.MX_TIM3_Init:0000000000000090 $d
+     /tmp/ccFjr7Es.s:22     .text.MX_GPIO_Init:0000000000000000 $t
+     /tmp/ccFjr7Es.s:26     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+     /tmp/ccFjr7Es.s:148    .text.MX_GPIO_Init:00000000000000a4 $d
+     /tmp/ccFjr7Es.s:155    .text.MX_DMA_Init:0000000000000000 $t
+     /tmp/ccFjr7Es.s:159    .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
+     /tmp/ccFjr7Es.s:202    .text.MX_DMA_Init:0000000000000030 $d
+     /tmp/ccFjr7Es.s:207    .text.StartDefaultTask:0000000000000000 $t
+     /tmp/ccFjr7Es.s:212    .text.StartDefaultTask:0000000000000000 StartDefaultTask
+     /tmp/ccFjr7Es.s:240    .text.StartDefaultTask:0000000000000014 $d
+     /tmp/ccFjr7Es.s:245    .text.motor:0000000000000000 $t
+     /tmp/ccFjr7Es.s:250    .text.motor:0000000000000000 motor
+     /tmp/ccFjr7Es.s:273    .text.adcControl:0000000000000000 $t
+     /tmp/ccFjr7Es.s:278    .text.adcControl:0000000000000000 adcControl
+     /tmp/ccFjr7Es.s:301    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 $t
+     /tmp/ccFjr7Es.s:306    .text.HAL_TIM_PeriodElapsedCallback:0000000000000000 HAL_TIM_PeriodElapsedCallback
+     /tmp/ccFjr7Es.s:331    .text.HAL_TIM_PeriodElapsedCallback:0000000000000010 $d
+     /tmp/ccFjr7Es.s:336    .text._Error_Handler:0000000000000000 $t
+     /tmp/ccFjr7Es.s:341    .text._Error_Handler:0000000000000000 _Error_Handler
+     /tmp/ccFjr7Es.s:356    .text.MX_TIM3_Init:0000000000000000 $t
+     /tmp/ccFjr7Es.s:360    .text.MX_TIM3_Init:0000000000000000 MX_TIM3_Init
+     /tmp/ccFjr7Es.s:467    .text.MX_TIM3_Init:0000000000000090 $d
                             *COM*:0000000000000040 htim3
-     /tmp/ccbBOTwG.s:474    .text.MX_ADC1_Init:0000000000000000 $t
-     /tmp/ccbBOTwG.s:478    .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
-     /tmp/ccbBOTwG.s:588    .text.MX_ADC1_Init:000000000000008c $d
+     /tmp/ccFjr7Es.s:474    .text.MX_ADC1_Init:0000000000000000 $t
+     /tmp/ccFjr7Es.s:478    .text.MX_ADC1_Init:0000000000000000 MX_ADC1_Init
+     /tmp/ccFjr7Es.s:588    .text.MX_ADC1_Init:000000000000008c $d
                             *COM*:0000000000000054 hadc1
-     /tmp/ccbBOTwG.s:594    .text.MX_USART2_UART_Init:0000000000000000 $t
-     /tmp/ccbBOTwG.s:598    .text.MX_USART2_UART_Init:0000000000000000 MX_USART2_UART_Init
-     /tmp/ccbBOTwG.s:646    .text.MX_USART2_UART_Init:0000000000000034 $d
+     /tmp/ccFjr7Es.s:594    .text.MX_USART2_UART_Init:0000000000000000 $t
+     /tmp/ccFjr7Es.s:598    .text.MX_USART2_UART_Init:0000000000000000 MX_USART2_UART_Init
+     /tmp/ccFjr7Es.s:646    .text.MX_USART2_UART_Init:0000000000000034 $d
                             *COM*:0000000000000070 huart2
-     /tmp/ccbBOTwG.s:653    .text.SystemClock_Config:0000000000000000 $t
-     /tmp/ccbBOTwG.s:658    .text.SystemClock_Config:0000000000000000 SystemClock_Config
-     /tmp/ccbBOTwG.s:751    .text.SystemClock_Config:0000000000000078 $d
-     /tmp/ccbBOTwG.s:757    .text.main:0000000000000000 $t
-     /tmp/ccbBOTwG.s:762    .text.main:0000000000000000 main
-     /tmp/ccbBOTwG.s:850    .text.main:0000000000000074 $d
+     /tmp/ccFjr7Es.s:653    .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccFjr7Es.s:658    .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccFjr7Es.s:751    .text.SystemClock_Config:0000000000000078 $d
+     /tmp/ccFjr7Es.s:757    .text.main:0000000000000000 $t
+     /tmp/ccFjr7Es.s:762    .text.main:0000000000000000 main
+     /tmp/ccFjr7Es.s:850    .text.main:0000000000000074 $d
                             *COM*:0000000000000004 defaultTaskHandle
-                            *COM*:0000000000000004 motor_cmdHandle
-                            *COM*:0000000000000004 adc_taskHandle
+                            *COM*:0000000000000004 motor_taskHandle
+                            *COM*:0000000000000004 adc_dma_taskHandle
                             *COM*:0000000000000044 hdma_adc1
-     /tmp/ccbBOTwG.s:865    .rodata:0000000000000000 $d
-     /tmp/ccbBOTwG.s:889    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccFjr7Es.s:865    .rodata:0000000000000000 $d
+     /tmp/ccFjr7Es.s:889    .rodata.str1.4:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
@@ -1625,7 +1626,7 @@ HAL_IncTick
 HAL_TIM_PWM_Init
 HAL_TIMEx_MasterConfigSynchronization
 HAL_TIM_PWM_ConfigChannel
-ARM GAS  /tmp/ccbBOTwG.s 			page 29
+ARM GAS  /tmp/ccFjr7Es.s 			page 29
 
 
 HAL_TIM_MspPostInit

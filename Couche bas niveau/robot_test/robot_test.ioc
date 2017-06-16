@@ -1,9 +1,10 @@
 #MicroXplorer Configuration settings - do not modify
 ADC1.Channel-0\#ChannelRegularConversion=ADC_CHANNEL_1
 ADC1.ClockPrescaler=ADC_CLOCK_SYNC_PCLK_DIV4
+ADC1.ContinuousConvMode=ENABLE
 ADC1.DMAContinuousRequests=ENABLE
 ADC1.ExternalTrigConv=ADC_EXTERNALTRIGCONV_T3_TRGO
-ADC1.IPParameters=SubFamily,Rank-0\#ChannelRegularConversion,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,OffsetNumber-0\#ChannelRegularConversion,Offset-0\#ChannelRegularConversion,NbrOfConversionFlag,master,ClockPrescaler,DMAContinuousRequests,ExternalTrigConv
+ADC1.IPParameters=SubFamily,Rank-0\#ChannelRegularConversion,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,OffsetNumber-0\#ChannelRegularConversion,Offset-0\#ChannelRegularConversion,NbrOfConversionFlag,master,ClockPrescaler,DMAContinuousRequests,ExternalTrigConv,ContinuousConvMode
 ADC1.NbrOfConversionFlag=1
 ADC1.Offset-0\#ChannelRegularConversion=0
 ADC1.OffsetNumber-0\#ChannelRegularConversion=ADC_OFFSET_NONE
@@ -24,8 +25,8 @@ Dma.Request0=ADC1
 Dma.RequestsNb=1
 FREERTOS.FootprintOK=true
 FREERTOS.IPParameters=Tasks01,FootprintOK,configTOTAL_HEAP_SIZE
-FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;motor_cmd,-3,256,motor,As weak,NULL,Dynamic,NULL,NULL;adc_task,-3,256,adcControl,As weak,NULL,Dynamic,NULL,NULL
-FREERTOS.configTOTAL_HEAP_SIZE=10240
+FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;motor_task,-3,256,motor,As weak,NULL,Dynamic,NULL,NULL;adc_dma_task,-3,256,adcControl,As weak,NULL,Dynamic,NULL,NULL
+FREERTOS.configTOTAL_HEAP_SIZE=9216
 File.Version=6
 KeepUserPlacement=true
 Mcu.Family=STM32F3
