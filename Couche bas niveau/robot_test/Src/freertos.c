@@ -61,6 +61,11 @@
 
 /* USER CODE BEGIN Variables */
 extern TIM_HandleTypeDef htim3;
+extern ADC_HandleTypeDef hadc1;
+extern UART_HandleTypeDef huart2;
+
+uint32_t adcBuffer;
+int flag = 0;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -148,6 +153,21 @@ void deccelerer() {
     }
 }
 
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+    UNUSED(hadc);
+
+    adcBuffer = HAL_ADC_GetValue(hadc);
+    flag = 1;
+}
+
+int _write(int file, char *ptr, int len) {
+    UNUSED(file);
+
+    HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
+
+    return len;
+}
+
 /* USER CODE END FunctionPrototypes */
 
 /* Hook prototypes */
@@ -174,6 +194,21 @@ void motor(void const * argument)
     osDelay(500);
   }
   /* USER CODE END motor */
+}
+
+void adcControl(void const * argument)
+{
+  /* USER CODE BEGIN adcControl */
+  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
+  /* Infinite loop */
+  for(;;)
+  {
+    if (flag == 1) {
+        printf("Value : %lu\r\n", adcBuffer);
+    }
+    osDelay(1);
+  }
+  /* USER CODE END adcControl */
 }
 /* USER CODE END Application */
 

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc3m7N1d.s 			page 1
+ARM GAS  /tmp/cchit4y7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc3m7N1d.s 			page 1
   27:Src/stm32f3xx_it.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
   28:Src/stm32f3xx_it.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
   29:Src/stm32f3xx_it.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-ARM GAS  /tmp/cc3m7N1d.s 			page 2
+ARM GAS  /tmp/cchit4y7.s 			page 2
 
 
   30:Src/stm32f3xx_it.c ****   *
@@ -75,19 +75,20 @@ ARM GAS  /tmp/cc3m7N1d.s 			page 1
   41:Src/stm32f3xx_it.c **** /* USER CODE END 0 */
   42:Src/stm32f3xx_it.c **** 
   43:Src/stm32f3xx_it.c **** /* External variables --------------------------------------------------------*/
-  44:Src/stm32f3xx_it.c **** 
-  45:Src/stm32f3xx_it.c **** extern TIM_HandleTypeDef htim15;
-  46:Src/stm32f3xx_it.c **** 
-  47:Src/stm32f3xx_it.c **** /******************************************************************************/
-  48:Src/stm32f3xx_it.c **** /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
-  49:Src/stm32f3xx_it.c **** /******************************************************************************/
-  50:Src/stm32f3xx_it.c **** 
-  51:Src/stm32f3xx_it.c **** /**
-  52:Src/stm32f3xx_it.c **** * @brief This function handles System tick timer.
-  53:Src/stm32f3xx_it.c **** */
-  54:Src/stm32f3xx_it.c **** void SysTick_Handler(void)
-  55:Src/stm32f3xx_it.c **** {
-  30              		.loc 1 55 0
+  44:Src/stm32f3xx_it.c **** extern DMA_HandleTypeDef hdma_adc1;
+  45:Src/stm32f3xx_it.c **** 
+  46:Src/stm32f3xx_it.c **** extern TIM_HandleTypeDef htim15;
+  47:Src/stm32f3xx_it.c **** 
+  48:Src/stm32f3xx_it.c **** /******************************************************************************/
+  49:Src/stm32f3xx_it.c **** /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
+  50:Src/stm32f3xx_it.c **** /******************************************************************************/
+  51:Src/stm32f3xx_it.c **** 
+  52:Src/stm32f3xx_it.c **** /**
+  53:Src/stm32f3xx_it.c **** * @brief This function handles System tick timer.
+  54:Src/stm32f3xx_it.c **** */
+  55:Src/stm32f3xx_it.c **** void SysTick_Handler(void)
+  56:Src/stm32f3xx_it.c **** {
+  30              		.loc 1 56 0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -96,44 +97,44 @@ ARM GAS  /tmp/cc3m7N1d.s 			page 1
   36              		.cfi_def_cfa_offset 8
   37              		.cfi_offset 3, -8
   38              		.cfi_offset 14, -4
-  56:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
-  57:Src/stm32f3xx_it.c **** 
-  58:Src/stm32f3xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
-  59:Src/stm32f3xx_it.c ****   osSystickHandler();
-  39              		.loc 1 59 0
+  57:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
+  58:Src/stm32f3xx_it.c **** 
+  59:Src/stm32f3xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
+  60:Src/stm32f3xx_it.c ****   osSystickHandler();
+  39              		.loc 1 60 0
   40 0002 FFF7FEFF 		bl	osSystickHandler
   41              	.LVL0:
   42 0006 08BD     		pop	{r3, pc}
   43              		.cfi_endproc
   44              	.LFE129:
-  46              		.section	.text.TIM1_BRK_TIM15_IRQHandler,"ax",%progbits
+  46              		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
   47              		.align	2
-  48              		.global	TIM1_BRK_TIM15_IRQHandler
+  48              		.global	DMA1_Channel1_IRQHandler
   49              		.thumb
   50              		.thumb_func
-  52              	TIM1_BRK_TIM15_IRQHandler:
+  52              	DMA1_Channel1_IRQHandler:
   53              	.LFB130:
-  60:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
-  61:Src/stm32f3xx_it.c **** 
-  62:Src/stm32f3xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
-  63:Src/stm32f3xx_it.c **** }
-  64:Src/stm32f3xx_it.c **** 
-ARM GAS  /tmp/cc3m7N1d.s 			page 3
+  61:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
+  62:Src/stm32f3xx_it.c **** 
+  63:Src/stm32f3xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
+  64:Src/stm32f3xx_it.c **** }
+ARM GAS  /tmp/cchit4y7.s 			page 3
 
 
-  65:Src/stm32f3xx_it.c **** /******************************************************************************/
-  66:Src/stm32f3xx_it.c **** /* STM32F3xx Peripheral Interrupt Handlers                                    */
-  67:Src/stm32f3xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
-  68:Src/stm32f3xx_it.c **** /* For the available peripheral interrupt handler names,                      */
-  69:Src/stm32f3xx_it.c **** /* please refer to the startup file (startup_stm32f3xx.s).                    */
-  70:Src/stm32f3xx_it.c **** /******************************************************************************/
-  71:Src/stm32f3xx_it.c **** 
-  72:Src/stm32f3xx_it.c **** /**
-  73:Src/stm32f3xx_it.c **** * @brief This function handles TIM1 break and TIM15 interrupts.
-  74:Src/stm32f3xx_it.c **** */
-  75:Src/stm32f3xx_it.c **** void TIM1_BRK_TIM15_IRQHandler(void)
-  76:Src/stm32f3xx_it.c **** {
-  54              		.loc 1 76 0
+  65:Src/stm32f3xx_it.c **** 
+  66:Src/stm32f3xx_it.c **** /******************************************************************************/
+  67:Src/stm32f3xx_it.c **** /* STM32F3xx Peripheral Interrupt Handlers                                    */
+  68:Src/stm32f3xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
+  69:Src/stm32f3xx_it.c **** /* For the available peripheral interrupt handler names,                      */
+  70:Src/stm32f3xx_it.c **** /* please refer to the startup file (startup_stm32f3xx.s).                    */
+  71:Src/stm32f3xx_it.c **** /******************************************************************************/
+  72:Src/stm32f3xx_it.c **** 
+  73:Src/stm32f3xx_it.c **** /**
+  74:Src/stm32f3xx_it.c **** * @brief This function handles DMA1 channel1 global interrupt.
+  75:Src/stm32f3xx_it.c **** */
+  76:Src/stm32f3xx_it.c **** void DMA1_Channel1_IRQHandler(void)
+  77:Src/stm32f3xx_it.c **** {
+  54              		.loc 1 77 0
   55              		.cfi_startproc
   56              		@ args = 0, pretend = 0, frame = 0
   57              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -142,44 +143,93 @@ ARM GAS  /tmp/cc3m7N1d.s 			page 1
   60              		.cfi_def_cfa_offset 8
   61              		.cfi_offset 3, -8
   62              		.cfi_offset 14, -4
-  77:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN TIM1_BRK_TIM15_IRQn 0 */
-  78:Src/stm32f3xx_it.c **** 
-  79:Src/stm32f3xx_it.c ****   /* USER CODE END TIM1_BRK_TIM15_IRQn 0 */
-  80:Src/stm32f3xx_it.c ****   HAL_TIM_IRQHandler(&htim15);
-  63              		.loc 1 80 0
+  78:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 0 */
+  79:Src/stm32f3xx_it.c **** 
+  80:Src/stm32f3xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 0 */
+  81:Src/stm32f3xx_it.c ****   HAL_DMA_IRQHandler(&hdma_adc1);
+  63              		.loc 1 81 0
   64 0002 0248     		ldr	r0, .L5
-  65 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+  65 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
   66              	.LVL1:
   67 0008 08BD     		pop	{r3, pc}
   68              	.L6:
   69 000a 00BF     		.align	2
   70              	.L5:
-  71 000c 00000000 		.word	htim15
+  71 000c 00000000 		.word	hdma_adc1
   72              		.cfi_endproc
   73              	.LFE130:
-  75              		.text
-  76              	.Letext0:
-  77              		.file 2 "/usr/include/newlib/machine/_default_types.h"
-  78              		.file 3 "/usr/include/newlib/sys/_stdint.h"
-  79              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
-  80              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
-  81              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
-  82              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
-  83              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
-  84              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
-ARM GAS  /tmp/cc3m7N1d.s 			page 4
+  75              		.section	.text.TIM1_BRK_TIM15_IRQHandler,"ax",%progbits
+  76              		.align	2
+  77              		.global	TIM1_BRK_TIM15_IRQHandler
+  78              		.thumb
+  79              		.thumb_func
+  81              	TIM1_BRK_TIM15_IRQHandler:
+  82              	.LFB131:
+  82:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN DMA1_Channel1_IRQn 1 */
+  83:Src/stm32f3xx_it.c **** 
+  84:Src/stm32f3xx_it.c ****   /* USER CODE END DMA1_Channel1_IRQn 1 */
+  85:Src/stm32f3xx_it.c **** }
+  86:Src/stm32f3xx_it.c **** 
+  87:Src/stm32f3xx_it.c **** /**
+  88:Src/stm32f3xx_it.c **** * @brief This function handles TIM1 break and TIM15 interrupts.
+  89:Src/stm32f3xx_it.c **** */
+  90:Src/stm32f3xx_it.c **** void TIM1_BRK_TIM15_IRQHandler(void)
+  91:Src/stm32f3xx_it.c **** {
+  83              		.loc 1 91 0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cchit4y7.s 			page 4
+
+
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 08B5     		push	{r3, lr}
+  88              	.LCFI2:
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 3, -8
+  91              		.cfi_offset 14, -4
+  92:Src/stm32f3xx_it.c ****   /* USER CODE BEGIN TIM1_BRK_TIM15_IRQn 0 */
+  93:Src/stm32f3xx_it.c **** 
+  94:Src/stm32f3xx_it.c ****   /* USER CODE END TIM1_BRK_TIM15_IRQn 0 */
+  95:Src/stm32f3xx_it.c ****   HAL_TIM_IRQHandler(&htim15);
+  92              		.loc 1 95 0
+  93 0002 0248     		ldr	r0, .L9
+  94 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+  95              	.LVL2:
+  96 0008 08BD     		pop	{r3, pc}
+  97              	.L10:
+  98 000a 00BF     		.align	2
+  99              	.L9:
+ 100 000c 00000000 		.word	htim15
+ 101              		.cfi_endproc
+ 102              	.LFE131:
+ 104              		.text
+ 105              	.Letext0:
+ 106              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 107              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 108              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 109              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 110              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 111              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 112              		.file 8 "Drivers/CMSIS/Include/core_cm4.h"
+ 113              		.file 9 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ARM GAS  /tmp/cchit4y7.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f3xx_it.c
-     /tmp/cc3m7N1d.s:22     .text.SysTick_Handler:0000000000000000 $t
-     /tmp/cc3m7N1d.s:27     .text.SysTick_Handler:0000000000000000 SysTick_Handler
-     /tmp/cc3m7N1d.s:47     .text.TIM1_BRK_TIM15_IRQHandler:0000000000000000 $t
-     /tmp/cc3m7N1d.s:52     .text.TIM1_BRK_TIM15_IRQHandler:0000000000000000 TIM1_BRK_TIM15_IRQHandler
-     /tmp/cc3m7N1d.s:71     .text.TIM1_BRK_TIM15_IRQHandler:000000000000000c $d
+     /tmp/cchit4y7.s:22     .text.SysTick_Handler:0000000000000000 $t
+     /tmp/cchit4y7.s:27     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+     /tmp/cchit4y7.s:47     .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
+     /tmp/cchit4y7.s:52     .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
+     /tmp/cchit4y7.s:71     .text.DMA1_Channel1_IRQHandler:000000000000000c $d
+     /tmp/cchit4y7.s:76     .text.TIM1_BRK_TIM15_IRQHandler:0000000000000000 $t
+     /tmp/cchit4y7.s:81     .text.TIM1_BRK_TIM15_IRQHandler:0000000000000000 TIM1_BRK_TIM15_IRQHandler
+     /tmp/cchit4y7.s:100    .text.TIM1_BRK_TIM15_IRQHandler:000000000000000c $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
 osSystickHandler
+HAL_DMA_IRQHandler
+hdma_adc1
 HAL_TIM_IRQHandler
 htim15

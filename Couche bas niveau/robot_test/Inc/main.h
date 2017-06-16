@@ -60,6 +60,8 @@
 #define ain2_GPIO_Port GPIOF
 #define ain1_Pin GPIO_PIN_1
 #define ain1_GPIO_Port GPIOF
+#define sharp_Pin GPIO_PIN_0
+#define sharp_GPIO_Port GPIOA
 #define VCP_TX_Pin GPIO_PIN_2
 #define VCP_TX_GPIO_Port GPIOA
 #define pwm2_Pin GPIO_PIN_1
