@@ -63,6 +63,7 @@
 extern TIM_HandleTypeDef htim3;
 extern ADC_HandleTypeDef hadc1;
 extern UART_HandleTypeDef huart2;
+extern TIM_HandleTypeDef htim2;
 
 uint32_t adcBuffer;
 int flag = 0;
@@ -156,8 +157,6 @@ void deccelerer() {
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     UNUSED(hadc);
 
-    char* message = "Hello";
-    HAL_UART_Transmit(&huart2, (uint8_t *)message, strlen(message), 0xFFFF);
     flag = 1;
 }
 
@@ -179,16 +178,17 @@ void adcControl(void const * argument)
   /* USER CODE BEGIN adcControl */
   UNUSED(argument);
 
-  HAL_TIM_Base_Start(&htim3);
   HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
+  HAL_TIM_Base_Start(&htim2);
+
   /* Infinite loop */
   for(;;)
   {
-    printf("Value : %lu\n\r", adcBuffer);
+    printf("flag = %d\r\n", flag);
     if (flag == 1) {
-        //printf("Value : %lu\r\n", adcBuffer);
+        printf("Value : %lu\r\n", adcBuffer);
     }
-    osDelay(2000);
+    osDelay(1000);
   }
   /* USER CODE END adcControl */
 }
