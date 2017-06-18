@@ -178,8 +178,8 @@ void adcControl(void const * argument)
   /* USER CODE BEGIN adcControl */
   UNUSED(argument);
 
-  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
   HAL_TIM_Base_Start(&htim2);
+  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
 
   /* Infinite loop */
   for(;;)

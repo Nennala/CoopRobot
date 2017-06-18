@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccuCZHCC.s 			page 1
+ARM GAS  /tmp/ccbLXjMK.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
   27:Src/freertos.c ****   *    software, must execute solely and exclusively on microcontroller or
   28:Src/freertos.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
   29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
-ARM GAS  /tmp/ccuCZHCC.s 			page 2
+ARM GAS  /tmp/ccbLXjMK.s 			page 2
 
 
   30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
   37              		.cfi_def_cfa_offset 16
   38              		.cfi_offset 3, -16
   39              		.cfi_offset 4, -12
-ARM GAS  /tmp/ccuCZHCC.s 			page 3
+ARM GAS  /tmp/ccbLXjMK.s 			page 3
 
 
   40              		.cfi_offset 5, -8
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
   90 000e 4FF09040 		mov	r0, #1207959552
   91              	.LVL6:
   92 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
-ARM GAS  /tmp/ccuCZHCC.s 			page 4
+ARM GAS  /tmp/ccbLXjMK.s 			page 4
 
 
   93              	.LVL7:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  143 001c 00140048 		.word	1207964672
  144              		.cfi_endproc
  145              	.LFE131:
-ARM GAS  /tmp/ccuCZHCC.s 			page 5
+ARM GAS  /tmp/ccbLXjMK.s 			page 5
 
 
  147              		.section	.text.eteindre_droite,"ax",%progbits
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  196 0000 08B5     		push	{r3, lr}
  197              	.LCFI4:
  198              		.cfi_def_cfa_offset 8
-ARM GAS  /tmp/ccuCZHCC.s 			page 6
+ARM GAS  /tmp/ccbLXjMK.s 			page 6
 
 
  199              		.cfi_offset 3, -8
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  108:Src/freertos.c ****     alumer_gauche(0);
  244              		.loc 1 108 0
  245 0008 0020     		movs	r0, #0
-ARM GAS  /tmp/ccuCZHCC.s 			page 7
+ARM GAS  /tmp/ccbLXjMK.s 			page 7
 
 
  246 000a FFF7FEFF 		bl	alumer_gauche
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  289 0012 FFF7FEFF 		bl	osDelay
  290              	.LVL26:
  122:Src/freertos.c ****     //deccelerer();
-ARM GAS  /tmp/ccuCZHCC.s 			page 8
+ARM GAS  /tmp/ccbLXjMK.s 			page 8
 
 
  123:Src/freertos.c ****     eteindre_droite();
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  335              	.LVL33:
  336 001e 08BD     		pop	{r3, pc}
  337              		.cfi_endproc
-ARM GAS  /tmp/ccuCZHCC.s 			page 9
+ARM GAS  /tmp/ccbLXjMK.s 			page 9
 
 
  338              	.LFE136:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  382 001a 10BD     		pop	{r4, pc}
  383              	.LVL38:
  384              	.L30:
-ARM GAS  /tmp/ccuCZHCC.s 			page 10
+ARM GAS  /tmp/ccbLXjMK.s 			page 10
 
 
  385              		.align	2
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  154:Src/freertos.c ****     }
  155:Src/freertos.c **** }
  432              		.loc 1 155 0
-ARM GAS  /tmp/ccuCZHCC.s 			page 11
+ARM GAS  /tmp/ccbLXjMK.s 			page 11
 
 
  433 001a 10BD     		pop	{r4, pc}
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  483              		.cfi_def_cfa_offset 8
  484              		.cfi_offset 4, -8
  485              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccuCZHCC.s 			page 12
+ARM GAS  /tmp/ccbLXjMK.s 			page 12
 
 
  486 0002 1446     		mov	r4, r2
@@ -715,22 +715,22 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  178:Src/freertos.c ****   /* USER CODE BEGIN adcControl */
  179:Src/freertos.c ****   UNUSED(argument);
  180:Src/freertos.c **** 
- 181:Src/freertos.c ****   HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
+ 181:Src/freertos.c ****   HAL_TIM_Base_Start(&htim2);
  525              		.loc 1 181 0
- 526 0002 0122     		movs	r2, #1
-ARM GAS  /tmp/ccuCZHCC.s 			page 13
+ 526 0002 0D48     		ldr	r0, .L48
+ARM GAS  /tmp/ccbLXjMK.s 			page 13
 
 
- 527 0004 0C4B     		ldr	r3, .L48
- 528 0006 1968     		ldr	r1, [r3]
- 529 0008 0C48     		ldr	r0, .L48+4
- 530              	.LVL51:
- 531 000a FFF7FEFF 		bl	HAL_ADC_Start_DMA
- 532              	.LVL52:
- 182:Src/freertos.c ****   HAL_TIM_Base_Start(&htim2);
- 533              		.loc 1 182 0
+ 527              	.LVL51:
+ 528 0004 FFF7FEFF 		bl	HAL_TIM_Base_Start
+ 529              	.LVL52:
+ 182:Src/freertos.c ****   HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
+ 530              		.loc 1 182 0
+ 531 0008 0122     		movs	r2, #1
+ 532 000a 0C4B     		ldr	r3, .L48+4
+ 533 000c 1968     		ldr	r1, [r3]
  534 000e 0C48     		ldr	r0, .L48+8
- 535 0010 FFF7FEFF 		bl	HAL_TIM_Base_Start
+ 535 0010 FFF7FEFF 		bl	HAL_ADC_Start_DMA
  536              	.LVL53:
  537              	.L46:
  183:Src/freertos.c **** 
@@ -751,7 +751,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  547 0022 04D1     		bne	.L45
  189:Src/freertos.c ****         printf("Value : %lu\r\n", adcBuffer);
  548              		.loc 1 189 0
- 549 0024 044B     		ldr	r3, .L48
+ 549 0024 054B     		ldr	r3, .L48+4
  550 0026 1968     		ldr	r1, [r3]
  551 0028 0848     		ldr	r0, .L48+20
  552 002a FFF7FEFF 		bl	printf
@@ -769,16 +769,16 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  561              	.L49:
  562              		.align	2
  563              	.L48:
- 564 0038 00000000 		.word	adcBuffer
- 565 003c 00000000 		.word	hadc1
- 566 0040 00000000 		.word	htim2
+ 564 0038 00000000 		.word	htim2
+ 565 003c 00000000 		.word	adcBuffer
+ 566 0040 00000000 		.word	hadc1
  567 0044 00000000 		.word	.LANCHOR0
  568 0048 00000000 		.word	.LC0
  569 004c 0C000000 		.word	.LC1
  570              		.cfi_endproc
  571              	.LFE141:
  573              		.section	.text.motor,"ax",%progbits
-ARM GAS  /tmp/ccuCZHCC.s 			page 14
+ARM GAS  /tmp/ccbLXjMK.s 			page 14
 
 
  574              		.align	2
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  207:Src/freertos.c ****   for(;;)
  208:Src/freertos.c ****   {
  209:Src/freertos.c ****     avancer_dix_cm();
-ARM GAS  /tmp/ccuCZHCC.s 			page 15
+ARM GAS  /tmp/ccbLXjMK.s 			page 15
 
 
  615              		.loc 1 209 0 discriminator 1
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  658      0A00
  659              		.section	.bss.flag,"aw",%nobits
  660              		.align	2
-ARM GAS  /tmp/ccuCZHCC.s 			page 16
+ARM GAS  /tmp/ccbLXjMK.s 			page 16
 
 
  661              		.set	.LANCHOR0,. + 0
@@ -919,53 +919,53 @@ ARM GAS  /tmp/ccuCZHCC.s 			page 1
  678              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
  679              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
  680              		.file 14 "/usr/include/newlib/stdio.h"
-ARM GAS  /tmp/ccuCZHCC.s 			page 17
+ARM GAS  /tmp/ccbLXjMK.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertos.c
-     /tmp/ccuCZHCC.s:22     .text.alumer_gauche:0000000000000000 $t
-     /tmp/ccuCZHCC.s:27     .text.alumer_gauche:0000000000000000 alumer_gauche
-     /tmp/ccuCZHCC.s:63     .text.alumer_gauche:0000000000000020 $d
-     /tmp/ccuCZHCC.s:68     .text.alumer_droite:0000000000000000 $t
-     /tmp/ccuCZHCC.s:73     .text.alumer_droite:0000000000000000 alumer_droite
-     /tmp/ccuCZHCC.s:105    .text.alumer_droite:0000000000000024 $d
-     /tmp/ccuCZHCC.s:110    .text.eteindre_gauche:0000000000000000 $t
-     /tmp/ccuCZHCC.s:115    .text.eteindre_gauche:0000000000000000 eteindre_gauche
-     /tmp/ccuCZHCC.s:143    .text.eteindre_gauche:000000000000001c $d
-     /tmp/ccuCZHCC.s:148    .text.eteindre_droite:0000000000000000 $t
-     /tmp/ccuCZHCC.s:153    .text.eteindre_droite:0000000000000000 eteindre_droite
-     /tmp/ccuCZHCC.s:180    .text.eteindre_droite:000000000000001c $d
-     /tmp/ccuCZHCC.s:185    .text.avancer_dix_cm:0000000000000000 $t
-     /tmp/ccuCZHCC.s:190    .text.avancer_dix_cm:0000000000000000 avancer_dix_cm
-     /tmp/ccuCZHCC.s:224    .text.reculer_dix_cm:0000000000000000 $t
-     /tmp/ccuCZHCC.s:229    .text.reculer_dix_cm:0000000000000000 reculer_dix_cm
-     /tmp/ccuCZHCC.s:263    .text.tourner_droite:0000000000000000 $t
-     /tmp/ccuCZHCC.s:268    .text.tourner_droite:0000000000000000 tourner_droite
-     /tmp/ccuCZHCC.s:302    .text.tourner_gauche:0000000000000000 $t
-     /tmp/ccuCZHCC.s:307    .text.tourner_gauche:0000000000000000 tourner_gauche
-     /tmp/ccuCZHCC.s:341    .text.accelerer:0000000000000000 $t
-     /tmp/ccuCZHCC.s:346    .text.accelerer:0000000000000000 accelerer
-     /tmp/ccuCZHCC.s:387    .text.accelerer:000000000000001c $d
-     /tmp/ccuCZHCC.s:392    .text.deccelerer:0000000000000000 $t
-     /tmp/ccuCZHCC.s:397    .text.deccelerer:0000000000000000 deccelerer
-     /tmp/ccuCZHCC.s:438    .text.deccelerer:000000000000001c $d
-     /tmp/ccuCZHCC.s:443    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccuCZHCC.s:448    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccuCZHCC.s:464    .text.HAL_ADC_ConvCpltCallback:0000000000000008 $d
-     /tmp/ccuCZHCC.s:469    .text._write:0000000000000000 $t
-     /tmp/ccuCZHCC.s:474    .text._write:0000000000000000 _write
-     /tmp/ccuCZHCC.s:502    .text._write:0000000000000014 $d
-     /tmp/ccuCZHCC.s:507    .text.adcControl:0000000000000000 $t
-     /tmp/ccuCZHCC.s:512    .text.adcControl:0000000000000000 adcControl
-     /tmp/ccuCZHCC.s:564    .text.adcControl:0000000000000038 $d
+     /tmp/ccbLXjMK.s:22     .text.alumer_gauche:0000000000000000 $t
+     /tmp/ccbLXjMK.s:27     .text.alumer_gauche:0000000000000000 alumer_gauche
+     /tmp/ccbLXjMK.s:63     .text.alumer_gauche:0000000000000020 $d
+     /tmp/ccbLXjMK.s:68     .text.alumer_droite:0000000000000000 $t
+     /tmp/ccbLXjMK.s:73     .text.alumer_droite:0000000000000000 alumer_droite
+     /tmp/ccbLXjMK.s:105    .text.alumer_droite:0000000000000024 $d
+     /tmp/ccbLXjMK.s:110    .text.eteindre_gauche:0000000000000000 $t
+     /tmp/ccbLXjMK.s:115    .text.eteindre_gauche:0000000000000000 eteindre_gauche
+     /tmp/ccbLXjMK.s:143    .text.eteindre_gauche:000000000000001c $d
+     /tmp/ccbLXjMK.s:148    .text.eteindre_droite:0000000000000000 $t
+     /tmp/ccbLXjMK.s:153    .text.eteindre_droite:0000000000000000 eteindre_droite
+     /tmp/ccbLXjMK.s:180    .text.eteindre_droite:000000000000001c $d
+     /tmp/ccbLXjMK.s:185    .text.avancer_dix_cm:0000000000000000 $t
+     /tmp/ccbLXjMK.s:190    .text.avancer_dix_cm:0000000000000000 avancer_dix_cm
+     /tmp/ccbLXjMK.s:224    .text.reculer_dix_cm:0000000000000000 $t
+     /tmp/ccbLXjMK.s:229    .text.reculer_dix_cm:0000000000000000 reculer_dix_cm
+     /tmp/ccbLXjMK.s:263    .text.tourner_droite:0000000000000000 $t
+     /tmp/ccbLXjMK.s:268    .text.tourner_droite:0000000000000000 tourner_droite
+     /tmp/ccbLXjMK.s:302    .text.tourner_gauche:0000000000000000 $t
+     /tmp/ccbLXjMK.s:307    .text.tourner_gauche:0000000000000000 tourner_gauche
+     /tmp/ccbLXjMK.s:341    .text.accelerer:0000000000000000 $t
+     /tmp/ccbLXjMK.s:346    .text.accelerer:0000000000000000 accelerer
+     /tmp/ccbLXjMK.s:387    .text.accelerer:000000000000001c $d
+     /tmp/ccbLXjMK.s:392    .text.deccelerer:0000000000000000 $t
+     /tmp/ccbLXjMK.s:397    .text.deccelerer:0000000000000000 deccelerer
+     /tmp/ccbLXjMK.s:438    .text.deccelerer:000000000000001c $d
+     /tmp/ccbLXjMK.s:443    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccbLXjMK.s:448    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccbLXjMK.s:464    .text.HAL_ADC_ConvCpltCallback:0000000000000008 $d
+     /tmp/ccbLXjMK.s:469    .text._write:0000000000000000 $t
+     /tmp/ccbLXjMK.s:474    .text._write:0000000000000000 _write
+     /tmp/ccbLXjMK.s:502    .text._write:0000000000000014 $d
+     /tmp/ccbLXjMK.s:507    .text.adcControl:0000000000000000 $t
+     /tmp/ccbLXjMK.s:512    .text.adcControl:0000000000000000 adcControl
+     /tmp/ccbLXjMK.s:564    .text.adcControl:0000000000000038 $d
                             *COM*:0000000000000004 adcBuffer
-     /tmp/ccuCZHCC.s:574    .text.motor:0000000000000000 $t
-     /tmp/ccuCZHCC.s:579    .text.motor:0000000000000000 motor
-     /tmp/ccuCZHCC.s:647    .text.motor:000000000000005c $d
-     /tmp/ccuCZHCC.s:664    .bss.flag:0000000000000000 flag
-     /tmp/ccuCZHCC.s:654    .rodata.str1.4:0000000000000000 $d
-     /tmp/ccuCZHCC.s:660    .bss.flag:0000000000000000 $d
+     /tmp/ccbLXjMK.s:574    .text.motor:0000000000000000 $t
+     /tmp/ccbLXjMK.s:579    .text.motor:0000000000000000 motor
+     /tmp/ccbLXjMK.s:647    .text.motor:000000000000005c $d
+     /tmp/ccbLXjMK.s:664    .bss.flag:0000000000000000 flag
+     /tmp/ccbLXjMK.s:654    .rodata.str1.4:0000000000000000 $d
+     /tmp/ccbLXjMK.s:660    .bss.flag:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
@@ -974,12 +974,12 @@ osDelay
 htim3
 HAL_UART_Transmit
 huart2
-HAL_ADC_Start_DMA
 HAL_TIM_Base_Start
+HAL_ADC_Start_DMA
 printf
-hadc1
 htim2
-ARM GAS  /tmp/ccuCZHCC.s 			page 18
+hadc1
+ARM GAS  /tmp/ccbLXjMK.s 			page 18
 
 
 HAL_TIM_PWM_Start
