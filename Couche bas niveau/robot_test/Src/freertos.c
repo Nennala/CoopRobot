@@ -66,7 +66,8 @@ extern UART_HandleTypeDef huart2;
 extern TIM_HandleTypeDef htim2;
 
 uint32_t adcBuffer;
-int flag = 0;
+int flag_adc = 0;
+int deplacement_fini = 0;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -101,6 +102,7 @@ void avancer_dix_cm() {
     //deccelerer();
     eteindre_droite();
     eteindre_gauche();
+    deplacement_fini = 1;
 }
 
 void reculer_dix_cm() {
@@ -111,7 +113,7 @@ void reculer_dix_cm() {
     //deccelerer();
     eteindre_droite();
     eteindre_gauche();
-
+    deplacement_fini = 1;
 }
 
 void tourner_droite() {
@@ -122,6 +124,7 @@ void tourner_droite() {
     //deccelerer();
     eteindre_droite();
     eteindre_gauche();
+    deplacement_fini = 1;
 }
 
 void tourner_gauche() {
@@ -132,6 +135,7 @@ void tourner_gauche() {
     //deccelerer();
     eteindre_droite();
     eteindre_gauche();
+    deplacement_fini = 1;
 }
 
 void accelerer() {
@@ -157,7 +161,7 @@ void deccelerer() {
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     UNUSED(hadc);
 
-    flag = 1;
+    flag_adc = 1;
 }
 
 int _write(int file, char *ptr, int len) {
@@ -184,8 +188,7 @@ void adcControl(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    printf("flag = %d\r\n", flag);
-    if (flag == 1) {
+    if (flag_adc == 1) {
         printf("Value : %lu\r\n", adcBuffer);
     }
     osDelay(1000);
