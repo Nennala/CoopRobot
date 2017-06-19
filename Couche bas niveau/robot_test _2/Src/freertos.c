@@ -51,7 +51,6 @@
 #include "task.h"
 
 /* USER CODE BEGIN Includes */     
-#include <string.h>
 #include "cmsis_os.h"
 #include "main.h"
 #include "stm32f3xx_hal.h"
@@ -61,12 +60,8 @@
 
 /* USER CODE BEGIN Variables */
 extern TIM_HandleTypeDef htim3;
-extern ADC_HandleTypeDef hadc1;
-extern UART_HandleTypeDef huart2;
-extern TIM_HandleTypeDef htim2;
 
-uint32_t adcBuffer;
-int flag = 0;
+int deplacement_fini = 0;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -93,79 +88,88 @@ void eteindre_droite() {
     HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, 0);
 }
 
-void avancer_dix_cm() {
-    alumer_droite(1);
-    alumer_gauche(1);
-    //accelerer();
-    osDelay(2000);
-    //deccelerer();
-    eteindre_droite();
-    eteindre_gauche();
+void accelerer() {
+    int pwm = 0;
+    while (pwm != 320) {
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
+        pwm += 20;
+        osDelay(50);
+    }
 }
 
-void reculer_dix_cm() {
-    alumer_droite(0);
-    alumer_gauche(0);
-    //accelerer();
-    osDelay(2000);
-    //deccelerer();
+void deccelerer() {
+    int pwm = 320;
+    while (pwm != 0) {
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
+        pwm -= 20;
+        osDelay(50);
+    }
+}
+
+void reculer_robot() {
+    alumer_droite(1);
+    alumer_gauche(1);
+    accelerer();
+    osDelay(1000);
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
+    deplacement_fini = 1;
+}
+
+void avancer_robot() {
+    alumer_droite(0);
+    alumer_gauche(0);
+    accelerer();
+    osDelay(1000);
+    deccelerer();
+    eteindre_droite();
+    eteindre_gauche();
+    deplacement_fini = 1;
 
 }
 
 void tourner_droite() {
     alumer_gauche(1);
     alumer_droite(0);
-    //accelerer();
-    osDelay(1000);
-    //deccelerer();
+    accelerer();
+    osDelay(500);
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
+    deplacement_fini = 1;
 }
 
 void tourner_gauche() {
     alumer_droite(1);
     alumer_gauche(0);
-    //accelerer();
-    osDelay(1000);
-    //deccelerer();
+    accelerer();
+    osDelay(500);
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
+    deplacement_fini = 1;
 }
 
-void accelerer() {
-    int pwm = 0;
-    while (pwm != 100) {
-        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
-        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
-        pwm += 10;
-        osDelay(100);
+void deplacement(int distance)
+{
+  int i =0;
+  if (distance > 0)
+  {
+    for (i = 0; i < distance; i++)
+    {
+      avancer_robot();
     }
-}
-
-void deccelerer() {
-    int pwm = 100;
-    while (pwm != 0) {
-        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
-        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
-        pwm -= 10;
-        osDelay(100);
+  }
+  else
+  {
+    for (i = 0; i < -distance; i++)
+    {
+      reculer_robot();
     }
-}
-
-void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
-    UNUSED(hadc);
-
-    flag = 1;
-}
-
-int _write(int file, char *ptr, int len) {
-    UNUSED(file);
-
-    HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
-
-    return len;
+  }
 }
 
 /* USER CODE END FunctionPrototypes */
@@ -173,26 +177,6 @@ int _write(int file, char *ptr, int len) {
 /* Hook prototypes */
 
 /* USER CODE BEGIN Application */
-void adcControl(void const * argument)
-{
-  /* USER CODE BEGIN adcControl */
-  UNUSED(argument);
-
-  HAL_TIM_Base_Start(&htim2);
-  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
-
-  /* Infinite loop */
-  for(;;)
-  {
-    printf("flag = %d\r\n", flag);
-    if (flag == 1) {
-        printf("Value : %lu\r\n", adcBuffer);
-    }
-    osDelay(1000);
-  }
-  /* USER CODE END adcControl */
-}
-
 void motor(void const * argument)
 {
   /* USER CODE BEGIN motor */
@@ -206,14 +190,8 @@ void motor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    avancer_dix_cm();
-    osDelay(500);
-    reculer_dix_cm();
-    osDelay(500);
-    tourner_gauche();
-    osDelay(500);
-    tourner_droite();
-    osDelay(500);
+      deplacement(1);
+      osDelay(2000);
   }
   /* USER CODE END motor */
 }

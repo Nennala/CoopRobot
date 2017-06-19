@@ -63,7 +63,6 @@ extern ADC_HandleTypeDef hadc1;
 extern UART_HandleTypeDef huart2;
 
 int flag = 0;
-long int adcVolt = 0;
 uint32_t adcValue = 0;
 /* USER CODE END Variables */
 

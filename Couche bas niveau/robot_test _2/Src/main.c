@@ -93,24 +93,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-void deplacement(int distance)
-{
-  int i =0;
-  if (distance > 0)
-  {
-    for (i = 0; i < distance; i++)
-    {
-      avancer_robot();
-    }
-  }
-  else
-  {
-    for (size_t i = 0; i < -distance; i++)
-    {
-      reculer_robot();
-    }
-  }
-}
+
 /* USER CODE END 0 */
 
 int main(void)
@@ -191,10 +174,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    deplacement(1);
-    while (flag);
-    deplacement(-1);
-    while (flag);
+
   }
   /* USER CODE END 3 */
 

@@ -63,11 +63,10 @@
 extern TIM_HandleTypeDef htim3;
 extern ADC_HandleTypeDef hadc1;
 extern UART_HandleTypeDef huart2;
-extern TIM_HandleTypeDef htim2;
 
-uint32_t adcBuffer;
 int flag_adc = 0;
 int deplacement_fini = 0;
+uint32_t adcValue = 0;
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
@@ -94,50 +93,6 @@ void eteindre_droite() {
     HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, 0);
 }
 
-void avancer_dix_cm() {
-    alumer_droite(1);
-    alumer_gauche(1);
-    //accelerer();
-    osDelay(2000);
-    //deccelerer();
-    eteindre_droite();
-    eteindre_gauche();
-    deplacement_fini = 1;
-}
-
-void reculer_dix_cm() {
-    alumer_droite(0);
-    alumer_gauche(0);
-    //accelerer();
-    osDelay(2000);
-    //deccelerer();
-    eteindre_droite();
-    eteindre_gauche();
-    deplacement_fini = 1;
-}
-
-void tourner_droite() {
-    alumer_gauche(1);
-    alumer_droite(0);
-    //accelerer();
-    osDelay(1000);
-    //deccelerer();
-    eteindre_droite();
-    eteindre_gauche();
-    deplacement_fini = 1;
-}
-
-void tourner_gauche() {
-    alumer_droite(1);
-    alumer_gauche(0);
-    //accelerer();
-    osDelay(1000);
-    //deccelerer();
-    eteindre_droite();
-    eteindre_gauche();
-    deplacement_fini = 1;
-}
-
 void accelerer() {
     int pwm = 0;
     while (pwm != 100) {
@@ -158,17 +113,60 @@ void deccelerer() {
     }
 }
 
+void avancer_robot() {
+    alumer_droite(1);
+    alumer_gauche(1);
+    accelerer();
+    osDelay(2000);
+    deccelerer();
+    eteindre_droite();
+    eteindre_gauche();
+    deplacement_fini = 1;
+}
+
+void reculer_robot() {
+    alumer_droite(0);
+    alumer_gauche(0);
+    accelerer();
+    osDelay(2000);
+    deccelerer();
+    eteindre_droite();
+    eteindre_gauche();
+    deplacement_fini = 1;
+}
+
+void tourner_droite() {
+    alumer_gauche(1);
+    alumer_droite(0);
+    accelerer();
+    osDelay(1000);
+    deccelerer();
+    eteindre_droite();
+    eteindre_gauche();
+    deplacement_fini = 1;
+}
+
+void tourner_gauche() {
+    alumer_droite(1);
+    alumer_gauche(0);
+    accelerer();
+    osDelay(1000);
+    deccelerer();
+    eteindre_droite();
+    eteindre_gauche();
+    deplacement_fini = 1;
+}
+
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     UNUSED(hadc);
-
-    flag_adc = 1;
+    adcValue = HAL_ADC_GetValue(hadc);
+    flag = 1;
 }
 
 int _write(int file, char *ptr, int len) {
     UNUSED(file);
 
     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
-
     return len;
 }
 
@@ -177,25 +175,6 @@ int _write(int file, char *ptr, int len) {
 /* Hook prototypes */
 
 /* USER CODE BEGIN Application */
-void adcControl(void const * argument)
-{
-  /* USER CODE BEGIN adcControl */
-  UNUSED(argument);
-
-  HAL_TIM_Base_Start(&htim2);
-  HAL_ADC_Start_DMA(&hadc1,(uint32_t *)adcBuffer, 1);
-
-  /* Infinite loop */
-  for(;;)
-  {
-    if (flag_adc == 1) {
-        printf("Value : %lu\r\n", adcBuffer);
-    }
-    osDelay(1000);
-  }
-  /* USER CODE END adcControl */
-}
-
 void motor(void const * argument)
 {
   /* USER CODE BEGIN motor */
@@ -209,9 +188,9 @@ void motor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    avancer_dix_cm();
+    avancer_robot();
     osDelay(500);
-    reculer_dix_cm();
+    reculer_robot();
     osDelay(500);
     tourner_gauche();
     osDelay(500);
@@ -219,6 +198,22 @@ void motor(void const * argument)
     osDelay(500);
   }
   /* USER CODE END motor */
+}
+
+void adcControl(void const * argument)
+{
+  /* USER CODE BEGIN adcControl */
+  /* Infinite loop */
+  for(;;)
+  {
+      HAL_ADC_Start_IT(&hadc1);
+      osDelay(1000);
+      if (flag == 1) {
+          printf("Value : %lu\n\r", adcValue);
+          flag = 0;
+      }
+  }
+  /* USER CODE END adcControl */
 }
 
 /* USER CODE END Application */
