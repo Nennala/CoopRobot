@@ -145,7 +145,7 @@ void reculer_robot() {
     alumer_droite(1);
     alumer_gauche(1);
     accelerer();
-    osDelay(1000);
+    osDelay(850);
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
@@ -156,7 +156,7 @@ void avancer_robot() {
     alumer_droite(0);
     alumer_gauche(0);
     accelerer();
-    osDelay(1000);
+    osDelay(850);//robot2 : 470 robot1 : 850
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
@@ -168,7 +168,7 @@ void pivoter_gauche() {
     pwm_max();
     alumer_gauche(1);
     alumer_droite(0);
-    osDelay(230);
+    osDelay(115);//robot 2 : 40 robot1 : 115
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
@@ -179,7 +179,7 @@ void pivoter_droite() {
     pwm_max();
     alumer_droite(1);
     alumer_gauche(0);
-    osDelay(220);
+    osDelay(115);
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
@@ -254,7 +254,8 @@ int ReceptionMessage(){
     n =  (n & 0x07);
     v =  r + m + n;
     if (ok == 1) {
-        for (int i = 0; i<5; i++) {
+        for (i = 0; i<5; i++)
+        {
             HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
             osDelay(500);
         }
@@ -439,7 +440,7 @@ void motor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    /*deplacement(1);
+    deplacement(1);
     osDelay(DELAY);
     pivoter_droite();
     osDelay(DELAY);
@@ -454,7 +455,7 @@ void motor(void const * argument)
     deplacement(1);
     osDelay(DELAY);
     deplacement(-1);
-    osDelay(DELAY); */
+    osDelay(DELAY);
   }
   /* USER CODE END motor */
 }
@@ -485,11 +486,11 @@ void uart(void const * argument)
     //ok();
     //WaitFor(OK);
 
-    WaitFor(OK);
+   /* WaitFor(OK);
     pivoter_droite();
     ok();
 
-    osDelay(1);
+    osDelay(1);*/
   }
   /* USER CODE END uart */
 }
