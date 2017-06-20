@@ -63,6 +63,11 @@
 
 /* USER CODE BEGIN Variables */
 extern TIM_HandleTypeDef htim3;
+extern ADC_HandleTypeDef hadc1;
+extern UART_HandleTypeDef huart2;
+
+int flag_adc = 0;
+uint32_t adcValue = 0;
 
 int deplacement_fini = 0;
 /* USER CODE END Variables */
@@ -161,6 +166,19 @@ void pivoter_droite() {
     deplacement_fini = 1;
 }
 
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+    UNUSED(hadc);
+    adcValue = HAL_ADC_GetValue(hadc);
+    flag_adc = 1;
+}
+
+int _write(int file, char *ptr, int len) {
+    UNUSED(file);
+
+    HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
+    return len;
+}
+
 void deplacement(int distance)
 {
   int i =0;
@@ -199,25 +217,40 @@ void motor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-      deplacement(1);
-      osDelay(DELAY);
-      pivoter_droite();
-      osDelay(DELAY);
-      pivoter_droite();
-      osDelay(DELAY);
-      deplacement(1);
-      osDelay(DELAY);
-      pivoter_gauche();
-      osDelay(DELAY);
-      pivoter_gauche();
-      osDelay(DELAY);
-      deplacement(1);
-      osDelay(DELAY);
-      deplacement(-1);
-      osDelay(DELAY);
-
+    deplacement(1);
+    osDelay(DELAY);
+    pivoter_droite();
+    osDelay(DELAY);
+    pivoter_droite();
+    osDelay(DELAY);
+    deplacement(1);
+    osDelay(DELAY);
+    pivoter_gauche();
+    osDelay(DELAY);
+    pivoter_gauche();
+    osDelay(DELAY);
+    deplacement(1);
+    osDelay(DELAY);
+    deplacement(-1);
+    osDelay(DELAY);
   }
   /* USER CODE END motor */
+}
+
+void adcControl(void const * argument)
+{
+  /* USER CODE BEGIN adcControl */
+  /* Infinite loop */
+  for(;;)
+  {
+    HAL_ADC_Start_IT(&hadc1);
+    osDelay(1000);
+    if (flag_adc == 1) {
+        printf("Value : %lu\n\r", adcValue);
+        flag_adc = 0;
+    }
+  }
+  /* USER CODE END adcControl */
 }
 
 /* USER CODE END Application */

@@ -56,16 +56,16 @@
 
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
-DMA_HandleTypeDef hdma_adc1;
 
-TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
+UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
 osThreadId motor_taskHandle;
 osThreadId adc_dma_taskHandle;
+osThreadId uart_taskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -75,15 +75,15 @@ osThreadId adc_dma_taskHandle;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_DMA_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_USART2_UART_Init(void);
-static void MX_TIM2_Init(void);
+static void MX_USART1_UART_Init(void);
 void StartDefaultTask(void const * argument);
 void motor(void const * argument);
 void adcControl(void const * argument);
-
+void uart(void const * argument);
+                                    
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                                 
 
@@ -121,11 +121,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_DMA_Init();
   MX_TIM3_Init();
   MX_ADC1_Init();
   MX_USART2_UART_Init();
-  MX_TIM2_Init();
+  MX_USART1_UART_Init();
 
   /* USER CODE BEGIN 2 */
 
@@ -153,8 +152,12 @@ int main(void)
   motor_taskHandle = osThreadCreate(osThread(motor_task), NULL);
 
   /* definition and creation of adc_dma_task */
-  osThreadDef(adc_dma_task, adcControl, osPriorityIdle, 0, 512);
+  osThreadDef(adc_dma_task, adcControl, osPriorityIdle, 0, 256);
   adc_dma_taskHandle = osThreadCreate(osThread(adc_dma_task), NULL);
+
+  /* definition and creation of uart_task */
+  osThreadDef(uart_task, uart, osPriorityIdle, 0, 256);
+  uart_taskHandle = osThreadCreate(osThread(uart_task), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -174,6 +177,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+  /* USER CODE END WHILE */
+
+  /* USER CODE BEGIN 3 */
 
   }
   /* USER CODE END 3 */
@@ -216,7 +222,8 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC12;
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_ADC12;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
   PeriphClkInit.Adc12ClockSelection = RCC_ADC12PLLCLK_DIV1;
   if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
@@ -248,13 +255,13 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV1;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
-  hadc1.Init.ContinuousConvMode = ENABLE;
+  hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
-  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_RISING;
-  hadc1.Init.ExternalTrigConv = ADC_EXTERNALTRIGCONV_T2_TRGO;
+  hadc1.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+  hadc1.Init.ExternalTrigConv = ADC_SOFTWARE_START;
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 1;
-  hadc1.Init.DMAContinuousRequests = ENABLE;
+  hadc1.Init.DMAContinuousRequests = DISABLE;
   hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   hadc1.Init.LowPowerAutoWait = DISABLE;
   hadc1.Init.Overrun = ADC_OVR_DATA_OVERWRITTEN;
@@ -280,39 +287,6 @@ static void MX_ADC1_Init(void)
   sConfig.OffsetNumber = ADC_OFFSET_NONE;
   sConfig.Offset = 0;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-}
-
-/* TIM2 init function */
-static void MX_TIM2_Init(void)
-{
-
-  TIM_ClockConfigTypeDef sClockSourceConfig;
-  TIM_MasterConfigTypeDef sMasterConfig;
-
-  htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
-  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 0;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
-  {
-    _Error_Handler(__FILE__, __LINE__);
-  }
-
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_ENABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
@@ -362,6 +336,27 @@ static void MX_TIM3_Init(void)
 
 }
 
+/* USART1 init function */
+static void MX_USART1_UART_Init(void)
+{
+
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 38400;
+  huart1.Init.WordLength = UART_WORDLENGTH_7B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  huart1.Init.OneBitSampling = UART_ONE_BIT_SAMPLE_DISABLE;
+  huart1.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
 /* USART2 init function */
 static void MX_USART2_UART_Init(void)
 {
@@ -379,21 +374,6 @@ static void MX_USART2_UART_Init(void)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
-
-}
-
-/** 
-  * Enable DMA controller clock
-  */
-static void MX_DMA_Init(void) 
-{
-  /* DMA controller clock enable */
-  __HAL_RCC_DMA1_CLK_ENABLE();
-
-  /* DMA interrupt init */
-  /* DMA1_Channel1_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 5, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 
 }
 
@@ -421,7 +401,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOA, stby_Pin|bin1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, led_Pin|bin2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, led_sys_Pin|bin2_Pin|led_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : ain2_Pin ain1_Pin */
   GPIO_InitStruct.Pin = ain2_Pin|ain1_Pin;
@@ -437,12 +417,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : led_Pin bin2_Pin */
-  GPIO_InitStruct.Pin = led_Pin|bin2_Pin;
+  /*Configure GPIO pins : led_sys_Pin bin2_Pin */
+  GPIO_InitStruct.Pin = led_sys_Pin|bin2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : led_Pin */
+  GPIO_InitStruct.Pin = led_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(led_GPIO_Port, &GPIO_InitStruct);
 
 }
 
@@ -486,6 +473,18 @@ __weak void adcControl(void const * argument)
     osDelay(1);
   }
   /* USER CODE END adcControl */
+}
+
+/* uart function */
+__weak void uart(void const * argument)
+{
+  /* USER CODE BEGIN uart */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END uart */
 }
 
 /**
