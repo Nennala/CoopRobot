@@ -280,9 +280,8 @@ static void MX_GPIO_Init(void)
 /* StartDefaultTask function */
 void StartDefaultTask(void const * argument)
 {
-  for(;;)
+    for(;;)
   {
-        Traduction(ReceptionMessage());
   }
 }
 /**

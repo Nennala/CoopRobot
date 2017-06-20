@@ -121,54 +121,134 @@ r =  (r & 0x07)*32;
  m =  (m & 0x07)*4;
   n =  (n & 0x07);
 v =  r + m + n;
-if (ok == 1)
-return(v);
+if (ok == 1){
+    for(int i = 0; i<5; i++){
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_6);
+    osDelay(500);}
+  return(v);
+}
+
 else
     return(0);
 
 }
 
-   void Traduction(uint8_t z){
-       if (z == 0x74){
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(400);
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(400);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-       }
-       if (z == 0x95){
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(200);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(200);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(200);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(200);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(200);
-       }
-       if (z==0x65){
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, del_Pin);
-           osDelay(150);
-           HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-           osDelay(150);
-       }
+   int recoitpos(){
+       uint8_t a, x, y, c;
+       a = ReceptionMessage();
+       x = a & 0xF0;
+       y = a & 0x0F;
+       c = ReceptionMessage();
+       return(x,y,c);
    }
+   void envoipos(uint8_t x,y , c){
+            x = x*16 + y;
+        EnvoiMessage(x);
+        EnvoiMessage(c);
+
+   }
+   void Traduction(uint8_t msg){
+       int i;
+       if (msg == 0x05){
+          /*  envoipos(/* TI-BEAU MET TA FONTION CALCUL DE POS );*/
+           }
+
+       if (msg == 0x06){
+
+       }
+       if (msg == 0x07){
+           if (/*capteurs ok*/){
+           /*Fonction pour aller en haut*/
+           ok();}
+           else Non();
+       }
+       if (msg == 0x08){
+           if (/*capteurs ok*/){
+           /*Fonction pour aller en bas*/
+           ok();}
+           else Non();
+       }
+       if (msg == 0x09){
+           if (/*capteurs ok*/){
+           /*Fonction pour aller à Droite*/
+           ok();}
+           else Non();
+       }
+       if (msg == 0x0A){
+           if (/*capteurs ok*/){
+           /*Fonction pour aller à Gauche*/
+           ok();}
+           else Non();
+       }
+       if (msg == 0x0B){
+     }
+       if (msg == 0x0C){
+       }
+       if (msg == 0x0D){
+           srand(time(NULL));
+           a = rand()%100;
+           EnvoiMessage(a);
+      }
+       if (msg == 0x10){
+   }
+       if (msg == 0x11){
+       }
+       if (msg == 0x12){
+   }
+       if (msg == 0x13){
+       }
+  }
+  void WaitFor(uint8_t z){
+        while (z != ReceptionMessage()) ;
+   }
+
+   int TaPosition(){
+       EnvoiMessage(0x05);
+       return (recoitpos());
+   }
+   void ok(){
+       EnvoiMessage(0x06);
+   }
+   void Monte(){
+       EnvoiMessage(0x07);
+       WaitFor(0x06);
+   }
+   void Descend(){
+       EnvoiMessage(0x08);
+       WaitFor(0x06);
+   }
+   void Droite(){
+       EnvoiMessage(0x09);
+       WaitFor(0x06);
+   }
+   void Gauche(){
+       EnvoiMessage(0x0A);
+       WaitFor(0x06);
+   }
+   void DansUnCoin(){
+       EnvoiMessage(0x0B);
+   }
+   void Trouve(){
+
+       EnvoiMessage(0x0C);
+   }
+   void Random(){int a, p;
+       EnvoiMessage(0x0D);
+       srand(time(NULL));
+       a = rand()%256;
+       if (ReceptionMessage() < a) {p = 1; EnvoiMessage(0x50);}
+       else {p=0; EnvoiMessage(0x67);}}
+   void Non(){EnvoiMessage(0x10);}
+   void MemeCase(){
+       EnvoiMessage(0x12);
+   }
+   void TuEsCoin(){
+       EnvoiMessage(0x13);
+   }
+
+
+
+
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* USER CODE END FunctionPrototypes */

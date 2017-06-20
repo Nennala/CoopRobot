@@ -166,6 +166,19 @@ standard names. */
 void EnvoiMessage(uint8_t data);
 int ReceptionMessage();
 void Traduction(uint8_t z);
+void ok();
+void Monte();
+void Descend();
+void Droite();
+void Gauche();
+void DansUnCoin();
+void Trouve();
+void Random();
+void Non();
+void MemeCase();
+void TuEsCoin();
+int Traductiontrans(char msg[10]);
+int TaPosition();
 /* USER CODE BEGIN Defines */   	      
 /* Section where parameter definitions can be added (for instance, to override default ones in FreeRTOS.h) */
 /* USER CODE END Defines */ 

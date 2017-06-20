@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
   29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
   30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
   31:Src/freertos.c ****   *    this license. 
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 2
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 2
 
 
   32:Src/freertos.c ****   *
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
   41              		.cfi_offset 9, -12
   42              		.cfi_offset 10, -8
   43              		.cfi_offset 14, -4
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 3
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 3
 
 
   44 0004 82B0     		sub	sp, sp, #8
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
   86              	.LVL10:
   87 004e 0EEB490E 		add	lr, lr, r9, lsl #1
   88 0052 00EB4E00 		add	r0, r0, lr, lsl #1
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 4
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 4
 
 
   89              	.LVL11:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
   91:Src/freertos.c ****      osDelay(2);
  137              		.loc 1 91 0
  138 00c4 0220     		movs	r0, #2
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 5
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 5
 
 
  139 00c6 FFF7FEFF 		bl	osDelay
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
  189              		.cfi_offset 14, -4
  190 0004 83B0     		sub	sp, sp, #12
  191              	.LCFI4:
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 6
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 6
 
 
  192              		.cfi_def_cfa_offset 40
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
  234 0056 0132     		adds	r2, r2, #1
  235              	.LVL31:
  236 0058 D2B2     		uxtb	r2, r2
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 7
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 7
 
 
  237              	.LVL32:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
  282 009a 4140     		eors	r1, r1, r0
  283              	.LVL42:
  284 009c 8B42     		cmp	r3, r1
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 8
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 8
 
 
  285 009e DAD0     		beq	.L19
@@ -478,300 +478,908 @@ ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 1
  328              		.thumb
  329              		.thumb_func
  330              		.fpu fpv4-sp-d16
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 9
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 9
 
 
  332              	Traduction:
  333              	.LFB131:
  130:Src/freertos.c **** 
- 131:Src/freertos.c ****    void Traduction(uint8_t z){
- 334              		.loc 1 131 0
+ 131:Src/freertos.c **** /*   int recoitpos(){
+ 132:Src/freertos.c ****        uint8_t a, x, y, c;
+ 133:Src/freertos.c ****        a = ReceptionMessage();
+ 134:Src/freertos.c ****        x = a & 0xF0;
+ 135:Src/freertos.c ****        y = a & 0x0F;
+ 136:Src/freertos.c ****        c = ReceptionMessage();
+ 137:Src/freertos.c ****        return(x,y,c);
+ 138:Src/freertos.c ****    }
+ 139:Src/freertos.c ****    void envoipos(uint8_t x,y , c){
+ 140:Src/freertos.c ****             x = x*16 + y;
+ 141:Src/freertos.c ****         EnvoiMessage(x);
+ 142:Src/freertos.c ****         EnvoiMessage(c);
+ 143:Src/freertos.c **** 
+ 144:Src/freertos.c ****    }*/
+ 145:Src/freertos.c ****    void Traduction(uint8_t msg){
+ 334              		.loc 1 145 0
  335              		.cfi_startproc
  336              		@ args = 0, pretend = 0, frame = 0
  337              		@ frame_needed = 0, uses_anonymous_args = 0
  338              	.LVL48:
- 339 0000 10B5     		push	{r4, lr}
+ 339 0000 38B5     		push	{r3, r4, r5, lr}
  340              	.LCFI6:
- 341              		.cfi_def_cfa_offset 8
- 342              		.cfi_offset 4, -8
- 343              		.cfi_offset 14, -4
- 344 0002 0446     		mov	r4, r0
- 132:Src/freertos.c ****        if (z == 0x74){
- 345              		.loc 1 132 0
- 346 0004 7428     		cmp	r0, #116
- 347 0006 04D0     		beq	.L35
- 348              	.LVL49:
- 349              	.L31:
- 133:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 134:Src/freertos.c ****            osDelay(400);
- 135:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 136:Src/freertos.c ****            osDelay(400);
- 137:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 138:Src/freertos.c ****        }
- 139:Src/freertos.c ****        if (z == 0x95){
- 350              		.loc 1 139 0
- 351 0008 952C     		cmp	r4, #149
- 352 000a 1AD0     		beq	.L36
- 353              	.L32:
- 140:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 141:Src/freertos.c ****            osDelay(200);
- 142:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 143:Src/freertos.c ****            osDelay(200);
- 144:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 145:Src/freertos.c ****            osDelay(200);
- 146:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 147:Src/freertos.c ****            osDelay(200);
- 148:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 149:Src/freertos.c ****            osDelay(200);
- 150:Src/freertos.c ****        }
- 151:Src/freertos.c ****        if (z==0x65){
- 354              		.loc 1 151 0
- 355 000c 652C     		cmp	r4, #101
- 356 000e 41D0     		beq	.L37
- 357              	.L30:
- 358 0010 10BD     		pop	{r4, pc}
- 359              	.LVL50:
- 360              	.L35:
- 133:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 361              		.loc 1 133 0
- 362 0012 8021     		movs	r1, #128
- 363 0014 4FF09040 		mov	r0, #1207959552
- 364              	.LVL51:
- 365 0018 FFF7FEFF 		bl	HAL_GPIO_TogglePin
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 10
+ 341              		.cfi_def_cfa_offset 16
+ 342              		.cfi_offset 3, -16
+ 343              		.cfi_offset 4, -12
+ 344              		.cfi_offset 5, -8
+ 345              		.cfi_offset 14, -4
+ 346 0002 0546     		mov	r5, r0
+ 146:Src/freertos.c ****        int i;
+ 147:Src/freertos.c ****        if (msg == 0x05){
+ 347              		.loc 1 147 0
+ 348 0004 0528     		cmp	r0, #5
+ 349 0006 29D0     		beq	.L84
+ 350              	.LVL49:
+ 351              	.L32:
+ 148:Src/freertos.c ****           /*  envoipos(/* TI-BEAU MET TA FONTION CALCUL DE POS );*/
+ 149:Src/freertos.c ****            for (i = 0;  i<10; i++){
+ 150:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 151:Src/freertos.c ****                osDelay(200);
+ 152:Src/freertos.c ****            }
+ 153:Src/freertos.c ****        }
+ 154:Src/freertos.c ****        if (msg == 0x06){
+ 352              		.loc 1 154 0
+ 353 0008 062D     		cmp	r5, #6
+ 354 000a 35D0     		beq	.L85
+ 355              	.L35:
+ 155:Src/freertos.c ****            for (i = 0;  i<12; i++){
+ 156:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 157:Src/freertos.c ****                osDelay(200);
+ 158:Src/freertos.c ****            }
+ 159:Src/freertos.c ****        }
+ 160:Src/freertos.c ****        if (msg == 0x07){
+ 356              		.loc 1 160 0
+ 357 000c 072D     		cmp	r5, #7
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 10
 
 
- 366              	.LVL52:
- 134:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 367              		.loc 1 134 0
- 368 001c 4FF4C870 		mov	r0, #400
- 369 0020 FFF7FEFF 		bl	osDelay
- 370              	.LVL53:
- 135:Src/freertos.c ****            osDelay(400);
- 371              		.loc 1 135 0
- 372 0024 8021     		movs	r1, #128
- 373 0026 4FF09040 		mov	r0, #1207959552
- 374 002a FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 375              	.LVL54:
- 136:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 376              		.loc 1 136 0
- 377 002e 4FF4C870 		mov	r0, #400
- 378 0032 FFF7FEFF 		bl	osDelay
- 379              	.LVL55:
- 137:Src/freertos.c ****        }
- 380              		.loc 1 137 0
- 381 0036 2021     		movs	r1, #32
- 382 0038 4FF09040 		mov	r0, #1207959552
- 383 003c FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 384              	.LVL56:
- 385 0040 E2E7     		b	.L31
- 386              	.L36:
- 140:Src/freertos.c ****            osDelay(200);
- 387              		.loc 1 140 0
- 388 0042 2021     		movs	r1, #32
- 389 0044 4FF09040 		mov	r0, #1207959552
- 390 0048 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 391              	.LVL57:
- 141:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 392              		.loc 1 141 0
- 393 004c C820     		movs	r0, #200
- 394 004e FFF7FEFF 		bl	osDelay
- 395              	.LVL58:
- 142:Src/freertos.c ****            osDelay(200);
- 396              		.loc 1 142 0
- 397 0052 2021     		movs	r1, #32
- 398 0054 4FF09040 		mov	r0, #1207959552
- 399 0058 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 400              	.LVL59:
- 143:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 401              		.loc 1 143 0
- 402 005c C820     		movs	r0, #200
- 403 005e FFF7FEFF 		bl	osDelay
- 404              	.LVL60:
- 144:Src/freertos.c ****            osDelay(200);
- 405              		.loc 1 144 0
- 406 0062 2021     		movs	r1, #32
- 407 0064 4FF09040 		mov	r0, #1207959552
- 408 0068 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 409              	.LVL61:
- 145:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 410              		.loc 1 145 0
- 411 006c C820     		movs	r0, #200
- 412 006e FFF7FEFF 		bl	osDelay
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 11
+ 358 000e 41D0     		beq	.L86
+ 359              	.L38:
+ 161:Src/freertos.c ****            for (i = 0;  i<14; i++){
+ 162:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 163:Src/freertos.c ****                osDelay(200);
+ 164:Src/freertos.c ****            }
+ 165:Src/freertos.c ****        }
+ 166:Src/freertos.c ****        if (msg == 0x08){
+ 360              		.loc 1 166 0
+ 361 0010 082D     		cmp	r5, #8
+ 362 0012 4DD0     		beq	.L87
+ 363              	.L41:
+ 167:Src/freertos.c ****            for (i = 0;  i<16; i++){
+ 168:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 169:Src/freertos.c ****                osDelay(200);
+ 170:Src/freertos.c ****            }
+ 171:Src/freertos.c ****        }
+ 172:Src/freertos.c ****        if (msg == 0x09){
+ 364              		.loc 1 172 0
+ 365 0014 092D     		cmp	r5, #9
+ 366 0016 59D0     		beq	.L88
+ 367              	.L44:
+ 173:Src/freertos.c ****            for (i = 0;  i<18; i++){
+ 174:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 175:Src/freertos.c ****                osDelay(200);
+ 176:Src/freertos.c ****            }
+ 177:Src/freertos.c ****        }
+ 178:Src/freertos.c ****        if (msg == 0x0A){
+ 368              		.loc 1 178 0
+ 369 0018 0A2D     		cmp	r5, #10
+ 370 001a 65D0     		beq	.L89
+ 371              	.L47:
+ 179:Src/freertos.c ****            for (i = 0;  i<20; i++){
+ 180:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 181:Src/freertos.c ****                osDelay(200);
+ 182:Src/freertos.c ****            }
+ 183:Src/freertos.c ****        }
+ 184:Src/freertos.c ****        if (msg == 0x0B){
+ 372              		.loc 1 184 0
+ 373 001c 0B2D     		cmp	r5, #11
+ 374 001e 71D0     		beq	.L90
+ 375              	.L50:
+ 185:Src/freertos.c ****            for (i = 0;  i<22; i++){
+ 186:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 187:Src/freertos.c ****                osDelay(200);
+ 188:Src/freertos.c ****            }
+ 189:Src/freertos.c ****        }
+ 190:Src/freertos.c **** 
+ 191:Src/freertos.c ****        if (msg == 0x0C){
+ 376              		.loc 1 191 0
+ 377 0020 0C2D     		cmp	r5, #12
+ 378 0022 7DD0     		beq	.L91
+ 379              	.L53:
+ 192:Src/freertos.c ****            for (i = 0;  i<24; i++){
+ 193:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 194:Src/freertos.c ****                osDelay(200);
+ 195:Src/freertos.c ****            }
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 11
 
 
- 413              	.LVL62:
- 146:Src/freertos.c ****            osDelay(200);
- 414              		.loc 1 146 0
- 415 0072 2021     		movs	r1, #32
- 416 0074 4FF09040 		mov	r0, #1207959552
- 417 0078 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 418              	.LVL63:
- 147:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 419              		.loc 1 147 0
- 420 007c C820     		movs	r0, #200
- 421 007e FFF7FEFF 		bl	osDelay
- 422              	.LVL64:
- 148:Src/freertos.c ****            osDelay(200);
- 423              		.loc 1 148 0
- 424 0082 2021     		movs	r1, #32
- 425 0084 4FF09040 		mov	r0, #1207959552
- 426 0088 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 427              	.LVL65:
- 149:Src/freertos.c ****        }
- 428              		.loc 1 149 0
- 429 008c C820     		movs	r0, #200
- 430 008e FFF7FEFF 		bl	osDelay
- 431              	.LVL66:
- 432 0092 BBE7     		b	.L32
- 433              	.L37:
- 152:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 434              		.loc 1 152 0
- 435 0094 8021     		movs	r1, #128
- 436 0096 4FF09040 		mov	r0, #1207959552
- 437 009a FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 438              	.LVL67:
- 153:Src/freertos.c ****            osDelay(150);
- 439              		.loc 1 153 0
- 440 009e 9620     		movs	r0, #150
- 441 00a0 FFF7FEFF 		bl	osDelay
- 442              	.LVL68:
- 154:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 443              		.loc 1 154 0
- 444 00a4 2021     		movs	r1, #32
- 445 00a6 4FF09040 		mov	r0, #1207959552
- 446 00aa FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 447              	.LVL69:
- 155:Src/freertos.c ****            osDelay(150);
- 448              		.loc 1 155 0
- 449 00ae 9620     		movs	r0, #150
- 450 00b0 FFF7FEFF 		bl	osDelay
- 451              	.LVL70:
- 156:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 452              		.loc 1 156 0
- 453 00b4 8021     		movs	r1, #128
- 454 00b6 4FF09040 		mov	r0, #1207959552
- 455 00ba FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 456              	.LVL71:
- 157:Src/freertos.c ****            osDelay(150);
- 457              		.loc 1 157 0
- 458 00be 9620     		movs	r0, #150
- 459 00c0 FFF7FEFF 		bl	osDelay
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 12
+ 196:Src/freertos.c ****        }
+ 197:Src/freertos.c ****        if (msg == 0x0D){
+ 380              		.loc 1 197 0
+ 381 0024 0D2D     		cmp	r5, #13
+ 382 0026 00F08980 		beq	.L92
+ 383              	.L56:
+ 198:Src/freertos.c ****           /* srand(time(NULL));
+ 199:Src/freertos.c ****            a = rand()%100;*/
+ 200:Src/freertos.c ****            for (i = 0;  i<26; i++){
+ 201:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 202:Src/freertos.c ****                osDelay(200);
+ 203:Src/freertos.c ****        }
+ 204:Src/freertos.c ****       }
+ 205:Src/freertos.c ****        if (msg == 0x10){
+ 384              		.loc 1 205 0
+ 385 002a 102D     		cmp	r5, #16
+ 386 002c 00F09480 		beq	.L93
+ 387              	.L59:
+ 206:Src/freertos.c ****            for (i = 0;  i<32; i++){
+ 207:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 208:Src/freertos.c ****                osDelay(200);
+ 209:Src/freertos.c ****         }
+ 210:Src/freertos.c ****    }
+ 211:Src/freertos.c ****        if (msg == 0x11){
+ 388              		.loc 1 211 0
+ 389 0030 112D     		cmp	r5, #17
+ 390 0032 00F09F80 		beq	.L94
+ 391              	.L62:
+ 212:Src/freertos.c ****            for (i = 0;  i<34; i++){
+ 213:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 214:Src/freertos.c ****                osDelay(200);
+ 215:Src/freertos.c ****            }
+ 216:Src/freertos.c ****        }
+ 217:Src/freertos.c ****        if (msg == 0x12){
+ 392              		.loc 1 217 0
+ 393 0036 122D     		cmp	r5, #18
+ 394 0038 00F0AA80 		beq	.L95
+ 395              	.L65:
+ 218:Src/freertos.c ****            for (i = 0;  i<36; i++){
+ 219:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 220:Src/freertos.c ****                osDelay(200);
+ 221:Src/freertos.c ****         }
+ 222:Src/freertos.c ****    }
+ 223:Src/freertos.c ****        if (msg == 0x13){
+ 396              		.loc 1 223 0
+ 397 003c 132D     		cmp	r5, #19
+ 398 003e 00F0B580 		beq	.L96
+ 399              	.L30:
+ 400 0042 38BD     		pop	{r3, r4, r5, pc}
+ 401              	.LVL50:
+ 402              	.L33:
+ 150:Src/freertos.c ****                osDelay(200);
+ 403              		.loc 1 150 0 discriminator 3
+ 404 0044 8021     		movs	r1, #128
+ 405 0046 4FF09040 		mov	r0, #1207959552
+ 406 004a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 407              	.LVL51:
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 12
 
 
- 460              	.LVL72:
- 158:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 461              		.loc 1 158 0
- 462 00c4 2021     		movs	r1, #32
- 463 00c6 4FF09040 		mov	r0, #1207959552
- 464 00ca FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 465              	.LVL73:
- 159:Src/freertos.c ****            osDelay(150);
- 466              		.loc 1 159 0
- 467 00ce 9620     		movs	r0, #150
- 468 00d0 FFF7FEFF 		bl	osDelay
- 469              	.LVL74:
- 160:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 470              		.loc 1 160 0
- 471 00d4 8021     		movs	r1, #128
- 472 00d6 4FF09040 		mov	r0, #1207959552
- 473 00da FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 474              	.LVL75:
- 161:Src/freertos.c ****            osDelay(150);
- 475              		.loc 1 161 0
- 476 00de 9620     		movs	r0, #150
- 477 00e0 FFF7FEFF 		bl	osDelay
- 478              	.LVL76:
- 162:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 479              		.loc 1 162 0
- 480 00e4 2021     		movs	r1, #32
- 481 00e6 4FF09040 		mov	r0, #1207959552
- 482 00ea FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 483              	.LVL77:
- 163:Src/freertos.c ****            osDelay(150);
- 484              		.loc 1 163 0
- 485 00ee 9620     		movs	r0, #150
- 486 00f0 FFF7FEFF 		bl	osDelay
- 487              	.LVL78:
- 164:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
- 488              		.loc 1 164 0
- 489 00f4 8021     		movs	r1, #128
- 490 00f6 4FF09040 		mov	r0, #1207959552
- 491 00fa FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 492              	.LVL79:
- 165:Src/freertos.c ****            osDelay(150);
- 493              		.loc 1 165 0
- 494 00fe 9620     		movs	r0, #150
- 495 0100 FFF7FEFF 		bl	osDelay
- 496              	.LVL80:
- 166:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, del_Pin);
- 497              		.loc 1 166 0
- 498 0104 2021     		movs	r1, #32
- 499 0106 4FF09040 		mov	r0, #1207959552
- 500 010a FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 501              	.LVL81:
- 167:Src/freertos.c ****            osDelay(150);
- 502              		.loc 1 167 0
- 503 010e 9620     		movs	r0, #150
- 504 0110 FFF7FEFF 		bl	osDelay
- 505              	.LVL82:
- 168:Src/freertos.c ****            HAL_GPIO_TogglePin(GPIOA, Led_Pin);
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 13
+ 151:Src/freertos.c ****            }
+ 408              		.loc 1 151 0 discriminator 3
+ 409 004e C820     		movs	r0, #200
+ 410 0050 FFF7FEFF 		bl	osDelay
+ 411              	.LVL52:
+ 149:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 412              		.loc 1 149 0 discriminator 3
+ 413 0054 0134     		adds	r4, r4, #1
+ 414              	.LVL53:
+ 415              	.L31:
+ 149:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 416              		.loc 1 149 0 is_stmt 0 discriminator 1
+ 417 0056 092C     		cmp	r4, #9
+ 418 0058 F4DD     		ble	.L33
+ 419 005a D5E7     		b	.L32
+ 420              	.LVL54:
+ 421              	.L84:
+ 422 005c 0024     		movs	r4, #0
+ 423 005e FAE7     		b	.L31
+ 424              	.LVL55:
+ 425              	.L36:
+ 156:Src/freertos.c ****                osDelay(200);
+ 426              		.loc 1 156 0 is_stmt 1 discriminator 3
+ 427 0060 2021     		movs	r1, #32
+ 428 0062 4FF09040 		mov	r0, #1207959552
+ 429 0066 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 430              	.LVL56:
+ 157:Src/freertos.c ****            }
+ 431              		.loc 1 157 0 discriminator 3
+ 432 006a C820     		movs	r0, #200
+ 433 006c FFF7FEFF 		bl	osDelay
+ 434              	.LVL57:
+ 155:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 435              		.loc 1 155 0 discriminator 3
+ 436 0070 0134     		adds	r4, r4, #1
+ 437              	.LVL58:
+ 438              	.L34:
+ 155:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 439              		.loc 1 155 0 is_stmt 0 discriminator 1
+ 440 0072 0B2C     		cmp	r4, #11
+ 441 0074 F4DD     		ble	.L36
+ 442 0076 C9E7     		b	.L35
+ 443              	.LVL59:
+ 444              	.L85:
+ 445 0078 0024     		movs	r4, #0
+ 446 007a FAE7     		b	.L34
+ 447              	.LVL60:
+ 448              	.L39:
+ 162:Src/freertos.c ****                osDelay(200);
+ 449              		.loc 1 162 0 is_stmt 1 discriminator 3
+ 450 007c 8021     		movs	r1, #128
+ 451 007e 4FF09040 		mov	r0, #1207959552
+ 452 0082 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 453              	.LVL61:
+ 163:Src/freertos.c ****            }
+ 454              		.loc 1 163 0 discriminator 3
+ 455 0086 C820     		movs	r0, #200
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 13
 
 
- 506              		.loc 1 168 0
- 507 0114 8021     		movs	r1, #128
- 508 0116 4FF09040 		mov	r0, #1207959552
- 509 011a FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 510              	.LVL83:
- 169:Src/freertos.c ****            osDelay(150);
- 511              		.loc 1 169 0
- 512 011e 9620     		movs	r0, #150
- 513 0120 FFF7FEFF 		bl	osDelay
- 514              	.LVL84:
- 170:Src/freertos.c ****        }
- 171:Src/freertos.c ****    }
- 515              		.loc 1 171 0
- 516 0124 74E7     		b	.L30
- 517              		.cfi_endproc
- 518              	.LFE131:
- 520              		.comm	defaultTaskHandle,4,4
- 521              		.comm	huart1,112,4
- 522              		.text
- 523              	.Letext0:
- 524              		.file 2 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\machine\\_default_types
- 525              		.file 3 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\_stdint.h"
- 526              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
- 527              		.file 5 "Inc/FreeRTOSConfig.h"
- 528              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
- 529              		.file 7 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/system_stm32f3xx.h"
- 530              		.file 8 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
- 531              		.file 9 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\lock.h"
- 532              		.file 10 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\_types.h"
- 533              		.file 11 "c:\\users\\victor\\desktop\\projet_robot\\lib\\gcc\\arm-none-eabi\\6.3.1\\include\\stdde
- 534              		.file 12 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\reent.h"
- 535              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 536              		.file 14 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 537              		.file 15 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
- 538              		.file 16 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 539              		.file 17 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
-ARM GAS  C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s 			page 14
+ 456 0088 FFF7FEFF 		bl	osDelay
+ 457              	.LVL62:
+ 161:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 458              		.loc 1 161 0 discriminator 3
+ 459 008c 0134     		adds	r4, r4, #1
+ 460              	.LVL63:
+ 461              	.L37:
+ 161:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 462              		.loc 1 161 0 is_stmt 0 discriminator 1
+ 463 008e 0D2C     		cmp	r4, #13
+ 464 0090 F4DD     		ble	.L39
+ 465 0092 BDE7     		b	.L38
+ 466              	.LVL64:
+ 467              	.L86:
+ 468 0094 0024     		movs	r4, #0
+ 469 0096 FAE7     		b	.L37
+ 470              	.LVL65:
+ 471              	.L42:
+ 168:Src/freertos.c ****                osDelay(200);
+ 472              		.loc 1 168 0 is_stmt 1 discriminator 3
+ 473 0098 2021     		movs	r1, #32
+ 474 009a 4FF09040 		mov	r0, #1207959552
+ 475 009e FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 476              	.LVL66:
+ 169:Src/freertos.c ****            }
+ 477              		.loc 1 169 0 discriminator 3
+ 478 00a2 C820     		movs	r0, #200
+ 479 00a4 FFF7FEFF 		bl	osDelay
+ 480              	.LVL67:
+ 167:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 481              		.loc 1 167 0 discriminator 3
+ 482 00a8 0134     		adds	r4, r4, #1
+ 483              	.LVL68:
+ 484              	.L40:
+ 167:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 485              		.loc 1 167 0 is_stmt 0 discriminator 1
+ 486 00aa 0F2C     		cmp	r4, #15
+ 487 00ac F4DD     		ble	.L42
+ 488 00ae B1E7     		b	.L41
+ 489              	.LVL69:
+ 490              	.L87:
+ 491 00b0 0024     		movs	r4, #0
+ 492 00b2 FAE7     		b	.L40
+ 493              	.LVL70:
+ 494              	.L45:
+ 174:Src/freertos.c ****                osDelay(200);
+ 495              		.loc 1 174 0 is_stmt 1 discriminator 3
+ 496 00b4 8021     		movs	r1, #128
+ 497 00b6 4FF09040 		mov	r0, #1207959552
+ 498 00ba FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 499              	.LVL71:
+ 175:Src/freertos.c ****            }
+ 500              		.loc 1 175 0 discriminator 3
+ 501 00be C820     		movs	r0, #200
+ 502 00c0 FFF7FEFF 		bl	osDelay
+ 503              	.LVL72:
+ 173:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 14
+
+
+ 504              		.loc 1 173 0 discriminator 3
+ 505 00c4 0134     		adds	r4, r4, #1
+ 506              	.LVL73:
+ 507              	.L43:
+ 173:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 508              		.loc 1 173 0 is_stmt 0 discriminator 1
+ 509 00c6 112C     		cmp	r4, #17
+ 510 00c8 F4DD     		ble	.L45
+ 511 00ca A5E7     		b	.L44
+ 512              	.LVL74:
+ 513              	.L88:
+ 514 00cc 0024     		movs	r4, #0
+ 515 00ce FAE7     		b	.L43
+ 516              	.LVL75:
+ 517              	.L48:
+ 180:Src/freertos.c ****                osDelay(200);
+ 518              		.loc 1 180 0 is_stmt 1 discriminator 3
+ 519 00d0 2021     		movs	r1, #32
+ 520 00d2 4FF09040 		mov	r0, #1207959552
+ 521 00d6 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 522              	.LVL76:
+ 181:Src/freertos.c ****            }
+ 523              		.loc 1 181 0 discriminator 3
+ 524 00da C820     		movs	r0, #200
+ 525 00dc FFF7FEFF 		bl	osDelay
+ 526              	.LVL77:
+ 179:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 527              		.loc 1 179 0 discriminator 3
+ 528 00e0 0134     		adds	r4, r4, #1
+ 529              	.LVL78:
+ 530              	.L46:
+ 179:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 531              		.loc 1 179 0 is_stmt 0 discriminator 1
+ 532 00e2 132C     		cmp	r4, #19
+ 533 00e4 F4DD     		ble	.L48
+ 534 00e6 99E7     		b	.L47
+ 535              	.LVL79:
+ 536              	.L89:
+ 537 00e8 0024     		movs	r4, #0
+ 538 00ea FAE7     		b	.L46
+ 539              	.LVL80:
+ 540              	.L51:
+ 186:Src/freertos.c ****                osDelay(200);
+ 541              		.loc 1 186 0 is_stmt 1 discriminator 3
+ 542 00ec 8021     		movs	r1, #128
+ 543 00ee 4FF09040 		mov	r0, #1207959552
+ 544 00f2 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 545              	.LVL81:
+ 187:Src/freertos.c ****            }
+ 546              		.loc 1 187 0 discriminator 3
+ 547 00f6 C820     		movs	r0, #200
+ 548 00f8 FFF7FEFF 		bl	osDelay
+ 549              	.LVL82:
+ 185:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 550              		.loc 1 185 0 discriminator 3
+ 551 00fc 0134     		adds	r4, r4, #1
+ 552              	.LVL83:
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 15
+
+
+ 553              	.L49:
+ 185:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 554              		.loc 1 185 0 is_stmt 0 discriminator 1
+ 555 00fe 152C     		cmp	r4, #21
+ 556 0100 F4DD     		ble	.L51
+ 557 0102 8DE7     		b	.L50
+ 558              	.LVL84:
+ 559              	.L90:
+ 560 0104 0024     		movs	r4, #0
+ 561 0106 FAE7     		b	.L49
+ 562              	.LVL85:
+ 563              	.L54:
+ 193:Src/freertos.c ****                osDelay(200);
+ 564              		.loc 1 193 0 is_stmt 1 discriminator 3
+ 565 0108 2021     		movs	r1, #32
+ 566 010a 4FF09040 		mov	r0, #1207959552
+ 567 010e FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 568              	.LVL86:
+ 194:Src/freertos.c ****            }
+ 569              		.loc 1 194 0 discriminator 3
+ 570 0112 C820     		movs	r0, #200
+ 571 0114 FFF7FEFF 		bl	osDelay
+ 572              	.LVL87:
+ 192:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 573              		.loc 1 192 0 discriminator 3
+ 574 0118 0134     		adds	r4, r4, #1
+ 575              	.LVL88:
+ 576              	.L52:
+ 192:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 577              		.loc 1 192 0 is_stmt 0 discriminator 1
+ 578 011a 172C     		cmp	r4, #23
+ 579 011c F4DD     		ble	.L54
+ 580 011e 81E7     		b	.L53
+ 581              	.LVL89:
+ 582              	.L91:
+ 583 0120 0024     		movs	r4, #0
+ 584 0122 FAE7     		b	.L52
+ 585              	.LVL90:
+ 586              	.L57:
+ 201:Src/freertos.c ****                osDelay(200);
+ 587              		.loc 1 201 0 is_stmt 1 discriminator 3
+ 588 0124 8021     		movs	r1, #128
+ 589 0126 4FF09040 		mov	r0, #1207959552
+ 590 012a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 591              	.LVL91:
+ 202:Src/freertos.c ****        }
+ 592              		.loc 1 202 0 discriminator 3
+ 593 012e C820     		movs	r0, #200
+ 594 0130 FFF7FEFF 		bl	osDelay
+ 595              	.LVL92:
+ 200:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 596              		.loc 1 200 0 discriminator 3
+ 597 0134 0134     		adds	r4, r4, #1
+ 598              	.LVL93:
+ 599              	.L55:
+ 200:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 600              		.loc 1 200 0 is_stmt 0 discriminator 1
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 16
+
+
+ 601 0136 192C     		cmp	r4, #25
+ 602 0138 F4DD     		ble	.L57
+ 603 013a 76E7     		b	.L56
+ 604              	.LVL94:
+ 605              	.L92:
+ 606 013c 0024     		movs	r4, #0
+ 607 013e FAE7     		b	.L55
+ 608              	.LVL95:
+ 609              	.L60:
+ 207:Src/freertos.c ****                osDelay(200);
+ 610              		.loc 1 207 0 is_stmt 1 discriminator 3
+ 611 0140 2021     		movs	r1, #32
+ 612 0142 4FF09040 		mov	r0, #1207959552
+ 613 0146 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 614              	.LVL96:
+ 208:Src/freertos.c ****         }
+ 615              		.loc 1 208 0 discriminator 3
+ 616 014a C820     		movs	r0, #200
+ 617 014c FFF7FEFF 		bl	osDelay
+ 618              	.LVL97:
+ 206:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 619              		.loc 1 206 0 discriminator 3
+ 620 0150 0134     		adds	r4, r4, #1
+ 621              	.LVL98:
+ 622              	.L58:
+ 206:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 623              		.loc 1 206 0 is_stmt 0 discriminator 1
+ 624 0152 1F2C     		cmp	r4, #31
+ 625 0154 F4DD     		ble	.L60
+ 626 0156 6BE7     		b	.L59
+ 627              	.LVL99:
+ 628              	.L93:
+ 629 0158 0024     		movs	r4, #0
+ 630 015a FAE7     		b	.L58
+ 631              	.LVL100:
+ 632              	.L63:
+ 213:Src/freertos.c ****                osDelay(200);
+ 633              		.loc 1 213 0 is_stmt 1 discriminator 3
+ 634 015c 8021     		movs	r1, #128
+ 635 015e 4FF09040 		mov	r0, #1207959552
+ 636 0162 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 637              	.LVL101:
+ 214:Src/freertos.c ****            }
+ 638              		.loc 1 214 0 discriminator 3
+ 639 0166 C820     		movs	r0, #200
+ 640 0168 FFF7FEFF 		bl	osDelay
+ 641              	.LVL102:
+ 212:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 642              		.loc 1 212 0 discriminator 3
+ 643 016c 0134     		adds	r4, r4, #1
+ 644              	.LVL103:
+ 645              	.L61:
+ 212:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 646              		.loc 1 212 0 is_stmt 0 discriminator 1
+ 647 016e 212C     		cmp	r4, #33
+ 648 0170 F4DD     		ble	.L63
+ 649 0172 60E7     		b	.L62
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 17
+
+
+ 650              	.LVL104:
+ 651              	.L94:
+ 652 0174 0024     		movs	r4, #0
+ 653 0176 FAE7     		b	.L61
+ 654              	.LVL105:
+ 655              	.L66:
+ 219:Src/freertos.c ****                osDelay(200);
+ 656              		.loc 1 219 0 is_stmt 1 discriminator 3
+ 657 0178 2021     		movs	r1, #32
+ 658 017a 4FF09040 		mov	r0, #1207959552
+ 659 017e FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 660              	.LVL106:
+ 220:Src/freertos.c ****         }
+ 661              		.loc 1 220 0 discriminator 3
+ 662 0182 C820     		movs	r0, #200
+ 663 0184 FFF7FEFF 		bl	osDelay
+ 664              	.LVL107:
+ 218:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 665              		.loc 1 218 0 discriminator 3
+ 666 0188 0134     		adds	r4, r4, #1
+ 667              	.LVL108:
+ 668              	.L64:
+ 218:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, del_Pin);
+ 669              		.loc 1 218 0 is_stmt 0 discriminator 1
+ 670 018a 232C     		cmp	r4, #35
+ 671 018c F4DD     		ble	.L66
+ 672 018e 55E7     		b	.L65
+ 673              	.LVL109:
+ 674              	.L95:
+ 675 0190 0024     		movs	r4, #0
+ 676 0192 FAE7     		b	.L64
+ 677              	.LVL110:
+ 678              	.L69:
+ 224:Src/freertos.c ****            for (i = 0;  i<38; i++){
+ 225:Src/freertos.c ****                HAL_GPIO_TogglePin(GPIOA, Led_Pin);
+ 679              		.loc 1 225 0 is_stmt 1 discriminator 3
+ 680 0194 8021     		movs	r1, #128
+ 681 0196 4FF09040 		mov	r0, #1207959552
+ 682 019a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 683              	.LVL111:
+ 226:Src/freertos.c ****                osDelay(200);
+ 684              		.loc 1 226 0 discriminator 3
+ 685 019e C820     		movs	r0, #200
+ 686 01a0 FFF7FEFF 		bl	osDelay
+ 687              	.LVL112:
+ 224:Src/freertos.c ****            for (i = 0;  i<38; i++){
+ 688              		.loc 1 224 0 discriminator 3
+ 689 01a4 0134     		adds	r4, r4, #1
+ 690              	.LVL113:
+ 691              	.L67:
+ 224:Src/freertos.c ****            for (i = 0;  i<38; i++){
+ 692              		.loc 1 224 0 is_stmt 0 discriminator 1
+ 693 01a6 252C     		cmp	r4, #37
+ 694 01a8 F4DD     		ble	.L69
+ 695 01aa 4AE7     		b	.L30
+ 696              	.LVL114:
+ 697              	.L96:
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 18
+
+
+ 698 01ac 0024     		movs	r4, #0
+ 699 01ae FAE7     		b	.L67
+ 700              		.cfi_endproc
+ 701              	.LFE131:
+ 703              		.section	.text.Traductiontrans,"ax",%progbits
+ 704              		.align	1
+ 705              		.global	Traductiontrans
+ 706              		.syntax unified
+ 707              		.thumb
+ 708              		.thumb_func
+ 709              		.fpu fpv4-sp-d16
+ 711              	Traductiontrans:
+ 712              	.LFB133:
+ 227:Src/freertos.c ****            }
+ 228:Src/freertos.c ****        }
+ 229:Src/freertos.c **** 
+ 230:Src/freertos.c **** 
+ 231:Src/freertos.c ****    }
+ 232:Src/freertos.c **** 
+ 233:Src/freertos.c ****    void EmissionMessage(char msg[10]){
+ 234:Src/freertos.c ****        EnvoiMessage(Traductiontrans(msg));
+ 235:Src/freertos.c **** 
+ 236:Src/freertos.c ****    }
+ 237:Src/freertos.c ****  /*  void WaitFor(char msg[10]){
+ 238:Src/freertos.c ****         while (Traductiontrans(msg[10]) != ReceptionMessage()) ;
+ 239:Src/freertos.c ****    }*/
+ 240:Src/freertos.c ****    int Traductiontrans(char msg[10]){
+ 713              		.loc 1 240 0 is_stmt 1
+ 714              		.cfi_startproc
+ 715              		@ args = 0, pretend = 0, frame = 0
+ 716              		@ frame_needed = 0, uses_anonymous_args = 0
+ 717              		@ link register save eliminated.
+ 718              	.LVL115:
+ 241:Src/freertos.c ****        if (msg == "taposition") return(0x05);
+ 719              		.loc 1 241 0
+ 720 0000 204B     		ldr	r3, .L112
+ 721 0002 9842     		cmp	r0, r3
+ 722 0004 24D0     		beq	.L99
+ 242:Src/freertos.c ****        if (msg == "actionok") return(0x06);
+ 723              		.loc 1 242 0
+ 724 0006 204B     		ldr	r3, .L112+4
+ 725 0008 9842     		cmp	r0, r3
+ 726 000a 23D0     		beq	.L100
+ 243:Src/freertos.c ****        if (msg == "moveup") return(0x07);
+ 727              		.loc 1 243 0
+ 728 000c 1F4B     		ldr	r3, .L112+8
+ 729 000e 9842     		cmp	r0, r3
+ 730 0010 22D0     		beq	.L101
+ 244:Src/freertos.c ****        if (msg == "movedown") return(0x08);
+ 731              		.loc 1 244 0
+ 732 0012 1F4B     		ldr	r3, .L112+12
+ 733 0014 9842     		cmp	r0, r3
+ 734 0016 21D0     		beq	.L102
+ 245:Src/freertos.c ****        if (msg == "moveright") return(0x09);
+ 735              		.loc 1 245 0
+ 736 0018 1E4B     		ldr	r3, .L112+16
+ 737 001a 9842     		cmp	r0, r3
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 19
+
+
+ 738 001c 20D0     		beq	.L103
+ 246:Src/freertos.c ****        if (msg == "moveleft") return(0x0A);
+ 739              		.loc 1 246 0
+ 740 001e 1E4B     		ldr	r3, .L112+20
+ 741 0020 9842     		cmp	r0, r3
+ 742 0022 1FD0     		beq	.L104
+ 247:Src/freertos.c ****        if (msg == "jesuiscoin") return(0x0B);
+ 743              		.loc 1 247 0
+ 744 0024 1D4B     		ldr	r3, .L112+24
+ 745 0026 9842     		cmp	r0, r3
+ 746 0028 1ED0     		beq	.L105
+ 248:Src/freertos.c ****        if (msg == "found") return(0x0C);
+ 747              		.loc 1 248 0
+ 748 002a 1D4B     		ldr	r3, .L112+28
+ 749 002c 9842     		cmp	r0, r3
+ 750 002e 1DD0     		beq	.L106
+ 249:Src/freertos.c ****        if (msg == "random") return(0x0D);
+ 751              		.loc 1 249 0
+ 752 0030 1C4B     		ldr	r3, .L112+32
+ 753 0032 9842     		cmp	r0, r3
+ 754 0034 1CD0     		beq	.L107
+ 250:Src/freertos.c ****        if (msg == "non") return(0x10);
+ 755              		.loc 1 250 0
+ 756 0036 1C4B     		ldr	r3, .L112+36
+ 757 0038 9842     		cmp	r0, r3
+ 758 003a 1BD0     		beq	.L108
+ 251:Src/freertos.c ****        if (msg == "continue") return(0x11);
+ 759              		.loc 1 251 0
+ 760 003c 1B4B     		ldr	r3, .L112+40
+ 761 003e 9842     		cmp	r0, r3
+ 762 0040 1AD0     		beq	.L109
+ 252:Src/freertos.c ****        if (msg == "memecase") return(0x12);
+ 763              		.loc 1 252 0
+ 764 0042 1B4B     		ldr	r3, .L112+44
+ 765 0044 9842     		cmp	r0, r3
+ 766 0046 19D0     		beq	.L110
+ 253:Src/freertos.c ****        if (msg == "tuescoin") return(0x13);
+ 767              		.loc 1 253 0
+ 768 0048 1A4B     		ldr	r3, .L112+48
+ 769 004a 9842     		cmp	r0, r3
+ 770 004c 18D0     		beq	.L111
+ 771              	.LVL116:
+ 254:Src/freertos.c ****        /*if (msg == ) return();*/
+ 255:Src/freertos.c ****    }
+ 772              		.loc 1 255 0
+ 773 004e 7047     		bx	lr
+ 774              	.LVL117:
+ 775              	.L99:
+ 241:Src/freertos.c ****        if (msg == "actionok") return(0x06);
+ 776              		.loc 1 241 0
+ 777 0050 0520     		movs	r0, #5
+ 778              	.LVL118:
+ 779 0052 7047     		bx	lr
+ 780              	.LVL119:
+ 781              	.L100:
+ 242:Src/freertos.c ****        if (msg == "moveup") return(0x07);
+ 782              		.loc 1 242 0
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 20
+
+
+ 783 0054 0620     		movs	r0, #6
+ 784              	.LVL120:
+ 785 0056 7047     		bx	lr
+ 786              	.LVL121:
+ 787              	.L101:
+ 243:Src/freertos.c ****        if (msg == "movedown") return(0x08);
+ 788              		.loc 1 243 0
+ 789 0058 0720     		movs	r0, #7
+ 790              	.LVL122:
+ 791 005a 7047     		bx	lr
+ 792              	.LVL123:
+ 793              	.L102:
+ 244:Src/freertos.c ****        if (msg == "moveright") return(0x09);
+ 794              		.loc 1 244 0
+ 795 005c 0820     		movs	r0, #8
+ 796              	.LVL124:
+ 797 005e 7047     		bx	lr
+ 798              	.LVL125:
+ 799              	.L103:
+ 245:Src/freertos.c ****        if (msg == "moveleft") return(0x0A);
+ 800              		.loc 1 245 0
+ 801 0060 0920     		movs	r0, #9
+ 802              	.LVL126:
+ 803 0062 7047     		bx	lr
+ 804              	.LVL127:
+ 805              	.L104:
+ 246:Src/freertos.c ****        if (msg == "jesuiscoin") return(0x0B);
+ 806              		.loc 1 246 0
+ 807 0064 0A20     		movs	r0, #10
+ 808              	.LVL128:
+ 809 0066 7047     		bx	lr
+ 810              	.LVL129:
+ 811              	.L105:
+ 247:Src/freertos.c ****        if (msg == "found") return(0x0C);
+ 812              		.loc 1 247 0
+ 813 0068 0B20     		movs	r0, #11
+ 814              	.LVL130:
+ 815 006a 7047     		bx	lr
+ 816              	.LVL131:
+ 817              	.L106:
+ 248:Src/freertos.c ****        if (msg == "random") return(0x0D);
+ 818              		.loc 1 248 0
+ 819 006c 0C20     		movs	r0, #12
+ 820              	.LVL132:
+ 821 006e 7047     		bx	lr
+ 822              	.LVL133:
+ 823              	.L107:
+ 249:Src/freertos.c ****        if (msg == "non") return(0x10);
+ 824              		.loc 1 249 0
+ 825 0070 0D20     		movs	r0, #13
+ 826              	.LVL134:
+ 827 0072 7047     		bx	lr
+ 828              	.LVL135:
+ 829              	.L108:
+ 250:Src/freertos.c ****        if (msg == "continue") return(0x11);
+ 830              		.loc 1 250 0
+ 831 0074 1020     		movs	r0, #16
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 21
+
+
+ 832              	.LVL136:
+ 833 0076 7047     		bx	lr
+ 834              	.LVL137:
+ 835              	.L109:
+ 251:Src/freertos.c ****        if (msg == "memecase") return(0x12);
+ 836              		.loc 1 251 0
+ 837 0078 1120     		movs	r0, #17
+ 838              	.LVL138:
+ 839 007a 7047     		bx	lr
+ 840              	.LVL139:
+ 841              	.L110:
+ 252:Src/freertos.c ****        if (msg == "tuescoin") return(0x13);
+ 842              		.loc 1 252 0
+ 843 007c 1220     		movs	r0, #18
+ 844              	.LVL140:
+ 845 007e 7047     		bx	lr
+ 846              	.LVL141:
+ 847              	.L111:
+ 253:Src/freertos.c ****        /*if (msg == ) return();*/
+ 848              		.loc 1 253 0
+ 849 0080 1320     		movs	r0, #19
+ 850              	.LVL142:
+ 851              		.loc 1 255 0
+ 852 0082 7047     		bx	lr
+ 853              	.L113:
+ 854              		.align	2
+ 855              	.L112:
+ 856 0084 00000000 		.word	.LC0
+ 857 0088 0C000000 		.word	.LC1
+ 858 008c 18000000 		.word	.LC2
+ 859 0090 20000000 		.word	.LC3
+ 860 0094 2C000000 		.word	.LC4
+ 861 0098 38000000 		.word	.LC5
+ 862 009c 44000000 		.word	.LC6
+ 863 00a0 50000000 		.word	.LC7
+ 864 00a4 58000000 		.word	.LC8
+ 865 00a8 60000000 		.word	.LC9
+ 866 00ac 64000000 		.word	.LC10
+ 867 00b0 70000000 		.word	.LC11
+ 868 00b4 7C000000 		.word	.LC12
+ 869              		.cfi_endproc
+ 870              	.LFE133:
+ 872              		.section	.text.EmissionMessage,"ax",%progbits
+ 873              		.align	1
+ 874              		.global	EmissionMessage
+ 875              		.syntax unified
+ 876              		.thumb
+ 877              		.thumb_func
+ 878              		.fpu fpv4-sp-d16
+ 880              	EmissionMessage:
+ 881              	.LFB132:
+ 233:Src/freertos.c ****        EnvoiMessage(Traductiontrans(msg));
+ 882              		.loc 1 233 0
+ 883              		.cfi_startproc
+ 884              		@ args = 0, pretend = 0, frame = 0
+ 885              		@ frame_needed = 0, uses_anonymous_args = 0
+ 886              	.LVL143:
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 22
+
+
+ 887 0000 08B5     		push	{r3, lr}
+ 888              	.LCFI7:
+ 889              		.cfi_def_cfa_offset 8
+ 890              		.cfi_offset 3, -8
+ 891              		.cfi_offset 14, -4
+ 234:Src/freertos.c **** 
+ 892              		.loc 1 234 0
+ 893 0002 FFF7FEFF 		bl	Traductiontrans
+ 894              	.LVL144:
+ 895 0006 C0B2     		uxtb	r0, r0
+ 896 0008 FFF7FEFF 		bl	EnvoiMessage
+ 897              	.LVL145:
+ 898 000c 08BD     		pop	{r3, pc}
+ 899              		.cfi_endproc
+ 900              	.LFE132:
+ 902              		.comm	defaultTaskHandle,4,4
+ 903              		.comm	huart1,112,4
+ 904              		.section	.rodata.Traductiontrans.str1.4,"aMS",%progbits,1
+ 905              		.align	2
+ 906              	.LC0:
+ 907 0000 7461706F 		.ascii	"taposition\000"
+ 907      73697469 
+ 907      6F6E00
+ 908 000b 00       		.space	1
+ 909              	.LC1:
+ 910 000c 61637469 		.ascii	"actionok\000"
+ 910      6F6E6F6B 
+ 910      00
+ 911 0015 000000   		.space	3
+ 912              	.LC2:
+ 913 0018 6D6F7665 		.ascii	"moveup\000"
+ 913      757000
+ 914 001f 00       		.space	1
+ 915              	.LC3:
+ 916 0020 6D6F7665 		.ascii	"movedown\000"
+ 916      646F776E 
+ 916      00
+ 917 0029 000000   		.space	3
+ 918              	.LC4:
+ 919 002c 6D6F7665 		.ascii	"moveright\000"
+ 919      72696768 
+ 919      7400
+ 920 0036 0000     		.space	2
+ 921              	.LC5:
+ 922 0038 6D6F7665 		.ascii	"moveleft\000"
+ 922      6C656674 
+ 922      00
+ 923 0041 000000   		.space	3
+ 924              	.LC6:
+ 925 0044 6A657375 		.ascii	"jesuiscoin\000"
+ 925      6973636F 
+ 925      696E00
+ 926 004f 00       		.space	1
+ 927              	.LC7:
+ 928 0050 666F756E 		.ascii	"found\000"
+ 928      6400
+ 929 0056 0000     		.space	2
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 23
+
+
+ 930              	.LC8:
+ 931 0058 72616E64 		.ascii	"random\000"
+ 931      6F6D00
+ 932 005f 00       		.space	1
+ 933              	.LC9:
+ 934 0060 6E6F6E00 		.ascii	"non\000"
+ 935              	.LC10:
+ 936 0064 636F6E74 		.ascii	"continue\000"
+ 936      696E7565 
+ 936      00
+ 937 006d 000000   		.space	3
+ 938              	.LC11:
+ 939 0070 6D656D65 		.ascii	"memecase\000"
+ 939      63617365 
+ 939      00
+ 940 0079 000000   		.space	3
+ 941              	.LC12:
+ 942 007c 74756573 		.ascii	"tuescoin\000"
+ 942      636F696E 
+ 942      00
+ 943              		.text
+ 944              	.Letext0:
+ 945              		.file 2 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\machine\\_default_types
+ 946              		.file 3 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 947              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
+ 948              		.file 5 "Inc/FreeRTOSConfig.h"
+ 949              		.file 6 "Drivers/CMSIS/Include/core_cm4.h"
+ 950              		.file 7 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/system_stm32f3xx.h"
+ 951              		.file 8 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 952              		.file 9 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\lock.h"
+ 953              		.file 10 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\_types.h"
+ 954              		.file 11 "c:\\users\\victor\\desktop\\projet_robot\\lib\\gcc\\arm-none-eabi\\6.3.1\\include\\stdde
+ 955              		.file 12 "c:\\users\\victor\\desktop\\projet_robot\\arm-none-eabi\\include\\sys\\reent.h"
+ 956              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 957              		.file 14 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 958              		.file 15 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 959              		.file 16 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 960              		.file 17 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ARM GAS  C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:18     .text.EnvoiMessage:00000000 $t
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:25     .text.EnvoiMessage:00000000 EnvoiMessage
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:162    .text.EnvoiMessage:000000e8 $d
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:18     .text.EnvoiMessage:00000000 $t
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:25     .text.EnvoiMessage:00000000 EnvoiMessage
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:162    .text.EnvoiMessage:000000e8 $d
                             *COM*:00000070 huart1
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:167    .text.ReceptionMessage:00000000 $t
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:174    .text.ReceptionMessage:00000000 ReceptionMessage
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:320    .text.ReceptionMessage:000000c8 $d
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:325    .text.Traduction:00000000 $t
-C:\Users\Victor\AppData\Local\Temp\ccOdAD8W.s:332    .text.Traduction:00000000 Traduction
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:167    .text.ReceptionMessage:00000000 $t
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:174    .text.ReceptionMessage:00000000 ReceptionMessage
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:320    .text.ReceptionMessage:000000c8 $d
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:325    .text.Traduction:00000000 $t
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:332    .text.Traduction:00000000 Traduction
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:704    .text.Traductiontrans:00000000 $t
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:711    .text.Traductiontrans:00000000 Traductiontrans
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:856    .text.Traductiontrans:00000084 $d
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:873    .text.EmissionMessage:00000000 $t
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:880    .text.EmissionMessage:00000000 EmissionMessage
                             *COM*:00000004 defaultTaskHandle
+C:\Users\Victor\AppData\Local\Temp\cchG3YnR.s:905    .rodata.Traductiontrans.str1.4:00000000 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
