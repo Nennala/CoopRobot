@@ -49,6 +49,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
 #include "task.h"
+#include <time.h>
+#include <stdlib.h>
 
 
 
@@ -141,14 +143,13 @@ else
        c = ReceptionMessage();
        return(x,y,c);
    }
-   void envoipos(uint8_t x,y , c){
+   void envoipos(uint8_t x, uint8_t y, uint8_t c){
             x = x*16 + y;
         EnvoiMessage(x);
         EnvoiMessage(c);
 
    }
    void Traduction(uint8_t msg){
-       int i;
        if (msg == 0x05){
           /*  envoipos(/* TI-BEAU MET TA FONTION CALCUL DE POS );*/
            }
@@ -185,6 +186,7 @@ else
        if (msg == 0x0C){
        }
        if (msg == 0x0D){
+           uint8_t a;
            srand(time(NULL));
            a = rand()%100;
            EnvoiMessage(a);
