@@ -1,0 +1,329 @@
+ARM GAS  /tmp/cchTcSOL.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"freertos.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
+  22              		.align	2
+  23              		.global	HAL_ADC_ConvCpltCallback
+  24              		.thumb
+  25              		.thumb_func
+  27              	HAL_ADC_ConvCpltCallback:
+  28              	.LFB129:
+  29              		.file 1 "Src/freertos.c"
+   1:Src/freertos.c **** /**
+   2:Src/freertos.c ****   ******************************************************************************
+   3:Src/freertos.c ****   * File Name          : freertos.c
+   4:Src/freertos.c ****   * Description        : Code for freertos applications
+   5:Src/freertos.c ****   ******************************************************************************
+   6:Src/freertos.c ****   * This notice applies to any and all portions of this file
+   7:Src/freertos.c ****   * that are not between comment pairs USER CODE BEGIN and
+   8:Src/freertos.c ****   * USER CODE END. Other portions of this file, whether 
+   9:Src/freertos.c ****   * inserted by the user or by software development tools
+  10:Src/freertos.c ****   * are owned by their respective copyright owners.
+  11:Src/freertos.c ****   *
+  12:Src/freertos.c ****   * Copyright (c) 2017 STMicroelectronics International N.V. 
+  13:Src/freertos.c ****   * All rights reserved.
+  14:Src/freertos.c ****   *
+  15:Src/freertos.c ****   * Redistribution and use in source and binary forms, with or without 
+  16:Src/freertos.c ****   * modification, are permitted, provided that the following conditions are met:
+  17:Src/freertos.c ****   *
+  18:Src/freertos.c ****   * 1. Redistribution of source code must retain the above copyright notice, 
+  19:Src/freertos.c ****   *    this list of conditions and the following disclaimer.
+  20:Src/freertos.c ****   * 2. Redistributions in binary form must reproduce the above copyright notice,
+  21:Src/freertos.c ****   *    this list of conditions and the following disclaimer in the documentation
+  22:Src/freertos.c ****   *    and/or other materials provided with the distribution.
+  23:Src/freertos.c ****   * 3. Neither the name of STMicroelectronics nor the names of other 
+  24:Src/freertos.c ****   *    contributors to this software may be used to endorse or promote products 
+  25:Src/freertos.c ****   *    derived from this software without specific written permission.
+  26:Src/freertos.c ****   * 4. This software, including modifications and/or derivative works of this 
+  27:Src/freertos.c ****   *    software, must execute solely and exclusively on microcontroller or
+  28:Src/freertos.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
+  29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
+ARM GAS  /tmp/cchTcSOL.s 			page 2
+
+
+  30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
+  31:Src/freertos.c ****   *    this license. 
+  32:Src/freertos.c ****   *
+  33:Src/freertos.c ****   * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+  34:Src/freertos.c ****   * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  35:Src/freertos.c ****   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  36:Src/freertos.c ****   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  37:Src/freertos.c ****   * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  38:Src/freertos.c ****   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  39:Src/freertos.c ****   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  40:Src/freertos.c ****   * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  41:Src/freertos.c ****   * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  42:Src/freertos.c ****   * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  43:Src/freertos.c ****   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  44:Src/freertos.c ****   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  45:Src/freertos.c ****   *
+  46:Src/freertos.c ****   ******************************************************************************
+  47:Src/freertos.c ****   */
+  48:Src/freertos.c **** 
+  49:Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  50:Src/freertos.c **** #include "FreeRTOS.h"
+  51:Src/freertos.c **** #include "task.h"
+  52:Src/freertos.c **** 
+  53:Src/freertos.c **** /* USER CODE BEGIN Includes */     
+  54:Src/freertos.c **** #include "stm32f3xx_hal.h"
+  55:Src/freertos.c **** #include "cmsis_os.h"
+  56:Src/freertos.c **** #include "main.h"
+  57:Src/freertos.c **** /* USER CODE END Includes */
+  58:Src/freertos.c **** 
+  59:Src/freertos.c **** /* Variables -----------------------------------------------------------------*/
+  60:Src/freertos.c **** 
+  61:Src/freertos.c **** /* USER CODE BEGIN Variables */
+  62:Src/freertos.c **** extern ADC_HandleTypeDef hadc1;
+  63:Src/freertos.c **** extern UART_HandleTypeDef huart2;
+  64:Src/freertos.c **** 
+  65:Src/freertos.c **** int flag = 0;
+  66:Src/freertos.c **** long int adcVolt = 0;
+  67:Src/freertos.c **** uint32_t adcValue = 0;
+  68:Src/freertos.c **** /* USER CODE END Variables */
+  69:Src/freertos.c **** 
+  70:Src/freertos.c **** /* Function prototypes -------------------------------------------------------*/
+  71:Src/freertos.c **** 
+  72:Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  73:Src/freertos.c **** 
+  74:Src/freertos.c **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+  30              		.loc 1 74 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  75:Src/freertos.c ****     UNUSED(hadc);
+  76:Src/freertos.c ****     adcValue = HAL_ADC_GetValue(hadc);
+ARM GAS  /tmp/cchTcSOL.s 			page 3
+
+
+  40              		.loc 1 76 0
+  41 0002 FFF7FEFF 		bl	HAL_ADC_GetValue
+  42              	.LVL1:
+  43 0006 034B     		ldr	r3, .L3
+  44 0008 1860     		str	r0, [r3]
+  77:Src/freertos.c ****     flag = 1;
+  45              		.loc 1 77 0
+  46 000a 0122     		movs	r2, #1
+  47 000c 024B     		ldr	r3, .L3+4
+  48 000e 1A60     		str	r2, [r3]
+  49 0010 08BD     		pop	{r3, pc}
+  50              	.L4:
+  51 0012 00BF     		.align	2
+  52              	.L3:
+  53 0014 00000000 		.word	.LANCHOR0
+  54 0018 00000000 		.word	.LANCHOR1
+  55              		.cfi_endproc
+  56              	.LFE129:
+  58              		.section	.text._write,"ax",%progbits
+  59              		.align	2
+  60              		.global	_write
+  61              		.thumb
+  62              		.thumb_func
+  64              	_write:
+  65              	.LFB130:
+  78:Src/freertos.c **** }
+  79:Src/freertos.c **** 
+  80:Src/freertos.c **** int _write(int file, char *ptr, int len) {
+  66              		.loc 1 80 0
+  67              		.cfi_startproc
+  68              		@ args = 0, pretend = 0, frame = 0
+  69              		@ frame_needed = 0, uses_anonymous_args = 0
+  70              	.LVL2:
+  71 0000 10B5     		push	{r4, lr}
+  72              	.LCFI1:
+  73              		.cfi_def_cfa_offset 8
+  74              		.cfi_offset 4, -8
+  75              		.cfi_offset 14, -4
+  76 0002 1446     		mov	r4, r2
+  81:Src/freertos.c ****     UNUSED(file);
+  82:Src/freertos.c **** 
+  83:Src/freertos.c ****     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
+  77              		.loc 1 83 0
+  78 0004 42F21073 		movw	r3, #10000
+  79 0008 92B2     		uxth	r2, r2
+  80              	.LVL3:
+  81 000a 0248     		ldr	r0, .L7
+  82              	.LVL4:
+  83 000c FFF7FEFF 		bl	HAL_UART_Transmit
+  84              	.LVL5:
+  84:Src/freertos.c ****     return len;
+  85:Src/freertos.c **** }
+  85              		.loc 1 85 0
+  86 0010 2046     		mov	r0, r4
+  87 0012 10BD     		pop	{r4, pc}
+  88              	.LVL6:
+  89              	.L8:
+ARM GAS  /tmp/cchTcSOL.s 			page 4
+
+
+  90              		.align	2
+  91              	.L7:
+  92 0014 00000000 		.word	huart2
+  93              		.cfi_endproc
+  94              	.LFE130:
+  96              		.section	.text.adcCmd,"ax",%progbits
+  97              		.align	2
+  98              		.global	adcCmd
+  99              		.thumb
+ 100              		.thumb_func
+ 102              	adcCmd:
+ 103              	.LFB131:
+  86:Src/freertos.c **** 
+  87:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  88:Src/freertos.c **** 
+  89:Src/freertos.c **** /* Hook prototypes */
+  90:Src/freertos.c **** 
+  91:Src/freertos.c **** /* USER CODE BEGIN Application */
+  92:Src/freertos.c **** void adcCmd(void const * argument)
+  93:Src/freertos.c **** {
+ 104              		.loc 1 93 0
+ 105              		.cfi_startproc
+ 106              		@ Volatile: function does not return.
+ 107              		@ args = 0, pretend = 0, frame = 0
+ 108              		@ frame_needed = 0, uses_anonymous_args = 0
+ 109              	.LVL7:
+ 110 0000 08B5     		push	{r3, lr}
+ 111              	.LCFI2:
+ 112              		.cfi_def_cfa_offset 8
+ 113              		.cfi_offset 3, -8
+ 114              		.cfi_offset 14, -4
+ 115              	.LVL8:
+ 116              	.L10:
+  94:Src/freertos.c ****   /* USER CODE BEGIN adcCmd */
+  95:Src/freertos.c ****   /* Infinite loop */
+  96:Src/freertos.c ****   for(;;)
+  97:Src/freertos.c ****   {
+  98:Src/freertos.c ****     HAL_ADC_Start_IT(&hadc1);
+ 117              		.loc 1 98 0
+ 118 0002 0A48     		ldr	r0, .L13
+ 119 0004 FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 120              	.LVL9:
+  99:Src/freertos.c ****     osDelay(1000);
+ 121              		.loc 1 99 0
+ 122 0008 4FF47A70 		mov	r0, #1000
+ 123 000c FFF7FEFF 		bl	osDelay
+ 124              	.LVL10:
+ 100:Src/freertos.c ****     if (flag == 1) {
+ 125              		.loc 1 100 0
+ 126 0010 074B     		ldr	r3, .L13+4
+ 127 0012 1B68     		ldr	r3, [r3]
+ 128 0014 012B     		cmp	r3, #1
+ 129 0016 F4D1     		bne	.L10
+ 101:Src/freertos.c ****         printf("Value : %lu\n\r", adcValue);
+ 130              		.loc 1 101 0
+ 131 0018 064B     		ldr	r3, .L13+8
+ 132 001a 1968     		ldr	r1, [r3]
+ARM GAS  /tmp/cchTcSOL.s 			page 5
+
+
+ 133 001c 0648     		ldr	r0, .L13+12
+ 134 001e FFF7FEFF 		bl	printf
+ 135              	.LVL11:
+ 102:Src/freertos.c ****         flag = 0;
+ 136              		.loc 1 102 0
+ 137 0022 0022     		movs	r2, #0
+ 138 0024 024B     		ldr	r3, .L13+4
+ 139 0026 1A60     		str	r2, [r3]
+ 140 0028 EBE7     		b	.L10
+ 141              	.L14:
+ 142 002a 00BF     		.align	2
+ 143              	.L13:
+ 144 002c 00000000 		.word	hadc1
+ 145 0030 00000000 		.word	.LANCHOR1
+ 146 0034 00000000 		.word	.LANCHOR0
+ 147 0038 00000000 		.word	.LC0
+ 148              		.cfi_endproc
+ 149              	.LFE131:
+ 151              		.global	adcValue
+ 152              		.global	adcVolt
+ 153              		.global	flag
+ 154              		.section	.bss.adcVolt,"aw",%nobits
+ 155              		.align	2
+ 158              	adcVolt:
+ 159 0000 00000000 		.space	4
+ 160              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 161              		.align	2
+ 162              	.LC0:
+ 163 0000 56616C75 		.ascii	"Value : %lu\012\015\000"
+ 163      65203A20 
+ 163      256C750A 
+ 163      0D00
+ 164              		.section	.bss.flag,"aw",%nobits
+ 165              		.align	2
+ 166              		.set	.LANCHOR1,. + 0
+ 169              	flag:
+ 170 0000 00000000 		.space	4
+ 171              		.section	.bss.adcValue,"aw",%nobits
+ 172              		.align	2
+ 173              		.set	.LANCHOR0,. + 0
+ 176              	adcValue:
+ 177 0000 00000000 		.space	4
+ 178              		.text
+ 179              	.Letext0:
+ 180              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 181              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 182              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 183              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 184              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 185              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 186              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ 187              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 188              		.file 10 "Drivers/CMSIS/Include/core_cm4.h"
+ 189              		.file 11 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 190              		.file 12 "/usr/include/newlib/stdio.h"
+ARM GAS  /tmp/cchTcSOL.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 freertos.c
+     /tmp/cchTcSOL.s:22     .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/cchTcSOL.s:27     .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/cchTcSOL.s:53     .text.HAL_ADC_ConvCpltCallback:0000000000000014 $d
+     /tmp/cchTcSOL.s:59     .text._write:0000000000000000 $t
+     /tmp/cchTcSOL.s:64     .text._write:0000000000000000 _write
+     /tmp/cchTcSOL.s:92     .text._write:0000000000000014 $d
+     /tmp/cchTcSOL.s:97     .text.adcCmd:0000000000000000 $t
+     /tmp/cchTcSOL.s:102    .text.adcCmd:0000000000000000 adcCmd
+     /tmp/cchTcSOL.s:144    .text.adcCmd:000000000000002c $d
+     /tmp/cchTcSOL.s:176    .bss.adcValue:0000000000000000 adcValue
+     /tmp/cchTcSOL.s:158    .bss.adcVolt:0000000000000000 adcVolt
+     /tmp/cchTcSOL.s:169    .bss.flag:0000000000000000 flag
+     /tmp/cchTcSOL.s:155    .bss.adcVolt:0000000000000000 $d
+     /tmp/cchTcSOL.s:161    .rodata.str1.4:0000000000000000 $d
+     /tmp/cchTcSOL.s:165    .bss.flag:0000000000000000 $d
+     /tmp/cchTcSOL.s:172    .bss.adcValue:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+HAL_ADC_GetValue
+HAL_UART_Transmit
+huart2
+HAL_ADC_Start_IT
+osDelay
+printf
+hadc1

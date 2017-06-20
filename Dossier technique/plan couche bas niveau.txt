@@ -1,0 +1,35 @@
+Présentation de la carte et de la HAL
+
+Configuration Stm32CubeMx pour le projet et explications
+
+commande des actionneurs :
+    explication et configuration du PWM pour moteur CC (et servo ?)
+    
+    Configuration pont en H
+    
+configuration des capteurs :
+    principe de l'ADC
+    
+    ADC avec DMA (si ça marche sinon interruptions)
+
+    Principe protocole I²C
+    
+    Fonctionnement boussole et configuration (si fait)
+    
+Code des fonctions primitives :
+    Timer pour les déplacements
+    
+    Correction des déplacements et utilisation des capteurs (boussole ? Sharp ?)
+    
+    
+    
+    
+    
+Début de rédaction :
+Lors de l'utilisation d'un microcontroleur comme le STM8S ou le STM32F3xx il est neccesaire de configurer les ports et les registres de timers avant de s'attaquer à la programmation à proprement parlée. Pour ce faire, sur les cartes stm32, STMicroelectronics a mis en place un outils appelé Stm32CubeMx permettant de configurer simplement les timers, l'ADC, l'I²C et les différents ports et pins en différents modes et en entrée ou sortie. Ce logiciel utilise pour faire ces actions quelque chose que l'on appelle la HAL. La HAL (Hardware Abstraction Layout) est comme son nom l'indique une couche d'abstraction matérielle. C'est à dire qu'elle comporte tout un ensemble de fonctions dites simple qui vont placer dans les bons registres les bonnes valeurs lors de l'appel de celles-ci.
+
+Ici la HAL est très appréciable pour tout ce qui est configuration un peu complexe avec une multitude de capteurs et actionneurs et permet également d'avoir très rapidement un programme fonctionnel. Stm32CubeMx permet également de configurer l'OS temps réel nommé FreeRTOS qui permet de paralléliser les tâches du processeurs et d'avoir une horloge plus simple à utiliser qu'un timer configuré (même si la HAL permet d'avoir des temporisations simplement).
+
+Pour ce projet nous avons besoin de configurer 2 PWM pour les moteurs à même fréquence, un capteur de distance analogique infrarouge et un magnétomètre confgurable par I²C.
+
+

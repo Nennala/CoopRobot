@@ -2,16 +2,16 @@
 #include <stdbool.h>
 
 #define SIZETAB 10  //taille des tableaux
-#define INITX 3 //position de départ de robot
-#define INITY 2
-
-char tab1[SIZETAB][SIZETAB]; // je défini ici trois tableaux afin qu'ils soient accessibles dans tout mon code
-char tab2[SIZETAB][SIZETAB];
-char tab0[SIZETAB][SIZETAB]; //carte vierge
+#define INITX 5 //position de départ de robot
+#define INITY 4
 
 int posx;
 int posy;
 int orientation;
+
+char tab1[SIZETAB][SIZETAB]; // je défini ici trois tableaux afin qu'ils soient accessibles dans tout mon code
+char tab2[SIZETAB][SIZETAB];
+char tab0[SIZETAB][SIZETAB]; //carte vierge
 
 bool deplacement_effectue;
 

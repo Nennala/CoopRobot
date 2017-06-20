@@ -1,0 +1,1225 @@
+ARM GAS  /tmp/cc25zTHr.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"freertos.c"
+  18              		.text
+  19              	.Ltext0:
+  20              		.cfi_sections	.debug_frame
+  21              		.section	.text.alumer_gauche,"ax",%progbits
+  22              		.align	2
+  23              		.global	alumer_gauche
+  24              		.thumb
+  25              		.thumb_func
+  27              	alumer_gauche:
+  28              	.LFB129:
+  29              		.file 1 "Src/freertos.c"
+   1:Src/freertos.c **** /**
+   2:Src/freertos.c ****   ******************************************************************************
+   3:Src/freertos.c ****   * File Name          : freertos.c
+   4:Src/freertos.c ****   * Description        : Code for freertos applications
+   5:Src/freertos.c ****   ******************************************************************************
+   6:Src/freertos.c ****   * This notice applies to any and all portions of this file
+   7:Src/freertos.c ****   * that are not between comment pairs USER CODE BEGIN and
+   8:Src/freertos.c ****   * USER CODE END. Other portions of this file, whether 
+   9:Src/freertos.c ****   * inserted by the user or by software development tools
+  10:Src/freertos.c ****   * are owned by their respective copyright owners.
+  11:Src/freertos.c ****   *
+  12:Src/freertos.c ****   * Copyright (c) 2017 STMicroelectronics International N.V. 
+  13:Src/freertos.c ****   * All rights reserved.
+  14:Src/freertos.c ****   *
+  15:Src/freertos.c ****   * Redistribution and use in source and binary forms, with or without 
+  16:Src/freertos.c ****   * modification, are permitted, provided that the following conditions are met:
+  17:Src/freertos.c ****   *
+  18:Src/freertos.c ****   * 1. Redistribution of source code must retain the above copyright notice, 
+  19:Src/freertos.c ****   *    this list of conditions and the following disclaimer.
+  20:Src/freertos.c ****   * 2. Redistributions in binary form must reproduce the above copyright notice,
+  21:Src/freertos.c ****   *    this list of conditions and the following disclaimer in the documentation
+  22:Src/freertos.c ****   *    and/or other materials provided with the distribution.
+  23:Src/freertos.c ****   * 3. Neither the name of STMicroelectronics nor the names of other 
+  24:Src/freertos.c ****   *    contributors to this software may be used to endorse or promote products 
+  25:Src/freertos.c ****   *    derived from this software without specific written permission.
+  26:Src/freertos.c ****   * 4. This software, including modifications and/or derivative works of this 
+  27:Src/freertos.c ****   *    software, must execute solely and exclusively on microcontroller or
+  28:Src/freertos.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
+  29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
+ARM GAS  /tmp/cc25zTHr.s 			page 2
+
+
+  30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
+  31:Src/freertos.c ****   *    this license. 
+  32:Src/freertos.c ****   *
+  33:Src/freertos.c ****   * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+  34:Src/freertos.c ****   * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  35:Src/freertos.c ****   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  36:Src/freertos.c ****   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  37:Src/freertos.c ****   * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  38:Src/freertos.c ****   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  39:Src/freertos.c ****   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  40:Src/freertos.c ****   * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  41:Src/freertos.c ****   * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  42:Src/freertos.c ****   * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  43:Src/freertos.c ****   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  44:Src/freertos.c ****   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  45:Src/freertos.c ****   *
+  46:Src/freertos.c ****   ******************************************************************************
+  47:Src/freertos.c ****   */
+  48:Src/freertos.c **** 
+  49:Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  50:Src/freertos.c **** #include "FreeRTOS.h"
+  51:Src/freertos.c **** #include "task.h"
+  52:Src/freertos.c **** 
+  53:Src/freertos.c **** /* USER CODE BEGIN Includes */     
+  54:Src/freertos.c **** #include "cmsis_os.h"
+  55:Src/freertos.c **** #include "main.h"
+  56:Src/freertos.c **** #include "stm32f3xx_hal.h"
+  57:Src/freertos.c **** 
+  58:Src/freertos.c **** #define PWM_MAX 320
+  59:Src/freertos.c **** #define DELAY 1000
+  60:Src/freertos.c **** /* USER CODE END Includes */
+  61:Src/freertos.c **** 
+  62:Src/freertos.c **** /* Variables -----------------------------------------------------------------*/
+  63:Src/freertos.c **** 
+  64:Src/freertos.c **** /* USER CODE BEGIN Variables */
+  65:Src/freertos.c **** extern TIM_HandleTypeDef htim3;
+  66:Src/freertos.c **** extern ADC_HandleTypeDef hadc1;
+  67:Src/freertos.c **** extern UART_HandleTypeDef huart2;
+  68:Src/freertos.c **** 
+  69:Src/freertos.c **** int flag_adc = 0;
+  70:Src/freertos.c **** uint32_t adcValue = 0;
+  71:Src/freertos.c **** 
+  72:Src/freertos.c **** int deplacement_fini = 0;
+  73:Src/freertos.c **** /* USER CODE END Variables */
+  74:Src/freertos.c **** 
+  75:Src/freertos.c **** /* Function prototypes -------------------------------------------------------*/
+  76:Src/freertos.c **** 
+  77:Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  78:Src/freertos.c **** 
+  79:Src/freertos.c **** void alumer_gauche(int sens) {
+  30              		.loc 1 79 0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              	.LVL0:
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+ARM GAS  /tmp/cc25zTHr.s 			page 3
+
+
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  80:Src/freertos.c ****     HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, !sens);
+  42              		.loc 1 80 0
+  43 0002 0546     		mov	r5, r0
+  44 0004 064C     		ldr	r4, .L3
+  45 0006 B0FA80F2 		clz	r2, r0
+  46 000a 5209     		lsrs	r2, r2, #5
+  47 000c 0221     		movs	r1, #2
+  48 000e 2046     		mov	r0, r4
+  49              	.LVL1:
+  50 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  51              	.LVL2:
+  81:Src/freertos.c ****     HAL_GPIO_WritePin(ain2_GPIO_Port, ain2_Pin, sens);
+  52              		.loc 1 81 0
+  53 0014 EAB2     		uxtb	r2, r5
+  54 0016 0121     		movs	r1, #1
+  55 0018 2046     		mov	r0, r4
+  56 001a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  57              	.LVL3:
+  58 001e 38BD     		pop	{r3, r4, r5, pc}
+  59              	.LVL4:
+  60              	.L4:
+  61              		.align	2
+  62              	.L3:
+  63 0020 00140048 		.word	1207964672
+  64              		.cfi_endproc
+  65              	.LFE129:
+  67              		.section	.text.alumer_droite,"ax",%progbits
+  68              		.align	2
+  69              		.global	alumer_droite
+  70              		.thumb
+  71              		.thumb_func
+  73              	alumer_droite:
+  74              	.LFB130:
+  82:Src/freertos.c **** }
+  83:Src/freertos.c **** 
+  84:Src/freertos.c **** void alumer_droite(int sens) {
+  75              		.loc 1 84 0
+  76              		.cfi_startproc
+  77              		@ args = 0, pretend = 0, frame = 0
+  78              		@ frame_needed = 0, uses_anonymous_args = 0
+  79              	.LVL5:
+  80 0000 10B5     		push	{r4, lr}
+  81              	.LCFI1:
+  82              		.cfi_def_cfa_offset 8
+  83              		.cfi_offset 4, -8
+  84              		.cfi_offset 14, -4
+  85:Src/freertos.c ****     HAL_GPIO_WritePin(bin1_GPIO_Port, bin1_Pin, !sens);
+  85              		.loc 1 85 0
+  86 0002 0446     		mov	r4, r0
+  87 0004 B0FA80F2 		clz	r2, r0
+  88 0008 5209     		lsrs	r2, r2, #5
+  89 000a 4FF40061 		mov	r1, #2048
+ARM GAS  /tmp/cc25zTHr.s 			page 4
+
+
+  90 000e 4FF09040 		mov	r0, #1207959552
+  91              	.LVL6:
+  92 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  93              	.LVL7:
+  86:Src/freertos.c ****     HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, sens);
+  94              		.loc 1 86 0
+  95 0016 E2B2     		uxtb	r2, r4
+  96 0018 2021     		movs	r1, #32
+  97 001a 0248     		ldr	r0, .L7
+  98 001c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  99              	.LVL8:
+ 100 0020 10BD     		pop	{r4, pc}
+ 101              	.LVL9:
+ 102              	.L8:
+ 103 0022 00BF     		.align	2
+ 104              	.L7:
+ 105 0024 00040048 		.word	1207960576
+ 106              		.cfi_endproc
+ 107              	.LFE130:
+ 109              		.section	.text.eteindre_gauche,"ax",%progbits
+ 110              		.align	2
+ 111              		.global	eteindre_gauche
+ 112              		.thumb
+ 113              		.thumb_func
+ 115              	eteindre_gauche:
+ 116              	.LFB131:
+  87:Src/freertos.c **** }
+  88:Src/freertos.c **** 
+  89:Src/freertos.c **** void eteindre_gauche() {
+ 117              		.loc 1 89 0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
+ 121 0000 10B5     		push	{r4, lr}
+ 122              	.LCFI2:
+ 123              		.cfi_def_cfa_offset 8
+ 124              		.cfi_offset 4, -8
+ 125              		.cfi_offset 14, -4
+  90:Src/freertos.c ****     HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, 0);
+ 126              		.loc 1 90 0
+ 127 0002 064C     		ldr	r4, .L11
+ 128 0004 0022     		movs	r2, #0
+ 129 0006 0221     		movs	r1, #2
+ 130 0008 2046     		mov	r0, r4
+ 131 000a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 132              	.LVL10:
+  91:Src/freertos.c ****     HAL_GPIO_WritePin(ain2_GPIO_Port, ain2_Pin, 0);
+ 133              		.loc 1 91 0
+ 134 000e 0022     		movs	r2, #0
+ 135 0010 0121     		movs	r1, #1
+ 136 0012 2046     		mov	r0, r4
+ 137 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 138              	.LVL11:
+ 139 0018 10BD     		pop	{r4, pc}
+ 140              	.L12:
+ 141 001a 00BF     		.align	2
+ 142              	.L11:
+ARM GAS  /tmp/cc25zTHr.s 			page 5
+
+
+ 143 001c 00140048 		.word	1207964672
+ 144              		.cfi_endproc
+ 145              	.LFE131:
+ 147              		.section	.text.eteindre_droite,"ax",%progbits
+ 148              		.align	2
+ 149              		.global	eteindre_droite
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	eteindre_droite:
+ 154              	.LFB132:
+  92:Src/freertos.c **** }
+  93:Src/freertos.c **** 
+  94:Src/freertos.c **** void eteindre_droite() {
+ 155              		.loc 1 94 0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159 0000 08B5     		push	{r3, lr}
+ 160              	.LCFI3:
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 3, -8
+ 163              		.cfi_offset 14, -4
+  95:Src/freertos.c ****     HAL_GPIO_WritePin(bin1_GPIO_Port, bin1_Pin, 0);
+ 164              		.loc 1 95 0
+ 165 0002 0022     		movs	r2, #0
+ 166 0004 4FF40061 		mov	r1, #2048
+ 167 0008 4FF09040 		mov	r0, #1207959552
+ 168 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 169              	.LVL12:
+  96:Src/freertos.c ****     HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, 0);
+ 170              		.loc 1 96 0
+ 171 0010 0022     		movs	r2, #0
+ 172 0012 2021     		movs	r1, #32
+ 173 0014 0148     		ldr	r0, .L15
+ 174 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 175              	.LVL13:
+ 176 001a 08BD     		pop	{r3, pc}
+ 177              	.L16:
+ 178              		.align	2
+ 179              	.L15:
+ 180 001c 00040048 		.word	1207960576
+ 181              		.cfi_endproc
+ 182              	.LFE132:
+ 184              		.section	.text.pwm_max,"ax",%progbits
+ 185              		.align	2
+ 186              		.global	pwm_max
+ 187              		.thumb
+ 188              		.thumb_func
+ 190              	pwm_max:
+ 191              	.LFB133:
+  97:Src/freertos.c **** }
+  98:Src/freertos.c **** 
+  99:Src/freertos.c **** void pwm_max() {
+ 192              		.loc 1 99 0
+ 193              		.cfi_startproc
+ 194              		@ args = 0, pretend = 0, frame = 0
+ 195              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/cc25zTHr.s 			page 6
+
+
+ 196              		@ link register save eliminated.
+ 100:Src/freertos.c ****     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, PWM_MAX);
+ 197              		.loc 1 100 0
+ 198 0000 034B     		ldr	r3, .L18
+ 199 0002 1B68     		ldr	r3, [r3]
+ 200 0004 4FF4A072 		mov	r2, #320
+ 201 0008 5A63     		str	r2, [r3, #52]
+ 101:Src/freertos.c ****     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, PWM_MAX);
+ 202              		.loc 1 101 0
+ 203 000a 1A64     		str	r2, [r3, #64]
+ 204 000c 7047     		bx	lr
+ 205              	.L19:
+ 206 000e 00BF     		.align	2
+ 207              	.L18:
+ 208 0010 00000000 		.word	htim3
+ 209              		.cfi_endproc
+ 210              	.LFE133:
+ 212              		.section	.text.accelerer,"ax",%progbits
+ 213              		.align	2
+ 214              		.global	accelerer
+ 215              		.thumb
+ 216              		.thumb_func
+ 218              	accelerer:
+ 219              	.LFB134:
+ 102:Src/freertos.c **** }
+ 103:Src/freertos.c **** 
+ 104:Src/freertos.c **** void accelerer() {
+ 220              		.loc 1 104 0
+ 221              		.cfi_startproc
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224 0000 10B5     		push	{r4, lr}
+ 225              	.LCFI4:
+ 226              		.cfi_def_cfa_offset 8
+ 227              		.cfi_offset 4, -8
+ 228              		.cfi_offset 14, -4
+ 229              	.LVL14:
+ 105:Src/freertos.c ****     int pwm = 0;
+ 230              		.loc 1 105 0
+ 231 0002 0024     		movs	r4, #0
+ 106:Src/freertos.c ****     while (pwm != PWM_MAX) {
+ 232              		.loc 1 106 0
+ 233 0004 07E0     		b	.L21
+ 234              	.LVL15:
+ 235              	.L22:
+ 107:Src/freertos.c ****         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
+ 236              		.loc 1 107 0
+ 237 0006 064B     		ldr	r3, .L24
+ 238 0008 1B68     		ldr	r3, [r3]
+ 239 000a 5C63     		str	r4, [r3, #52]
+ 108:Src/freertos.c ****         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
+ 240              		.loc 1 108 0
+ 241 000c 1C64     		str	r4, [r3, #64]
+ 109:Src/freertos.c ****         pwm += 20;
+ 242              		.loc 1 109 0
+ 243 000e 1434     		adds	r4, r4, #20
+ 244              	.LVL16:
+ARM GAS  /tmp/cc25zTHr.s 			page 7
+
+
+ 110:Src/freertos.c ****         osDelay(50);
+ 245              		.loc 1 110 0
+ 246 0010 3220     		movs	r0, #50
+ 247 0012 FFF7FEFF 		bl	osDelay
+ 248              	.LVL17:
+ 249              	.L21:
+ 106:Src/freertos.c ****         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
+ 250              		.loc 1 106 0
+ 251 0016 B4F5A07F 		cmp	r4, #320
+ 252 001a F4D1     		bne	.L22
+ 111:Src/freertos.c ****     }
+ 112:Src/freertos.c **** }
+ 253              		.loc 1 112 0
+ 254 001c 10BD     		pop	{r4, pc}
+ 255              	.LVL18:
+ 256              	.L25:
+ 257 001e 00BF     		.align	2
+ 258              	.L24:
+ 259 0020 00000000 		.word	htim3
+ 260              		.cfi_endproc
+ 261              	.LFE134:
+ 263              		.section	.text.deccelerer,"ax",%progbits
+ 264              		.align	2
+ 265              		.global	deccelerer
+ 266              		.thumb
+ 267              		.thumb_func
+ 269              	deccelerer:
+ 270              	.LFB135:
+ 113:Src/freertos.c **** 
+ 114:Src/freertos.c **** void deccelerer() {
+ 271              		.loc 1 114 0
+ 272              		.cfi_startproc
+ 273              		@ args = 0, pretend = 0, frame = 0
+ 274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 275 0000 10B5     		push	{r4, lr}
+ 276              	.LCFI5:
+ 277              		.cfi_def_cfa_offset 8
+ 278              		.cfi_offset 4, -8
+ 279              		.cfi_offset 14, -4
+ 280              	.LVL19:
+ 115:Src/freertos.c ****     int pwm = PWM_MAX;
+ 281              		.loc 1 115 0
+ 282 0002 4FF4A074 		mov	r4, #320
+ 116:Src/freertos.c ****     while (pwm != 0) {
+ 283              		.loc 1 116 0
+ 284 0006 07E0     		b	.L27
+ 285              	.LVL20:
+ 286              	.L28:
+ 117:Src/freertos.c ****         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
+ 287              		.loc 1 117 0
+ 288 0008 054B     		ldr	r3, .L30
+ 289 000a 1B68     		ldr	r3, [r3]
+ 290 000c 5C63     		str	r4, [r3, #52]
+ 118:Src/freertos.c ****         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, pwm);
+ 291              		.loc 1 118 0
+ 292 000e 1C64     		str	r4, [r3, #64]
+ 119:Src/freertos.c ****         pwm -= 20;
+ARM GAS  /tmp/cc25zTHr.s 			page 8
+
+
+ 293              		.loc 1 119 0
+ 294 0010 143C     		subs	r4, r4, #20
+ 295              	.LVL21:
+ 120:Src/freertos.c ****         osDelay(50);
+ 296              		.loc 1 120 0
+ 297 0012 3220     		movs	r0, #50
+ 298 0014 FFF7FEFF 		bl	osDelay
+ 299              	.LVL22:
+ 300              	.L27:
+ 116:Src/freertos.c ****         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
+ 301              		.loc 1 116 0
+ 302 0018 002C     		cmp	r4, #0
+ 303 001a F5D1     		bne	.L28
+ 121:Src/freertos.c ****     }
+ 122:Src/freertos.c **** }
+ 304              		.loc 1 122 0
+ 305 001c 10BD     		pop	{r4, pc}
+ 306              	.LVL23:
+ 307              	.L31:
+ 308 001e 00BF     		.align	2
+ 309              	.L30:
+ 310 0020 00000000 		.word	htim3
+ 311              		.cfi_endproc
+ 312              	.LFE135:
+ 314              		.section	.text.reculer_robot,"ax",%progbits
+ 315              		.align	2
+ 316              		.global	reculer_robot
+ 317              		.thumb
+ 318              		.thumb_func
+ 320              	reculer_robot:
+ 321              	.LFB136:
+ 123:Src/freertos.c **** 
+ 124:Src/freertos.c **** void reculer_robot() {
+ 322              		.loc 1 124 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326 0000 08B5     		push	{r3, lr}
+ 327              	.LCFI6:
+ 328              		.cfi_def_cfa_offset 8
+ 329              		.cfi_offset 3, -8
+ 330              		.cfi_offset 14, -4
+ 125:Src/freertos.c ****     alumer_droite(1);
+ 331              		.loc 1 125 0
+ 332 0002 0120     		movs	r0, #1
+ 333 0004 FFF7FEFF 		bl	alumer_droite
+ 334              	.LVL24:
+ 126:Src/freertos.c ****     alumer_gauche(1);
+ 335              		.loc 1 126 0
+ 336 0008 0120     		movs	r0, #1
+ 337 000a FFF7FEFF 		bl	alumer_gauche
+ 338              	.LVL25:
+ 127:Src/freertos.c ****     accelerer();
+ 339              		.loc 1 127 0
+ 340 000e FFF7FEFF 		bl	accelerer
+ 341              	.LVL26:
+ 128:Src/freertos.c ****     osDelay(1000);
+ARM GAS  /tmp/cc25zTHr.s 			page 9
+
+
+ 342              		.loc 1 128 0
+ 343 0012 4FF47A70 		mov	r0, #1000
+ 344 0016 FFF7FEFF 		bl	osDelay
+ 345              	.LVL27:
+ 129:Src/freertos.c ****     deccelerer();
+ 346              		.loc 1 129 0
+ 347 001a FFF7FEFF 		bl	deccelerer
+ 348              	.LVL28:
+ 130:Src/freertos.c ****     eteindre_droite();
+ 349              		.loc 1 130 0
+ 350 001e FFF7FEFF 		bl	eteindre_droite
+ 351              	.LVL29:
+ 131:Src/freertos.c ****     eteindre_gauche();
+ 352              		.loc 1 131 0
+ 353 0022 FFF7FEFF 		bl	eteindre_gauche
+ 354              	.LVL30:
+ 132:Src/freertos.c ****     deplacement_fini = 1;
+ 355              		.loc 1 132 0
+ 356 0026 0122     		movs	r2, #1
+ 357 0028 014B     		ldr	r3, .L34
+ 358 002a 1A60     		str	r2, [r3]
+ 359 002c 08BD     		pop	{r3, pc}
+ 360              	.L35:
+ 361 002e 00BF     		.align	2
+ 362              	.L34:
+ 363 0030 00000000 		.word	.LANCHOR0
+ 364              		.cfi_endproc
+ 365              	.LFE136:
+ 367              		.section	.text.avancer_robot,"ax",%progbits
+ 368              		.align	2
+ 369              		.global	avancer_robot
+ 370              		.thumb
+ 371              		.thumb_func
+ 373              	avancer_robot:
+ 374              	.LFB137:
+ 133:Src/freertos.c **** }
+ 134:Src/freertos.c **** 
+ 135:Src/freertos.c **** void avancer_robot() {
+ 375              		.loc 1 135 0
+ 376              		.cfi_startproc
+ 377              		@ args = 0, pretend = 0, frame = 0
+ 378              		@ frame_needed = 0, uses_anonymous_args = 0
+ 379 0000 08B5     		push	{r3, lr}
+ 380              	.LCFI7:
+ 381              		.cfi_def_cfa_offset 8
+ 382              		.cfi_offset 3, -8
+ 383              		.cfi_offset 14, -4
+ 136:Src/freertos.c ****     alumer_droite(0);
+ 384              		.loc 1 136 0
+ 385 0002 0020     		movs	r0, #0
+ 386 0004 FFF7FEFF 		bl	alumer_droite
+ 387              	.LVL31:
+ 137:Src/freertos.c ****     alumer_gauche(0);
+ 388              		.loc 1 137 0
+ 389 0008 0020     		movs	r0, #0
+ 390 000a FFF7FEFF 		bl	alumer_gauche
+ 391              	.LVL32:
+ARM GAS  /tmp/cc25zTHr.s 			page 10
+
+
+ 138:Src/freertos.c ****     accelerer();
+ 392              		.loc 1 138 0
+ 393 000e FFF7FEFF 		bl	accelerer
+ 394              	.LVL33:
+ 139:Src/freertos.c ****     osDelay(1000);
+ 395              		.loc 1 139 0
+ 396 0012 4FF47A70 		mov	r0, #1000
+ 397 0016 FFF7FEFF 		bl	osDelay
+ 398              	.LVL34:
+ 140:Src/freertos.c ****     deccelerer();
+ 399              		.loc 1 140 0
+ 400 001a FFF7FEFF 		bl	deccelerer
+ 401              	.LVL35:
+ 141:Src/freertos.c ****     eteindre_droite();
+ 402              		.loc 1 141 0
+ 403 001e FFF7FEFF 		bl	eteindre_droite
+ 404              	.LVL36:
+ 142:Src/freertos.c ****     eteindre_gauche();
+ 405              		.loc 1 142 0
+ 406 0022 FFF7FEFF 		bl	eteindre_gauche
+ 407              	.LVL37:
+ 143:Src/freertos.c ****     deplacement_fini = 1;
+ 408              		.loc 1 143 0
+ 409 0026 0122     		movs	r2, #1
+ 410 0028 014B     		ldr	r3, .L38
+ 411 002a 1A60     		str	r2, [r3]
+ 412 002c 08BD     		pop	{r3, pc}
+ 413              	.L39:
+ 414 002e 00BF     		.align	2
+ 415              	.L38:
+ 416 0030 00000000 		.word	.LANCHOR0
+ 417              		.cfi_endproc
+ 418              	.LFE137:
+ 420              		.section	.text.pivoter_gauche,"ax",%progbits
+ 421              		.align	2
+ 422              		.global	pivoter_gauche
+ 423              		.thumb
+ 424              		.thumb_func
+ 426              	pivoter_gauche:
+ 427              	.LFB138:
+ 144:Src/freertos.c **** 
+ 145:Src/freertos.c **** }
+ 146:Src/freertos.c **** 
+ 147:Src/freertos.c **** void pivoter_gauche() {
+ 428              		.loc 1 147 0
+ 429              		.cfi_startproc
+ 430              		@ args = 0, pretend = 0, frame = 0
+ 431              		@ frame_needed = 0, uses_anonymous_args = 0
+ 432 0000 08B5     		push	{r3, lr}
+ 433              	.LCFI8:
+ 434              		.cfi_def_cfa_offset 8
+ 435              		.cfi_offset 3, -8
+ 436              		.cfi_offset 14, -4
+ 148:Src/freertos.c ****     pwm_max();
+ 437              		.loc 1 148 0
+ 438 0002 FFF7FEFF 		bl	pwm_max
+ 439              	.LVL38:
+ARM GAS  /tmp/cc25zTHr.s 			page 11
+
+
+ 149:Src/freertos.c ****     alumer_gauche(1);
+ 440              		.loc 1 149 0
+ 441 0006 0120     		movs	r0, #1
+ 442 0008 FFF7FEFF 		bl	alumer_gauche
+ 443              	.LVL39:
+ 150:Src/freertos.c ****     alumer_droite(0);
+ 444              		.loc 1 150 0
+ 445 000c 0020     		movs	r0, #0
+ 446 000e FFF7FEFF 		bl	alumer_droite
+ 447              	.LVL40:
+ 151:Src/freertos.c ****     osDelay(230);
+ 448              		.loc 1 151 0
+ 449 0012 E620     		movs	r0, #230
+ 450 0014 FFF7FEFF 		bl	osDelay
+ 451              	.LVL41:
+ 152:Src/freertos.c ****     deccelerer();
+ 452              		.loc 1 152 0
+ 453 0018 FFF7FEFF 		bl	deccelerer
+ 454              	.LVL42:
+ 153:Src/freertos.c ****     eteindre_droite();
+ 455              		.loc 1 153 0
+ 456 001c FFF7FEFF 		bl	eteindre_droite
+ 457              	.LVL43:
+ 154:Src/freertos.c ****     eteindre_gauche();
+ 458              		.loc 1 154 0
+ 459 0020 FFF7FEFF 		bl	eteindre_gauche
+ 460              	.LVL44:
+ 155:Src/freertos.c ****     deplacement_fini = 1;
+ 461              		.loc 1 155 0
+ 462 0024 0122     		movs	r2, #1
+ 463 0026 014B     		ldr	r3, .L42
+ 464 0028 1A60     		str	r2, [r3]
+ 465 002a 08BD     		pop	{r3, pc}
+ 466              	.L43:
+ 467              		.align	2
+ 468              	.L42:
+ 469 002c 00000000 		.word	.LANCHOR0
+ 470              		.cfi_endproc
+ 471              	.LFE138:
+ 473              		.section	.text.pivoter_droite,"ax",%progbits
+ 474              		.align	2
+ 475              		.global	pivoter_droite
+ 476              		.thumb
+ 477              		.thumb_func
+ 479              	pivoter_droite:
+ 480              	.LFB139:
+ 156:Src/freertos.c **** }
+ 157:Src/freertos.c **** 
+ 158:Src/freertos.c **** void pivoter_droite() {
+ 481              		.loc 1 158 0
+ 482              		.cfi_startproc
+ 483              		@ args = 0, pretend = 0, frame = 0
+ 484              		@ frame_needed = 0, uses_anonymous_args = 0
+ 485 0000 08B5     		push	{r3, lr}
+ 486              	.LCFI9:
+ 487              		.cfi_def_cfa_offset 8
+ 488              		.cfi_offset 3, -8
+ARM GAS  /tmp/cc25zTHr.s 			page 12
+
+
+ 489              		.cfi_offset 14, -4
+ 159:Src/freertos.c ****     pwm_max();
+ 490              		.loc 1 159 0
+ 491 0002 FFF7FEFF 		bl	pwm_max
+ 492              	.LVL45:
+ 160:Src/freertos.c ****     alumer_droite(1);
+ 493              		.loc 1 160 0
+ 494 0006 0120     		movs	r0, #1
+ 495 0008 FFF7FEFF 		bl	alumer_droite
+ 496              	.LVL46:
+ 161:Src/freertos.c ****     alumer_gauche(0);
+ 497              		.loc 1 161 0
+ 498 000c 0020     		movs	r0, #0
+ 499 000e FFF7FEFF 		bl	alumer_gauche
+ 500              	.LVL47:
+ 162:Src/freertos.c ****     osDelay(220);
+ 501              		.loc 1 162 0
+ 502 0012 DC20     		movs	r0, #220
+ 503 0014 FFF7FEFF 		bl	osDelay
+ 504              	.LVL48:
+ 163:Src/freertos.c ****     deccelerer();
+ 505              		.loc 1 163 0
+ 506 0018 FFF7FEFF 		bl	deccelerer
+ 507              	.LVL49:
+ 164:Src/freertos.c ****     eteindre_droite();
+ 508              		.loc 1 164 0
+ 509 001c FFF7FEFF 		bl	eteindre_droite
+ 510              	.LVL50:
+ 165:Src/freertos.c ****     eteindre_gauche();
+ 511              		.loc 1 165 0
+ 512 0020 FFF7FEFF 		bl	eteindre_gauche
+ 513              	.LVL51:
+ 166:Src/freertos.c ****     deplacement_fini = 1;
+ 514              		.loc 1 166 0
+ 515 0024 0122     		movs	r2, #1
+ 516 0026 014B     		ldr	r3, .L46
+ 517 0028 1A60     		str	r2, [r3]
+ 518 002a 08BD     		pop	{r3, pc}
+ 519              	.L47:
+ 520              		.align	2
+ 521              	.L46:
+ 522 002c 00000000 		.word	.LANCHOR0
+ 523              		.cfi_endproc
+ 524              	.LFE139:
+ 526              		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
+ 527              		.align	2
+ 528              		.global	HAL_ADC_ConvCpltCallback
+ 529              		.thumb
+ 530              		.thumb_func
+ 532              	HAL_ADC_ConvCpltCallback:
+ 533              	.LFB140:
+ 167:Src/freertos.c **** }
+ 168:Src/freertos.c **** 
+ 169:Src/freertos.c **** void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
+ 534              		.loc 1 169 0
+ 535              		.cfi_startproc
+ 536              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc25zTHr.s 			page 13
+
+
+ 537              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              	.LVL52:
+ 539 0000 08B5     		push	{r3, lr}
+ 540              	.LCFI10:
+ 541              		.cfi_def_cfa_offset 8
+ 542              		.cfi_offset 3, -8
+ 543              		.cfi_offset 14, -4
+ 170:Src/freertos.c ****     UNUSED(hadc);
+ 171:Src/freertos.c ****     adcValue = HAL_ADC_GetValue(hadc);
+ 544              		.loc 1 171 0
+ 545 0002 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 546              	.LVL53:
+ 547 0006 034B     		ldr	r3, .L50
+ 548 0008 1860     		str	r0, [r3]
+ 172:Src/freertos.c ****     flag_adc = 1;
+ 549              		.loc 1 172 0
+ 550 000a 0122     		movs	r2, #1
+ 551 000c 024B     		ldr	r3, .L50+4
+ 552 000e 1A60     		str	r2, [r3]
+ 553 0010 08BD     		pop	{r3, pc}
+ 554              	.L51:
+ 555 0012 00BF     		.align	2
+ 556              	.L50:
+ 557 0014 00000000 		.word	.LANCHOR1
+ 558 0018 00000000 		.word	.LANCHOR2
+ 559              		.cfi_endproc
+ 560              	.LFE140:
+ 562              		.section	.text._write,"ax",%progbits
+ 563              		.align	2
+ 564              		.global	_write
+ 565              		.thumb
+ 566              		.thumb_func
+ 568              	_write:
+ 569              	.LFB141:
+ 173:Src/freertos.c **** }
+ 174:Src/freertos.c **** 
+ 175:Src/freertos.c **** int _write(int file, char *ptr, int len) {
+ 570              		.loc 1 175 0
+ 571              		.cfi_startproc
+ 572              		@ args = 0, pretend = 0, frame = 0
+ 573              		@ frame_needed = 0, uses_anonymous_args = 0
+ 574              	.LVL54:
+ 575 0000 10B5     		push	{r4, lr}
+ 576              	.LCFI11:
+ 577              		.cfi_def_cfa_offset 8
+ 578              		.cfi_offset 4, -8
+ 579              		.cfi_offset 14, -4
+ 580 0002 1446     		mov	r4, r2
+ 176:Src/freertos.c ****     UNUSED(file);
+ 177:Src/freertos.c **** 
+ 178:Src/freertos.c ****     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
+ 581              		.loc 1 178 0
+ 582 0004 42F21073 		movw	r3, #10000
+ 583 0008 92B2     		uxth	r2, r2
+ 584              	.LVL55:
+ 585 000a 0248     		ldr	r0, .L54
+ 586              	.LVL56:
+ARM GAS  /tmp/cc25zTHr.s 			page 14
+
+
+ 587 000c FFF7FEFF 		bl	HAL_UART_Transmit
+ 588              	.LVL57:
+ 179:Src/freertos.c ****     return len;
+ 180:Src/freertos.c **** }
+ 589              		.loc 1 180 0
+ 590 0010 2046     		mov	r0, r4
+ 591 0012 10BD     		pop	{r4, pc}
+ 592              	.LVL58:
+ 593              	.L55:
+ 594              		.align	2
+ 595              	.L54:
+ 596 0014 00000000 		.word	huart2
+ 597              		.cfi_endproc
+ 598              	.LFE141:
+ 600              		.section	.text.deplacement,"ax",%progbits
+ 601              		.align	2
+ 602              		.global	deplacement
+ 603              		.thumb
+ 604              		.thumb_func
+ 606              	deplacement:
+ 607              	.LFB142:
+ 181:Src/freertos.c **** 
+ 182:Src/freertos.c **** void deplacement(int distance)
+ 183:Src/freertos.c **** {
+ 608              		.loc 1 183 0
+ 609              		.cfi_startproc
+ 610              		@ args = 0, pretend = 0, frame = 0
+ 611              		@ frame_needed = 0, uses_anonymous_args = 0
+ 612              	.LVL59:
+ 613 0000 38B5     		push	{r3, r4, r5, lr}
+ 614              	.LCFI12:
+ 615              		.cfi_def_cfa_offset 16
+ 616              		.cfi_offset 3, -16
+ 617              		.cfi_offset 4, -12
+ 618              		.cfi_offset 5, -8
+ 619              		.cfi_offset 14, -4
+ 620              	.LVL60:
+ 184:Src/freertos.c ****   int i =0;
+ 185:Src/freertos.c ****   if (distance > 0)
+ 621              		.loc 1 185 0
+ 622 0002 051E     		subs	r5, r0, #0
+ 623 0004 05DC     		bgt	.L62
+ 624 0006 0024     		movs	r4, #0
+ 625 0008 0AE0     		b	.L58
+ 626              	.LVL61:
+ 627              	.L59:
+ 186:Src/freertos.c ****   {
+ 187:Src/freertos.c ****     for (i = 0; i < distance; i++)
+ 188:Src/freertos.c ****     {
+ 189:Src/freertos.c ****       avancer_robot();
+ 628              		.loc 1 189 0 discriminator 3
+ 629 000a FFF7FEFF 		bl	avancer_robot
+ 630              	.LVL62:
+ 187:Src/freertos.c ****     {
+ 631              		.loc 1 187 0 discriminator 3
+ 632 000e 0134     		adds	r4, r4, #1
+ 633              	.LVL63:
+ARM GAS  /tmp/cc25zTHr.s 			page 15
+
+
+ 634 0010 00E0     		b	.L57
+ 635              	.LVL64:
+ 636              	.L62:
+ 637 0012 0024     		movs	r4, #0
+ 638              	.LVL65:
+ 639              	.L57:
+ 187:Src/freertos.c ****     {
+ 640              		.loc 1 187 0 is_stmt 0 discriminator 1
+ 641 0014 AC42     		cmp	r4, r5
+ 642 0016 F8DB     		blt	.L59
+ 643 0018 38BD     		pop	{r3, r4, r5, pc}
+ 644              	.LVL66:
+ 645              	.L61:
+ 190:Src/freertos.c ****     }
+ 191:Src/freertos.c ****   }
+ 192:Src/freertos.c ****   else
+ 193:Src/freertos.c ****   {
+ 194:Src/freertos.c ****     for (i = 0; i < -distance; i++)
+ 195:Src/freertos.c ****     {
+ 196:Src/freertos.c ****       reculer_robot();
+ 646              		.loc 1 196 0 is_stmt 1 discriminator 3
+ 647 001a FFF7FEFF 		bl	reculer_robot
+ 648              	.LVL67:
+ 194:Src/freertos.c ****     {
+ 649              		.loc 1 194 0 discriminator 3
+ 650 001e 0134     		adds	r4, r4, #1
+ 651              	.LVL68:
+ 652              	.L58:
+ 194:Src/freertos.c ****     {
+ 653              		.loc 1 194 0 is_stmt 0 discriminator 1
+ 654 0020 6B42     		negs	r3, r5
+ 655 0022 9C42     		cmp	r4, r3
+ 656 0024 F9DB     		blt	.L61
+ 657 0026 38BD     		pop	{r3, r4, r5, pc}
+ 658              		.cfi_endproc
+ 659              	.LFE142:
+ 661              		.section	.text.motor,"ax",%progbits
+ 662              		.align	2
+ 663              		.global	motor
+ 664              		.thumb
+ 665              		.thumb_func
+ 667              	motor:
+ 668              	.LFB143:
+ 197:Src/freertos.c ****     }
+ 198:Src/freertos.c ****   }
+ 199:Src/freertos.c **** }
+ 200:Src/freertos.c **** 
+ 201:Src/freertos.c **** 
+ 202:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+ 203:Src/freertos.c **** 
+ 204:Src/freertos.c **** /* Hook prototypes */
+ 205:Src/freertos.c **** 
+ 206:Src/freertos.c **** /* USER CODE BEGIN Application */
+ 207:Src/freertos.c **** void motor(void const * argument)
+ 208:Src/freertos.c **** {
+ 669              		.loc 1 208 0 is_stmt 1
+ 670              		.cfi_startproc
+ARM GAS  /tmp/cc25zTHr.s 			page 16
+
+
+ 671              		@ Volatile: function does not return.
+ 672              		@ args = 0, pretend = 0, frame = 0
+ 673              		@ frame_needed = 0, uses_anonymous_args = 0
+ 674              	.LVL69:
+ 675 0000 08B5     		push	{r3, lr}
+ 676              	.LCFI13:
+ 677              		.cfi_def_cfa_offset 8
+ 678              		.cfi_offset 3, -8
+ 679              		.cfi_offset 14, -4
+ 209:Src/freertos.c ****   /* USER CODE BEGIN motor */
+ 210:Src/freertos.c ****   UNUSED(argument);
+ 211:Src/freertos.c **** 
+ 212:Src/freertos.c ****   HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
+ 680              		.loc 1 212 0
+ 681 0002 0122     		movs	r2, #1
+ 682 0004 4FF48071 		mov	r1, #256
+ 683 0008 4FF09040 		mov	r0, #1207959552
+ 684              	.LVL70:
+ 685 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 686              	.LVL71:
+ 213:Src/freertos.c ****   HAL_TIM_Base_Start(&htim3);
+ 687              		.loc 1 213 0
+ 688 0010 204C     		ldr	r4, .L67
+ 689 0012 2046     		mov	r0, r4
+ 690 0014 FFF7FEFF 		bl	HAL_TIM_Base_Start
+ 691              	.LVL72:
+ 214:Src/freertos.c ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+ 692              		.loc 1 214 0
+ 693 0018 0021     		movs	r1, #0
+ 694 001a 2046     		mov	r0, r4
+ 695 001c FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 696              	.LVL73:
+ 215:Src/freertos.c ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+ 697              		.loc 1 215 0
+ 698 0020 0C21     		movs	r1, #12
+ 699 0022 2046     		mov	r0, r4
+ 700 0024 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 701              	.LVL74:
+ 702              	.L65:
+ 216:Src/freertos.c **** 
+ 217:Src/freertos.c ****   /* Infinite loop */
+ 218:Src/freertos.c ****   for(;;)
+ 219:Src/freertos.c ****   {
+ 220:Src/freertos.c ****     deplacement(1);
+ 703              		.loc 1 220 0 discriminator 1
+ 704 0028 0120     		movs	r0, #1
+ 705 002a FFF7FEFF 		bl	deplacement
+ 706              	.LVL75:
+ 221:Src/freertos.c ****     osDelay(DELAY);
+ 707              		.loc 1 221 0 discriminator 1
+ 708 002e 4FF47A70 		mov	r0, #1000
+ 709 0032 FFF7FEFF 		bl	osDelay
+ 710              	.LVL76:
+ 222:Src/freertos.c ****     pivoter_droite();
+ 711              		.loc 1 222 0 discriminator 1
+ 712 0036 FFF7FEFF 		bl	pivoter_droite
+ 713              	.LVL77:
+ARM GAS  /tmp/cc25zTHr.s 			page 17
+
+
+ 223:Src/freertos.c ****     osDelay(DELAY);
+ 714              		.loc 1 223 0 discriminator 1
+ 715 003a 4FF47A70 		mov	r0, #1000
+ 716 003e FFF7FEFF 		bl	osDelay
+ 717              	.LVL78:
+ 224:Src/freertos.c ****     pivoter_droite();
+ 718              		.loc 1 224 0 discriminator 1
+ 719 0042 FFF7FEFF 		bl	pivoter_droite
+ 720              	.LVL79:
+ 225:Src/freertos.c ****     osDelay(DELAY);
+ 721              		.loc 1 225 0 discriminator 1
+ 722 0046 4FF47A70 		mov	r0, #1000
+ 723 004a FFF7FEFF 		bl	osDelay
+ 724              	.LVL80:
+ 226:Src/freertos.c ****     deplacement(1);
+ 725              		.loc 1 226 0 discriminator 1
+ 726 004e 0120     		movs	r0, #1
+ 727 0050 FFF7FEFF 		bl	deplacement
+ 728              	.LVL81:
+ 227:Src/freertos.c ****     osDelay(DELAY);
+ 729              		.loc 1 227 0 discriminator 1
+ 730 0054 4FF47A70 		mov	r0, #1000
+ 731 0058 FFF7FEFF 		bl	osDelay
+ 732              	.LVL82:
+ 228:Src/freertos.c ****     pivoter_gauche();
+ 733              		.loc 1 228 0 discriminator 1
+ 734 005c FFF7FEFF 		bl	pivoter_gauche
+ 735              	.LVL83:
+ 229:Src/freertos.c ****     osDelay(DELAY);
+ 736              		.loc 1 229 0 discriminator 1
+ 737 0060 4FF47A70 		mov	r0, #1000
+ 738 0064 FFF7FEFF 		bl	osDelay
+ 739              	.LVL84:
+ 230:Src/freertos.c ****     pivoter_gauche();
+ 740              		.loc 1 230 0 discriminator 1
+ 741 0068 FFF7FEFF 		bl	pivoter_gauche
+ 742              	.LVL85:
+ 231:Src/freertos.c ****     osDelay(DELAY);
+ 743              		.loc 1 231 0 discriminator 1
+ 744 006c 4FF47A70 		mov	r0, #1000
+ 745 0070 FFF7FEFF 		bl	osDelay
+ 746              	.LVL86:
+ 232:Src/freertos.c ****     deplacement(1);
+ 747              		.loc 1 232 0 discriminator 1
+ 748 0074 0120     		movs	r0, #1
+ 749 0076 FFF7FEFF 		bl	deplacement
+ 750              	.LVL87:
+ 233:Src/freertos.c ****     osDelay(DELAY);
+ 751              		.loc 1 233 0 discriminator 1
+ 752 007a 4FF47A70 		mov	r0, #1000
+ 753 007e FFF7FEFF 		bl	osDelay
+ 754              	.LVL88:
+ 234:Src/freertos.c ****     deplacement(-1);
+ 755              		.loc 1 234 0 discriminator 1
+ 756 0082 4FF0FF30 		mov	r0, #-1
+ 757 0086 FFF7FEFF 		bl	deplacement
+ 758              	.LVL89:
+ARM GAS  /tmp/cc25zTHr.s 			page 18
+
+
+ 235:Src/freertos.c ****     osDelay(DELAY);
+ 759              		.loc 1 235 0 discriminator 1
+ 760 008a 4FF47A70 		mov	r0, #1000
+ 761 008e FFF7FEFF 		bl	osDelay
+ 762              	.LVL90:
+ 763 0092 C9E7     		b	.L65
+ 764              	.L68:
+ 765              		.align	2
+ 766              	.L67:
+ 767 0094 00000000 		.word	htim3
+ 768              		.cfi_endproc
+ 769              	.LFE143:
+ 771              		.section	.text.adcControl,"ax",%progbits
+ 772              		.align	2
+ 773              		.global	adcControl
+ 774              		.thumb
+ 775              		.thumb_func
+ 777              	adcControl:
+ 778              	.LFB144:
+ 236:Src/freertos.c ****   }
+ 237:Src/freertos.c ****   /* USER CODE END motor */
+ 238:Src/freertos.c **** }
+ 239:Src/freertos.c **** 
+ 240:Src/freertos.c **** void adcControl(void const * argument)
+ 241:Src/freertos.c **** {
+ 779              		.loc 1 241 0
+ 780              		.cfi_startproc
+ 781              		@ Volatile: function does not return.
+ 782              		@ args = 0, pretend = 0, frame = 0
+ 783              		@ frame_needed = 0, uses_anonymous_args = 0
+ 784              	.LVL91:
+ 785 0000 08B5     		push	{r3, lr}
+ 786              	.LCFI14:
+ 787              		.cfi_def_cfa_offset 8
+ 788              		.cfi_offset 3, -8
+ 789              		.cfi_offset 14, -4
+ 790              	.LVL92:
+ 791              	.L70:
+ 242:Src/freertos.c ****   /* USER CODE BEGIN adcControl */
+ 243:Src/freertos.c ****   /* Infinite loop */
+ 244:Src/freertos.c ****   for(;;)
+ 245:Src/freertos.c ****   {
+ 246:Src/freertos.c ****     HAL_ADC_Start_IT(&hadc1);
+ 792              		.loc 1 246 0
+ 793 0002 0A48     		ldr	r0, .L73
+ 794 0004 FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 795              	.LVL93:
+ 247:Src/freertos.c ****     osDelay(1000);
+ 796              		.loc 1 247 0
+ 797 0008 4FF47A70 		mov	r0, #1000
+ 798 000c FFF7FEFF 		bl	osDelay
+ 799              	.LVL94:
+ 248:Src/freertos.c ****     if (flag_adc == 1) {
+ 800              		.loc 1 248 0
+ 801 0010 074B     		ldr	r3, .L73+4
+ 802 0012 1B68     		ldr	r3, [r3]
+ 803 0014 012B     		cmp	r3, #1
+ARM GAS  /tmp/cc25zTHr.s 			page 19
+
+
+ 804 0016 F4D1     		bne	.L70
+ 249:Src/freertos.c ****         printf("Value : %lu\n\r", adcValue);
+ 805              		.loc 1 249 0
+ 806 0018 064B     		ldr	r3, .L73+8
+ 807 001a 1968     		ldr	r1, [r3]
+ 808 001c 0648     		ldr	r0, .L73+12
+ 809 001e FFF7FEFF 		bl	printf
+ 810              	.LVL95:
+ 250:Src/freertos.c ****         flag_adc = 0;
+ 811              		.loc 1 250 0
+ 812 0022 0022     		movs	r2, #0
+ 813 0024 024B     		ldr	r3, .L73+4
+ 814 0026 1A60     		str	r2, [r3]
+ 815 0028 EBE7     		b	.L70
+ 816              	.L74:
+ 817 002a 00BF     		.align	2
+ 818              	.L73:
+ 819 002c 00000000 		.word	hadc1
+ 820 0030 00000000 		.word	.LANCHOR2
+ 821 0034 00000000 		.word	.LANCHOR1
+ 822 0038 00000000 		.word	.LC0
+ 823              		.cfi_endproc
+ 824              	.LFE144:
+ 826              		.global	deplacement_fini
+ 827              		.global	adcValue
+ 828              		.global	flag_adc
+ 829              		.section	.bss.flag_adc,"aw",%nobits
+ 830              		.align	2
+ 831              		.set	.LANCHOR2,. + 0
+ 834              	flag_adc:
+ 835 0000 00000000 		.space	4
+ 836              		.section	.bss.deplacement_fini,"aw",%nobits
+ 837              		.align	2
+ 838              		.set	.LANCHOR0,. + 0
+ 841              	deplacement_fini:
+ 842 0000 00000000 		.space	4
+ 843              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 844              		.align	2
+ 845              	.LC0:
+ 846 0000 56616C75 		.ascii	"Value : %lu\012\015\000"
+ 846      65203A20 
+ 846      256C750A 
+ 846      0D00
+ 847              		.section	.bss.adcValue,"aw",%nobits
+ 848              		.align	2
+ 849              		.set	.LANCHOR1,. + 0
+ 852              	adcValue:
+ 853 0000 00000000 		.space	4
+ 854              		.text
+ 855              	.Letext0:
+ 856              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 857              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 858              		.file 4 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 859              		.file 5 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 860              		.file 6 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 861              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 862              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ARM GAS  /tmp/cc25zTHr.s 			page 20
+
+
+ 863              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 864              		.file 10 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 865              		.file 11 "Drivers/CMSIS/Include/core_cm4.h"
+ 866              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 867              		.file 13 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 868              		.file 14 "/usr/include/newlib/stdio.h"
+ARM GAS  /tmp/cc25zTHr.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 freertos.c
+     /tmp/cc25zTHr.s:22     .text.alumer_gauche:0000000000000000 $t
+     /tmp/cc25zTHr.s:27     .text.alumer_gauche:0000000000000000 alumer_gauche
+     /tmp/cc25zTHr.s:63     .text.alumer_gauche:0000000000000020 $d
+     /tmp/cc25zTHr.s:68     .text.alumer_droite:0000000000000000 $t
+     /tmp/cc25zTHr.s:73     .text.alumer_droite:0000000000000000 alumer_droite
+     /tmp/cc25zTHr.s:105    .text.alumer_droite:0000000000000024 $d
+     /tmp/cc25zTHr.s:110    .text.eteindre_gauche:0000000000000000 $t
+     /tmp/cc25zTHr.s:115    .text.eteindre_gauche:0000000000000000 eteindre_gauche
+     /tmp/cc25zTHr.s:143    .text.eteindre_gauche:000000000000001c $d
+     /tmp/cc25zTHr.s:148    .text.eteindre_droite:0000000000000000 $t
+     /tmp/cc25zTHr.s:153    .text.eteindre_droite:0000000000000000 eteindre_droite
+     /tmp/cc25zTHr.s:180    .text.eteindre_droite:000000000000001c $d
+     /tmp/cc25zTHr.s:185    .text.pwm_max:0000000000000000 $t
+     /tmp/cc25zTHr.s:190    .text.pwm_max:0000000000000000 pwm_max
+     /tmp/cc25zTHr.s:208    .text.pwm_max:0000000000000010 $d
+     /tmp/cc25zTHr.s:213    .text.accelerer:0000000000000000 $t
+     /tmp/cc25zTHr.s:218    .text.accelerer:0000000000000000 accelerer
+     /tmp/cc25zTHr.s:259    .text.accelerer:0000000000000020 $d
+     /tmp/cc25zTHr.s:264    .text.deccelerer:0000000000000000 $t
+     /tmp/cc25zTHr.s:269    .text.deccelerer:0000000000000000 deccelerer
+     /tmp/cc25zTHr.s:310    .text.deccelerer:0000000000000020 $d
+     /tmp/cc25zTHr.s:315    .text.reculer_robot:0000000000000000 $t
+     /tmp/cc25zTHr.s:320    .text.reculer_robot:0000000000000000 reculer_robot
+     /tmp/cc25zTHr.s:363    .text.reculer_robot:0000000000000030 $d
+     /tmp/cc25zTHr.s:368    .text.avancer_robot:0000000000000000 $t
+     /tmp/cc25zTHr.s:373    .text.avancer_robot:0000000000000000 avancer_robot
+     /tmp/cc25zTHr.s:416    .text.avancer_robot:0000000000000030 $d
+     /tmp/cc25zTHr.s:421    .text.pivoter_gauche:0000000000000000 $t
+     /tmp/cc25zTHr.s:426    .text.pivoter_gauche:0000000000000000 pivoter_gauche
+     /tmp/cc25zTHr.s:469    .text.pivoter_gauche:000000000000002c $d
+     /tmp/cc25zTHr.s:474    .text.pivoter_droite:0000000000000000 $t
+     /tmp/cc25zTHr.s:479    .text.pivoter_droite:0000000000000000 pivoter_droite
+     /tmp/cc25zTHr.s:522    .text.pivoter_droite:000000000000002c $d
+     /tmp/cc25zTHr.s:527    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/cc25zTHr.s:532    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/cc25zTHr.s:557    .text.HAL_ADC_ConvCpltCallback:0000000000000014 $d
+     /tmp/cc25zTHr.s:563    .text._write:0000000000000000 $t
+     /tmp/cc25zTHr.s:568    .text._write:0000000000000000 _write
+     /tmp/cc25zTHr.s:596    .text._write:0000000000000014 $d
+     /tmp/cc25zTHr.s:601    .text.deplacement:0000000000000000 $t
+     /tmp/cc25zTHr.s:606    .text.deplacement:0000000000000000 deplacement
+     /tmp/cc25zTHr.s:662    .text.motor:0000000000000000 $t
+     /tmp/cc25zTHr.s:667    .text.motor:0000000000000000 motor
+     /tmp/cc25zTHr.s:767    .text.motor:0000000000000094 $d
+     /tmp/cc25zTHr.s:772    .text.adcControl:0000000000000000 $t
+     /tmp/cc25zTHr.s:777    .text.adcControl:0000000000000000 adcControl
+     /tmp/cc25zTHr.s:819    .text.adcControl:000000000000002c $d
+     /tmp/cc25zTHr.s:841    .bss.deplacement_fini:0000000000000000 deplacement_fini
+     /tmp/cc25zTHr.s:852    .bss.adcValue:0000000000000000 adcValue
+     /tmp/cc25zTHr.s:834    .bss.flag_adc:0000000000000000 flag_adc
+     /tmp/cc25zTHr.s:830    .bss.flag_adc:0000000000000000 $d
+     /tmp/cc25zTHr.s:837    .bss.deplacement_fini:0000000000000000 $d
+     /tmp/cc25zTHr.s:844    .rodata.str1.4:0000000000000000 $d
+     /tmp/cc25zTHr.s:848    .bss.adcValue:0000000000000000 $d
+                     .debug_frame:0000000000000010 $d
+ARM GAS  /tmp/cc25zTHr.s 			page 22
+
+
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
+htim3
+osDelay
+HAL_ADC_GetValue
+HAL_UART_Transmit
+huart2
+HAL_TIM_Base_Start
+HAL_TIM_PWM_Start
+HAL_ADC_Start_IT
+printf
+hadc1
