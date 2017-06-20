@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage[a4paper,twoside,left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+ 
+\usepackage{minted}
+
+\title{Dossier technique\\Coopération de robots}
+\author{Thibault Vernay, Victor Cazaux, Daphné Porteries}
+
+\makeindex
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Spécifications}
+
+\subsection{Spécifications matérielles}
+
+\subsection{Spécifications logicielles}
+
+\section{Étude du matériel}
+
+\subsection{Étude des capteurs et des actionneurs}
+
+\subsection{Carte électronique}
+
+\section{Étude du logiciel}
+
+\subsection{Couche bas niveau}
+
+\section{Couche communication}
+
+\section{Couche intelligence artificielle}
+
+\end{document}
