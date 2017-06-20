@@ -26,10 +26,14 @@ Code des fonctions primitives :
     
     
 Début de rédaction :
-Lors de l'utilisation d'un microcontroleur comme le STM8S ou le STM32F3xx il est neccesaire de configurer les ports et les registres de timers avant de s'attaquer à la programmation à proprement parlée. Pour ce faire, sur les cartes stm32, STMicroelectronics a mis en place un outils appelé Stm32CubeMx permettant de configurer simplement les timers, l'ADC, l'I²C et les différents ports et pins en différents modes et en entrée ou sortie. Ce logiciel utilise pour faire ces actions quelque chose que l'on appelle la HAL. La HAL (Hardware Abstraction Layout) est comme son nom l'indique une couche d'abstraction matérielle. C'est à dire qu'elle comporte tout un ensemble de fonctions dites simple qui vont placer dans les bons registres les bonnes valeurs lors de l'appel de celles-ci.
+Lors de l'utilisation d'un microcontroleur comme le STM8S ou le STM32F3xx il est neccesaire de configurer les ports et les registres de timers avant de s'attaquer à la programmation à proprement parlée. Pour se faire, sur les cartes stm32, STMicroelectronics a mis en place un outils appelé Stm32CubeMx permettant de configurer simplement les timers, l'ADC, l'I²C et les différents ports et pins en différents modes et en entrée ou sortie. Ce logiciel utilise pour faire ces actions quelque chose que l'on appelle la HAL. La HAL (Hardware Abstraction Layout) est comme son nom l'indique une couche d'abstraction matérielle. C'est à dire qu'elle comporte tout un ensemble de fonctions dites simples qui vont placer dans les bons registres les bonnes valeurs lors de l'appel de celles-ci.
 
-Ici la HAL est très appréciable pour tout ce qui est configuration un peu complexe avec une multitude de capteurs et actionneurs et permet également d'avoir très rapidement un programme fonctionnel. Stm32CubeMx permet également de configurer l'OS temps réel nommé FreeRTOS qui permet de paralléliser les tâches du processeurs et d'avoir une horloge plus simple à utiliser qu'un timer configuré (même si la HAL permet d'avoir des temporisations simplement).
+Ici la HAL est très appréciable pour tout ce qui est configuration un peu complexe avec une multitude de capteurs et actionneurs et permet également d'avoir très rapidement un programme fonctionnel. Stm32CubeMx permet également de configurer l'OS temps réel nommé FreeRTOS qui permet de paralléliser les tâches du processeurs et d'avoir une horloge plus simple à utiliser qu'un timer configuré (même si la HAL permet d'avoir des temporisations en milisecondes simplement).
 
-Pour ce projet nous avons besoin de configurer 2 PWM pour les moteurs à même fréquence, un capteur de distance analogique infrarouge et un magnétomètre confgurable par I²C.
+Pour ce projet nous avons besoin de configurer 2 PWM pour les moteurs à même fréquence, un capteur de distance analogique infrarouge et un magnétomètre confgurable par I²C. Nous n'avons finalement pas eu les magnétomètres pour le projet, nous n'avons donc pas fait de mise en place du protocole I²C pour des capteurs.
+
+Pour commander chaque moteur avec notre pont en H, nous avions besoins de trois connecteurs, deux connecteurs numériques et un PWM par moteur. Le capteur de distance renvoyant une tension en fonction de la distance mesurée entre 10 cm et 80 cm, il faut une entrée analogique avec un convertisseur analogique vers numériques pour exploiter ces données.
+
+
 
 

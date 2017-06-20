@@ -252,7 +252,7 @@ int ReceptionMessage(){
     r =  (r & 0x07)*32;
     m =  (m & 0x07)*4;
     n =  (n & 0x07);
-    v =  r + m + n;
+    v =  r + m + n; ok = 1;
     if (ok == 1) {
         for (int i = 0; i<5; i++) {
             HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
@@ -431,30 +431,24 @@ void motor(void const * argument)
   /* USER CODE BEGIN motor */
   UNUSED(argument);
 
-  HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
-  HAL_TIM_Base_Start(&htim3);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+  //HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
+  //HAL_TIM_Base_Start(&htim3);
+  //HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+  //HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
 
+  uint8_t a = 0x0;
+  int i;
   /* Infinite loop */
   for(;;)
   {
-    /*deplacement(1);
-    osDelay(DELAY);
-    pivoter_droite();
-    osDelay(DELAY);
-    pivoter_droite();
-    osDelay(DELAY);
-    deplacement(1);
-    osDelay(DELAY);
-    pivoter_gauche();
-    osDelay(DELAY);
-    pivoter_gauche();
-    osDelay(DELAY);
-    deplacement(1);
-    osDelay(DELAY);
-    deplacement(-1);
-    osDelay(DELAY); */
+      HAL_UART_Receive(&huart1, &a, sizeof(uint8_t), 0xFFFFF);
+      if (a == 0x06) {
+          for (i = 0; i<2;i++) {
+              HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
+              osDelay(500);
+           }
+      }
+      osDelay(1);
   }
   /* USER CODE END motor */
 }
@@ -465,12 +459,13 @@ void adcControl(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    HAL_ADC_Start_IT(&hadc1);
-    osDelay(1000);
-    if (flag_adc == 1) {
-        printf("Value : %lu\n\r", adcValue);
-        flag_adc = 0;
-    }
+    //HAL_ADC_Start_IT(&hadc1);
+    //osDelay(1000);
+    //if (flag_adc == 1) {
+        //printf("Value : %lu\n\r", adcValue);
+        //flag_adc = 0;
+    //}
+    osDelay(1);
   }
   /* USER CODE END adcControl */
 }
@@ -481,14 +476,6 @@ void uart(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    //pivoter_droite();
-    //ok();
-    //WaitFor(OK);
-
-    WaitFor(OK);
-    pivoter_droite();
-    ok();
-
     osDelay(1);
   }
   /* USER CODE END uart */
