@@ -137,11 +137,13 @@ else
 
    int recoitpos(){
        uint8_t a, x, y, c;
+       uint8_t tb[3];
        a = ReceptionMessage();
-       x = a & 0xF0;
-       y = a & 0x0F;
-       c = ReceptionMessage();
-       return(x,y,c);
+       tab[0] = a & 0xF0;
+       tab[1] = a & 0x0F;
+       tab[2] = ReceptionMessage();
+       return(tb);
+
    }
    void envoipos(uint8_t x, uint8_t y, uint8_t c){
             x = x*16 + y;
