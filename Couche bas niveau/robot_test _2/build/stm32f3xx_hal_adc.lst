@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccEmKRnf.s 			page 1
+ARM GAS  /tmp/ccOjLuwv.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
   27:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****                      ##### ADC peripheral features #####
   28:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   ==============================================================================
   29:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   [..] 
-ARM GAS  /tmp/ccEmKRnf.s 			page 2
+ARM GAS  /tmp/ccOjLuwv.s 			page 2
 
 
   30:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   (+) 12-bit, 10-bit, 8-bit or 6-bit configurable resolution (available only on 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
   84:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
   85:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****     (#) Enable the ADC interface
   86:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****       (++) As prerequisite, ADC clock must be configured at RCC top level.
-ARM GAS  /tmp/ccEmKRnf.s 			page 3
+ARM GAS  /tmp/ccOjLuwv.s 			page 3
 
 
   87:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****       
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  141:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****               ADCx_IRQHandler().
  142:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
  143:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****     (#) Optionally, in case of usage of DMA:
-ARM GAS  /tmp/ccEmKRnf.s 			page 4
+ARM GAS  /tmp/ccOjLuwv.s 			page 4
 
 
  144:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****          (++) Configure the DMA (DMA channel, mode normal or circular, ...)
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  198:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****           (+++) Stop conversion and disable the ADC peripheral 
  199:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****                 using function HAL_ADC_Stop()
  200:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
-ARM GAS  /tmp/ccEmKRnf.s 			page 5
+ARM GAS  /tmp/ccOjLuwv.s 			page 5
 
 
  201:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****         (++) ADC conversion by interruption: 
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  255:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
  256:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****     (#) Disable the ADC interface
  257:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****       (++) ADC clock can be hard reset and disabled at RCC top level.
-ARM GAS  /tmp/ccEmKRnf.s 			page 6
+ARM GAS  /tmp/ccOjLuwv.s 			page 6
 
 
  258:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****         (++) Hard reset of ADC peripherals
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  312:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
  313:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****     (#) Optionally, in case of usage of DMA:
  314:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****          (++) Deinitialize the DMA
-ARM GAS  /tmp/ccEmKRnf.s 			page 7
+ARM GAS  /tmp/ccOjLuwv.s 			page 7
 
 
  315:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****               using function HAL_DMA_Init().
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  369:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** /* Private variables ---------------------------------------------------------*/
  370:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** /* Private function prototypes -----------------------------------------------*/
  371:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** /* Exported functions --------------------------------------------------------*/
-ARM GAS  /tmp/ccEmKRnf.s 			page 8
+ARM GAS  /tmp/ccOjLuwv.s 			page 8
 
 
  372:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-ARM GAS  /tmp/ccEmKRnf.s 			page 9
+ARM GAS  /tmp/ccOjLuwv.s 			page 9
 
 
   35              	.LVL0:
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  458:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /* Note : This function is defined into this file for library reference. */
  459:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
  460:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   
-ARM GAS  /tmp/ccEmKRnf.s 			page 10
+ARM GAS  /tmp/ccOjLuwv.s 			page 10
 
 
  461:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /* Return function status */
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  486:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** {
   90              		.loc 1 486 0
   91              		.cfi_startproc
-ARM GAS  /tmp/ccEmKRnf.s 			page 11
+ARM GAS  /tmp/ccOjLuwv.s 			page 11
 
 
   92              		@ args = 0, pretend = 0, frame = 0
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  527:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         For ADC master, ADC is enabled and multimode conversion is started.
  528:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @param  hadc: ADC handle
  529:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @retval HAL status
-ARM GAS  /tmp/ccEmKRnf.s 			page 12
+ARM GAS  /tmp/ccOjLuwv.s 			page 12
 
 
  530:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   */
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  559:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /* Note : This function is defined into this file for library reference. */
  560:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /*        Function content is located into file stm32f3xx_hal_adc_ex.c   */
  561:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   
-ARM GAS  /tmp/ccEmKRnf.s 			page 13
+ARM GAS  /tmp/ccOjLuwv.s 			page 13
 
 
  562:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /* Return function status */
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  584:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
  585:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** /**
  586:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @brief  Poll for conversion event.
-ARM GAS  /tmp/ccEmKRnf.s 			page 14
+ARM GAS  /tmp/ccOjLuwv.s 			page 14
 
 
  587:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @param  hadc: ADC handle
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  622:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         For ADC slave, ADC is enabled only (conversion is not started).  
  623:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         For ADC master, ADC is enabled and multimode conversion is started.
  624:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @param  hadc: ADC handle
-ARM GAS  /tmp/ccEmKRnf.s 			page 15
+ARM GAS  /tmp/ccOjLuwv.s 			page 15
 
 
  625:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @retval HAL status
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  217              		@ link register save eliminated.
  218              	.LVL16:
  656:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /* Prevent unused argument(s) compilation warning */
-ARM GAS  /tmp/ccEmKRnf.s 			page 16
+ARM GAS  /tmp/ccOjLuwv.s 			page 16
 
 
  657:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   UNUSED(hadc);
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  692:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   /* Return function status */
  693:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   return HAL_ERROR;
  694:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** }
-ARM GAS  /tmp/ccEmKRnf.s 			page 17
+ARM GAS  /tmp/ccOjLuwv.s 			page 17
 
 
  240              		.loc 1 694 0
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  272              		.thumb_func
  274              	HAL_ADC_GetValue:
  275              	.LFB136:
-ARM GAS  /tmp/ccEmKRnf.s 			page 18
+ARM GAS  /tmp/ccOjLuwv.s 			page 18
 
 
  720:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** 
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  306              		.cfi_endproc
  307              	.LFE137:
  309 0002 00BF     		.section	.text.HAL_ADC_ConvCpltCallback,"ax",%progbits
-ARM GAS  /tmp/ccEmKRnf.s 			page 19
+ARM GAS  /tmp/ccOjLuwv.s 			page 19
 
 
  310              		.align	2
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  338              		@ frame_needed = 0, uses_anonymous_args = 0
  339              		@ link register save eliminated.
  340              	.LVL26:
-ARM GAS  /tmp/ccEmKRnf.s 			page 20
+ARM GAS  /tmp/ccOjLuwv.s 			page 20
 
 
  341 0000 7047     		bx	lr
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  803:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   */
  804:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** __weak void HAL_ADC_ErrorCallback(ADC_HandleTypeDef *hadc)
  805:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** {
-ARM GAS  /tmp/ccEmKRnf.s 			page 21
+ARM GAS  /tmp/ccOjLuwv.s 			page 21
 
 
  371              		.loc 1 805 0
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  844:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   * @note   Possibility to update parameters on the fly:
  845:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         This function initializes channel into regular group, following  
  846:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         calls to this function can be used to reconfigure some parameters 
-ARM GAS  /tmp/ccEmKRnf.s 			page 22
+ARM GAS  /tmp/ccOjLuwv.s 			page 22
 
 
  847:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         of structure "ADC_ChannelConfTypeDef" on the fly, without reseting 
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  882:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   */
  883:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** __weak HAL_StatusTypeDef HAL_ADC_AnalogWDGConfig(ADC_HandleTypeDef* hadc, ADC_AnalogWDGConfTypeDef*
  884:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c **** {
-ARM GAS  /tmp/ccEmKRnf.s 			page 23
+ARM GAS  /tmp/ccOjLuwv.s 			page 23
 
 
  410              		.loc 1 884 0
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  920:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         with bit by bit.
  921:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *         For example:                                                         
  922:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *           " if (HAL_IS_BIT_SET(HAL_ADC_GetState(hadc1), HAL_ADC_STATE_REG_BUSY)) "
-ARM GAS  /tmp/ccEmKRnf.s 			page 24
+ARM GAS  /tmp/ccOjLuwv.s 			page 24
 
 
  923:Drivers/STM32F3xx_HAL_Driver/Src/stm32f3xx_hal_adc.c ****   *           " if (HAL_IS_BIT_SET(HAL_ADC_GetState(hadc1), HAL_ADC_STATE_AWD1)    ) "
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  465              	.LFE145:
  467              		.text
  468              	.Letext0:
-ARM GAS  /tmp/ccEmKRnf.s 			page 25
+ARM GAS  /tmp/ccOjLuwv.s 			page 25
 
 
  469              		.file 2 "/usr/include/newlib/machine/_default_types.h"
@@ -1449,55 +1449,55 @@ ARM GAS  /tmp/ccEmKRnf.s 			page 1
  474              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
  475              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
  476              		.file 9 "Drivers/CMSIS/Include/core_cm4.h"
-ARM GAS  /tmp/ccEmKRnf.s 			page 26
+ARM GAS  /tmp/ccOjLuwv.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f3xx_hal_adc.c
-     /tmp/ccEmKRnf.s:22     .text.HAL_ADC_Init:0000000000000000 $t
-     /tmp/ccEmKRnf.s:27     .text.HAL_ADC_Init:0000000000000000 HAL_ADC_Init
-     /tmp/ccEmKRnf.s:44     .text.HAL_ADC_DeInit:0000000000000000 $t
-     /tmp/ccEmKRnf.s:49     .text.HAL_ADC_DeInit:0000000000000000 HAL_ADC_DeInit
-     /tmp/ccEmKRnf.s:65     .text.HAL_ADC_MspInit:0000000000000000 $t
-     /tmp/ccEmKRnf.s:70     .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
-     /tmp/ccEmKRnf.s:83     .text.HAL_ADC_MspDeInit:0000000000000000 $t
-     /tmp/ccEmKRnf.s:88     .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
-     /tmp/ccEmKRnf.s:101    .text.HAL_ADC_Start:0000000000000000 $t
-     /tmp/ccEmKRnf.s:106    .text.HAL_ADC_Start:0000000000000000 HAL_ADC_Start
-     /tmp/ccEmKRnf.s:122    .text.HAL_ADC_Stop:0000000000000000 $t
-     /tmp/ccEmKRnf.s:127    .text.HAL_ADC_Stop:0000000000000000 HAL_ADC_Stop
-     /tmp/ccEmKRnf.s:143    .text.HAL_ADC_PollForConversion:0000000000000000 $t
-     /tmp/ccEmKRnf.s:148    .text.HAL_ADC_PollForConversion:0000000000000000 HAL_ADC_PollForConversion
-     /tmp/ccEmKRnf.s:164    .text.HAL_ADC_PollForEvent:0000000000000000 $t
-     /tmp/ccEmKRnf.s:169    .text.HAL_ADC_PollForEvent:0000000000000000 HAL_ADC_PollForEvent
-     /tmp/ccEmKRnf.s:185    .text.HAL_ADC_Start_IT:0000000000000000 $t
-     /tmp/ccEmKRnf.s:190    .text.HAL_ADC_Start_IT:0000000000000000 HAL_ADC_Start_IT
-     /tmp/ccEmKRnf.s:206    .text.HAL_ADC_Stop_IT:0000000000000000 $t
-     /tmp/ccEmKRnf.s:211    .text.HAL_ADC_Stop_IT:0000000000000000 HAL_ADC_Stop_IT
-     /tmp/ccEmKRnf.s:227    .text.HAL_ADC_Start_DMA:0000000000000000 $t
-     /tmp/ccEmKRnf.s:232    .text.HAL_ADC_Start_DMA:0000000000000000 HAL_ADC_Start_DMA
-     /tmp/ccEmKRnf.s:248    .text.HAL_ADC_Stop_DMA:0000000000000000 $t
-     /tmp/ccEmKRnf.s:253    .text.HAL_ADC_Stop_DMA:0000000000000000 HAL_ADC_Stop_DMA
-     /tmp/ccEmKRnf.s:269    .text.HAL_ADC_GetValue:0000000000000000 $t
-     /tmp/ccEmKRnf.s:274    .text.HAL_ADC_GetValue:0000000000000000 HAL_ADC_GetValue
-     /tmp/ccEmKRnf.s:292    .text.HAL_ADC_IRQHandler:0000000000000000 $t
-     /tmp/ccEmKRnf.s:297    .text.HAL_ADC_IRQHandler:0000000000000000 HAL_ADC_IRQHandler
-     /tmp/ccEmKRnf.s:310    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccEmKRnf.s:315    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccEmKRnf.s:328    .text.HAL_ADC_ConvHalfCpltCallback:0000000000000000 $t
-     /tmp/ccEmKRnf.s:333    .text.HAL_ADC_ConvHalfCpltCallback:0000000000000000 HAL_ADC_ConvHalfCpltCallback
-     /tmp/ccEmKRnf.s:346    .text.HAL_ADC_LevelOutOfWindowCallback:0000000000000000 $t
-     /tmp/ccEmKRnf.s:351    .text.HAL_ADC_LevelOutOfWindowCallback:0000000000000000 HAL_ADC_LevelOutOfWindowCallback
-     /tmp/ccEmKRnf.s:364    .text.HAL_ADC_ErrorCallback:0000000000000000 $t
-     /tmp/ccEmKRnf.s:369    .text.HAL_ADC_ErrorCallback:0000000000000000 HAL_ADC_ErrorCallback
-     /tmp/ccEmKRnf.s:382    .text.HAL_ADC_ConfigChannel:0000000000000000 $t
-     /tmp/ccEmKRnf.s:387    .text.HAL_ADC_ConfigChannel:0000000000000000 HAL_ADC_ConfigChannel
-     /tmp/ccEmKRnf.s:403    .text.HAL_ADC_AnalogWDGConfig:0000000000000000 $t
-     /tmp/ccEmKRnf.s:408    .text.HAL_ADC_AnalogWDGConfig:0000000000000000 HAL_ADC_AnalogWDGConfig
-     /tmp/ccEmKRnf.s:424    .text.HAL_ADC_GetState:0000000000000000 $t
-     /tmp/ccEmKRnf.s:429    .text.HAL_ADC_GetState:0000000000000000 HAL_ADC_GetState
-     /tmp/ccEmKRnf.s:446    .text.HAL_ADC_GetError:0000000000000000 $t
-     /tmp/ccEmKRnf.s:451    .text.HAL_ADC_GetError:0000000000000000 HAL_ADC_GetError
+     /tmp/ccOjLuwv.s:22     .text.HAL_ADC_Init:0000000000000000 $t
+     /tmp/ccOjLuwv.s:27     .text.HAL_ADC_Init:0000000000000000 HAL_ADC_Init
+     /tmp/ccOjLuwv.s:44     .text.HAL_ADC_DeInit:0000000000000000 $t
+     /tmp/ccOjLuwv.s:49     .text.HAL_ADC_DeInit:0000000000000000 HAL_ADC_DeInit
+     /tmp/ccOjLuwv.s:65     .text.HAL_ADC_MspInit:0000000000000000 $t
+     /tmp/ccOjLuwv.s:70     .text.HAL_ADC_MspInit:0000000000000000 HAL_ADC_MspInit
+     /tmp/ccOjLuwv.s:83     .text.HAL_ADC_MspDeInit:0000000000000000 $t
+     /tmp/ccOjLuwv.s:88     .text.HAL_ADC_MspDeInit:0000000000000000 HAL_ADC_MspDeInit
+     /tmp/ccOjLuwv.s:101    .text.HAL_ADC_Start:0000000000000000 $t
+     /tmp/ccOjLuwv.s:106    .text.HAL_ADC_Start:0000000000000000 HAL_ADC_Start
+     /tmp/ccOjLuwv.s:122    .text.HAL_ADC_Stop:0000000000000000 $t
+     /tmp/ccOjLuwv.s:127    .text.HAL_ADC_Stop:0000000000000000 HAL_ADC_Stop
+     /tmp/ccOjLuwv.s:143    .text.HAL_ADC_PollForConversion:0000000000000000 $t
+     /tmp/ccOjLuwv.s:148    .text.HAL_ADC_PollForConversion:0000000000000000 HAL_ADC_PollForConversion
+     /tmp/ccOjLuwv.s:164    .text.HAL_ADC_PollForEvent:0000000000000000 $t
+     /tmp/ccOjLuwv.s:169    .text.HAL_ADC_PollForEvent:0000000000000000 HAL_ADC_PollForEvent
+     /tmp/ccOjLuwv.s:185    .text.HAL_ADC_Start_IT:0000000000000000 $t
+     /tmp/ccOjLuwv.s:190    .text.HAL_ADC_Start_IT:0000000000000000 HAL_ADC_Start_IT
+     /tmp/ccOjLuwv.s:206    .text.HAL_ADC_Stop_IT:0000000000000000 $t
+     /tmp/ccOjLuwv.s:211    .text.HAL_ADC_Stop_IT:0000000000000000 HAL_ADC_Stop_IT
+     /tmp/ccOjLuwv.s:227    .text.HAL_ADC_Start_DMA:0000000000000000 $t
+     /tmp/ccOjLuwv.s:232    .text.HAL_ADC_Start_DMA:0000000000000000 HAL_ADC_Start_DMA
+     /tmp/ccOjLuwv.s:248    .text.HAL_ADC_Stop_DMA:0000000000000000 $t
+     /tmp/ccOjLuwv.s:253    .text.HAL_ADC_Stop_DMA:0000000000000000 HAL_ADC_Stop_DMA
+     /tmp/ccOjLuwv.s:269    .text.HAL_ADC_GetValue:0000000000000000 $t
+     /tmp/ccOjLuwv.s:274    .text.HAL_ADC_GetValue:0000000000000000 HAL_ADC_GetValue
+     /tmp/ccOjLuwv.s:292    .text.HAL_ADC_IRQHandler:0000000000000000 $t
+     /tmp/ccOjLuwv.s:297    .text.HAL_ADC_IRQHandler:0000000000000000 HAL_ADC_IRQHandler
+     /tmp/ccOjLuwv.s:310    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccOjLuwv.s:315    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccOjLuwv.s:328    .text.HAL_ADC_ConvHalfCpltCallback:0000000000000000 $t
+     /tmp/ccOjLuwv.s:333    .text.HAL_ADC_ConvHalfCpltCallback:0000000000000000 HAL_ADC_ConvHalfCpltCallback
+     /tmp/ccOjLuwv.s:346    .text.HAL_ADC_LevelOutOfWindowCallback:0000000000000000 $t
+     /tmp/ccOjLuwv.s:351    .text.HAL_ADC_LevelOutOfWindowCallback:0000000000000000 HAL_ADC_LevelOutOfWindowCallback
+     /tmp/ccOjLuwv.s:364    .text.HAL_ADC_ErrorCallback:0000000000000000 $t
+     /tmp/ccOjLuwv.s:369    .text.HAL_ADC_ErrorCallback:0000000000000000 HAL_ADC_ErrorCallback
+     /tmp/ccOjLuwv.s:382    .text.HAL_ADC_ConfigChannel:0000000000000000 $t
+     /tmp/ccOjLuwv.s:387    .text.HAL_ADC_ConfigChannel:0000000000000000 HAL_ADC_ConfigChannel
+     /tmp/ccOjLuwv.s:403    .text.HAL_ADC_AnalogWDGConfig:0000000000000000 $t
+     /tmp/ccOjLuwv.s:408    .text.HAL_ADC_AnalogWDGConfig:0000000000000000 HAL_ADC_AnalogWDGConfig
+     /tmp/ccOjLuwv.s:424    .text.HAL_ADC_GetState:0000000000000000 $t
+     /tmp/ccOjLuwv.s:429    .text.HAL_ADC_GetState:0000000000000000 HAL_ADC_GetState
+     /tmp/ccOjLuwv.s:446    .text.HAL_ADC_GetError:0000000000000000 $t
+     /tmp/ccOjLuwv.s:451    .text.HAL_ADC_GetError:0000000000000000 HAL_ADC_GetError
                      .debug_frame:0000000000000010 $d
 
 NO UNDEFINED SYMBOLS

@@ -55,8 +55,12 @@
 #include "main.h"
 #include "stm32f3xx_hal.h"
 
+#include <time.h>
+#include <stdlib.h>
+
 #define PWM_MAX 320
 #define DELAY 1000
+#define OK 0x06
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -65,17 +69,33 @@
 extern TIM_HandleTypeDef htim3;
 extern ADC_HandleTypeDef hadc1;
 extern UART_HandleTypeDef huart2;
+extern UART_HandleTypeDef huart1;
 
 int flag_adc = 0;
 uint32_t adcValue = 0;
 
 int deplacement_fini = 0;
+
+int flag_haut = 0;
+int flag_bas = 0;
+int flag_droite = 0;
+int flag_gauche = 0;
+
+struct Robot {
+    int posx;
+    int posy;
+    int orientation;
+};
+
+struct Robot robot1, robot2; // Nous sommes robot1 et l'autre robot est  robot2
+
 /* USER CODE END Variables */
 
 /* Function prototypes -------------------------------------------------------*/
 
 /* USER CODE BEGIN FunctionPrototypes */
 
+/* BEGIN Fonctions pour les moteurs */
 void alumer_gauche(int sens) {
     HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, !sens);
     HAL_GPIO_WritePin(ain2_GPIO_Port, ain2_Pin, sens);
@@ -165,7 +185,9 @@ void pivoter_droite() {
     eteindre_gauche();
     deplacement_fini = 1;
 }
+/* END Fonctions pour les moteurs */
 
+/* BEGIN Fonctions ADC */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     UNUSED(hadc);
     adcValue = HAL_ADC_GetValue(hadc);
@@ -178,7 +200,207 @@ int _write(int file, char *ptr, int len) {
     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
     return len;
 }
+/* END Fonctions ADC */
 
+/* BEGIN Fonctions UART */
+void EnvoiMessage(uint8_t data){
+    uint8_t eun, b, edeux, equatre, ehuit,eseize, etrentedeux, esoixantequatre, ecentvingthuit, k, z;
+
+    eun = (data & 0x01);
+    edeux = (data & 0x02)/2;
+    equatre =(data & 0x04)/4;
+    ehuit = (data & 0x08)/8;
+    eseize = (data & 0x10)/16;
+    etrentedeux = (data & 0x20)/32;
+    esoixantequatre = (data & 0x40)/64;
+    ecentvingthuit = (data & 0x80)/128;
+
+    b =  (ecentvingthuit^etrentedeux)*32 + (ecentvingthuit^esoixantequatre)*16 + (esoixantequatre^etrentedeux)*8 +ecentvingthuit*4 + esoixantequatre*2 + etrentedeux;
+    k = (eseize^equatre)*32 +  (eseize^ehuit)*16 + (ehuit^equatre)*8 + eseize*4  + ehuit*2 + equatre;
+    z = (0^eun)*32 + (0^edeux)*16 + (eun^edeux)*8 +edeux*2  + eun;
+
+    HAL_UART_Transmit(&huart1, &b, sizeof(data), 0xEEEE);
+    osDelay(2);
+    HAL_UART_Transmit(&huart1, &k, sizeof(data), 0xEEEE);
+    osDelay(2);
+    HAL_UART_Transmit(&huart1, &z, sizeof(data), 0xEEEE);
+    osDelay(2);
+}
+
+int ReceptionMessage(){
+    uint8_t r, m, n, v, run, rdeux, rquatre, rhuit, rseize, rtrentedeux, ok, i;
+    uint8_t rec[3];
+    HAL_UART_Receive(&huart1, &r, sizeof(uint8_t), 0xEEEE);
+    HAL_UART_Receive(&huart1, &m, sizeof(uint8_t), 0xEEEE);
+    HAL_UART_Receive(&huart1, &n, sizeof(uint8_t), 0xEEEE);
+
+    rec[0] = r;
+    rec[1] = m;
+    rec[2] = n;
+    ok = 1;
+    for (i =0; i<3; i++) {
+        run = (rec[i] & 0x01);
+        rdeux = (rec[i] & 0x02)/2;
+        rquatre =(rec[i] & 0x04)/4;
+        rhuit = (rec[i] & 0x08)/8;
+        rseize = (rec[i] & 0x10)/16;
+        rtrentedeux = (rec[i] & 0x20)/32;
+        if ((run^rdeux) != rhuit) ok =0;
+        if ((rdeux^rquatre) != rseize) ok =0;
+        if ((rquatre^run) != rtrentedeux) ok = 0;
+    }
+    r =  (r & 0x07)*32;
+    m =  (m & 0x07)*4;
+    n =  (n & 0x07);
+    v =  r + m + n;
+    if (ok == 1) {
+        for (int i = 0; i<5; i++) {
+            HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
+            osDelay(500);
+        }
+        return(v);
+    }
+    else return(0);
+}
+
+void recoitpos(){
+    uint8_t a, x, y, c;
+    a = ReceptionMessage();
+    x = a & 0xF0;
+    y = a & 0x0F;
+    c = ReceptionMessage();
+    robot2.posx = x;
+    robot2.posy = y;
+    robot2.orientation = c;
+}
+
+void envoipos(uint8_t x, uint8_t y , uint8_t c){
+     x = x*16 + y;
+     EnvoiMessage(x);
+     EnvoiMessage(c);
+}
+
+void Traduction(uint8_t msg){
+    if (msg == 0x05) {
+       envoipos(robot1.posx, robot1.posy, robot1.orientation);
+    }
+
+    if (msg == 0x06) {
+
+    }
+
+    if (msg == 0x07) {
+        flag_haut = 1;
+    }
+
+    if (msg == 0x08) {
+        flag_bas = 1;
+    }
+
+    if (msg == 0x09) {
+        flag_droite = 1;
+    }
+
+    if (msg == 0x0A) {
+        flag_gauche = 1;
+    }
+
+    if (msg == 0x0B) {
+    }
+
+    if (msg == 0x0C) {
+    }
+
+    if (msg == 0x0D) {
+        uint8_t a;
+        srand(time(NULL));
+        a = rand()%100;
+        EnvoiMessage(a);
+    }
+
+    if (msg == 0x10) {
+    }
+
+    if (msg == 0x11) {
+    }
+
+    if (msg == 0x12) {
+    }
+
+    if (msg == 0x13) {
+    }
+}
+
+void WaitFor(uint8_t z) {
+    while (z != ReceptionMessage()) ;
+}
+
+void TaPosition() {
+    EnvoiMessage(0x05);
+}
+
+void ok() {
+    EnvoiMessage(0x06);
+}
+
+void Monte() {
+    EnvoiMessage(0x07);
+    WaitFor(0x06);
+}
+
+void Descend() {
+    EnvoiMessage(0x08);
+    WaitFor(0x06);
+}
+
+void Droite() {
+    EnvoiMessage(0x09);
+    WaitFor(0x06);
+}
+
+void Gauche() {
+    EnvoiMessage(0x0A);
+    WaitFor(0x06);
+}
+
+void DansUnCoin() {
+    EnvoiMessage(0x0B);
+}
+
+void Trouve() {
+    EnvoiMessage(0x0C);
+}
+
+int Random() {
+    int a, p;
+    EnvoiMessage(0x0D);
+    srand(time(NULL));
+    a = rand()%256;
+    if (ReceptionMessage() < a) {
+        p = 1;
+        EnvoiMessage(0x50);
+    }
+    else {
+        p = 0;
+        EnvoiMessage(0x67);
+    }
+    return(p);
+}
+
+void Non(){
+    EnvoiMessage(0x10);
+}
+
+void MemeCase() {
+    EnvoiMessage(0x12);
+}
+
+void TuEsCoin(){
+    EnvoiMessage(0x13);
+}
+/* END Fonctions UART */
+
+/* BEGIN Fonctions IA */
 void deplacement(int distance)
 {
   int i =0;
@@ -197,7 +419,7 @@ void deplacement(int distance)
     }
   }
 }
-
+/* END Fonctions IA */
 
 /* USER CODE END FunctionPrototypes */
 
@@ -253,6 +475,24 @@ void adcControl(void const * argument)
   /* USER CODE END adcControl */
 }
 
+void uart(void const * argument)
+{
+  /* USER CODE BEGIN uart */
+  /* Infinite loop */
+  for(;;)
+  {
+    pivoter_droite();
+    ok();
+    WaitFor(OK);
+
+    //WaitFor(OK);
+    //pivoter_droite();
+    //ok();
+
+    osDelay(1);
+  }
+  /* USER CODE END uart */
+}
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
