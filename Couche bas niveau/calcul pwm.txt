@@ -1,0 +1,18 @@
+timer_tick_frequency = Timer_default_frequency / (prescaller_set + 1)
+
+PWM_frequency = timer_tick_frequency / (TIM_Period + 1)
+
+TIM_Period = timer_tick_frequency / PWM_frequency - 1
+
+pulse_length = ((TIM_Period + 1) * DutyCycle) / 100 - 1
+
+where DutyCycle is in percent, between 0 and 100%
+
+
+
+
+
+prescaller_set = Timer_default_frequency / timer_tick_frequency - 1
+
+
+Target Timer Count = (1 / Target Frequency) / (1 / Timer Clock Frequency) - 1
