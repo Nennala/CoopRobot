@@ -80,6 +80,8 @@ int flag_haut = 0;
 int flag_bas = 0;
 int flag_droite = 0;
 int flag_gauche = 0;
+int flag_distance = 0;
+int flag_cap =0;
 
 struct Robot {
     int posx;
@@ -185,6 +187,37 @@ void pivoter_droite() {
     eteindre_gauche();
     deplacement_fini = 1;
 }
+
+void gestion_moteurs()
+{
+    if (flag_distance < 0) {
+      avancer_robot();
+      flag_distance --;
+      while(!deplacement_fini);
+      deplacement_fini = 0;
+    }
+
+    if (flag_distance > 0) {
+      reculer_robot();
+      flag_distance ++;
+      while(!deplacement_fini);
+      deplacement_fini = 0;
+    }
+
+    if (flag_cap < 0) {
+      pivoter_gauche();
+      flag_cap ++;
+      while(!deplacement_fini);
+      deplacement_fini = 0;
+    }
+
+    if (flag_cap > 0) {
+      flag_cap --;
+      while(!deplacement_fini);
+      deplacement_fini = 0;
+    }
+}
+
 /* END Fonctions pour les moteurs */
 
 /* BEGIN Fonctions ADC */
@@ -402,22 +435,18 @@ void TuEsCoin(){
 /* END Fonctions UART */
 
 /* BEGIN Fonctions IA */
-void deplacement(int distance)
+void deplacement(int distance, int cap)
 {
-  int i =0;
-  if (distance > 0)
+    int i=0;
+  for(i=0; i< distance +1; i++)
   {
-    for (i = 0; i < distance; i++)
-    {
-      avancer_robot();
-    }
+      flag_distance++;
+      osDelay(500);
   }
-  else
+  for(i=0; i< cap +1; i++)
   {
-    for (i = 0; i < -distance; i++)
-    {
-      reculer_robot();
-    }
+      flag_cap++;
+      osDelay(500);
   }
 }
 /* END Fonctions IA */
@@ -440,22 +469,7 @@ void motor(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    deplacement(1);
-    osDelay(DELAY);
-    pivoter_droite();
-    osDelay(DELAY);
-    pivoter_droite();
-    osDelay(DELAY);
-    deplacement(1);
-    osDelay(DELAY);
-    pivoter_gauche();
-    osDelay(DELAY);
-    pivoter_gauche();
-    osDelay(DELAY);
-    deplacement(1);
-    osDelay(DELAY);
-    deplacement(-1);
-    osDelay(DELAY);
+    gestion_moteurs();
   }
   /* USER CODE END motor */
 }
@@ -482,6 +496,26 @@ void uart(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+      /*deplacement(1,0);
+      osDelay(DELAY);
+      deplacement(0,1);
+      osDelay(DELAY);
+      deplacement(0,1);
+      osDelay(DELAY);
+      deplacement(1,0);
+      osDelay(DELAY);
+      deplacement(0,-1);
+      pivoter_gauche();
+      osDelay(DELAY);
+      deplacement(0,-1);
+      pivoter_gauche();
+      osDelay(DELAY);*/
+
+      deplacement(1,0);
+      osDelay(5000);
+      deplacement(-1,0);
+      //osDelay(DELAY);
+
     //pivoter_droite();
     //ok();
     //WaitFor(OK);
