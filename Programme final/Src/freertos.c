@@ -148,27 +148,21 @@ void avancer_robot() {
     alumer_droite(0);
     alumer_gauche(0);
     accelerer();
-    osDelay(850);//robot2 : 470 robot1 : 850
-    deccelerer();
-    osDelay(850);
+    osDelay(470);//robot2 : 470 robot1 : 850
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
-    flag_distance -= 2;
 }
 
 void reculer_robot() {
     alumer_droite(1);
     alumer_gauche(1);
     accelerer();
-    osDelay(850);
-    deccelerer();
-    osDelay(850);//robot2 : 470 robot1 : 850
+    osDelay(470);//robot2 : 470 robot1 : 850
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
-    flag_distance += 1;
 }
 
 
@@ -176,7 +170,7 @@ void pivoter_gauche() {
     pwm_max();
     alumer_gauche(1);
     alumer_droite(0);
-    osDelay(115);//robot 2 : 40 robot1 : 115
+    osDelay(40);//robot 2 : 40 robot1 : 115
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
@@ -187,8 +181,8 @@ void pivoter_droite() {
     pwm_max();
     alumer_droite(1);
     alumer_gauche(0);
-    osDelay(115);
-    decelerer();
+    osDelay(40);
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -198,10 +192,12 @@ void gestion_moteurs()
 {
     if (flag_distance > 0) {
       avancer_robot();
+      flag_distance --;
     }
 
     if (flag_distance < 0) {
       reculer_robot();
+      flag_distance ++;
     }
 
     /*
@@ -498,17 +494,7 @@ void estPresent() {
 /* BEGIN Fonctions IA */
 void deplacement(int distance, int cap)
 {
-    int i=0;
-  for(i=0; i< distance +1; i++)
-  {
-      flag_distance++;
-      osDelay(500);
-  }
-  /*for(i=0; i< cap +1; i++)
-  {
-      flag_cap++;
-      osDelay(500);
-  }*/
+  flag_distance += distance;
 }
 /* END Fonctions IA */
 
@@ -535,7 +521,7 @@ void motor(void const * argument)
   /* USER CODE END motor */
 }
 
-/*void adcControl(void const * argument)
+//void adcControl(void const * argument)
   /* USER CODE BEGIN adcControl */
   /* Infinite loop */
   /*for(;;)
@@ -575,9 +561,37 @@ void ia(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1000);
-    printf("Value : %d\n\r", flag_distance);
-    deplacement(1,0);
+
+    WaitFor(0x06);//robot2
+
+    osDelay(500);
+    printf("Value 1: %d\n\r", flag_distance);
+    deplacement(3,0);
+    printf("Value 2: %d\n\r", flag_distance);
+    osDelay(500);
+    printf("Value 3: %d\n\r", flag_distance);
+
+    while(flag_distance != 0)
+    {
+        printf("Value 3: %d\n\r", flag_distance);
+        osDelay(500);
+    }
+
+    //ok();//robot1
+
+    osDelay(500);
+    printf("Value 1: %d\n\r", flag_distance);
+    deplacement(-3,0);
+    printf("Value 2: %d\n\r", flag_distance);
+    osDelay(500);
+    printf("Value 3: %d\n\r", flag_distance);
+
+
+    while(flag_distance != 0)
+    {
+        printf("Value 3: %d\n\r", flag_distance);
+        osDelay(500);
+    }
   }
   /* USER CODE END ia */
 }
