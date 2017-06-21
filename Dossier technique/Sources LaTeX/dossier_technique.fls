@@ -134,12 +134,12 @@ INPUT dossier_technique.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT dossier_technique.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+OUTPUT dossier_technique.pdf
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT mag_schematic.png
 INPUT ./mag_schematic.png
-OUTPUT dossier_technique.pdf
 INPUT ./mag_schematic.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT diag_HAL.png
 INPUT ./diag_HAL.png
 INPUT ./diag_HAL.png

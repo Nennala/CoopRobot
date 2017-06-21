@@ -2,6 +2,8 @@
 \usepackage[a4paper,twoside,left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{capt-of}
  
 \usepackage{minted}
 
@@ -26,6 +28,17 @@
 
 \subsection{Étude des capteurs et des actionneurs}
 
+\subsubsection{Magnétomètre 3 axes}
+
+Le magnétomètre que nous aurions aimé avoir est le MAG3110FCR1 qui est un composant nécessitant la création d'une carte d'acceuil avec des condensateurs de découplages pour les alimentations (dont les valeurs sont spécifiées dans la documentation du composant). Ce composant utilise le protocole $I^2C$ qui permet d'utiliser que deux lignes, la ligne SDA et la ligne SCL réciproquement pour les données et pour l'horloge. Le composant en $I^2C$ dispose d'une adresse sur 7 bits aligné à gauche à laquelle il faut ajouté le bit d'écriture ou de lecture pour en faire une information sur 8 bits. En plus de l'alimentation et des lignes destinées à l'$I^2C$ ce capteur possède une ligne destinée aux interruptions.
+
+\begin{center}
+  \includegraphics[width=17cm]{mag_schematic.png}
+  \captionof{figure}{Schématique du composant}
+\end{center}
+
+Ce capteur utilise l'effet Hall, mais nous n'avons pas vraiment eu le temps d'en parfaire l'étude.
+
 \subsection{Moteurs à courant continus et pont en H}
 
 \subsection{Capteur de proximité infrarouge}
@@ -40,13 +53,17 @@
 
 Lors de l'utilisation d'une carte microcontrôleur telle que la STM8S ou la Nucléo STM32F3xx, il est nécessaire de configurer les ports, les pins, les différents registres des timers et des ADC avant même de commencer le code à proprement parlé. Dans le cas d'une carte STM32, il existe un outils très pratique nommé STM32CubeMX permettant de configurer préalablement les bons registres, ports et pins et de générer un ensemble de fichiers projet avec un Makefile adapté au projet. \\
 
-Les fichiers s'organisent de la manière suivante~:
+Les fichiers s'organisent de la manière suivante~: \\
 \begin{itemize}
   \item fichier ``main'' contenant l'initialisation de la carte~;
-  \item fichiers contenant les fonctions de la ``HAL'' pour chaque module de la carte. 
+  \item fichiers contenant les fonctions de la ``HAL'' pour chaque module de la carte. \\
 \end{itemize}
 
-À chaque génération de projet, STM32CubeMx va inclure les bonnes bibliothèques au main et au Makefile. Par exemple si j'allume l'UART2 avec la configuration STM32CubeMX, le fichier stm32f3xx\_hal\_uart.h sera inclus et son .c associé sera compilé. La ``HAL'' (Hardware Abstraction Layout) est comme son nom l'indique une couche d'abstraction matérielle qui va se charger de mettre les bonnes valeurs dans les bons registres lors de l'initialisation mais également lors de l'utilisation. Elle embarque donc un certain nombre de fonctions simple facilitant l'utilisation de la carte. \\
+À chaque génération de projet, STM32CubeMx va inclure les bonnes bibliothèques au main et au Makefile. Par exemple si j'allume l'UART2 avec la configuration STM32CubeMX, le fichier stm32f3xx\_hal\_uart.h sera inclus et son .c associé sera compilé. La ``HAL'' (Hardware Abstraction Layout) est comme son nom l'indique une couche d'abstraction matérielle qui va se charger de mettre les bonnes valeurs dans les bons registres lors de l'initialisation mais également lors de l'utilisation. Elle embarque donc un certain nombre de fonctions générique de manipulation du matériel facilitant l'utilisation de la carte. La mise en place de la HAL s'illustre de la manière suivante~:\\
+
+\begin{center}
+  \includegraphics[height=5cm]{diag_HAL.png}
+\end{center}
 
 STM32CubeMx va aussi permettre autre chose~: la mise en place d'un OS temps réel nommé FreeRTOS permettant de paralléliser les tâches. Ainsi nous allons créer plusieurs tâches avec cet OS et profiter de sa gestion simplifiée des temporisations. Il faudra également gérer le HEAP et la taille de STACK lors de la mise en place de celui-ci. La ``STACK'' est la taille dans la mémoire maximum que peu prendre le programme lors de son exécution tandis que le HEAP existe lors de cas d'allocations dynamiques de la mémoire. Dans le cas de FreeRTOS toutes tâche créée est allouée dynamiquement dans la mémoire en fonction de la taille de sa stack notamment. Il faut donc penser à avoir de la marge côté heap et tester quelles valeurs maximale la carte accepte en fonction de la taille de sa RAM. La valeur max n'est pas mentionnée dans la doc, il faut donc tester empiriquement car une valeur trop élevée du Heap pose des problèmes lors du linkage et crée une erreur de ``RAM overflowed''. \\
 
@@ -56,7 +73,7 @@ Niveau mmatériel, trois tâches indépendantes serons créées~: une pour l'ADC
 
 Les moteurs courant continus sont commandés à l'aide d'un pont en H nécessitant de deux pins de commandes par moteur et d'un PWM par moteur. Le principe du PWM est assez simple, il est rattaché au principe de rapport cyclique. On va donc utiliser un timer qui au lieu de compter simplement jusqu'à la valeur du registre ARR, va avoir une deuxième valeur de comparaison inférieure à celle de l'ARR. Le signal du PWM change de polarité quand le timer atteint cette valeur et quand le timer fini de compter, ainsi on a un signal carré avec un rapport cyclique variable en fonction de cette valeur de comparaison. \\
 
-Nous avons donc plusieurs calculs à notre disposition pour avoir une certaine fréquence de PWM et un certain rapport cyclique~:
+Nous avons donc plusieurs calculs à notre disposition pour avoir une certaine fréquence de PWM et un certain rapport cyclique~: \\
 
 \begin{center}
   $timer\_tick\_frequency = Timer\_default\_set \div ( prescaller\_set + 1 )$ \\
@@ -79,14 +96,14 @@ La tâche associée à l'ADC n'a plus qu'à vérifier l'état du drapeau, traite
 
 \subsubsection{Fonctions primitives}
 
-Les fonctions primitives sont les fonctions proches du matériel qui sont données aux couches supérieures. Ici ces fonctions primitives sont au nombre de 5~:
+Les fonctions primitives sont les fonctions proches du matériel qui sont données aux couches supérieures. Ici ces fonctions primitives sont au nombre de 5~: \\
 
 \begin{itemize}
   \item avancer~;
   \item reculer~;
   \item pivoter à droite~;
   \item pivoter à gauche~;
-  \item distance frontale~;
+  \item distance frontale. \\
 \end{itemize}
 
 Les fonctions de déplacement mettent en place l'allumage séparé des moteurs, la gestions du PWM avec les routines d'accélération et de décélération et les temporisations permettant pour les déplacement linéaires de parcourir 15 cm (longueur d'une case pour l'IA) et pour les fonctions tournante d'atteindre approximativement un angle de 90 degrés (difficile sans boussole). La fonction distance frontale quant à elle va prendre en compte non seulement la distance traduite du capteur, mais aussi la distance entre l'avant du robot et le placement de celui-ci mais risque des erreurs quand cette distance est inférieure à 5 cm (chute de tension brutale). 
