@@ -134,7 +134,7 @@ void accelerer() {
     }
 }
 
-void decelerer() {
+void deccelerer() {
     int pwm = PWM_MAX;
     while (pwm != 0) {
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
@@ -148,13 +148,10 @@ void avancer_robot() {
     alumer_droite(0);
     alumer_gauche(0);
     accelerer();
-<<<<<<< HEAD
     osDelay(850);//robot2 : 470 robot1 : 850
     deccelerer();
-=======
     osDelay(850);
-    decelerer();
->>>>>>> refs/remotes/origin/master
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -165,13 +162,10 @@ void reculer_robot() {
     alumer_droite(1);
     alumer_gauche(1);
     accelerer();
-<<<<<<< HEAD
     osDelay(850);
     deccelerer();
-=======
     osDelay(850);//robot2 : 470 robot1 : 850
-    decelerer();
->>>>>>> refs/remotes/origin/master
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
     flag_distance += 1;
@@ -183,7 +177,7 @@ void pivoter_gauche() {
     alumer_gauche(1);
     alumer_droite(0);
     osDelay(115);//robot 2 : 40 robot1 : 115
-    decelerer();
+    deccelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -583,6 +577,7 @@ void ia(void const * argument)
   {
     osDelay(1000);
     printf("Value : %d\n\r", flag_distance);
+    deplacement(1,0);
   }
   /* USER CODE END ia */
 }
