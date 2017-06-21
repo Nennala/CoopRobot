@@ -82,6 +82,7 @@ int flag_droite = 0;
 int flag_gauche = 0;
 int flag_distance = 0;
 int flag_cap =0;
+int flag_present = 0;
 
 struct Robot {
     int posx;
@@ -133,7 +134,7 @@ void accelerer() {
     }
 }
 
-void deccelerer() {
+void decelerer() {
     int pwm = PWM_MAX;
     while (pwm != 0) {
         __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pwm);
@@ -148,7 +149,7 @@ void reculer_robot() {
     alumer_gauche(1);
     accelerer();
     osDelay(850);
-    deccelerer();
+    decelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -159,7 +160,7 @@ void avancer_robot() {
     alumer_gauche(0);
     accelerer();
     osDelay(850);//robot2 : 470 robot1 : 850
-    deccelerer();
+    decelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -171,7 +172,7 @@ void pivoter_gauche() {
     alumer_gauche(1);
     alumer_droite(0);
     osDelay(115);//robot 2 : 40 robot1 : 115
-    deccelerer();
+    decelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -182,7 +183,7 @@ void pivoter_droite() {
     alumer_droite(1);
     alumer_gauche(0);
     osDelay(115);
-    deccelerer();
+    decelerer();
     eteindre_droite();
     eteindre_gauche();
     deplacement_fini = 1;
@@ -233,6 +234,65 @@ int _write(int file, char *ptr, int len) {
     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
     return len;
 }
+
+int distance() {
+    int value = 0;
+    if (adcValue >= 3800) {
+        value = 6;
+    }
+    if (adcValue >= 3750 && adcValue < 3800) {
+        value = 7;
+    }
+    if (adcValue >= 3430 && adcValue < 3750) {
+        value = 8;
+    }
+    if (adcValue >= 3140 && adcValue < 3420) {
+        value = 9;
+    }
+    if (adcValue >= 2880 && adcValue < 3140) {
+        value = 10;
+    }
+    if (adcValue >= 2690 && adcValue < 2880) {
+        value = 11;
+    }
+    if (adcValue >= 2510 && adcValue < 2690) {
+        value = 12;
+    }
+    if (adcValue >= 2460 && adcValue < 2510) {
+        value = 13;
+    }
+    if (adcValue >= 2250 && adcValue < 2460) {
+        value = 14;
+    }
+    if (adcValue >= 2140 && adcValue < 2250) {
+        value = 15;
+    }
+    if (adcValue >= 2070 && adcValue < 2140) {
+        value = 16;
+    }
+    if (adcValue >= 1970 && adcValue < 2070) {
+        value = 17;
+    }
+    if (adcValue >= 1910 && adcValue < 1970) {
+        value = 18;
+    }
+    if (adcValue >= 1850 && adcValue < 1910) {
+        value = 19;
+    }
+    if (adcValue >= 1780 && adcValue < 1850) {
+        value = 20;
+    }
+    return(value);
+}
+
+void estPresent() {
+    int value;
+    value = distance();
+    if (value != 0 && value <= 20) {
+        flag_present = 1;
+    }
+}
+
 /* END Fonctions ADC */
 
 /* BEGIN Fonctions UART */
