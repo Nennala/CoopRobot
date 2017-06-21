@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccTE3Ttk.s 			page 1
+ARM GAS  /tmp/cc0tKXqJ.s 			page 1
 
 
    1              		.syntax unified
@@ -16,13 +16,12 @@ ARM GAS  /tmp/ccTE3Ttk.s 			page 1
   13              		.eabi_attribute 34, 1
   14              		.eabi_attribute 18, 4
   15              		.thumb
-  16              		.syntax unified
-  17              		.file	"timers.c"
-  18              		.text
-  19              	.Ltext0:
-  20              		.cfi_sections	.debug_frame
-  21              	.Letext0:
-ARM GAS  /tmp/ccTE3Ttk.s 			page 2
+  16              		.file	"timers.c"
+  17              		.text
+  18              	.Ltext0:
+  19              		.cfi_sections	.debug_frame
+  20              	.Letext0:
+ARM GAS  /tmp/cc0tKXqJ.s 			page 2
 
 
 DEFINED SYMBOLS

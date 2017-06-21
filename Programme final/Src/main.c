@@ -66,6 +66,7 @@ osThreadId defaultTaskHandle;
 osThreadId motor_taskHandle;
 osThreadId adc_dma_taskHandle;
 osThreadId uart_taskHandle;
+osThreadId IAtaskHandle;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
@@ -83,6 +84,7 @@ void StartDefaultTask(void const * argument);
 void motor(void const * argument);
 void adcControl(void const * argument);
 void uart(void const * argument);
+void ia(void const * argument);
                                     
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                                 
@@ -158,6 +160,10 @@ int main(void)
   /* definition and creation of uart_task */
   osThreadDef(uart_task, uart, osPriorityIdle, 0, 256);
   uart_taskHandle = osThreadCreate(osThread(uart_task), NULL);
+
+  /* definition and creation of IAtask */
+  osThreadDef(IAtask, ia, osPriorityIdle, 0, 512);
+  IAtaskHandle = osThreadCreate(osThread(IAtask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -485,6 +491,18 @@ __weak void uart(void const * argument)
     osDelay(1);
   }
   /* USER CODE END uart */
+}
+
+/* ia function */
+__weak void ia(void const * argument)
+{
+  /* USER CODE BEGIN ia */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END ia */
 }
 
 /**
