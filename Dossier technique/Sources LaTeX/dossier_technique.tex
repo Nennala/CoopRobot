@@ -7,6 +7,13 @@
  
 \usepackage{minted}
 
+\usepackage{fancyhdr}
+\usepackage{totpages}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Coopération de robots}
+\fancyhead[R]{P2020}
+
 \title{Dossier technique\\Coopération de robots}
 \author{Thibault Vernay, Victor Cazaux, Daphné Porteries}
 
@@ -20,6 +27,8 @@
 
 \section{Spécifications}
 
+La spécification qui suit est la spécification que nous avons établi au début du projet. Pas toutes les contraintes spécifiées ont été satisfaites et pas tous les capteurs ont été utilisés mais celle-ci donne une vue globale de ce projet.
+
 L'objectif de ce projet est de créer deux robots capables de coopérer pour venir à bout d'une épreuve définie qui oblige une coopération. \\
 
 Le robot doit être capable de~: \\
@@ -31,21 +40,36 @@ Le robot doit être capable de~: \\
   \item prendre une décision en concertation avec son coéquipier.
 \end{itemize}
 
+\subsection{Spécification de l'épreuve}
+
+Chaque robot doit~: \\
+
+\begin{itemize}
+  \item se repérer et repérer son coéquipier~;
+  \item rejoindre son coéquipier~;
+  \item traverser avec son coéquipier la zone de passage afin de valider l'épreuve.
+\end{itemize}
+
+\begin{center}
+  \includegraphics[width=9cm]{epreuve.png}
+  \captionof{figure}{terrain de jeu 80*80 cm}
+\end{center}
+
 \subsection{Spécifications matérielles}
 
 Le châssis des robots sont fournis au projet, ainsi que les composants et capteurs. Les robots doivent être identiques en conception matérielle.
 
 \subsubsection{Micro-contrôleur}
 
-Pour ce projet nous utiliserons deux cartes STM32F303K8 comme micro-contrôleurs pour nos robots, ces cartes permettent un encombrement minimal sur le robot et fournissent suffisamment d’entrées-sorties pour nos différents capteurs.
+Pour ce projet nous utilisons deux cartes STM32F303K8 comme micro-contrôleurs pour nos robots, ces cartes permettent un encombrement minimal sur le robot et fournissent suffisamment d’entrées-sorties pour nos différents capteurs.
 
 \subsubsection{Déplacement}
 
-Le déplacement est assuré par des moteurs à courant continus. Un driver moteur (nom du driver) fait l'interface de puissance. Pour pivoter il est également important de connaître son orientation. En effet sans orientation connue notre robot est sensible aux perturbations externes. Nous utiliserons donc ici un magnétomètre pour connaître l’orientation de notre robot.
+Le déplacement est assuré par des moteurs à courant continus. Un driver moteur fait l'interface de puissance. Pour pivoter il est également important de connaître son orientation. En effet sans orientation connue notre robot est sensible aux perturbations externes. Nous utilisons donc ici un magnétomètre pour connaître l’orientation de notre robot.
 
 \subsubsection{Repérage dans l'espace}
 
-Ici deux capteurs SHARP seront utilisés pour mesurer les distances. L’un d’entre eux sera fixé sur un servomoteur fixé sur le châssis pour pouvoir balayer l’environnement et l’autre sera fixe, dirigé vers l’avant du robot.
+Ici deux capteurs SHARP sont utilisés pour mesurer les distances. L’un d’entre eux est fixé sur un servomoteur fixé sur le châssis pour pouvoir balayer l’environnement et l’autre sera fixe, dirigé vers l’avant du robot.
 
 \subsubsection{Communication}
 
@@ -120,6 +144,13 @@ Ce capteur utilise l'effet Hall, mais nous n'avons pas vraiment eu le temps d'en
 \subsubsection{Moteurs à courant continus et pont en H}
 
 \subsubsection{Capteur de proximité infrarouge}
+
+Le capteur de proximité infrarouge est un capteur SHARP. C'est un capteur de mesure de distance, il intègre la combinaison d'un détecteur de position et une led à émissions infrarouge) et un circuit de traitement de signal. Ce capteur exploite la réflexion de l'objet pour calculer la distance. Ce capteur est difficilement influencé par la variation de température ce qu'il fait qu'il a une courbe d'étalonnage pour la distance qui ne change que très peu.
+
+\begin{center}
+  \includegraphics[width=10cm]{sharp_courbe.png}
+  \captionof{figure}{Courbe d'étalonnage de distance du capteur SHARP}
+\end{center}
 
 \subsection{Carte électronique}
 

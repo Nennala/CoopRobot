@@ -20,9 +20,104 @@
 
 \section{Spécifications}
 
+La spécification qui suit est la spécification que nous avons établi au début du projet. Pas toutes les contraintes spécifiées ont été satisfaites et pas tous les capteurs ont été utilisés mais celle-ci donne une vue globale de ce projet.
+
+L'objectif de ce projet est de créer deux robots capables de coopérer pour venir à bout d'une épreuve définie qui oblige une coopération. \\
+
+Le robot doit être capable de~: \\
+
+\begin{itemize}
+  \item se déplacer~;
+  \item se repérer dans l'espace~;
+  \item communiquer avec un coéquipier~;
+  \item prendre une décision en concertation avec son coéquipier.
+\end{itemize}
+
+\subsection{Spécification de l'épreuve}
+
+Chaque robot doit~: \\
+
+\begin{itemize}
+  \item se repérer et repérer son coéquipier~;
+  \item rejoindre son coéquipier~;
+  \item traverser avec son coéquipier la zone de passage afin de valider l'épreuve.
+\end{itemize}
+
+\begin{center}
+  \includegraphics[width=9cm]{epreuve.png}
+  \captionof{figure}{terrain de jeu 80*80 cm}
+\end{center}
+
 \subsection{Spécifications matérielles}
 
+Le châssis des robots sont fournis au projet, ainsi que les composants et capteurs. Les robots doivent être identiques en conception matérielle.
+
+\subsubsection{Micro-contrôleur}
+
+Pour ce projet nous utilisons deux cartes STM32F303K8 comme micro-contrôleurs pour nos robots, ces cartes permettent un encombrement minimal sur le robot et fournissent suffisamment d’entrées-sorties pour nos différents capteurs.
+
+\subsubsection{Déplacement}
+
+Le déplacement est assuré par des moteurs à courant continus. Un driver moteur fait l'interface de puissance. Pour pivoter il est également important de connaître son orientation. En effet sans orientation connue notre robot est sensible aux perturbations externes. Nous utilisons donc ici un magnétomètre pour connaître l’orientation de notre robot.
+
+\subsubsection{Repérage dans l'espace}
+
+Ici deux capteurs SHARP sont utilisés pour mesurer les distances. L’un d’entre eux est fixé sur un servomoteur fixé sur le châssis pour pouvoir balayer l’environnement et l’autre sera fixe, dirigé vers l’avant du robot.
+
+\subsubsection{Communication}
+
+Pour la communication, le protocole UART sera utilisé mais la communication filaire est trop contraignante sur une épreuve (risques d’accrocher les fils dans le décors et risque de perturbations  avec la longueur du fil) ce sont donc deux modules radio à sens unique qui seront utilisés.
+
 \subsection{Spécifications logicielles}
+
+La conception logicielle est séparée en trois parties~: \\
+
+\begin{itemize}
+  \item une couche bas niveau avec des fonctions permettant de déplacer le robot et de récupérer les valeurs des capteurs~;
+  \item un protocole de communication gérant le transfert de données de manière fiable~;
+  \item une couche haut niveau définissant le comportement du robot.
+\end{itemize}
+
+La couche haut niveau se servira des fonctions des deux autres niveaux pour définir des réactions pour le robots en fonction des données matérielles.
+
+\subsubsection{Couche bas niveau}
+
+Le but de cette couche est de créer des fonctions élémentaires de déplacement à l’aide de capteurs et des timers pour avancer et tourner, ainsi qu’une fonction renvoyant une structure contenant les valeurs des capteurs la plus à jour possible (100 fois par secondes). \\
+
+Fonctions élémentaires pour le déplacement~: \\
+
+\begin{itemize}
+  \item avancer de 15 cm~;
+  \item reculer de 15 cm~;
+  \item pivoter de 90 degrés à droite~;
+  \item pivoter de 90 degrés à gauche.
+\end{itemize}
+
+\subsubsection{Couche communication}
+
+Cette couche doit gérer indépendamment du reste la communication entre les deux robots, elle définie donc la taille des trames envoyées et le protocole de sécurité des données pour vérifier l’intégrité de celui-ci. Il y a plusieurs choix technologiques possibles que nous devons tester en fonction de la longueur de la trame~: \\
+
+\begin{itemize}
+  \item XOR~;
+  \item bit de parité~;
+  \item checksum.
+\end{itemize}
+
+\subsubsection{Couche IA}
+
+Cette couche définie la connaissance de l’épreuve du robot ainsi que la façon que celui-ci aura de quadriller son environnement. Cette couche utilise toutes les fonctions des couches inférieure et donc se positionne en couche de haut niveau. Elle permet de créer les déplacement du robots en fonctions de son environnement, de définir comment celui-ci va repérer où est le deuxième robot et également quelle méthode de prise de décision ceux-ci vont utiliser. \\
+
+Quadrillage de la zone~:\\
+
+On utilise le fait que les fonctions élémentaires font avancer de 10 cm pour quadriller la zone en une multitude de carrés de 10*10 $cm^2$ pour établir une carte de l’épreuve. \\
+
+Repérage du deuxième robot~: \\
+
+Les robots vont se déplacer en balayant la zone en cherchant un déplacement anormal qui ne soit pas de 10 cm, s’ils ne se trouvent toujours pas, il vont tourner pour chercher dans une autre direction. \\
+
+Prise de décision~: \\
+
+Pour la prise de décision les robots vont utiliser un tirage pseudo aléatoire et comparer les numéros obtenus, celui qui a le numéro le plus grand deviens prioritaire et indique à l’autre qu’il est prioritaire.
 
 \section{Étude du matériel}
 
@@ -30,7 +125,7 @@
 
 \subsubsection{Magnétomètre 3 axes}
 
-Le magnétomètre que nous aurions aimé avoir est le MAG3110FCR1 qui est un composant nécessitant la création d'une carte d'acceuil avec des condensateurs de découplages pour les alimentations (dont les valeurs sont spécifiées dans la documentation du composant). Ce composant utilise le protocole $I^2C$ qui permet d'utiliser que deux lignes, la ligne SDA et la ligne SCL réciproquement pour les données et pour l'horloge. Le composant en $I^2C$ dispose d'une adresse sur 7 bits aligné à gauche à laquelle il faut ajouté le bit d'écriture ou de lecture pour en faire une information sur 8 bits. En plus de l'alimentation et des lignes destinées à l'$I^2C$ ce capteur possède une ligne destinée aux interruptions.
+Le magnétomètre que nous aurions aimé avoir est le MAG3110FCR1 qui est un composant nécessitant la création d'une carte d’accueil avec des condensateurs de découplages pour les alimentations (dont les valeurs sont spécifiées dans la documentation du composant). Ce composant utilise le protocole $I^2C$ qui permet d'utiliser que deux lignes, la ligne SDA et la ligne SCL réciproquement pour les données et pour l'horloge. Le composant en $I^2C$ dispose d'une adresse sur 7 bits aligné à gauche à laquelle il faut ajouté le bit d'écriture ou de lecture pour en faire une information sur 8 bits. En plus de l'alimentation et des lignes destinées à l'$I^2C$ ce capteur possède une ligne destinée aux interruptions.
 
 \begin{center}
   \includegraphics[width=17cm]{mag_schematic.png}
@@ -39,9 +134,16 @@ Le magnétomètre que nous aurions aimé avoir est le MAG3110FCR1 qui est un com
 
 Ce capteur utilise l'effet Hall, mais nous n'avons pas vraiment eu le temps d'en parfaire l'étude.
 
-\subsection{Moteurs à courant continus et pont en H}
+\subsubsection{Moteurs à courant continus et pont en H}
 
-\subsection{Capteur de proximité infrarouge}
+\subsubsection{Capteur de proximité infrarouge}
+
+Le capteur de proximité infrarouge est un capteur SHARP. C'est un capteur de mesure de distance, il intègre la combinaison d'un détecteur de position et une led à émissions infrarouge) et un circuit de traitement de signal. Ce capteur exploite la réflexion de l'objet pour calculer la distance. Ce capteur est difficilement influencé par la variation de température ce qu'il fait qu'il a une courbe d'étalonnage pour la distance qui ne change que très peu.
+
+\begin{center}
+  \includegraphics[width=10cm]{sharp_courbe.png}
+  \captionof{figure}{Courbe d'étalonnage de distance du capteur SHARP}
+\end{center}
 
 \subsection{Carte électronique}
 
@@ -67,7 +169,7 @@ Les fichiers s'organisent de la manière suivante~: \\
 
 STM32CubeMx va aussi permettre autre chose~: la mise en place d'un OS temps réel nommé FreeRTOS permettant de paralléliser les tâches. Ainsi nous allons créer plusieurs tâches avec cet OS et profiter de sa gestion simplifiée des temporisations. Il faudra également gérer le HEAP et la taille de STACK lors de la mise en place de celui-ci. La ``STACK'' est la taille dans la mémoire maximum que peu prendre le programme lors de son exécution tandis que le HEAP existe lors de cas d'allocations dynamiques de la mémoire. Dans le cas de FreeRTOS toutes tâche créée est allouée dynamiquement dans la mémoire en fonction de la taille de sa stack notamment. Il faut donc penser à avoir de la marge côté heap et tester quelles valeurs maximale la carte accepte en fonction de la taille de sa RAM. La valeur max n'est pas mentionnée dans la doc, il faut donc tester empiriquement car une valeur trop élevée du Heap pose des problèmes lors du linkage et crée une erreur de ``RAM overflowed''. \\
 
-Niveau mmatériel, trois tâches indépendantes serons créées~: une pour l'ADC, une pour les moteurs et une pour la gestion de l'UART. Nous parlerons dans cette partie des deux premières.
+Niveau matériel, trois tâches indépendantes serons créées~: une pour l'ADC, une pour les moteurs et une pour la gestion de l'UART. Nous parlerons dans cette partie des deux premières.
 
 \subsubsection{Commande des actionneurs}
 
@@ -90,7 +192,7 @@ D'après la datasheet, pour que le moteur fonctionne et s'allume, il faut que la
 
 Le capteur de détection des distances est un capteur infrarouge SHARP. À partir de sa véritable distance minimale pour laquelle la tension renvoyée est maximale il effectue une courbe de tension à allure exponentielle inverse. La valeur en tension doit être récupérée par une entrée analogique, puis traduite en fonction de la précision voulue (ici sur 12 bits donc en valeur numérique entre $0$ et $4095$ pour $3,3V$) et ensuite étalonné pour que la valeur récupérée par la carte soit traduite en distance. Pour travailler plutôt avec des variables dites ``drapeau'' nous utiliserons ici l'ADC avec des interruptions toutes les 10 millisecondes (après une tentative ratée d'utilisation de la DMA avec un timer pour commander l'ADC, l'erreur est encore inconnue).\\
 
-Pour ce faire il faut configurer l'ADC avec une résolution de 12 bits. augmenter le nombre de cycles quand le temps entre deux conversions devient faible (ici le temps entre deux conversions sera de 10 millisecondes) et activer les interruptions avec NVIC qui est un module de la carte gérant les interruptions. Utiliser la conversion continue ne marchait pas dans notre cas sans véritables explications, nous avons décidé de nous en passer. Niveau code, il faut démarrer l'ADC avec la HAL et les interruptions, récupérer dans le code le prototype de la fonction ``HAL\_ADC\_ConvCompltCallback'' qui s'executera à chaque fois qu'une conversion sera terminée. Cette fonction est déclarée en ``\_\_weak'' ce qui signifie que si elle est déclarée dans un autre fichier, lors de la compilation seule celle qui n'a pas le mot clé ``\_\_weak'' sera compilée, l'autre sera ignorée. Elle est vide, il faut donc coder son contenu. Ici nous décidons d'utiliser des variables drapeau pour indiquer l'état de la variable qui stocke la donnée. Cette fonction positionne donc l'état du drapeau à 1 et récupère la valeur de l'ADC dans une variable globale au fichier. \\
+Pour ce faire il faut configurer l'ADC avec une résolution de 12 bits. augmenter le nombre de cycles quand le temps entre deux conversions devient faible (ici le temps entre deux conversions sera de 10 millisecondes) et activer les interruptions avec NVIC qui est un module de la carte gérant les interruptions. Utiliser la conversion continue ne marchait pas dans notre cas sans véritables explications, nous avons décidé de nous en passer. Niveau code, il faut démarrer l'ADC avec la HAL et les interruptions, récupérer dans le code le prototype de la fonction ``HAL\_ADC\_ConvCompltCallback'' qui s’exécutera à chaque fois qu'une conversion sera terminée. Cette fonction est déclarée en ``\_\_weak'' ce qui signifie que si elle est déclarée dans un autre fichier, lors de la compilation seule celle qui n'a pas le mot clé ``\_\_weak'' sera compilée, l'autre sera ignorée. Elle est vide, il faut donc coder son contenu. Ici nous décidons d'utiliser des variables drapeau pour indiquer l'état de la variable qui stocke la donnée. Cette fonction positionne donc l'état du drapeau à 1 et récupère la valeur de l'ADC dans une variable globale au fichier. \\
 
 La tâche associée à l'ADC n'a plus qu'à vérifier l'état du drapeau, traiter la valeur de l'ADC et remettre la valeur du drapeau à 0.
 
@@ -109,6 +211,12 @@ Les fonctions primitives sont les fonctions proches du matériel qui sont donné
 Les fonctions de déplacement mettent en place l'allumage séparé des moteurs, la gestions du PWM avec les routines d'accélération et de décélération et les temporisations permettant pour les déplacement linéaires de parcourir 15 cm (longueur d'une case pour l'IA) et pour les fonctions tournante d'atteindre approximativement un angle de 90 degrés (difficile sans boussole). La fonction distance frontale quant à elle va prendre en compte non seulement la distance traduite du capteur, mais aussi la distance entre l'avant du robot et le placement de celui-ci mais risque des erreurs quand cette distance est inférieure à 5 cm (chute de tension brutale). 
 
 \section{Couche communication}
+
+\subsection{Format des messages}
+
+\subsection{Sécurisation des messages}
+
+\subsection{Traduction des message}
 
 \section{Couche intelligence artificielle}
 
