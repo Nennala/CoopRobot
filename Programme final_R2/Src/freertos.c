@@ -529,51 +529,27 @@ void deplacement(int distance, int cap)//fonction évoluée
 
 void test1(){
 
-    WaitFor(0x06);
+    WaitFor(OK);
+
+    deplacement(1,0);
+    while(flag_deplacement_fini != 1)
+    {
+        osDelay(1000);
+    }
+
+    ok();
+    WaitFor(OK);
+
+    //WaitFor(OK);
     //ok();
 
-    osDelay(1000);
-    printf("Value 1: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-    deplacement(3,0);
-    printf("Value 2: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-    osDelay(1000);
-    printf("Value 3: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-
+    deplacement(-1,0);
     while(flag_deplacement_fini != 1)
     {
-        printf("Value 3: %d\n\r", flag_distance);
-        printf("defini: %d\n\n\r", flag_deplacement_fini);
         osDelay(1000);
     }
 
-    printf("Value 3: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-    ok();
-    //WaitFor(0x06);
-
-    osDelay(1000);
-    printf("Value 1: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-    deplacement(-3,0);
-    printf("Value 2: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-    osDelay(1000);
-    printf("Value 3: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
-
-
-    while(flag_deplacement_fini != 1)
-    {
-        printf("Value 3: %d\n\r", flag_distance);
-        printf("defini: %d\n\n\r", flag_deplacement_fini);
-        osDelay(1000);
-    }
-
-    printf("Value 3: %d\n\r", flag_distance);
-    printf("defini: %d\n\n\r", flag_deplacement_fini);
+    osDelay(4000);
 }
 
 void test2(){
@@ -667,6 +643,14 @@ void avance_block(){
     //printf("defini: %d\n\n\r", flag_deplacement_fini);
 }
 
+void test4(){
+    for(;;)
+    {
+        avance_block();
+        pivoter_droite();
+    }
+}
+
 /* END Fonctions IA */
 
 /* USER CODE END FunctionPrototypes */
@@ -726,11 +710,7 @@ void ia(void const * argument)
 {
   /* USER CODE BEGIN ia */
   /* Infinite loop */
-  for(;;)
-  {
-      avance_block();
-      pivoter_droite();
-  }
+test4();
 }
   /* USER CODE END ia */
 

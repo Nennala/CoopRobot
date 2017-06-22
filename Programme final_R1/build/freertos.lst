@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccKlZYje.s 			page 1
+ARM GAS  /tmp/ccy8Czqz.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
   28:Src/freertos.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
   29:Src/freertos.c ****   * 5. Redistribution and use of this software other than as permitted under 
   30:Src/freertos.c ****   *    this license is void and will automatically terminate your rights under 
-ARM GAS  /tmp/ccKlZYje.s 			page 2
+ARM GAS  /tmp/ccy8Czqz.s 			page 2
 
 
   31:Src/freertos.c ****   *    this license. 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
   85:Src/freertos.c **** int flag_cap =0;
   86:Src/freertos.c **** int flag_present = 0;
   87:Src/freertos.c **** 
-ARM GAS  /tmp/ccKlZYje.s 			page 3
+ARM GAS  /tmp/ccy8Czqz.s 			page 3
 
 
   88:Src/freertos.c **** struct Robot {
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
   66              		.section	.text.alumer_droite,"ax",%progbits
   67              		.align	2
   68              		.global	alumer_droite
-ARM GAS  /tmp/ccKlZYje.s 			page 4
+ARM GAS  /tmp/ccy8Czqz.s 			page 4
 
 
   69              		.thumb
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  118              		@ args = 0, pretend = 0, frame = 0
  119              		@ frame_needed = 0, uses_anonymous_args = 0
  120 0000 10B5     		push	{r4, lr}
-ARM GAS  /tmp/ccKlZYje.s 			page 5
+ARM GAS  /tmp/ccy8Czqz.s 			page 5
 
 
  121              	.LCFI2:
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  170 0010 0248     		ldr	r0, .L15
  171 0012 2021     		movs	r1, #32
  172 0014 0022     		movs	r2, #0
-ARM GAS  /tmp/ccKlZYje.s 			page 6
+ARM GAS  /tmp/ccy8Czqz.s 			page 6
 
 
  173 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  223 0000 10B5     		push	{r4, lr}
  224              	.LCFI4:
  225              		.cfi_def_cfa_offset 8
-ARM GAS  /tmp/ccKlZYje.s 			page 7
+ARM GAS  /tmp/ccy8Czqz.s 			page 7
 
 
  226              		.cfi_offset 4, -8
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  271              		.cfi_startproc
  272              		@ args = 0, pretend = 0, frame = 0
  273              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccKlZYje.s 			page 8
+ARM GAS  /tmp/ccy8Czqz.s 			page 8
 
 
  274 0000 10B5     		push	{r4, lr}
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  147:Src/freertos.c **** 
  148:Src/freertos.c **** void avancer_robot() {
  321              		.loc 1 148 0
-ARM GAS  /tmp/ccKlZYje.s 			page 9
+ARM GAS  /tmp/ccy8Czqz.s 			page 9
 
 
  322              		.cfi_startproc
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  368              		@ args = 0, pretend = 0, frame = 0
  369              		@ frame_needed = 0, uses_anonymous_args = 0
  370 0000 08B5     		push	{r3, lr}
-ARM GAS  /tmp/ccKlZYje.s 			page 10
+ARM GAS  /tmp/ccy8Czqz.s 			page 10
 
 
  371              	.LCFI7:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  416              	.LCFI8:
  417              		.cfi_def_cfa_offset 8
  418              		.cfi_offset 3, -8
-ARM GAS  /tmp/ccKlZYje.s 			page 11
+ARM GAS  /tmp/ccy8Czqz.s 			page 11
 
 
  419              		.cfi_offset 14, -4
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  180:Src/freertos.c ****     pwm_max();
  465              		.loc 1 180 0
  466 0002 FFF7FEFF 		bl	pwm_max
-ARM GAS  /tmp/ccKlZYje.s 			page 12
+ARM GAS  /tmp/ccy8Czqz.s 			page 12
 
 
  467              	.LVL45:
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  512 0004 1B68     		ldr	r3, [r3]
  513 0006 002B     		cmp	r3, #0
  514 0008 05DD     		ble	.L41
-ARM GAS  /tmp/ccKlZYje.s 			page 13
+ARM GAS  /tmp/ccy8Czqz.s 			page 13
 
 
  192:Src/freertos.c ****       avancer_robot();
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  554              	.LVL54:
  207:Src/freertos.c ****       flag_cap --;
  555              		.loc 1 207 0
-ARM GAS  /tmp/ccKlZYje.s 			page 14
+ARM GAS  /tmp/ccy8Czqz.s 			page 14
 
 
  556 0042 0C4A     		ldr	r2, .L48+8
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  217:Src/freertos.c ****     }
  218:Src/freertos.c **** }
  219:Src/freertos.c **** 
-ARM GAS  /tmp/ccKlZYje.s 			page 15
+ARM GAS  /tmp/ccy8Czqz.s 			page 15
 
 
  220:Src/freertos.c **** /* END Fonctions pour les moteurs */
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  649 0002 1446     		mov	r4, r2
  230:Src/freertos.c ****     UNUSED(file);
  231:Src/freertos.c **** 
-ARM GAS  /tmp/ccKlZYje.s 			page 16
+ARM GAS  /tmp/ccy8Czqz.s 			page 16
 
 
  232:Src/freertos.c ****     HAL_UART_Transmit(&huart2, (uint8_t *) ptr, (uint16_t) len, 10000);
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  240:Src/freertos.c ****     }
  241:Src/freertos.c ****     if (adcValue >= 3750 && adcValue < 3800) {
  697              		.loc 1 241 0
-ARM GAS  /tmp/ccKlZYje.s 			page 17
+ARM GAS  /tmp/ccy8Czqz.s 			page 17
 
 
  698 0012 A3F6A662 		subw	r2, r3, #3750
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  737              		.loc 1 256 0
  738 004a A3F6CE12 		subw	r2, r3, #2510
  739 004e B32A     		cmp	r2, #179
-ARM GAS  /tmp/ccKlZYje.s 			page 18
+ARM GAS  /tmp/ccy8Czqz.s 			page 18
 
 
  740 0050 00D8     		bhi	.L65
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  779 0080 632A     		cmp	r2, #99
  780 0082 00D8     		bhi	.L70
  272:Src/freertos.c ****         value = 17;
-ARM GAS  /tmp/ccKlZYje.s 			page 19
+ARM GAS  /tmp/ccy8Czqz.s 			page 19
 
 
  781              		.loc 1 272 0
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  825              	.LFB143:
  285:Src/freertos.c **** 
  286:Src/freertos.c **** void estPresent() {
-ARM GAS  /tmp/ccKlZYje.s 			page 20
+ARM GAS  /tmp/ccy8Czqz.s 			page 20
 
 
  826              		.loc 1 286 0
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  300:Src/freertos.c ****     void EnvoiMessage(uint8_t data){
  869              		.loc 1 300 0
  870              		.cfi_startproc
-ARM GAS  /tmp/ccKlZYje.s 			page 21
+ARM GAS  /tmp/ccy8Czqz.s 			page 21
 
 
  871              		@ args = 0, pretend = 0, frame = 8
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  917              	.LVL86:
  309:Src/freertos.c ****         esoixantequatre = (data & 0x40)/64;
  918              		.loc 1 309 0
-ARM GAS  /tmp/ccKlZYje.s 			page 22
+ARM GAS  /tmp/ccy8Czqz.s 			page 22
 
 
  919 0038 00F04005 		and	r5, r0, #64
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  316:Src/freertos.c ****         HAL_UART_Transmit(&huart1, &b, sizeof(data), 0xEEEE);
  967              		.loc 1 316 0
  968 00ac 124C     		ldr	r4, .L105
-ARM GAS  /tmp/ccKlZYje.s 			page 23
+ARM GAS  /tmp/ccy8Czqz.s 			page 23
 
 
  969              	.LVL99:
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1018              		.align	2
  1019              		.global	ReceptionMessage
  1020              		.thumb
-ARM GAS  /tmp/ccKlZYje.s 			page 24
+ARM GAS  /tmp/ccy8Czqz.s 			page 24
 
 
  1021              		.thumb_func
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  332:Src/freertos.c ****         rec[1] = m;
  1067              		.loc 1 332 0
  1068 0040 9DF80650 		ldrb	r5, [sp, #6]	@ zero_extendqisi2
-ARM GAS  /tmp/ccKlZYje.s 			page 25
+ARM GAS  /tmp/ccy8Czqz.s 			page 25
 
 
  1069 0044 8DF80150 		strb	r5, [sp, #1]
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1113 008e DBB2     		uxtb	r3, r3
  1114              	.LVL118:
  342:Src/freertos.c ****             if ((run^rdeux) != rhuit) ok =0;
-ARM GAS  /tmp/ccKlZYje.s 			page 26
+ARM GAS  /tmp/ccy8Czqz.s 			page 26
 
 
  1115              		.loc 1 342 0
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1160 00d8 4544     		add	r5, r5, r8
  1161 00da EDB2     		uxtb	r5, r5
  1162              	.LVL126:
-ARM GAS  /tmp/ccKlZYje.s 			page 27
+ARM GAS  /tmp/ccy8Czqz.s 			page 27
 
 
  350:Src/freertos.c ****         if (ok == 1) {
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1202 0106 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
  1203              	.LVL134:
  1204              	.L126:
-ARM GAS  /tmp/ccKlZYje.s 			page 28
+ARM GAS  /tmp/ccy8Czqz.s 			page 28
 
 
  1205 010a 00BF     		.align	2
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1251 001a C0B2     		uxtb	r0, r0
  1252 001c 9860     		str	r0, [r3, #8]
  1253 001e 38BD     		pop	{r3, r4, r5, pc}
-ARM GAS  /tmp/ccKlZYje.s 			page 29
+ARM GAS  /tmp/ccy8Czqz.s 			page 29
 
 
  1254              	.LVL140:
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  378:Src/freertos.c ****     void Traduction(uint8_t msg){
  1304              		.loc 1 378 0
  1305              		.cfi_startproc
-ARM GAS  /tmp/ccKlZYje.s 			page 30
+ARM GAS  /tmp/ccy8Czqz.s 			page 30
 
 
  1306              		@ args = 0, pretend = 0, frame = 0
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1343              		.loc 1 395 0
  1344 0028 092C     		cmp	r4, #9
  1345 002a 02D1     		bne	.L137
-ARM GAS  /tmp/ccKlZYje.s 			page 31
+ARM GAS  /tmp/ccy8Czqz.s 			page 31
 
 
  396:Src/freertos.c ****             flag_droite = 1;
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1382              	.LVL152:
  1383              	.L133:
  1384 0066 10BD     		pop	{r4, pc}
-ARM GAS  /tmp/ccKlZYje.s 			page 32
+ARM GAS  /tmp/ccy8Czqz.s 			page 32
 
 
  1385              	.L142:
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  431:Src/freertos.c ****     }
  1424              		.loc 1 431 0
  1425 000c 10BD     		pop	{r4, pc}
-ARM GAS  /tmp/ccKlZYje.s 			page 33
+ARM GAS  /tmp/ccy8Czqz.s 			page 33
 
 
  1426              		.cfi_endproc
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1477              	.LFE151:
  1479 000a 00BF     		.section	.text.Monte,"ax",%progbits
  1480              		.align	2
-ARM GAS  /tmp/ccKlZYje.s 			page 34
+ARM GAS  /tmp/ccy8Czqz.s 			page 34
 
 
  1481              		.global	Monte
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  448:Src/freertos.c ****         WaitFor(0x06);
  1529              		.loc 1 448 0
  1530 0008 0620     		movs	r0, #6
-ARM GAS  /tmp/ccKlZYje.s 			page 35
+ARM GAS  /tmp/ccy8Czqz.s 			page 35
 
 
  1531 000a FFF7FEFF 		bl	WaitFor
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1581              		.cfi_offset 3, -8
  1582              		.cfi_offset 14, -4
  457:Src/freertos.c ****         EnvoiMessage(0x0A);
-ARM GAS  /tmp/ccKlZYje.s 			page 36
+ARM GAS  /tmp/ccy8Czqz.s 			page 36
 
 
  1583              		.loc 1 457 0
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1633              	.LCFI31:
  1634              		.cfi_def_cfa_offset 8
  1635              		.cfi_offset 3, -8
-ARM GAS  /tmp/ccKlZYje.s 			page 37
+ARM GAS  /tmp/ccy8Czqz.s 			page 37
 
 
  1636              		.cfi_offset 14, -4
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  474:Src/freertos.c ****         if (ReceptionMessage() < a) {
  1684              		.loc 1 474 0
  1685 0026 FFF7FEFF 		bl	ReceptionMessage
-ARM GAS  /tmp/ccKlZYje.s 			page 38
+ARM GAS  /tmp/ccy8Czqz.s 			page 38
 
 
  1686              	.LVL173:
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1729              	.LCFI33:
  1730              		.cfi_def_cfa_offset 8
  1731              		.cfi_offset 3, -8
-ARM GAS  /tmp/ccKlZYje.s 			page 39
+ARM GAS  /tmp/ccy8Czqz.s 			page 39
 
 
  1732              		.cfi_offset 14, -4
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1782              		.cfi_offset 14, -4
  494:Src/freertos.c ****     EnvoiMessage(0x13);
  1783              		.loc 1 494 0
-ARM GAS  /tmp/ccKlZYje.s 			page 40
+ARM GAS  /tmp/ccy8Czqz.s 			page 40
 
 
  1784 0002 1320     		movs	r0, #19
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  516:Src/freertos.c ****           flag_distance += distance;
  1819              		.loc 1 516 0
  1820 0012 0A49     		ldr	r1, .L180+8
-ARM GAS  /tmp/ccKlZYje.s 			page 41
+ARM GAS  /tmp/ccy8Czqz.s 			page 41
 
 
  1821 0014 0B68     		ldr	r3, [r1]
@@ -2456,1189 +2456,1028 @@ ARM GAS  /tmp/ccKlZYje.s 			page 1
  1864              		.cfi_startproc
  1865              		@ args = 0, pretend = 0, frame = 0
  1866              		@ frame_needed = 0, uses_anonymous_args = 0
- 1867 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1867 0000 08B5     		push	{r3, lr}
  1868              	.LCFI36:
-ARM GAS  /tmp/ccKlZYje.s 			page 42
+ARM GAS  /tmp/ccy8Czqz.s 			page 42
 
 
- 1869              		.cfi_def_cfa_offset 24
- 1870              		.cfi_offset 3, -24
- 1871              		.cfi_offset 4, -20
- 1872              		.cfi_offset 5, -16
- 1873              		.cfi_offset 6, -12
- 1874              		.cfi_offset 7, -8
- 1875              		.cfi_offset 14, -4
+ 1869              		.cfi_def_cfa_offset 8
+ 1870              		.cfi_offset 3, -8
+ 1871              		.cfi_offset 14, -4
  528:Src/freertos.c **** 
- 529:Src/freertos.c ****     //WaitFor(0x06);
- 530:Src/freertos.c ****     ok();
- 1876              		.loc 1 530 0
- 1877 0002 FFF7FEFF 		bl	ok
- 1878              	.LVL186:
- 531:Src/freertos.c **** 
- 532:Src/freertos.c ****     osDelay(1000);
- 1879              		.loc 1 532 0
- 1880 0006 4FF47A70 		mov	r0, #1000
- 1881 000a FFF7FEFF 		bl	osDelay
- 1882              	.LVL187:
- 533:Src/freertos.c ****     printf("Value 1: %d\n\r", flag_distance);
- 1883              		.loc 1 533 0
- 1884 000e 444E     		ldr	r6, .L188
- 1885 0010 4448     		ldr	r0, .L188+4
- 1886 0012 3168     		ldr	r1, [r6]
- 1887 0014 FFF7FEFF 		bl	printf
- 1888              	.LVL188:
- 534:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1889              		.loc 1 534 0
- 1890 0018 434D     		ldr	r5, .L188+8
- 1891 001a 444C     		ldr	r4, .L188+12
- 1892 001c 2846     		mov	r0, r5
- 1893 001e 2168     		ldr	r1, [r4]
- 1894 0020 FFF7FEFF 		bl	printf
- 1895              	.LVL189:
- 535:Src/freertos.c ****     deplacement(3,0);
- 1896              		.loc 1 535 0
- 1897 0024 0320     		movs	r0, #3
- 1898 0026 0021     		movs	r1, #0
- 1899 0028 FFF7FEFF 		bl	deplacement
- 1900              	.LVL190:
- 536:Src/freertos.c ****     printf("Value 2: %d\n\r", flag_distance);
- 1901              		.loc 1 536 0
- 1902 002c 4048     		ldr	r0, .L188+16
- 1903 002e 3168     		ldr	r1, [r6]
- 1904 0030 FFF7FEFF 		bl	printf
- 1905              	.LVL191:
- 537:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1906              		.loc 1 537 0
- 1907 0034 2846     		mov	r0, r5
- 1908 0036 2168     		ldr	r1, [r4]
- 1909 0038 FFF7FEFF 		bl	printf
- 1910              	.LVL192:
- 538:Src/freertos.c ****     osDelay(1000);
- 1911              		.loc 1 538 0
- 1912 003c 4FF47A70 		mov	r0, #1000
- 1913 0040 FFF7FEFF 		bl	osDelay
- 1914              	.LVL193:
-ARM GAS  /tmp/ccKlZYje.s 			page 43
+ 529:Src/freertos.c ****     //WaitFor(OK);
+ 530:Src/freertos.c **** 
+ 531:Src/freertos.c ****     deplacement(1,0);
+ 1872              		.loc 1 531 0
+ 1873 0002 0120     		movs	r0, #1
+ 1874 0004 0021     		movs	r1, #0
+ 1875 0006 FFF7FEFF 		bl	deplacement
+ 1876              	.LVL186:
+ 532:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1877              		.loc 1 532 0
+ 1878 000a 03E0     		b	.L183
+ 1879              	.L184:
+ 533:Src/freertos.c ****     {
+ 534:Src/freertos.c ****         osDelay(1000);
+ 1880              		.loc 1 534 0
+ 1881 000c 4FF47A70 		mov	r0, #1000
+ 1882 0010 FFF7FEFF 		bl	osDelay
+ 1883              	.LVL187:
+ 1884              	.L183:
+ 532:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1885              		.loc 1 532 0
+ 1886 0014 0E4B     		ldr	r3, .L188
+ 1887 0016 1B68     		ldr	r3, [r3]
+ 1888 0018 012B     		cmp	r3, #1
+ 1889 001a F7D1     		bne	.L184
+ 535:Src/freertos.c ****     }
+ 536:Src/freertos.c **** 
+ 537:Src/freertos.c ****     ok();
+ 1890              		.loc 1 537 0
+ 1891 001c FFF7FEFF 		bl	ok
+ 1892              	.LVL188:
+ 538:Src/freertos.c ****     //WaitFor(OK);
+ 539:Src/freertos.c **** 
+ 540:Src/freertos.c ****     WaitFor(OK);
+ 1893              		.loc 1 540 0
+ 1894 0020 0620     		movs	r0, #6
+ 1895 0022 FFF7FEFF 		bl	WaitFor
+ 1896              	.LVL189:
+ 541:Src/freertos.c ****     ok();
+ 1897              		.loc 1 541 0
+ 1898 0026 FFF7FEFF 		bl	ok
+ 1899              	.LVL190:
+ 542:Src/freertos.c **** 
+ 543:Src/freertos.c ****     deplacement(-1,0);
+ 1900              		.loc 1 543 0
+ 1901 002a 4FF0FF30 		mov	r0, #-1
+ 1902 002e 0021     		movs	r1, #0
+ 1903 0030 FFF7FEFF 		bl	deplacement
+ 1904              	.LVL191:
+ 544:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1905              		.loc 1 544 0
+ 1906 0034 03E0     		b	.L185
+ 1907              	.L186:
+ARM GAS  /tmp/ccy8Czqz.s 			page 43
 
 
- 539:Src/freertos.c ****     printf("Value 3: %d\n\r", flag_distance);
- 1915              		.loc 1 539 0
- 1916 0044 3B48     		ldr	r0, .L188+20
- 1917 0046 3168     		ldr	r1, [r6]
- 1918 0048 FFF7FEFF 		bl	printf
- 1919              	.LVL194:
- 540:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1920              		.loc 1 540 0
- 1921 004c 2846     		mov	r0, r5
- 1922 004e 2168     		ldr	r1, [r4]
- 1923 0050 FFF7FEFF 		bl	printf
- 1924              	.LVL195:
- 541:Src/freertos.c **** 
- 542:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 1925              		.loc 1 542 0
- 1926 0054 0DE0     		b	.L183
- 1927              	.L184:
- 543:Src/freertos.c ****     {
- 544:Src/freertos.c ****         printf("Value 3: %d\n\r", flag_distance);
- 1928              		.loc 1 544 0
- 1929 0056 3748     		ldr	r0, .L188+20
- 1930 0058 314B     		ldr	r3, .L188
- 1931 005a 1968     		ldr	r1, [r3]
- 1932 005c FFF7FEFF 		bl	printf
- 1933              	.LVL196:
- 545:Src/freertos.c ****         printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1934              		.loc 1 545 0
- 1935 0060 3148     		ldr	r0, .L188+8
- 1936 0062 324B     		ldr	r3, .L188+12
- 1937 0064 1968     		ldr	r1, [r3]
- 1938 0066 FFF7FEFF 		bl	printf
- 1939              	.LVL197:
+ 545:Src/freertos.c ****     {
  546:Src/freertos.c ****         osDelay(1000);
- 1940              		.loc 1 546 0
- 1941 006a 4FF47A70 		mov	r0, #1000
- 1942 006e FFF7FEFF 		bl	osDelay
- 1943              	.LVL198:
- 1944              	.L183:
- 542:Src/freertos.c ****     {
- 1945              		.loc 1 542 0
- 1946 0072 2E4B     		ldr	r3, .L188+12
- 1947 0074 1B68     		ldr	r3, [r3]
- 1948 0076 012B     		cmp	r3, #1
- 1949 0078 EDD1     		bne	.L184
+ 1908              		.loc 1 546 0
+ 1909 0036 4FF47A70 		mov	r0, #1000
+ 1910 003a FFF7FEFF 		bl	osDelay
+ 1911              	.LVL192:
+ 1912              	.L185:
+ 544:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1913              		.loc 1 544 0
+ 1914 003e 044B     		ldr	r3, .L188
+ 1915 0040 1B68     		ldr	r3, [r3]
+ 1916 0042 012B     		cmp	r3, #1
+ 1917 0044 F7D1     		bne	.L186
  547:Src/freertos.c ****     }
  548:Src/freertos.c **** 
- 549:Src/freertos.c ****     printf("Value 3: %d\n\r", flag_distance);
- 1950              		.loc 1 549 0
- 1951 007a 2E4F     		ldr	r7, .L188+20
- 1952 007c 284E     		ldr	r6, .L188
- 1953 007e 3846     		mov	r0, r7
- 1954 0080 3168     		ldr	r1, [r6]
- 1955 0082 FFF7FEFF 		bl	printf
- 1956              	.LVL199:
- 550:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1957              		.loc 1 550 0
- 1958 0086 284D     		ldr	r5, .L188+8
-ARM GAS  /tmp/ccKlZYje.s 			page 44
+ 549:Src/freertos.c ****     osDelay(400);
+ 1918              		.loc 1 549 0
+ 1919 0046 4FF4C870 		mov	r0, #400
+ 1920 004a FFF7FEFF 		bl	osDelay
+ 1921              	.LVL193:
+ 1922 004e 08BD     		pop	{r3, pc}
+ 1923              	.L189:
+ 1924              		.align	2
+ 1925              	.L188:
+ 1926 0050 00000000 		.word	.LANCHOR1
+ 1927              		.cfi_endproc
+ 1928              	.LFE163:
+ 1930              		.section	.text.test2,"ax",%progbits
+ 1931              		.align	2
+ 1932              		.global	test2
+ 1933              		.thumb
+ 1934              		.thumb_func
+ 1936              	test2:
+ 1937              	.LFB164:
+ 550:Src/freertos.c **** }
+ 551:Src/freertos.c **** 
+ 552:Src/freertos.c **** void test2(){
+ 1938              		.loc 1 552 0
+ 1939              		.cfi_startproc
+ 1940              		@ args = 0, pretend = 0, frame = 0
+ 1941              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1942 0000 08B5     		push	{r3, lr}
+ 1943              	.LCFI37:
+ 1944              		.cfi_def_cfa_offset 8
+ 1945              		.cfi_offset 3, -8
+ 1946              		.cfi_offset 14, -4
+ 553:Src/freertos.c ****     deplacement(1,0);
+ 1947              		.loc 1 553 0
+ 1948 0002 0120     		movs	r0, #1
+ 1949 0004 0021     		movs	r1, #0
+ 1950 0006 FFF7FEFF 		bl	deplacement
+ 1951              	.LVL194:
+ 554:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1952              		.loc 1 554 0
+ 1953 000a 03E0     		b	.L191
+ 1954              	.L192:
+ 555:Src/freertos.c ****     {
+ARM GAS  /tmp/ccy8Czqz.s 			page 44
 
 
- 1959 0088 284C     		ldr	r4, .L188+12
- 1960 008a 2846     		mov	r0, r5
- 1961 008c 2168     		ldr	r1, [r4]
- 1962 008e FFF7FEFF 		bl	printf
- 1963              	.LVL200:
- 551:Src/freertos.c ****     //ok();
- 552:Src/freertos.c ****     WaitFor(0x06);
- 1964              		.loc 1 552 0
- 1965 0092 0620     		movs	r0, #6
- 1966 0094 FFF7FEFF 		bl	WaitFor
- 1967              	.LVL201:
- 553:Src/freertos.c **** 
- 554:Src/freertos.c ****     osDelay(1000);
- 1968              		.loc 1 554 0
- 1969 0098 4FF47A70 		mov	r0, #1000
- 1970 009c FFF7FEFF 		bl	osDelay
- 1971              	.LVL202:
- 555:Src/freertos.c ****     printf("Value 1: %d\n\r", flag_distance);
- 1972              		.loc 1 555 0
- 1973 00a0 2048     		ldr	r0, .L188+4
- 1974 00a2 3168     		ldr	r1, [r6]
- 1975 00a4 FFF7FEFF 		bl	printf
- 1976              	.LVL203:
- 556:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1977              		.loc 1 556 0
- 1978 00a8 2846     		mov	r0, r5
- 1979 00aa 2168     		ldr	r1, [r4]
- 1980 00ac FFF7FEFF 		bl	printf
- 1981              	.LVL204:
- 557:Src/freertos.c ****     deplacement(-3,0);
- 1982              		.loc 1 557 0
- 1983 00b0 6FF00200 		mvn	r0, #2
- 1984 00b4 0021     		movs	r1, #0
- 1985 00b6 FFF7FEFF 		bl	deplacement
- 1986              	.LVL205:
- 558:Src/freertos.c ****     printf("Value 2: %d\n\r", flag_distance);
- 1987              		.loc 1 558 0
- 1988 00ba 1D48     		ldr	r0, .L188+16
- 1989 00bc 3168     		ldr	r1, [r6]
- 1990 00be FFF7FEFF 		bl	printf
- 1991              	.LVL206:
- 559:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 1992              		.loc 1 559 0
- 1993 00c2 2846     		mov	r0, r5
- 1994 00c4 2168     		ldr	r1, [r4]
- 1995 00c6 FFF7FEFF 		bl	printf
- 1996              	.LVL207:
- 560:Src/freertos.c ****     osDelay(1000);
- 1997              		.loc 1 560 0
- 1998 00ca 4FF47A70 		mov	r0, #1000
- 1999 00ce FFF7FEFF 		bl	osDelay
- 2000              	.LVL208:
- 561:Src/freertos.c ****     printf("Value 3: %d\n\r", flag_distance);
- 2001              		.loc 1 561 0
- 2002 00d2 3846     		mov	r0, r7
- 2003 00d4 3168     		ldr	r1, [r6]
- 2004 00d6 FFF7FEFF 		bl	printf
-ARM GAS  /tmp/ccKlZYje.s 			page 45
-
-
- 2005              	.LVL209:
- 562:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 2006              		.loc 1 562 0
- 2007 00da 2846     		mov	r0, r5
- 2008 00dc 2168     		ldr	r1, [r4]
- 2009 00de FFF7FEFF 		bl	printf
- 2010              	.LVL210:
- 563:Src/freertos.c **** 
- 564:Src/freertos.c **** 
- 565:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2011              		.loc 1 565 0
- 2012 00e2 0DE0     		b	.L185
- 2013              	.L186:
- 566:Src/freertos.c ****     {
- 567:Src/freertos.c ****         printf("Value 3: %d\n\r", flag_distance);
- 2014              		.loc 1 567 0
- 2015 00e4 1348     		ldr	r0, .L188+20
- 2016 00e6 0E4B     		ldr	r3, .L188
- 2017 00e8 1968     		ldr	r1, [r3]
- 2018 00ea FFF7FEFF 		bl	printf
- 2019              	.LVL211:
- 568:Src/freertos.c ****         printf("defini: %d\n\n\r", flag_deplacement_fini);
- 2020              		.loc 1 568 0
- 2021 00ee 0E48     		ldr	r0, .L188+8
- 2022 00f0 0E4B     		ldr	r3, .L188+12
- 2023 00f2 1968     		ldr	r1, [r3]
- 2024 00f4 FFF7FEFF 		bl	printf
- 2025              	.LVL212:
+ 556:Src/freertos.c ****         osDelay(1000);
+ 1955              		.loc 1 556 0
+ 1956 000c 4FF47A70 		mov	r0, #1000
+ 1957 0010 FFF7FEFF 		bl	osDelay
+ 1958              	.LVL195:
+ 1959              	.L191:
+ 554:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1960              		.loc 1 554 0
+ 1961 0014 0F4B     		ldr	r3, .L198
+ 1962 0016 1B68     		ldr	r3, [r3]
+ 1963 0018 012B     		cmp	r3, #1
+ 1964 001a F7D1     		bne	.L192
+ 557:Src/freertos.c ****     }
+ 558:Src/freertos.c **** 
+ 559:Src/freertos.c **** 
+ 560:Src/freertos.c ****     deplacement(1,0);
+ 1965              		.loc 1 560 0
+ 1966 001c 0120     		movs	r0, #1
+ 1967 001e 0021     		movs	r1, #0
+ 1968 0020 FFF7FEFF 		bl	deplacement
+ 1969              	.LVL196:
+ 561:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1970              		.loc 1 561 0
+ 1971 0024 03E0     		b	.L193
+ 1972              	.L194:
+ 562:Src/freertos.c ****     {
+ 563:Src/freertos.c ****         osDelay(1000);
+ 1973              		.loc 1 563 0
+ 1974 0026 4FF47A70 		mov	r0, #1000
+ 1975 002a FFF7FEFF 		bl	osDelay
+ 1976              	.LVL197:
+ 1977              	.L193:
+ 561:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1978              		.loc 1 561 0
+ 1979 002e 094B     		ldr	r3, .L198
+ 1980 0030 1B68     		ldr	r3, [r3]
+ 1981 0032 012B     		cmp	r3, #1
+ 1982 0034 F7D1     		bne	.L194
+ 564:Src/freertos.c ****     }
+ 565:Src/freertos.c **** 
+ 566:Src/freertos.c ****     deplacement(-2,0);
+ 1983              		.loc 1 566 0
+ 1984 0036 6FF00100 		mvn	r0, #1
+ 1985 003a 0021     		movs	r1, #0
+ 1986 003c FFF7FEFF 		bl	deplacement
+ 1987              	.LVL198:
+ 567:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1988              		.loc 1 567 0
+ 1989 0040 03E0     		b	.L195
+ 1990              	.L196:
+ 568:Src/freertos.c ****     {
  569:Src/freertos.c ****         osDelay(1000);
- 2026              		.loc 1 569 0
- 2027 00f8 4FF47A70 		mov	r0, #1000
- 2028 00fc FFF7FEFF 		bl	osDelay
- 2029              	.LVL213:
- 2030              	.L185:
- 565:Src/freertos.c ****     {
- 2031              		.loc 1 565 0
- 2032 0100 0A4B     		ldr	r3, .L188+12
- 2033 0102 1B68     		ldr	r3, [r3]
- 2034 0104 012B     		cmp	r3, #1
- 2035 0106 EDD1     		bne	.L186
+ 1991              		.loc 1 569 0
+ 1992 0042 4FF47A70 		mov	r0, #1000
+ 1993 0046 FFF7FEFF 		bl	osDelay
+ 1994              	.LVL199:
+ 1995              	.L195:
+ARM GAS  /tmp/ccy8Czqz.s 			page 45
+
+
+ 567:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 1996              		.loc 1 567 0
+ 1997 004a 024B     		ldr	r3, .L198
+ 1998 004c 1B68     		ldr	r3, [r3]
+ 1999 004e 012B     		cmp	r3, #1
+ 2000 0050 F7D1     		bne	.L196
  570:Src/freertos.c ****     }
- 571:Src/freertos.c **** 
- 572:Src/freertos.c ****     printf("Value 3: %d\n\r", flag_distance);
- 2036              		.loc 1 572 0
- 2037 0108 0A48     		ldr	r0, .L188+20
- 2038 010a 054B     		ldr	r3, .L188
- 2039 010c 1968     		ldr	r1, [r3]
- 2040 010e FFF7FEFF 		bl	printf
- 2041              	.LVL214:
- 573:Src/freertos.c ****     printf("defini: %d\n\n\r", flag_deplacement_fini);
- 2042              		.loc 1 573 0
- 2043 0112 0548     		ldr	r0, .L188+8
- 2044 0114 054B     		ldr	r3, .L188+12
- 2045 0116 1968     		ldr	r1, [r3]
- 2046 0118 FFF7FEFF 		bl	printf
- 2047              	.LVL215:
- 2048 011c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
-ARM GAS  /tmp/ccKlZYje.s 			page 46
+ 571:Src/freertos.c **** }
+ 2001              		.loc 1 571 0
+ 2002 0052 08BD     		pop	{r3, pc}
+ 2003              	.L199:
+ 2004              		.align	2
+ 2005              	.L198:
+ 2006 0054 00000000 		.word	.LANCHOR1
+ 2007              		.cfi_endproc
+ 2008              	.LFE164:
+ 2010              		.section	.text.test3,"ax",%progbits
+ 2011              		.align	2
+ 2012              		.global	test3
+ 2013              		.thumb
+ 2014              		.thumb_func
+ 2016              	test3:
+ 2017              	.LFB165:
+ 572:Src/freertos.c **** 
+ 573:Src/freertos.c **** void test3(){//dessine un carré
+ 2018              		.loc 1 573 0
+ 2019              		.cfi_startproc
+ 2020              		@ args = 0, pretend = 0, frame = 0
+ 2021              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2022 0000 08B5     		push	{r3, lr}
+ 2023              	.LCFI38:
+ 2024              		.cfi_def_cfa_offset 8
+ 2025              		.cfi_offset 3, -8
+ 2026              		.cfi_offset 14, -4
+ 574:Src/freertos.c ****     deplacement(1,0);
+ 2027              		.loc 1 574 0
+ 2028 0002 0120     		movs	r0, #1
+ 2029 0004 0021     		movs	r1, #0
+ 2030 0006 FFF7FEFF 		bl	deplacement
+ 2031              	.LVL200:
+ 575:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2032              		.loc 1 575 0
+ 2033 000a 03E0     		b	.L201
+ 2034              	.L202:
+ 576:Src/freertos.c ****     {
+ 577:Src/freertos.c ****         osDelay(1000);
+ 2035              		.loc 1 577 0
+ 2036 000c 4FF47A70 		mov	r0, #1000
+ 2037 0010 FFF7FEFF 		bl	osDelay
+ 2038              	.LVL201:
+ 2039              	.L201:
+ 575:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2040              		.loc 1 575 0
+ 2041 0014 3C4B     		ldr	r3, .L222
+ 2042 0016 1B68     		ldr	r3, [r3]
+ 2043 0018 012B     		cmp	r3, #1
+ 2044 001a F7D1     		bne	.L202
+ARM GAS  /tmp/ccy8Czqz.s 			page 46
 
 
- 2049              	.L189:
- 2050 011e 00BF     		.align	2
- 2051              	.L188:
- 2052 0120 00000000 		.word	.LANCHOR0
- 2053 0124 00000000 		.word	.LC0
- 2054 0128 10000000 		.word	.LC1
- 2055 012c 00000000 		.word	.LANCHOR1
- 2056 0130 20000000 		.word	.LC2
- 2057 0134 30000000 		.word	.LC3
- 2058              		.cfi_endproc
- 2059              	.LFE163:
- 2061              		.section	.text.test2,"ax",%progbits
- 2062              		.align	2
- 2063              		.global	test2
- 2064              		.thumb
- 2065              		.thumb_func
- 2067              	test2:
- 2068              	.LFB164:
- 574:Src/freertos.c **** }
- 575:Src/freertos.c **** 
- 576:Src/freertos.c **** void test2(){
- 2069              		.loc 1 576 0
- 2070              		.cfi_startproc
- 2071              		@ args = 0, pretend = 0, frame = 0
- 2072              		@ frame_needed = 0, uses_anonymous_args = 0
- 2073 0000 08B5     		push	{r3, lr}
- 2074              	.LCFI37:
- 2075              		.cfi_def_cfa_offset 8
- 2076              		.cfi_offset 3, -8
- 2077              		.cfi_offset 14, -4
- 577:Src/freertos.c ****     deplacement(1,0);
- 2078              		.loc 1 577 0
- 2079 0002 0120     		movs	r0, #1
- 2080 0004 0021     		movs	r1, #0
- 2081 0006 FFF7FEFF 		bl	deplacement
- 2082              	.LVL216:
- 578:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2083              		.loc 1 578 0
- 2084 000a 03E0     		b	.L191
- 2085              	.L192:
- 579:Src/freertos.c ****     {
- 580:Src/freertos.c ****         osDelay(1000);
- 2086              		.loc 1 580 0
- 2087 000c 4FF47A70 		mov	r0, #1000
- 2088 0010 FFF7FEFF 		bl	osDelay
- 2089              	.LVL217:
- 2090              	.L191:
- 578:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2091              		.loc 1 578 0
- 2092 0014 0F4B     		ldr	r3, .L198
- 2093 0016 1B68     		ldr	r3, [r3]
- 2094 0018 012B     		cmp	r3, #1
- 2095 001a F7D1     		bne	.L192
- 581:Src/freertos.c ****     }
- 582:Src/freertos.c **** 
- 583:Src/freertos.c **** 
- 584:Src/freertos.c ****     deplacement(1,0);
-ARM GAS  /tmp/ccKlZYje.s 			page 47
+ 578:Src/freertos.c ****     }
+ 579:Src/freertos.c **** 
+ 580:Src/freertos.c ****     deplacement(0,1);
+ 2045              		.loc 1 580 0
+ 2046 001c 0020     		movs	r0, #0
+ 2047 001e 0121     		movs	r1, #1
+ 2048 0020 FFF7FEFF 		bl	deplacement
+ 2049              	.LVL202:
+ 581:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2050              		.loc 1 581 0
+ 2051 0024 03E0     		b	.L203
+ 2052              	.L204:
+ 582:Src/freertos.c ****     {
+ 583:Src/freertos.c ****         osDelay(1000);
+ 2053              		.loc 1 583 0
+ 2054 0026 4FF47A70 		mov	r0, #1000
+ 2055 002a FFF7FEFF 		bl	osDelay
+ 2056              	.LVL203:
+ 2057              	.L203:
+ 581:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2058              		.loc 1 581 0
+ 2059 002e 364B     		ldr	r3, .L222
+ 2060 0030 1B68     		ldr	r3, [r3]
+ 2061 0032 012B     		cmp	r3, #1
+ 2062 0034 F7D1     		bne	.L204
+ 584:Src/freertos.c ****     }
+ 585:Src/freertos.c **** 
+ 586:Src/freertos.c ****     deplacement(1,0);
+ 2063              		.loc 1 586 0
+ 2064 0036 0120     		movs	r0, #1
+ 2065 0038 0021     		movs	r1, #0
+ 2066 003a FFF7FEFF 		bl	deplacement
+ 2067              	.LVL204:
+ 587:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2068              		.loc 1 587 0
+ 2069 003e 03E0     		b	.L205
+ 2070              	.L206:
+ 588:Src/freertos.c ****     {
+ 589:Src/freertos.c ****         osDelay(1000);
+ 2071              		.loc 1 589 0
+ 2072 0040 4FF47A70 		mov	r0, #1000
+ 2073 0044 FFF7FEFF 		bl	osDelay
+ 2074              	.LVL205:
+ 2075              	.L205:
+ 587:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2076              		.loc 1 587 0
+ 2077 0048 2F4B     		ldr	r3, .L222
+ 2078 004a 1B68     		ldr	r3, [r3]
+ 2079 004c 012B     		cmp	r3, #1
+ 2080 004e F7D1     		bne	.L206
+ 590:Src/freertos.c ****     }
+ 591:Src/freertos.c **** 
+ 592:Src/freertos.c ****     deplacement(0,1);
+ 2081              		.loc 1 592 0
+ 2082 0050 0020     		movs	r0, #0
+ 2083 0052 0121     		movs	r1, #1
+ 2084 0054 FFF7FEFF 		bl	deplacement
+ARM GAS  /tmp/ccy8Czqz.s 			page 47
 
 
- 2096              		.loc 1 584 0
- 2097 001c 0120     		movs	r0, #1
- 2098 001e 0021     		movs	r1, #0
- 2099 0020 FFF7FEFF 		bl	deplacement
- 2100              	.LVL218:
- 585:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2101              		.loc 1 585 0
- 2102 0024 03E0     		b	.L193
- 2103              	.L194:
- 586:Src/freertos.c ****     {
- 587:Src/freertos.c ****         osDelay(1000);
- 2104              		.loc 1 587 0
- 2105 0026 4FF47A70 		mov	r0, #1000
- 2106 002a FFF7FEFF 		bl	osDelay
- 2107              	.LVL219:
- 2108              	.L193:
- 585:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2109              		.loc 1 585 0
- 2110 002e 094B     		ldr	r3, .L198
- 2111 0030 1B68     		ldr	r3, [r3]
- 2112 0032 012B     		cmp	r3, #1
- 2113 0034 F7D1     		bne	.L194
- 588:Src/freertos.c ****     }
- 589:Src/freertos.c **** 
- 590:Src/freertos.c ****     deplacement(-2,0);
- 2114              		.loc 1 590 0
- 2115 0036 6FF00100 		mvn	r0, #1
- 2116 003a 0021     		movs	r1, #0
- 2117 003c FFF7FEFF 		bl	deplacement
- 2118              	.LVL220:
- 591:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2119              		.loc 1 591 0
- 2120 0040 03E0     		b	.L195
- 2121              	.L196:
- 592:Src/freertos.c ****     {
- 593:Src/freertos.c ****         osDelay(1000);
- 2122              		.loc 1 593 0
- 2123 0042 4FF47A70 		mov	r0, #1000
- 2124 0046 FFF7FEFF 		bl	osDelay
- 2125              	.LVL221:
- 2126              	.L195:
- 591:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2127              		.loc 1 591 0
- 2128 004a 024B     		ldr	r3, .L198
- 2129 004c 1B68     		ldr	r3, [r3]
- 2130 004e 012B     		cmp	r3, #1
- 2131 0050 F7D1     		bne	.L196
- 594:Src/freertos.c ****     }
- 595:Src/freertos.c **** }
- 2132              		.loc 1 595 0
- 2133 0052 08BD     		pop	{r3, pc}
- 2134              	.L199:
- 2135              		.align	2
- 2136              	.L198:
- 2137 0054 00000000 		.word	.LANCHOR1
- 2138              		.cfi_endproc
- 2139              	.LFE164:
-ARM GAS  /tmp/ccKlZYje.s 			page 48
-
-
- 2141              		.section	.text.test3,"ax",%progbits
- 2142              		.align	2
- 2143              		.global	test3
- 2144              		.thumb
- 2145              		.thumb_func
- 2147              	test3:
- 2148              	.LFB165:
- 596:Src/freertos.c **** 
- 597:Src/freertos.c **** void test3(){//dessine un carré
- 2149              		.loc 1 597 0
- 2150              		.cfi_startproc
- 2151              		@ args = 0, pretend = 0, frame = 0
- 2152              		@ frame_needed = 0, uses_anonymous_args = 0
- 2153 0000 08B5     		push	{r3, lr}
- 2154              	.LCFI38:
- 2155              		.cfi_def_cfa_offset 8
- 2156              		.cfi_offset 3, -8
- 2157              		.cfi_offset 14, -4
+ 2085              	.LVL206:
+ 593:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2086              		.loc 1 593 0
+ 2087 0058 03E0     		b	.L207
+ 2088              	.L208:
+ 594:Src/freertos.c ****     {
+ 595:Src/freertos.c ****         osDelay(1000);
+ 2089              		.loc 1 595 0
+ 2090 005a 4FF47A70 		mov	r0, #1000
+ 2091 005e FFF7FEFF 		bl	osDelay
+ 2092              	.LVL207:
+ 2093              	.L207:
+ 593:Src/freertos.c ****     while(flag_deplacement_fini != 1)
+ 2094              		.loc 1 593 0
+ 2095 0062 294B     		ldr	r3, .L222
+ 2096 0064 1B68     		ldr	r3, [r3]
+ 2097 0066 012B     		cmp	r3, #1
+ 2098 0068 F7D1     		bne	.L208
+ 596:Src/freertos.c ****     }
+ 597:Src/freertos.c **** 
  598:Src/freertos.c ****     deplacement(1,0);
- 2158              		.loc 1 598 0
- 2159 0002 0120     		movs	r0, #1
- 2160 0004 0021     		movs	r1, #0
- 2161 0006 FFF7FEFF 		bl	deplacement
- 2162              	.LVL222:
+ 2099              		.loc 1 598 0
+ 2100 006a 0120     		movs	r0, #1
+ 2101 006c 0021     		movs	r1, #0
+ 2102 006e FFF7FEFF 		bl	deplacement
+ 2103              	.LVL208:
  599:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2163              		.loc 1 599 0
- 2164 000a 03E0     		b	.L201
- 2165              	.L202:
+ 2104              		.loc 1 599 0
+ 2105 0072 03E0     		b	.L209
+ 2106              	.L210:
  600:Src/freertos.c ****     {
  601:Src/freertos.c ****         osDelay(1000);
- 2166              		.loc 1 601 0
- 2167 000c 4FF47A70 		mov	r0, #1000
- 2168 0010 FFF7FEFF 		bl	osDelay
- 2169              	.LVL223:
- 2170              	.L201:
+ 2107              		.loc 1 601 0
+ 2108 0074 4FF47A70 		mov	r0, #1000
+ 2109 0078 FFF7FEFF 		bl	osDelay
+ 2110              	.LVL209:
+ 2111              	.L209:
  599:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2171              		.loc 1 599 0
- 2172 0014 3C4B     		ldr	r3, .L222
- 2173 0016 1B68     		ldr	r3, [r3]
- 2174 0018 012B     		cmp	r3, #1
- 2175 001a F7D1     		bne	.L202
+ 2112              		.loc 1 599 0
+ 2113 007c 224B     		ldr	r3, .L222
+ 2114 007e 1B68     		ldr	r3, [r3]
+ 2115 0080 012B     		cmp	r3, #1
+ 2116 0082 F7D1     		bne	.L210
  602:Src/freertos.c ****     }
  603:Src/freertos.c **** 
  604:Src/freertos.c ****     deplacement(0,1);
- 2176              		.loc 1 604 0
- 2177 001c 0020     		movs	r0, #0
- 2178 001e 0121     		movs	r1, #1
- 2179 0020 FFF7FEFF 		bl	deplacement
- 2180              	.LVL224:
+ 2117              		.loc 1 604 0
+ 2118 0084 0020     		movs	r0, #0
+ 2119 0086 0121     		movs	r1, #1
+ 2120 0088 FFF7FEFF 		bl	deplacement
+ 2121              	.LVL210:
  605:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2181              		.loc 1 605 0
- 2182 0024 03E0     		b	.L203
- 2183              	.L204:
+ 2122              		.loc 1 605 0
+ 2123 008c 03E0     		b	.L211
+ 2124              	.L212:
  606:Src/freertos.c ****     {
  607:Src/freertos.c ****         osDelay(1000);
- 2184              		.loc 1 607 0
- 2185 0026 4FF47A70 		mov	r0, #1000
-ARM GAS  /tmp/ccKlZYje.s 			page 49
+ARM GAS  /tmp/ccy8Czqz.s 			page 48
 
 
- 2186 002a FFF7FEFF 		bl	osDelay
- 2187              	.LVL225:
- 2188              	.L203:
+ 2125              		.loc 1 607 0
+ 2126 008e 4FF47A70 		mov	r0, #1000
+ 2127 0092 FFF7FEFF 		bl	osDelay
+ 2128              	.LVL211:
+ 2129              	.L211:
  605:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2189              		.loc 1 605 0
- 2190 002e 364B     		ldr	r3, .L222
- 2191 0030 1B68     		ldr	r3, [r3]
- 2192 0032 012B     		cmp	r3, #1
- 2193 0034 F7D1     		bne	.L204
+ 2130              		.loc 1 605 0
+ 2131 0096 1C4B     		ldr	r3, .L222
+ 2132 0098 1B68     		ldr	r3, [r3]
+ 2133 009a 012B     		cmp	r3, #1
+ 2134 009c F7D1     		bne	.L212
  608:Src/freertos.c ****     }
  609:Src/freertos.c **** 
  610:Src/freertos.c ****     deplacement(1,0);
- 2194              		.loc 1 610 0
- 2195 0036 0120     		movs	r0, #1
- 2196 0038 0021     		movs	r1, #0
- 2197 003a FFF7FEFF 		bl	deplacement
- 2198              	.LVL226:
+ 2135              		.loc 1 610 0
+ 2136 009e 0120     		movs	r0, #1
+ 2137 00a0 0021     		movs	r1, #0
+ 2138 00a2 FFF7FEFF 		bl	deplacement
+ 2139              	.LVL212:
  611:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2199              		.loc 1 611 0
- 2200 003e 03E0     		b	.L205
- 2201              	.L206:
+ 2140              		.loc 1 611 0
+ 2141 00a6 03E0     		b	.L213
+ 2142              	.L214:
  612:Src/freertos.c ****     {
  613:Src/freertos.c ****         osDelay(1000);
- 2202              		.loc 1 613 0
- 2203 0040 4FF47A70 		mov	r0, #1000
- 2204 0044 FFF7FEFF 		bl	osDelay
- 2205              	.LVL227:
- 2206              	.L205:
+ 2143              		.loc 1 613 0
+ 2144 00a8 4FF47A70 		mov	r0, #1000
+ 2145 00ac FFF7FEFF 		bl	osDelay
+ 2146              	.LVL213:
+ 2147              	.L213:
  611:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2207              		.loc 1 611 0
- 2208 0048 2F4B     		ldr	r3, .L222
- 2209 004a 1B68     		ldr	r3, [r3]
- 2210 004c 012B     		cmp	r3, #1
- 2211 004e F7D1     		bne	.L206
+ 2148              		.loc 1 611 0
+ 2149 00b0 154B     		ldr	r3, .L222
+ 2150 00b2 1B68     		ldr	r3, [r3]
+ 2151 00b4 012B     		cmp	r3, #1
+ 2152 00b6 F7D1     		bne	.L214
  614:Src/freertos.c ****     }
  615:Src/freertos.c **** 
  616:Src/freertos.c ****     deplacement(0,1);
- 2212              		.loc 1 616 0
- 2213 0050 0020     		movs	r0, #0
- 2214 0052 0121     		movs	r1, #1
- 2215 0054 FFF7FEFF 		bl	deplacement
- 2216              	.LVL228:
+ 2153              		.loc 1 616 0
+ 2154 00b8 0020     		movs	r0, #0
+ 2155 00ba 0121     		movs	r1, #1
+ 2156 00bc FFF7FEFF 		bl	deplacement
+ 2157              	.LVL214:
  617:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2217              		.loc 1 617 0
- 2218 0058 03E0     		b	.L207
- 2219              	.L208:
+ 2158              		.loc 1 617 0
+ 2159 00c0 03E0     		b	.L215
+ 2160              	.L216:
  618:Src/freertos.c ****     {
  619:Src/freertos.c ****         osDelay(1000);
- 2220              		.loc 1 619 0
- 2221 005a 4FF47A70 		mov	r0, #1000
- 2222 005e FFF7FEFF 		bl	osDelay
- 2223              	.LVL229:
- 2224              	.L207:
+ 2161              		.loc 1 619 0
+ 2162 00c2 4FF47A70 		mov	r0, #1000
+ 2163 00c6 FFF7FEFF 		bl	osDelay
+ 2164              	.LVL215:
+ 2165              	.L215:
  617:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2225              		.loc 1 617 0
- 2226 0062 294B     		ldr	r3, .L222
- 2227 0064 1B68     		ldr	r3, [r3]
-ARM GAS  /tmp/ccKlZYje.s 			page 50
+ 2166              		.loc 1 617 0
+ARM GAS  /tmp/ccy8Czqz.s 			page 49
 
 
- 2228 0066 012B     		cmp	r3, #1
- 2229 0068 F7D1     		bne	.L208
+ 2167 00ca 0F4B     		ldr	r3, .L222
+ 2168 00cc 1B68     		ldr	r3, [r3]
+ 2169 00ce 012B     		cmp	r3, #1
+ 2170 00d0 F7D1     		bne	.L216
  620:Src/freertos.c ****     }
  621:Src/freertos.c **** 
  622:Src/freertos.c ****     deplacement(1,0);
- 2230              		.loc 1 622 0
- 2231 006a 0120     		movs	r0, #1
- 2232 006c 0021     		movs	r1, #0
- 2233 006e FFF7FEFF 		bl	deplacement
- 2234              	.LVL230:
+ 2171              		.loc 1 622 0
+ 2172 00d2 0120     		movs	r0, #1
+ 2173 00d4 0021     		movs	r1, #0
+ 2174 00d6 FFF7FEFF 		bl	deplacement
+ 2175              	.LVL216:
  623:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2235              		.loc 1 623 0
- 2236 0072 03E0     		b	.L209
- 2237              	.L210:
+ 2176              		.loc 1 623 0
+ 2177 00da 03E0     		b	.L217
+ 2178              	.L218:
  624:Src/freertos.c ****     {
  625:Src/freertos.c ****         osDelay(1000);
- 2238              		.loc 1 625 0
- 2239 0074 4FF47A70 		mov	r0, #1000
- 2240 0078 FFF7FEFF 		bl	osDelay
- 2241              	.LVL231:
- 2242              	.L209:
+ 2179              		.loc 1 625 0
+ 2180 00dc 4FF47A70 		mov	r0, #1000
+ 2181 00e0 FFF7FEFF 		bl	osDelay
+ 2182              	.LVL217:
+ 2183              	.L217:
  623:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2243              		.loc 1 623 0
- 2244 007c 224B     		ldr	r3, .L222
- 2245 007e 1B68     		ldr	r3, [r3]
- 2246 0080 012B     		cmp	r3, #1
- 2247 0082 F7D1     		bne	.L210
+ 2184              		.loc 1 623 0
+ 2185 00e4 084B     		ldr	r3, .L222
+ 2186 00e6 1B68     		ldr	r3, [r3]
+ 2187 00e8 012B     		cmp	r3, #1
+ 2188 00ea F7D1     		bne	.L218
  626:Src/freertos.c ****     }
  627:Src/freertos.c **** 
  628:Src/freertos.c ****     deplacement(0,1);
- 2248              		.loc 1 628 0
- 2249 0084 0020     		movs	r0, #0
- 2250 0086 0121     		movs	r1, #1
- 2251 0088 FFF7FEFF 		bl	deplacement
- 2252              	.LVL232:
+ 2189              		.loc 1 628 0
+ 2190 00ec 0020     		movs	r0, #0
+ 2191 00ee 0121     		movs	r1, #1
+ 2192 00f0 FFF7FEFF 		bl	deplacement
+ 2193              	.LVL218:
  629:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2253              		.loc 1 629 0
- 2254 008c 03E0     		b	.L211
- 2255              	.L212:
+ 2194              		.loc 1 629 0
+ 2195 00f4 03E0     		b	.L219
+ 2196              	.L220:
  630:Src/freertos.c ****     {
  631:Src/freertos.c ****         osDelay(1000);
- 2256              		.loc 1 631 0
- 2257 008e 4FF47A70 		mov	r0, #1000
- 2258 0092 FFF7FEFF 		bl	osDelay
- 2259              	.LVL233:
- 2260              	.L211:
+ 2197              		.loc 1 631 0
+ 2198 00f6 4FF47A70 		mov	r0, #1000
+ 2199 00fa FFF7FEFF 		bl	osDelay
+ 2200              	.LVL219:
+ 2201              	.L219:
  629:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2261              		.loc 1 629 0
- 2262 0096 1C4B     		ldr	r3, .L222
- 2263 0098 1B68     		ldr	r3, [r3]
- 2264 009a 012B     		cmp	r3, #1
- 2265 009c F7D1     		bne	.L212
+ 2202              		.loc 1 629 0
+ 2203 00fe 024B     		ldr	r3, .L222
+ 2204 0100 1B68     		ldr	r3, [r3]
+ 2205 0102 012B     		cmp	r3, #1
+ 2206 0104 F7D1     		bne	.L220
  632:Src/freertos.c ****     }
- 633:Src/freertos.c **** 
- 634:Src/freertos.c ****     deplacement(1,0);
- 2266              		.loc 1 634 0
- 2267 009e 0120     		movs	r0, #1
-ARM GAS  /tmp/ccKlZYje.s 			page 51
+ 633:Src/freertos.c **** }
+ 2207              		.loc 1 633 0
+ARM GAS  /tmp/ccy8Czqz.s 			page 50
 
 
- 2268 00a0 0021     		movs	r1, #0
- 2269 00a2 FFF7FEFF 		bl	deplacement
- 2270              	.LVL234:
- 635:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2271              		.loc 1 635 0
- 2272 00a6 03E0     		b	.L213
- 2273              	.L214:
- 636:Src/freertos.c ****     {
- 637:Src/freertos.c ****         osDelay(1000);
- 2274              		.loc 1 637 0
- 2275 00a8 4FF47A70 		mov	r0, #1000
- 2276 00ac FFF7FEFF 		bl	osDelay
- 2277              	.LVL235:
- 2278              	.L213:
- 635:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2279              		.loc 1 635 0
- 2280 00b0 154B     		ldr	r3, .L222
- 2281 00b2 1B68     		ldr	r3, [r3]
- 2282 00b4 012B     		cmp	r3, #1
- 2283 00b6 F7D1     		bne	.L214
- 638:Src/freertos.c ****     }
- 639:Src/freertos.c **** 
- 640:Src/freertos.c ****     deplacement(0,1);
- 2284              		.loc 1 640 0
- 2285 00b8 0020     		movs	r0, #0
- 2286 00ba 0121     		movs	r1, #1
- 2287 00bc FFF7FEFF 		bl	deplacement
- 2288              	.LVL236:
- 641:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2289              		.loc 1 641 0
- 2290 00c0 03E0     		b	.L215
- 2291              	.L216:
- 642:Src/freertos.c ****     {
- 643:Src/freertos.c ****         osDelay(1000);
- 2292              		.loc 1 643 0
- 2293 00c2 4FF47A70 		mov	r0, #1000
- 2294 00c6 FFF7FEFF 		bl	osDelay
- 2295              	.LVL237:
- 2296              	.L215:
- 641:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2297              		.loc 1 641 0
- 2298 00ca 0F4B     		ldr	r3, .L222
- 2299 00cc 1B68     		ldr	r3, [r3]
- 2300 00ce 012B     		cmp	r3, #1
- 2301 00d0 F7D1     		bne	.L216
- 644:Src/freertos.c ****     }
- 645:Src/freertos.c **** 
- 646:Src/freertos.c ****     deplacement(1,0);
- 2302              		.loc 1 646 0
- 2303 00d2 0120     		movs	r0, #1
- 2304 00d4 0021     		movs	r1, #0
- 2305 00d6 FFF7FEFF 		bl	deplacement
- 2306              	.LVL238:
- 647:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2307              		.loc 1 647 0
- 2308 00da 03E0     		b	.L217
- 2309              	.L218:
-ARM GAS  /tmp/ccKlZYje.s 			page 52
+ 2208 0106 08BD     		pop	{r3, pc}
+ 2209              	.L223:
+ 2210              		.align	2
+ 2211              	.L222:
+ 2212 0108 00000000 		.word	.LANCHOR1
+ 2213              		.cfi_endproc
+ 2214              	.LFE165:
+ 2216              		.section	.text.avance_block,"ax",%progbits
+ 2217              		.align	2
+ 2218              		.global	avance_block
+ 2219              		.thumb
+ 2220              		.thumb_func
+ 2222              	avance_block:
+ 2223              	.LFB166:
+ 634:Src/freertos.c **** 
+ 635:Src/freertos.c **** void avance_block(){
+ 2224              		.loc 1 635 0
+ 2225              		.cfi_startproc
+ 2226              		@ args = 0, pretend = 0, frame = 0
+ 2227              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2228 0000 08B5     		push	{r3, lr}
+ 2229              	.LCFI39:
+ 2230              		.cfi_def_cfa_offset 8
+ 2231              		.cfi_offset 3, -8
+ 2232              		.cfi_offset 14, -4
+ 636:Src/freertos.c ****     while(!flag_present)
+ 2233              		.loc 1 636 0
+ 2234 0002 01E0     		b	.L225
+ 2235              	.L226:
+ 637:Src/freertos.c ****     {
+ 638:Src/freertos.c ****         //printf("avant ! \n\r");
+ 639:Src/freertos.c ****         avancer_robot();
+ 2236              		.loc 1 639 0
+ 2237 0004 FFF7FEFF 		bl	avancer_robot
+ 2238              	.LVL220:
+ 2239              	.L225:
+ 636:Src/freertos.c ****     while(!flag_present)
+ 2240              		.loc 1 636 0
+ 2241 0008 064B     		ldr	r3, .L228
+ 2242 000a 1B68     		ldr	r3, [r3]
+ 2243 000c 002B     		cmp	r3, #0
+ 2244 000e F9D0     		beq	.L226
+ 640:Src/freertos.c ****         //printf("Value 1: %d\n\r", flag_distance);
+ 641:Src/freertos.c ****         //printf("defini: %d\n\n\r", flag_deplacement_fini);
+ 642:Src/freertos.c ****     }
+ 643:Src/freertos.c ****     printf("stop !\n\r");
+ 2245              		.loc 1 643 0
+ 2246 0010 0548     		ldr	r0, .L228+4
+ 2247 0012 FFF7FEFF 		bl	printf
+ 2248              	.LVL221:
+ 644:Src/freertos.c ****     flag_distance = 0;
+ 2249              		.loc 1 644 0
+ 2250 0016 0022     		movs	r2, #0
+ 2251 0018 044B     		ldr	r3, .L228+8
+ 2252 001a 1A60     		str	r2, [r3]
+ 645:Src/freertos.c ****     flag_deplacement_fini = 1;
+ 2253              		.loc 1 645 0
+ARM GAS  /tmp/ccy8Czqz.s 			page 51
 
 
- 648:Src/freertos.c ****     {
- 649:Src/freertos.c ****         osDelay(1000);
- 2310              		.loc 1 649 0
- 2311 00dc 4FF47A70 		mov	r0, #1000
- 2312 00e0 FFF7FEFF 		bl	osDelay
- 2313              	.LVL239:
- 2314              	.L217:
- 647:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2315              		.loc 1 647 0
- 2316 00e4 084B     		ldr	r3, .L222
- 2317 00e6 1B68     		ldr	r3, [r3]
- 2318 00e8 012B     		cmp	r3, #1
- 2319 00ea F7D1     		bne	.L218
- 650:Src/freertos.c ****     }
- 651:Src/freertos.c **** 
- 652:Src/freertos.c ****     deplacement(0,1);
- 2320              		.loc 1 652 0
- 2321 00ec 0020     		movs	r0, #0
- 2322 00ee 0121     		movs	r1, #1
- 2323 00f0 FFF7FEFF 		bl	deplacement
- 2324              	.LVL240:
- 653:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2325              		.loc 1 653 0
- 2326 00f4 03E0     		b	.L219
- 2327              	.L220:
- 654:Src/freertos.c ****     {
- 655:Src/freertos.c ****         osDelay(1000);
- 2328              		.loc 1 655 0
- 2329 00f6 4FF47A70 		mov	r0, #1000
- 2330 00fa FFF7FEFF 		bl	osDelay
- 2331              	.LVL241:
- 2332              	.L219:
- 653:Src/freertos.c ****     while(flag_deplacement_fini != 1)
- 2333              		.loc 1 653 0
- 2334 00fe 024B     		ldr	r3, .L222
- 2335 0100 1B68     		ldr	r3, [r3]
- 2336 0102 012B     		cmp	r3, #1
- 2337 0104 F7D1     		bne	.L220
- 656:Src/freertos.c ****     }
- 657:Src/freertos.c **** }
- 2338              		.loc 1 657 0
- 2339 0106 08BD     		pop	{r3, pc}
- 2340              	.L223:
- 2341              		.align	2
- 2342              	.L222:
- 2343 0108 00000000 		.word	.LANCHOR1
- 2344              		.cfi_endproc
- 2345              	.LFE165:
- 2347              		.section	.text.avance_block,"ax",%progbits
- 2348              		.align	2
- 2349              		.global	avance_block
- 2350              		.thumb
- 2351              		.thumb_func
- 2353              	avance_block:
- 2354              	.LFB166:
- 658:Src/freertos.c **** 
- 659:Src/freertos.c **** void avance_block(){
-ARM GAS  /tmp/ccKlZYje.s 			page 53
+ 2254 001c 0122     		movs	r2, #1
+ 2255 001e 044B     		ldr	r3, .L228+12
+ 2256 0020 1A60     		str	r2, [r3]
+ 2257 0022 08BD     		pop	{r3, pc}
+ 2258              	.L229:
+ 2259              		.align	2
+ 2260              	.L228:
+ 2261 0024 00000000 		.word	.LANCHOR6
+ 2262 0028 00000000 		.word	.LC0
+ 2263 002c 00000000 		.word	.LANCHOR0
+ 2264 0030 00000000 		.word	.LANCHOR1
+ 2265              		.cfi_endproc
+ 2266              	.LFE166:
+ 2268              		.section	.text.test4,"ax",%progbits
+ 2269              		.align	2
+ 2270              		.global	test4
+ 2271              		.thumb
+ 2272              		.thumb_func
+ 2274              	test4:
+ 2275              	.LFB167:
+ 646:Src/freertos.c ****     //printf("Value 1: %d\n\r", flag_distance);
+ 647:Src/freertos.c ****     //printf("defini: %d\n\n\r", flag_deplacement_fini);
+ 648:Src/freertos.c **** }
+ 649:Src/freertos.c **** 
+ 650:Src/freertos.c **** void test4(){
+ 2276              		.loc 1 650 0
+ 2277              		.cfi_startproc
+ 2278              		@ Volatile: function does not return.
+ 2279              		@ args = 0, pretend = 0, frame = 0
+ 2280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2281 0000 08B5     		push	{r3, lr}
+ 2282              	.LCFI40:
+ 2283              		.cfi_def_cfa_offset 8
+ 2284              		.cfi_offset 3, -8
+ 2285              		.cfi_offset 14, -4
+ 2286              	.L231:
+ 651:Src/freertos.c ****     for(;;)
+ 652:Src/freertos.c ****     {
+ 653:Src/freertos.c ****         avance_block();
+ 2287              		.loc 1 653 0 discriminator 1
+ 2288 0002 FFF7FEFF 		bl	avance_block
+ 2289              	.LVL222:
+ 654:Src/freertos.c ****         pivoter_droite();
+ 2290              		.loc 1 654 0 discriminator 1
+ 2291 0006 FFF7FEFF 		bl	pivoter_droite
+ 2292              	.LVL223:
+ 655:Src/freertos.c ****     }
+ 2293              		.loc 1 655 0 discriminator 1
+ 2294 000a FAE7     		b	.L231
+ 2295              		.cfi_endproc
+ 2296              	.LFE167:
+ 2298              		.section	.text.motor,"ax",%progbits
+ 2299              		.align	2
+ 2300              		.global	motor
+ 2301              		.thumb
+ 2302              		.thumb_func
+ 2304              	motor:
+ARM GAS  /tmp/ccy8Czqz.s 			page 52
 
 
- 2355              		.loc 1 659 0
- 2356              		.cfi_startproc
- 2357              		@ args = 0, pretend = 0, frame = 0
- 2358              		@ frame_needed = 0, uses_anonymous_args = 0
- 2359 0000 08B5     		push	{r3, lr}
- 2360              	.LCFI39:
- 2361              		.cfi_def_cfa_offset 8
- 2362              		.cfi_offset 3, -8
- 2363              		.cfi_offset 14, -4
- 660:Src/freertos.c ****     while(!flag_present)
- 2364              		.loc 1 660 0
- 2365 0002 01E0     		b	.L225
- 2366              	.L226:
- 661:Src/freertos.c ****     {
- 662:Src/freertos.c ****         //printf("avant ! \n\r");
- 663:Src/freertos.c ****         avancer_robot();
- 2367              		.loc 1 663 0
- 2368 0004 FFF7FEFF 		bl	avancer_robot
- 2369              	.LVL242:
- 2370              	.L225:
- 660:Src/freertos.c ****     while(!flag_present)
- 2371              		.loc 1 660 0
- 2372 0008 064B     		ldr	r3, .L228
- 2373 000a 1B68     		ldr	r3, [r3]
- 2374 000c 002B     		cmp	r3, #0
- 2375 000e F9D0     		beq	.L226
- 664:Src/freertos.c ****         //printf("Value 1: %d\n\r", flag_distance);
- 665:Src/freertos.c ****         //printf("defini: %d\n\n\r", flag_deplacement_fini);
- 666:Src/freertos.c ****     }
- 667:Src/freertos.c ****     printf("stop !\n\r");
- 2376              		.loc 1 667 0
- 2377 0010 0548     		ldr	r0, .L228+4
- 2378 0012 FFF7FEFF 		bl	printf
- 2379              	.LVL243:
- 668:Src/freertos.c ****     flag_distance = 0;
- 2380              		.loc 1 668 0
- 2381 0016 0022     		movs	r2, #0
- 2382 0018 044B     		ldr	r3, .L228+8
- 2383 001a 1A60     		str	r2, [r3]
- 669:Src/freertos.c ****     flag_deplacement_fini = 1;
- 2384              		.loc 1 669 0
- 2385 001c 0122     		movs	r2, #1
- 2386 001e 044B     		ldr	r3, .L228+12
- 2387 0020 1A60     		str	r2, [r3]
- 2388 0022 08BD     		pop	{r3, pc}
- 2389              	.L229:
+ 2305              	.LFB168:
+ 656:Src/freertos.c **** }
+ 657:Src/freertos.c **** 
+ 658:Src/freertos.c **** /* END Fonctions IA */
+ 659:Src/freertos.c **** 
+ 660:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+ 661:Src/freertos.c **** 
+ 662:Src/freertos.c **** /* Hook prototypes */
+ 663:Src/freertos.c **** 
+ 664:Src/freertos.c **** /* USER CODE BEGIN Application */
+ 665:Src/freertos.c **** void motor(void const * argument)
+ 666:Src/freertos.c **** {
+ 2306              		.loc 1 666 0
+ 2307              		.cfi_startproc
+ 2308              		@ Volatile: function does not return.
+ 2309              		@ args = 0, pretend = 0, frame = 0
+ 2310              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2311              	.LVL224:
+ 2312 0000 08B5     		push	{r3, lr}
+ 2313              	.LCFI41:
+ 2314              		.cfi_def_cfa_offset 8
+ 2315              		.cfi_offset 3, -8
+ 2316              		.cfi_offset 14, -4
+ 667:Src/freertos.c ****   /* USER CODE BEGIN motor */
+ 668:Src/freertos.c ****   UNUSED(argument);
+ 669:Src/freertos.c **** 
+ 670:Src/freertos.c ****   HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
+ 2317              		.loc 1 670 0
+ 2318 0002 4FF09040 		mov	r0, #1207959552
+ 2319              	.LVL225:
+ 2320 0006 4FF48071 		mov	r1, #256
+ 2321 000a 0122     		movs	r2, #1
+ 2322 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 2323              	.LVL226:
+ 671:Src/freertos.c ****   HAL_TIM_Base_Start(&htim3);
+ 2324              		.loc 1 671 0
+ 2325 0010 074C     		ldr	r4, .L236
+ 2326 0012 2046     		mov	r0, r4
+ 2327 0014 FFF7FEFF 		bl	HAL_TIM_Base_Start
+ 2328              	.LVL227:
+ 672:Src/freertos.c ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+ 2329              		.loc 1 672 0
+ 2330 0018 2046     		mov	r0, r4
+ 2331 001a 0021     		movs	r1, #0
+ 2332 001c FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 2333              	.LVL228:
+ 673:Src/freertos.c ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+ 2334              		.loc 1 673 0
+ 2335 0020 2046     		mov	r0, r4
+ 2336 0022 0C21     		movs	r1, #12
+ 2337 0024 FFF7FEFF 		bl	HAL_TIM_PWM_Start
+ 2338              	.LVL229:
+ 2339              	.L234:
+ 674:Src/freertos.c **** 
+ 675:Src/freertos.c ****   /* Infinite loop */
+ 676:Src/freertos.c ****   for(;;)
+ 677:Src/freertos.c ****   {
+ARM GAS  /tmp/ccy8Czqz.s 			page 53
+
+
+ 678:Src/freertos.c ****     gestion_moteurs();
+ 2340              		.loc 1 678 0 discriminator 1
+ 2341 0028 FFF7FEFF 		bl	gestion_moteurs
+ 2342              	.LVL230:
+ 679:Src/freertos.c ****   }
+ 2343              		.loc 1 679 0 discriminator 1
+ 2344 002c FCE7     		b	.L234
+ 2345              	.L237:
+ 2346 002e 00BF     		.align	2
+ 2347              	.L236:
+ 2348 0030 00000000 		.word	htim3
+ 2349              		.cfi_endproc
+ 2350              	.LFE168:
+ 2352              		.section	.text.adcControl,"ax",%progbits
+ 2353              		.align	2
+ 2354              		.global	adcControl
+ 2355              		.thumb
+ 2356              		.thumb_func
+ 2358              	adcControl:
+ 2359              	.LFB169:
+ 680:Src/freertos.c ****   /* USER CODE END motor */
+ 681:Src/freertos.c **** }
+ 682:Src/freertos.c **** 
+ 683:Src/freertos.c **** void adcControl(void const * argument)
+ 684:Src/freertos.c **** {
+ 2360              		.loc 1 684 0
+ 2361              		.cfi_startproc
+ 2362              		@ Volatile: function does not return.
+ 2363              		@ args = 0, pretend = 0, frame = 0
+ 2364              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2365              	.LVL231:
+ 2366 0000 08B5     		push	{r3, lr}
+ 2367              	.LCFI42:
+ 2368              		.cfi_def_cfa_offset 8
+ 2369              		.cfi_offset 3, -8
+ 2370              		.cfi_offset 14, -4
+ 2371              	.LVL232:
+ 2372              	.L239:
+ 685:Src/freertos.c ****   /* USER CODE BEGIN adcControl */
+ 686:Src/freertos.c ****   /* Infinite loop */
+ 687:Src/freertos.c ****  for(;;)
+ 688:Src/freertos.c ****   {
+ 689:Src/freertos.c ****     HAL_ADC_Start_IT(&hadc1);
+ 2373              		.loc 1 689 0 discriminator 1
+ 2374 0002 0348     		ldr	r0, .L241
+ 2375 0004 FFF7FEFF 		bl	HAL_ADC_Start_IT
+ 2376              	.LVL233:
+ 690:Src/freertos.c ****     estPresent();
+ 2377              		.loc 1 690 0 discriminator 1
+ 2378 0008 FFF7FEFF 		bl	estPresent
+ 2379              	.LVL234:
+ 691:Src/freertos.c ****   }
+ 2380              		.loc 1 691 0 discriminator 1
+ 2381 000c F9E7     		b	.L239
+ 2382              	.L242:
+ 2383 000e 00BF     		.align	2
+ 2384              	.L241:
+ARM GAS  /tmp/ccy8Czqz.s 			page 54
+
+
+ 2385 0010 00000000 		.word	hadc1
+ 2386              		.cfi_endproc
+ 2387              	.LFE169:
+ 2389              		.section	.text.ia,"ax",%progbits
  2390              		.align	2
- 2391              	.L228:
- 2392 0024 00000000 		.word	.LANCHOR6
- 2393 0028 40000000 		.word	.LC4
- 2394 002c 00000000 		.word	.LANCHOR0
- 2395 0030 00000000 		.word	.LANCHOR1
- 2396              		.cfi_endproc
- 2397              	.LFE166:
- 2399              		.section	.text.motor,"ax",%progbits
- 2400              		.align	2
- 2401              		.global	motor
-ARM GAS  /tmp/ccKlZYje.s 			page 54
+ 2391              		.global	ia
+ 2392              		.thumb
+ 2393              		.thumb_func
+ 2395              	ia:
+ 2396              	.LFB170:
+ 692:Src/freertos.c ****   /* USER CODE END adcControl */
+ 693:Src/freertos.c **** }
+ 694:Src/freertos.c **** //void uart(void const * argument)
+ 695:Src/freertos.c **** //{
+ 696:Src/freertos.c ****   /* USER CODE BEGIN uart */
+ 697:Src/freertos.c ****   /* Infinite loop */
+ 698:Src/freertos.c ****  /* for(;;)
+ 699:Src/freertos.c ****   {
+ 700:Src/freertos.c **** 
+ 701:Src/freertos.c ****     //pivoter_droite();
+ 702:Src/freertos.c ****     //ok();
+ 703:Src/freertos.c ****     //WaitFor(OK);
+ 704:Src/freertos.c **** 
+ 705:Src/freertos.c ****     WaitFor(OK);
+ 706:Src/freertos.c ****     pivoter_droite();
+ 707:Src/freertos.c ****     ok();
+ 708:Src/freertos.c **** 
+ 709:Src/freertos.c ****     osDelay(1);
+ 710:Src/freertos.c ****   }*/
+ 711:Src/freertos.c ****   /* USER CODE END uart */
+ 712:Src/freertos.c **** //}
+ 713:Src/freertos.c **** 
+ 714:Src/freertos.c **** void ia(void const * argument)
+ 715:Src/freertos.c **** {
+ 2397              		.loc 1 715 0
+ 2398              		.cfi_startproc
+ 2399              		@ Volatile: function does not return.
+ 2400              		@ args = 0, pretend = 0, frame = 0
+ 2401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2402              	.LVL235:
+ 2403 0000 08B5     		push	{r3, lr}
+ 2404              	.LCFI43:
+ 2405              		.cfi_def_cfa_offset 8
+ 2406              		.cfi_offset 3, -8
+ 2407              		.cfi_offset 14, -4
+ 716:Src/freertos.c ****   /* USER CODE BEGIN ia */
+ 717:Src/freertos.c ****   /* Infinite loop */
+ 718:Src/freertos.c ****     test4();
+ 2408              		.loc 1 718 0
+ 2409 0002 FFF7FEFF 		bl	test4
+ 2410              	.LVL236:
+ 2411              		.cfi_endproc
+ 2412              	.LFE170:
+ 2414              		.comm	robot2,12,4
+ 2415              		.comm	robot1,12,4
+ 2416              		.global	flag_present
+ 2417              		.global	flag_cap
+ARM GAS  /tmp/ccy8Czqz.s 			page 55
 
 
- 2402              		.thumb
- 2403              		.thumb_func
- 2405              	motor:
- 2406              	.LFB167:
- 670:Src/freertos.c ****     //printf("Value 1: %d\n\r", flag_distance);
- 671:Src/freertos.c ****     //printf("defini: %d\n\n\r", flag_deplacement_fini);
- 672:Src/freertos.c **** }
- 673:Src/freertos.c **** 
- 674:Src/freertos.c **** /* END Fonctions IA */
- 675:Src/freertos.c **** 
- 676:Src/freertos.c **** /* USER CODE END FunctionPrototypes */
- 677:Src/freertos.c **** 
- 678:Src/freertos.c **** /* Hook prototypes */
- 679:Src/freertos.c **** 
- 680:Src/freertos.c **** /* USER CODE BEGIN Application */
- 681:Src/freertos.c **** void motor(void const * argument)
- 682:Src/freertos.c **** {
- 2407              		.loc 1 682 0
- 2408              		.cfi_startproc
- 2409              		@ Volatile: function does not return.
- 2410              		@ args = 0, pretend = 0, frame = 0
- 2411              		@ frame_needed = 0, uses_anonymous_args = 0
- 2412              	.LVL244:
- 2413 0000 08B5     		push	{r3, lr}
- 2414              	.LCFI40:
- 2415              		.cfi_def_cfa_offset 8
- 2416              		.cfi_offset 3, -8
- 2417              		.cfi_offset 14, -4
- 683:Src/freertos.c ****   /* USER CODE BEGIN motor */
- 684:Src/freertos.c ****   UNUSED(argument);
- 685:Src/freertos.c **** 
- 686:Src/freertos.c ****   HAL_GPIO_WritePin(stby_GPIO_Port, stby_Pin, 1);
- 2418              		.loc 1 686 0
- 2419 0002 4FF09040 		mov	r0, #1207959552
- 2420              	.LVL245:
- 2421 0006 4FF48071 		mov	r1, #256
- 2422 000a 0122     		movs	r2, #1
- 2423 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 2424              	.LVL246:
- 687:Src/freertos.c ****   HAL_TIM_Base_Start(&htim3);
- 2425              		.loc 1 687 0
- 2426 0010 074C     		ldr	r4, .L233
- 2427 0012 2046     		mov	r0, r4
- 2428 0014 FFF7FEFF 		bl	HAL_TIM_Base_Start
- 2429              	.LVL247:
- 688:Src/freertos.c ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
- 2430              		.loc 1 688 0
- 2431 0018 2046     		mov	r0, r4
- 2432 001a 0021     		movs	r1, #0
- 2433 001c FFF7FEFF 		bl	HAL_TIM_PWM_Start
- 2434              	.LVL248:
- 689:Src/freertos.c ****   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
- 2435              		.loc 1 689 0
- 2436 0020 2046     		mov	r0, r4
- 2437 0022 0C21     		movs	r1, #12
- 2438 0024 FFF7FEFF 		bl	HAL_TIM_PWM_Start
- 2439              	.LVL249:
-ARM GAS  /tmp/ccKlZYje.s 			page 55
+ 2418              		.global	flag_distance
+ 2419              		.global	flag_gauche
+ 2420              		.global	flag_droite
+ 2421              		.global	flag_bas
+ 2422              		.global	flag_haut
+ 2423              		.global	flag_rotation_finie
+ 2424              		.global	flag_deplacement_fini
+ 2425              		.global	adcValue
+ 2426              		.global	flag_adc
+ 2427 0006 00BF     		.section	.bss.flag_present,"aw",%nobits
+ 2428              		.align	2
+ 2429              		.set	.LANCHOR6,. + 0
+ 2432              	flag_present:
+ 2433 0000 00000000 		.space	4
+ 2434              		.section	.bss.flag_adc,"aw",%nobits
+ 2435              		.align	2
+ 2436              		.set	.LANCHOR5,. + 0
+ 2439              	flag_adc:
+ 2440 0000 00000000 		.space	4
+ 2441              		.section	.bss.flag_gauche,"aw",%nobits
+ 2442              		.align	2
+ 2443              		.set	.LANCHOR10,. + 0
+ 2446              	flag_gauche:
+ 2447 0000 00000000 		.space	4
+ 2448              		.section	.bss.flag_droite,"aw",%nobits
+ 2449              		.align	2
+ 2450              		.set	.LANCHOR9,. + 0
+ 2453              	flag_droite:
+ 2454 0000 00000000 		.space	4
+ 2455              		.section	.bss.flag_rotation_finie,"aw",%nobits
+ 2456              		.align	2
+ 2457              		.set	.LANCHOR3,. + 0
+ 2460              	flag_rotation_finie:
+ 2461 0000 00000000 		.space	4
+ 2462              		.section	.bss.flag_distance,"aw",%nobits
+ 2463              		.align	2
+ 2464              		.set	.LANCHOR0,. + 0
+ 2467              	flag_distance:
+ 2468 0000 00000000 		.space	4
+ 2469              		.section	.bss.flag_haut,"aw",%nobits
+ 2470              		.align	2
+ 2471              		.set	.LANCHOR7,. + 0
+ 2474              	flag_haut:
+ 2475 0000 00000000 		.space	4
+ 2476              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 2477              		.align	2
+ 2478              	.LC0:
+ 2479 0000 73746F70 		.ascii	"stop !\012\015\000"
+ 2479      20210A0D 
+ 2479      00
+ 2480              		.section	.bss.flag_cap,"aw",%nobits
+ 2481              		.align	2
+ 2482              		.set	.LANCHOR2,. + 0
+ 2485              	flag_cap:
+ 2486 0000 00000000 		.space	4
+ 2487              		.section	.bss.adcValue,"aw",%nobits
+ 2488              		.align	2
+ARM GAS  /tmp/ccy8Czqz.s 			page 56
 
 
- 2440              	.L231:
- 690:Src/freertos.c **** 
- 691:Src/freertos.c ****   /* Infinite loop */
- 692:Src/freertos.c ****   for(;;)
- 693:Src/freertos.c ****   {
- 694:Src/freertos.c ****     gestion_moteurs();
- 2441              		.loc 1 694 0 discriminator 1
- 2442 0028 FFF7FEFF 		bl	gestion_moteurs
- 2443              	.LVL250:
- 695:Src/freertos.c ****   }
- 2444              		.loc 1 695 0 discriminator 1
- 2445 002c FCE7     		b	.L231
- 2446              	.L234:
- 2447 002e 00BF     		.align	2
- 2448              	.L233:
- 2449 0030 00000000 		.word	htim3
- 2450              		.cfi_endproc
- 2451              	.LFE167:
- 2453              		.section	.text.adcControl,"ax",%progbits
- 2454              		.align	2
- 2455              		.global	adcControl
- 2456              		.thumb
- 2457              		.thumb_func
- 2459              	adcControl:
- 2460              	.LFB168:
- 696:Src/freertos.c ****   /* USER CODE END motor */
- 697:Src/freertos.c **** }
- 698:Src/freertos.c **** 
- 699:Src/freertos.c **** void adcControl(void const * argument)
- 700:Src/freertos.c **** {
- 2461              		.loc 1 700 0
- 2462              		.cfi_startproc
- 2463              		@ Volatile: function does not return.
- 2464              		@ args = 0, pretend = 0, frame = 0
- 2465              		@ frame_needed = 0, uses_anonymous_args = 0
- 2466              	.LVL251:
- 2467 0000 08B5     		push	{r3, lr}
- 2468              	.LCFI41:
- 2469              		.cfi_def_cfa_offset 8
- 2470              		.cfi_offset 3, -8
- 2471              		.cfi_offset 14, -4
- 2472              	.LVL252:
- 2473              	.L236:
- 701:Src/freertos.c ****   /* USER CODE BEGIN adcControl */
- 702:Src/freertos.c ****   /* Infinite loop */
- 703:Src/freertos.c ****  for(;;)
- 704:Src/freertos.c ****   {
- 705:Src/freertos.c ****     HAL_ADC_Start_IT(&hadc1);
- 2474              		.loc 1 705 0 discriminator 1
- 2475 0002 0348     		ldr	r0, .L238
- 2476 0004 FFF7FEFF 		bl	HAL_ADC_Start_IT
- 2477              	.LVL253:
- 706:Src/freertos.c ****     estPresent();
- 2478              		.loc 1 706 0 discriminator 1
- 2479 0008 FFF7FEFF 		bl	estPresent
- 2480              	.LVL254:
- 707:Src/freertos.c ****   }
-ARM GAS  /tmp/ccKlZYje.s 			page 56
-
-
- 2481              		.loc 1 707 0 discriminator 1
- 2482 000c F9E7     		b	.L236
- 2483              	.L239:
- 2484 000e 00BF     		.align	2
- 2485              	.L238:
- 2486 0010 00000000 		.word	hadc1
- 2487              		.cfi_endproc
- 2488              	.LFE168:
- 2490              		.section	.text.ia,"ax",%progbits
- 2491              		.align	2
- 2492              		.global	ia
- 2493              		.thumb
- 2494              		.thumb_func
- 2496              	ia:
- 2497              	.LFB169:
- 708:Src/freertos.c ****   /* USER CODE END adcControl */
- 709:Src/freertos.c **** }
- 710:Src/freertos.c **** //void uart(void const * argument)
- 711:Src/freertos.c **** //{
- 712:Src/freertos.c ****   /* USER CODE BEGIN uart */
- 713:Src/freertos.c ****   /* Infinite loop */
- 714:Src/freertos.c ****  /* for(;;)
- 715:Src/freertos.c ****   {
- 716:Src/freertos.c **** 
- 717:Src/freertos.c ****     //pivoter_droite();
- 718:Src/freertos.c ****     //ok();
- 719:Src/freertos.c ****     //WaitFor(OK);
- 720:Src/freertos.c **** 
- 721:Src/freertos.c ****     WaitFor(OK);
- 722:Src/freertos.c ****     pivoter_droite();
- 723:Src/freertos.c ****     ok();
- 724:Src/freertos.c **** 
- 725:Src/freertos.c ****     osDelay(1);
- 726:Src/freertos.c ****   }*/
- 727:Src/freertos.c ****   /* USER CODE END uart */
- 728:Src/freertos.c **** //}
- 729:Src/freertos.c **** 
- 730:Src/freertos.c **** void ia(void const * argument)
- 731:Src/freertos.c **** {
- 2498              		.loc 1 731 0
- 2499              		.cfi_startproc
- 2500              		@ Volatile: function does not return.
- 2501              		@ args = 0, pretend = 0, frame = 0
- 2502              		@ frame_needed = 0, uses_anonymous_args = 0
- 2503              	.LVL255:
- 2504 0000 08B5     		push	{r3, lr}
- 2505              	.LCFI42:
- 2506              		.cfi_def_cfa_offset 8
- 2507              		.cfi_offset 3, -8
- 2508              		.cfi_offset 14, -4
- 2509              	.LVL256:
- 2510              	.L241:
- 732:Src/freertos.c ****   /* USER CODE BEGIN ia */
- 733:Src/freertos.c ****   /* Infinite loop */
- 734:Src/freertos.c ****     for(;;)
- 735:Src/freertos.c ****     {
- 736:Src/freertos.c ****         avance_block();
-ARM GAS  /tmp/ccKlZYje.s 			page 57
-
-
- 2511              		.loc 1 736 0 discriminator 1
- 2512 0002 FFF7FEFF 		bl	avance_block
- 2513              	.LVL257:
- 737:Src/freertos.c ****         pivoter_droite();
- 2514              		.loc 1 737 0 discriminator 1
- 2515 0006 FFF7FEFF 		bl	pivoter_droite
- 2516              	.LVL258:
- 738:Src/freertos.c ****     }
- 2517              		.loc 1 738 0 discriminator 1
- 2518 000a FAE7     		b	.L241
- 2519              		.cfi_endproc
- 2520              	.LFE169:
- 2522              		.comm	robot2,12,4
- 2523              		.comm	robot1,12,4
- 2524              		.global	flag_present
- 2525              		.global	flag_cap
- 2526              		.global	flag_distance
- 2527              		.global	flag_gauche
- 2528              		.global	flag_droite
- 2529              		.global	flag_bas
- 2530              		.global	flag_haut
- 2531              		.global	flag_rotation_finie
- 2532              		.global	flag_deplacement_fini
- 2533              		.global	adcValue
- 2534              		.global	flag_adc
- 2535              		.section	.bss.flag_present,"aw",%nobits
- 2536              		.align	2
- 2537              		.set	.LANCHOR6,. + 0
- 2540              	flag_present:
- 2541 0000 00000000 		.space	4
- 2542              		.section	.bss.flag_adc,"aw",%nobits
- 2543              		.align	2
- 2544              		.set	.LANCHOR5,. + 0
- 2547              	flag_adc:
- 2548 0000 00000000 		.space	4
- 2549              		.section	.bss.flag_gauche,"aw",%nobits
- 2550              		.align	2
- 2551              		.set	.LANCHOR10,. + 0
- 2554              	flag_gauche:
- 2555 0000 00000000 		.space	4
- 2556              		.section	.bss.flag_droite,"aw",%nobits
- 2557              		.align	2
- 2558              		.set	.LANCHOR9,. + 0
- 2561              	flag_droite:
- 2562 0000 00000000 		.space	4
- 2563              		.section	.bss.flag_rotation_finie,"aw",%nobits
- 2564              		.align	2
- 2565              		.set	.LANCHOR3,. + 0
- 2568              	flag_rotation_finie:
- 2569 0000 00000000 		.space	4
- 2570              		.section	.bss.flag_distance,"aw",%nobits
- 2571              		.align	2
- 2572              		.set	.LANCHOR0,. + 0
- 2575              	flag_distance:
- 2576 0000 00000000 		.space	4
- 2577              		.section	.bss.flag_haut,"aw",%nobits
- 2578              		.align	2
-ARM GAS  /tmp/ccKlZYje.s 			page 58
-
-
- 2579              		.set	.LANCHOR7,. + 0
- 2582              	flag_haut:
- 2583 0000 00000000 		.space	4
- 2584              		.section	.rodata.str1.4,"aMS",%progbits,1
- 2585              		.align	2
- 2586              	.LC0:
- 2587 0000 56616C75 		.ascii	"Value 1: %d\012\015\000"
- 2587      6520313A 
- 2587      2025640A 
- 2587      0D00
- 2588 000e 0000     		.space	2
- 2589              	.LC1:
- 2590 0010 64656669 		.ascii	"defini: %d\012\012\015\000"
- 2590      6E693A20 
- 2590      25640A0A 
- 2590      0D00
- 2591 001e 0000     		.space	2
- 2592              	.LC2:
- 2593 0020 56616C75 		.ascii	"Value 2: %d\012\015\000"
- 2593      6520323A 
- 2593      2025640A 
- 2593      0D00
- 2594 002e 0000     		.space	2
- 2595              	.LC3:
- 2596 0030 56616C75 		.ascii	"Value 3: %d\012\015\000"
- 2596      6520333A 
- 2596      2025640A 
- 2596      0D00
- 2597 003e 0000     		.space	2
- 2598              	.LC4:
- 2599 0040 73746F70 		.ascii	"stop !\012\015\000"
- 2599      20210A0D 
- 2599      00
- 2600              		.section	.bss.flag_cap,"aw",%nobits
- 2601              		.align	2
- 2602              		.set	.LANCHOR2,. + 0
- 2605              	flag_cap:
- 2606 0000 00000000 		.space	4
- 2607              		.section	.bss.adcValue,"aw",%nobits
- 2608              		.align	2
- 2609              		.set	.LANCHOR4,. + 0
- 2612              	adcValue:
- 2613 0000 00000000 		.space	4
- 2614              		.section	.bss.flag_deplacement_fini,"aw",%nobits
- 2615              		.align	2
- 2616              		.set	.LANCHOR1,. + 0
- 2619              	flag_deplacement_fini:
- 2620 0000 00000000 		.space	4
- 2621              		.section	.bss.flag_bas,"aw",%nobits
- 2622              		.align	2
- 2623              		.set	.LANCHOR8,. + 0
- 2626              	flag_bas:
- 2627 0000 00000000 		.space	4
- 2628              		.text
- 2629              	.Letext0:
- 2630              		.file 2 "/usr/include/newlib/machine/_default_types.h"
- 2631              		.file 3 "/usr/include/newlib/sys/_stdint.h"
-ARM GAS  /tmp/ccKlZYje.s 			page 59
-
-
- 2632              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
- 2633              		.file 5 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
- 2634              		.file 6 "/usr/include/newlib/sys/types.h"
- 2635              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
- 2636              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
- 2637              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
- 2638              		.file 10 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
- 2639              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
- 2640              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
- 2641              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
- 2642              		.file 14 "Drivers/CMSIS/Include/core_cm4.h"
- 2643              		.file 15 "/usr/include/newlib/time.h"
- 2644              		.file 16 "/usr/include/newlib/stdlib.h"
- 2645              		.file 17 "/usr/include/newlib/stdio.h"
-ARM GAS  /tmp/ccKlZYje.s 			page 60
+ 2489              		.set	.LANCHOR4,. + 0
+ 2492              	adcValue:
+ 2493 0000 00000000 		.space	4
+ 2494              		.section	.bss.flag_deplacement_fini,"aw",%nobits
+ 2495              		.align	2
+ 2496              		.set	.LANCHOR1,. + 0
+ 2499              	flag_deplacement_fini:
+ 2500 0000 00000000 		.space	4
+ 2501              		.section	.bss.flag_bas,"aw",%nobits
+ 2502              		.align	2
+ 2503              		.set	.LANCHOR8,. + 0
+ 2506              	flag_bas:
+ 2507 0000 00000000 		.space	4
+ 2508              		.text
+ 2509              	.Letext0:
+ 2510              		.file 2 "/usr/include/newlib/machine/_default_types.h"
+ 2511              		.file 3 "/usr/include/newlib/sys/_stdint.h"
+ 2512              		.file 4 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
+ 2513              		.file 5 "Drivers/CMSIS/Device/ST/STM32F3xx/Include/stm32f303x8.h"
+ 2514              		.file 6 "/usr/include/newlib/sys/types.h"
+ 2515              		.file 7 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_def.h"
+ 2516              		.file 8 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_gpio.h"
+ 2517              		.file 9 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_dma.h"
+ 2518              		.file 10 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc_ex.h"
+ 2519              		.file 11 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_adc.h"
+ 2520              		.file 12 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_tim.h"
+ 2521              		.file 13 "Drivers/STM32F3xx_HAL_Driver/Inc/stm32f3xx_hal_uart.h"
+ 2522              		.file 14 "Drivers/CMSIS/Include/core_cm4.h"
+ 2523              		.file 15 "/usr/include/newlib/time.h"
+ 2524              		.file 16 "/usr/include/newlib/stdlib.h"
+ 2525              		.file 17 "/usr/include/newlib/stdio.h"
+ARM GAS  /tmp/ccy8Czqz.s 			page 57
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 freertos.c
-     /tmp/ccKlZYje.s:21     .text.alumer_gauche:0000000000000000 $t
-     /tmp/ccKlZYje.s:26     .text.alumer_gauche:0000000000000000 alumer_gauche
-     /tmp/ccKlZYje.s:62     .text.alumer_gauche:0000000000000020 $d
-     /tmp/ccKlZYje.s:67     .text.alumer_droite:0000000000000000 $t
-     /tmp/ccKlZYje.s:72     .text.alumer_droite:0000000000000000 alumer_droite
-     /tmp/ccKlZYje.s:104    .text.alumer_droite:0000000000000024 $d
-     /tmp/ccKlZYje.s:109    .text.eteindre_gauche:0000000000000000 $t
-     /tmp/ccKlZYje.s:114    .text.eteindre_gauche:0000000000000000 eteindre_gauche
-     /tmp/ccKlZYje.s:142    .text.eteindre_gauche:000000000000001c $d
-     /tmp/ccKlZYje.s:147    .text.eteindre_droite:0000000000000000 $t
-     /tmp/ccKlZYje.s:152    .text.eteindre_droite:0000000000000000 eteindre_droite
-     /tmp/ccKlZYje.s:179    .text.eteindre_droite:000000000000001c $d
-     /tmp/ccKlZYje.s:184    .text.pwm_max:0000000000000000 $t
-     /tmp/ccKlZYje.s:189    .text.pwm_max:0000000000000000 pwm_max
-     /tmp/ccKlZYje.s:207    .text.pwm_max:0000000000000010 $d
-     /tmp/ccKlZYje.s:212    .text.accelerer:0000000000000000 $t
-     /tmp/ccKlZYje.s:217    .text.accelerer:0000000000000000 accelerer
-     /tmp/ccKlZYje.s:258    .text.accelerer:0000000000000020 $d
-     /tmp/ccKlZYje.s:263    .text.deccelerer:0000000000000000 $t
-     /tmp/ccKlZYje.s:268    .text.deccelerer:0000000000000000 deccelerer
-     /tmp/ccKlZYje.s:309    .text.deccelerer:0000000000000020 $d
-     /tmp/ccKlZYje.s:314    .text.avancer_robot:0000000000000000 $t
-     /tmp/ccKlZYje.s:319    .text.avancer_robot:0000000000000000 avancer_robot
-     /tmp/ccKlZYje.s:359    .text.reculer_robot:0000000000000000 $t
-     /tmp/ccKlZYje.s:364    .text.reculer_robot:0000000000000000 reculer_robot
-     /tmp/ccKlZYje.s:404    .text.pivoter_gauche:0000000000000000 $t
-     /tmp/ccKlZYje.s:409    .text.pivoter_gauche:0000000000000000 pivoter_gauche
-     /tmp/ccKlZYje.s:449    .text.pivoter_droite:0000000000000000 $t
-     /tmp/ccKlZYje.s:454    .text.pivoter_droite:0000000000000000 pivoter_droite
-     /tmp/ccKlZYje.s:494    .text.gestion_moteurs:0000000000000000 $t
-     /tmp/ccKlZYje.s:499    .text.gestion_moteurs:0000000000000000 gestion_moteurs
-     /tmp/ccKlZYje.s:588    .text.gestion_moteurs:000000000000006c $d
-     /tmp/ccKlZYje.s:596    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
-     /tmp/ccKlZYje.s:601    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
-     /tmp/ccKlZYje.s:626    .text.HAL_ADC_ConvCpltCallback:0000000000000014 $d
-     /tmp/ccKlZYje.s:632    .text._write:0000000000000000 $t
-     /tmp/ccKlZYje.s:637    .text._write:0000000000000000 _write
-     /tmp/ccKlZYje.s:665    .text._write:0000000000000014 $d
-     /tmp/ccKlZYje.s:670    .text.distance:0000000000000000 $t
-     /tmp/ccKlZYje.s:675    .text.distance:0000000000000000 distance
-     /tmp/ccKlZYje.s:814    .text.distance:00000000000000a8 $d
-     /tmp/ccKlZYje.s:819    .text.estPresent:0000000000000000 $t
-     /tmp/ccKlZYje.s:824    .text.estPresent:0000000000000000 estPresent
-     /tmp/ccKlZYje.s:857    .text.estPresent:000000000000001c $d
-     /tmp/ccKlZYje.s:862    .text.EnvoiMessage:0000000000000000 $t
-     /tmp/ccKlZYje.s:867    .text.EnvoiMessage:0000000000000000 EnvoiMessage
-     /tmp/ccKlZYje.s:1013   .text.EnvoiMessage:00000000000000f8 $d
-     /tmp/ccKlZYje.s:1018   .text.ReceptionMessage:0000000000000000 $t
-     /tmp/ccKlZYje.s:1023   .text.ReceptionMessage:0000000000000000 ReceptionMessage
-     /tmp/ccKlZYje.s:1207   .text.ReceptionMessage:000000000000010c $d
-     /tmp/ccKlZYje.s:1213   .text.recoitpos:0000000000000000 $t
-     /tmp/ccKlZYje.s:1218   .text.recoitpos:0000000000000000 recoitpos
-     /tmp/ccKlZYje.s:1258   .text.recoitpos:0000000000000020 $d
+     /tmp/ccy8Czqz.s:21     .text.alumer_gauche:0000000000000000 $t
+     /tmp/ccy8Czqz.s:26     .text.alumer_gauche:0000000000000000 alumer_gauche
+     /tmp/ccy8Czqz.s:62     .text.alumer_gauche:0000000000000020 $d
+     /tmp/ccy8Czqz.s:67     .text.alumer_droite:0000000000000000 $t
+     /tmp/ccy8Czqz.s:72     .text.alumer_droite:0000000000000000 alumer_droite
+     /tmp/ccy8Czqz.s:104    .text.alumer_droite:0000000000000024 $d
+     /tmp/ccy8Czqz.s:109    .text.eteindre_gauche:0000000000000000 $t
+     /tmp/ccy8Czqz.s:114    .text.eteindre_gauche:0000000000000000 eteindre_gauche
+     /tmp/ccy8Czqz.s:142    .text.eteindre_gauche:000000000000001c $d
+     /tmp/ccy8Czqz.s:147    .text.eteindre_droite:0000000000000000 $t
+     /tmp/ccy8Czqz.s:152    .text.eteindre_droite:0000000000000000 eteindre_droite
+     /tmp/ccy8Czqz.s:179    .text.eteindre_droite:000000000000001c $d
+     /tmp/ccy8Czqz.s:184    .text.pwm_max:0000000000000000 $t
+     /tmp/ccy8Czqz.s:189    .text.pwm_max:0000000000000000 pwm_max
+     /tmp/ccy8Czqz.s:207    .text.pwm_max:0000000000000010 $d
+     /tmp/ccy8Czqz.s:212    .text.accelerer:0000000000000000 $t
+     /tmp/ccy8Czqz.s:217    .text.accelerer:0000000000000000 accelerer
+     /tmp/ccy8Czqz.s:258    .text.accelerer:0000000000000020 $d
+     /tmp/ccy8Czqz.s:263    .text.deccelerer:0000000000000000 $t
+     /tmp/ccy8Czqz.s:268    .text.deccelerer:0000000000000000 deccelerer
+     /tmp/ccy8Czqz.s:309    .text.deccelerer:0000000000000020 $d
+     /tmp/ccy8Czqz.s:314    .text.avancer_robot:0000000000000000 $t
+     /tmp/ccy8Czqz.s:319    .text.avancer_robot:0000000000000000 avancer_robot
+     /tmp/ccy8Czqz.s:359    .text.reculer_robot:0000000000000000 $t
+     /tmp/ccy8Czqz.s:364    .text.reculer_robot:0000000000000000 reculer_robot
+     /tmp/ccy8Czqz.s:404    .text.pivoter_gauche:0000000000000000 $t
+     /tmp/ccy8Czqz.s:409    .text.pivoter_gauche:0000000000000000 pivoter_gauche
+     /tmp/ccy8Czqz.s:449    .text.pivoter_droite:0000000000000000 $t
+     /tmp/ccy8Czqz.s:454    .text.pivoter_droite:0000000000000000 pivoter_droite
+     /tmp/ccy8Czqz.s:494    .text.gestion_moteurs:0000000000000000 $t
+     /tmp/ccy8Czqz.s:499    .text.gestion_moteurs:0000000000000000 gestion_moteurs
+     /tmp/ccy8Czqz.s:588    .text.gestion_moteurs:000000000000006c $d
+     /tmp/ccy8Czqz.s:596    .text.HAL_ADC_ConvCpltCallback:0000000000000000 $t
+     /tmp/ccy8Czqz.s:601    .text.HAL_ADC_ConvCpltCallback:0000000000000000 HAL_ADC_ConvCpltCallback
+     /tmp/ccy8Czqz.s:626    .text.HAL_ADC_ConvCpltCallback:0000000000000014 $d
+     /tmp/ccy8Czqz.s:632    .text._write:0000000000000000 $t
+     /tmp/ccy8Czqz.s:637    .text._write:0000000000000000 _write
+     /tmp/ccy8Czqz.s:665    .text._write:0000000000000014 $d
+     /tmp/ccy8Czqz.s:670    .text.distance:0000000000000000 $t
+     /tmp/ccy8Czqz.s:675    .text.distance:0000000000000000 distance
+     /tmp/ccy8Czqz.s:814    .text.distance:00000000000000a8 $d
+     /tmp/ccy8Czqz.s:819    .text.estPresent:0000000000000000 $t
+     /tmp/ccy8Czqz.s:824    .text.estPresent:0000000000000000 estPresent
+     /tmp/ccy8Czqz.s:857    .text.estPresent:000000000000001c $d
+     /tmp/ccy8Czqz.s:862    .text.EnvoiMessage:0000000000000000 $t
+     /tmp/ccy8Czqz.s:867    .text.EnvoiMessage:0000000000000000 EnvoiMessage
+     /tmp/ccy8Czqz.s:1013   .text.EnvoiMessage:00000000000000f8 $d
+     /tmp/ccy8Czqz.s:1018   .text.ReceptionMessage:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1023   .text.ReceptionMessage:0000000000000000 ReceptionMessage
+     /tmp/ccy8Czqz.s:1207   .text.ReceptionMessage:000000000000010c $d
+     /tmp/ccy8Czqz.s:1213   .text.recoitpos:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1218   .text.recoitpos:0000000000000000 recoitpos
+     /tmp/ccy8Czqz.s:1258   .text.recoitpos:0000000000000020 $d
                             *COM*:000000000000000c robot2
-     /tmp/ccKlZYje.s:1263   .text.envoipos:0000000000000000 $t
-ARM GAS  /tmp/ccKlZYje.s 			page 61
+     /tmp/ccy8Czqz.s:1263   .text.envoipos:0000000000000000 $t
+ARM GAS  /tmp/ccy8Czqz.s 			page 58
 
 
-     /tmp/ccKlZYje.s:1268   .text.envoipos:0000000000000000 envoipos
-     /tmp/ccKlZYje.s:1297   .text.Traduction:0000000000000000 $t
-     /tmp/ccKlZYje.s:1302   .text.Traduction:0000000000000000 Traduction
-     /tmp/ccKlZYje.s:1388   .text.Traduction:0000000000000068 $d
+     /tmp/ccy8Czqz.s:1268   .text.envoipos:0000000000000000 envoipos
+     /tmp/ccy8Czqz.s:1297   .text.Traduction:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1302   .text.Traduction:0000000000000000 Traduction
+     /tmp/ccy8Czqz.s:1388   .text.Traduction:0000000000000068 $d
                             *COM*:000000000000000c robot1
-     /tmp/ccKlZYje.s:1399   .text.WaitFor:0000000000000000 $t
-     /tmp/ccKlZYje.s:1404   .text.WaitFor:0000000000000000 WaitFor
-     /tmp/ccKlZYje.s:1430   .text.TaPosition:0000000000000000 $t
-     /tmp/ccKlZYje.s:1435   .text.TaPosition:0000000000000000 TaPosition
-     /tmp/ccKlZYje.s:1455   .text.ok:0000000000000000 $t
-     /tmp/ccKlZYje.s:1460   .text.ok:0000000000000000 ok
-     /tmp/ccKlZYje.s:1480   .text.Monte:0000000000000000 $t
-     /tmp/ccKlZYje.s:1485   .text.Monte:0000000000000000 Monte
-     /tmp/ccKlZYje.s:1509   .text.Descend:0000000000000000 $t
-     /tmp/ccKlZYje.s:1514   .text.Descend:0000000000000000 Descend
-     /tmp/ccKlZYje.s:1538   .text.Droite:0000000000000000 $t
-     /tmp/ccKlZYje.s:1543   .text.Droite:0000000000000000 Droite
-     /tmp/ccKlZYje.s:1567   .text.Gauche:0000000000000000 $t
-     /tmp/ccKlZYje.s:1572   .text.Gauche:0000000000000000 Gauche
-     /tmp/ccKlZYje.s:1596   .text.DansUnCoin:0000000000000000 $t
-     /tmp/ccKlZYje.s:1601   .text.DansUnCoin:0000000000000000 DansUnCoin
-     /tmp/ccKlZYje.s:1621   .text.Trouve:0000000000000000 $t
-     /tmp/ccKlZYje.s:1626   .text.Trouve:0000000000000000 Trouve
-     /tmp/ccKlZYje.s:1646   .text.Random:0000000000000000 $t
-     /tmp/ccKlZYje.s:1651   .text.Random:0000000000000000 Random
-     /tmp/ccKlZYje.s:1712   .text.Random:0000000000000044 $d
-     /tmp/ccKlZYje.s:1717   .text.Non:0000000000000000 $t
-     /tmp/ccKlZYje.s:1722   .text.Non:0000000000000000 Non
-     /tmp/ccKlZYje.s:1742   .text.MemeCase:0000000000000000 $t
-     /tmp/ccKlZYje.s:1747   .text.MemeCase:0000000000000000 MemeCase
-     /tmp/ccKlZYje.s:1767   .text.TuEsCoin:0000000000000000 $t
-     /tmp/ccKlZYje.s:1772   .text.TuEsCoin:0000000000000000 TuEsCoin
-     /tmp/ccKlZYje.s:1792   .text.deplacement:0000000000000000 $t
-     /tmp/ccKlZYje.s:1797   .text.deplacement:0000000000000000 deplacement
-     /tmp/ccKlZYje.s:1848   .text.deplacement:0000000000000034 $d
-     /tmp/ccKlZYje.s:1856   .text.test1:0000000000000000 $t
-     /tmp/ccKlZYje.s:1861   .text.test1:0000000000000000 test1
-     /tmp/ccKlZYje.s:2052   .text.test1:0000000000000120 $d
-     /tmp/ccKlZYje.s:2062   .text.test2:0000000000000000 $t
-     /tmp/ccKlZYje.s:2067   .text.test2:0000000000000000 test2
-     /tmp/ccKlZYje.s:2137   .text.test2:0000000000000054 $d
-     /tmp/ccKlZYje.s:2142   .text.test3:0000000000000000 $t
-     /tmp/ccKlZYje.s:2147   .text.test3:0000000000000000 test3
-     /tmp/ccKlZYje.s:2343   .text.test3:0000000000000108 $d
-     /tmp/ccKlZYje.s:2348   .text.avance_block:0000000000000000 $t
-     /tmp/ccKlZYje.s:2353   .text.avance_block:0000000000000000 avance_block
-     /tmp/ccKlZYje.s:2392   .text.avance_block:0000000000000024 $d
-     /tmp/ccKlZYje.s:2400   .text.motor:0000000000000000 $t
-     /tmp/ccKlZYje.s:2405   .text.motor:0000000000000000 motor
-     /tmp/ccKlZYje.s:2449   .text.motor:0000000000000030 $d
-     /tmp/ccKlZYje.s:2454   .text.adcControl:0000000000000000 $t
-     /tmp/ccKlZYje.s:2459   .text.adcControl:0000000000000000 adcControl
-     /tmp/ccKlZYje.s:2486   .text.adcControl:0000000000000010 $d
-     /tmp/ccKlZYje.s:2491   .text.ia:0000000000000000 $t
-     /tmp/ccKlZYje.s:2496   .text.ia:0000000000000000 ia
-     /tmp/ccKlZYje.s:2540   .bss.flag_present:0000000000000000 flag_present
-     /tmp/ccKlZYje.s:2605   .bss.flag_cap:0000000000000000 flag_cap
-ARM GAS  /tmp/ccKlZYje.s 			page 62
+     /tmp/ccy8Czqz.s:1399   .text.WaitFor:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1404   .text.WaitFor:0000000000000000 WaitFor
+     /tmp/ccy8Czqz.s:1430   .text.TaPosition:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1435   .text.TaPosition:0000000000000000 TaPosition
+     /tmp/ccy8Czqz.s:1455   .text.ok:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1460   .text.ok:0000000000000000 ok
+     /tmp/ccy8Czqz.s:1480   .text.Monte:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1485   .text.Monte:0000000000000000 Monte
+     /tmp/ccy8Czqz.s:1509   .text.Descend:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1514   .text.Descend:0000000000000000 Descend
+     /tmp/ccy8Czqz.s:1538   .text.Droite:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1543   .text.Droite:0000000000000000 Droite
+     /tmp/ccy8Czqz.s:1567   .text.Gauche:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1572   .text.Gauche:0000000000000000 Gauche
+     /tmp/ccy8Czqz.s:1596   .text.DansUnCoin:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1601   .text.DansUnCoin:0000000000000000 DansUnCoin
+     /tmp/ccy8Czqz.s:1621   .text.Trouve:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1626   .text.Trouve:0000000000000000 Trouve
+     /tmp/ccy8Czqz.s:1646   .text.Random:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1651   .text.Random:0000000000000000 Random
+     /tmp/ccy8Czqz.s:1712   .text.Random:0000000000000044 $d
+     /tmp/ccy8Czqz.s:1717   .text.Non:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1722   .text.Non:0000000000000000 Non
+     /tmp/ccy8Czqz.s:1742   .text.MemeCase:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1747   .text.MemeCase:0000000000000000 MemeCase
+     /tmp/ccy8Czqz.s:1767   .text.TuEsCoin:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1772   .text.TuEsCoin:0000000000000000 TuEsCoin
+     /tmp/ccy8Czqz.s:1792   .text.deplacement:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1797   .text.deplacement:0000000000000000 deplacement
+     /tmp/ccy8Czqz.s:1848   .text.deplacement:0000000000000034 $d
+     /tmp/ccy8Czqz.s:1856   .text.test1:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1861   .text.test1:0000000000000000 test1
+     /tmp/ccy8Czqz.s:1926   .text.test1:0000000000000050 $d
+     /tmp/ccy8Czqz.s:1931   .text.test2:0000000000000000 $t
+     /tmp/ccy8Czqz.s:1936   .text.test2:0000000000000000 test2
+     /tmp/ccy8Czqz.s:2006   .text.test2:0000000000000054 $d
+     /tmp/ccy8Czqz.s:2011   .text.test3:0000000000000000 $t
+     /tmp/ccy8Czqz.s:2016   .text.test3:0000000000000000 test3
+     /tmp/ccy8Czqz.s:2212   .text.test3:0000000000000108 $d
+     /tmp/ccy8Czqz.s:2217   .text.avance_block:0000000000000000 $t
+     /tmp/ccy8Czqz.s:2222   .text.avance_block:0000000000000000 avance_block
+     /tmp/ccy8Czqz.s:2261   .text.avance_block:0000000000000024 $d
+     /tmp/ccy8Czqz.s:2269   .text.test4:0000000000000000 $t
+     /tmp/ccy8Czqz.s:2274   .text.test4:0000000000000000 test4
+     /tmp/ccy8Czqz.s:2299   .text.motor:0000000000000000 $t
+     /tmp/ccy8Czqz.s:2304   .text.motor:0000000000000000 motor
+     /tmp/ccy8Czqz.s:2348   .text.motor:0000000000000030 $d
+     /tmp/ccy8Czqz.s:2353   .text.adcControl:0000000000000000 $t
+     /tmp/ccy8Czqz.s:2358   .text.adcControl:0000000000000000 adcControl
+     /tmp/ccy8Czqz.s:2385   .text.adcControl:0000000000000010 $d
+     /tmp/ccy8Czqz.s:2390   .text.ia:0000000000000000 $t
+     /tmp/ccy8Czqz.s:2395   .text.ia:0000000000000000 ia
+ARM GAS  /tmp/ccy8Czqz.s 			page 59
 
 
-     /tmp/ccKlZYje.s:2575   .bss.flag_distance:0000000000000000 flag_distance
-     /tmp/ccKlZYje.s:2554   .bss.flag_gauche:0000000000000000 flag_gauche
-     /tmp/ccKlZYje.s:2561   .bss.flag_droite:0000000000000000 flag_droite
-     /tmp/ccKlZYje.s:2626   .bss.flag_bas:0000000000000000 flag_bas
-     /tmp/ccKlZYje.s:2582   .bss.flag_haut:0000000000000000 flag_haut
-     /tmp/ccKlZYje.s:2568   .bss.flag_rotation_finie:0000000000000000 flag_rotation_finie
-     /tmp/ccKlZYje.s:2619   .bss.flag_deplacement_fini:0000000000000000 flag_deplacement_fini
-     /tmp/ccKlZYje.s:2612   .bss.adcValue:0000000000000000 adcValue
-     /tmp/ccKlZYje.s:2547   .bss.flag_adc:0000000000000000 flag_adc
-     /tmp/ccKlZYje.s:2536   .bss.flag_present:0000000000000000 $d
-     /tmp/ccKlZYje.s:2543   .bss.flag_adc:0000000000000000 $d
-     /tmp/ccKlZYje.s:2550   .bss.flag_gauche:0000000000000000 $d
-     /tmp/ccKlZYje.s:2557   .bss.flag_droite:0000000000000000 $d
-     /tmp/ccKlZYje.s:2564   .bss.flag_rotation_finie:0000000000000000 $d
-     /tmp/ccKlZYje.s:2571   .bss.flag_distance:0000000000000000 $d
-     /tmp/ccKlZYje.s:2578   .bss.flag_haut:0000000000000000 $d
-     /tmp/ccKlZYje.s:2585   .rodata.str1.4:0000000000000000 $d
-     /tmp/ccKlZYje.s:2601   .bss.flag_cap:0000000000000000 $d
-     /tmp/ccKlZYje.s:2608   .bss.adcValue:0000000000000000 $d
-     /tmp/ccKlZYje.s:2615   .bss.flag_deplacement_fini:0000000000000000 $d
-     /tmp/ccKlZYje.s:2622   .bss.flag_bas:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2432   .bss.flag_present:0000000000000000 flag_present
+     /tmp/ccy8Czqz.s:2485   .bss.flag_cap:0000000000000000 flag_cap
+     /tmp/ccy8Czqz.s:2467   .bss.flag_distance:0000000000000000 flag_distance
+     /tmp/ccy8Czqz.s:2446   .bss.flag_gauche:0000000000000000 flag_gauche
+     /tmp/ccy8Czqz.s:2453   .bss.flag_droite:0000000000000000 flag_droite
+     /tmp/ccy8Czqz.s:2506   .bss.flag_bas:0000000000000000 flag_bas
+     /tmp/ccy8Czqz.s:2474   .bss.flag_haut:0000000000000000 flag_haut
+     /tmp/ccy8Czqz.s:2460   .bss.flag_rotation_finie:0000000000000000 flag_rotation_finie
+     /tmp/ccy8Czqz.s:2499   .bss.flag_deplacement_fini:0000000000000000 flag_deplacement_fini
+     /tmp/ccy8Czqz.s:2492   .bss.adcValue:0000000000000000 adcValue
+     /tmp/ccy8Czqz.s:2439   .bss.flag_adc:0000000000000000 flag_adc
+     /tmp/ccy8Czqz.s:2428   .bss.flag_present:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2435   .bss.flag_adc:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2442   .bss.flag_gauche:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2449   .bss.flag_droite:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2456   .bss.flag_rotation_finie:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2463   .bss.flag_distance:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2470   .bss.flag_haut:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2477   .rodata.str1.4:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2481   .bss.flag_cap:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2488   .bss.adcValue:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2495   .bss.flag_deplacement_fini:0000000000000000 $d
+     /tmp/ccy8Czqz.s:2502   .bss.flag_bas:0000000000000000 $d
                      .debug_frame:0000000000000010 $d
 
 UNDEFINED SYMBOLS
