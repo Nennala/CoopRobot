@@ -500,154 +500,110 @@ void estPresent() {
 
 /* BEGIN Fonctions IA */
 
-/*void deplacement(int distance, int cap)//fonction initiale
+/* Permet la gestion des déplacements dans la tache IA, elle prend deux arguments,
+ * une distance et un cap dont au moins un des deux est nul. Elle modifie les flags
+ * rotation_distance et cap, rotation_finie et deplacement_fini.
+ * Une distance positive signifie que l'on souhaite avancer, une distance négative signifie que l'on souhaite reculer
+ * Une cap positif indique un pivot à droite, un cpa négatif un pivot à gauche */
+void deplacement(int distance, int cap)
 {
-
-    flag_deplacement_fini = 0;
-    flag_distance += distance;
-    flag_rotation_finie = 0;
-    flag_cap += cap;
-}*/
-
-void deplacement(int distance, int cap)//fonction évoluée
-{
-  if(cap == 0){
-      //printf("hello\n\r");
-      while(flag_rotation_finie != 1);
-          //printf("modif\n\r");
-          flag_deplacement_fini = 0;
-          flag_distance += distance;
+  if(cap == 0)//si l'on souhaite modifier la distance, l'argument cap est alors nul
+  {
+      while(flag_rotation_finie != 1);//On attent que le flag_rotation_finie sont à 0, donc que le robot ne pivote plus
+      flag_deplacement_fini = 0;//On remet le flag_deplacement_fini à 0 car on va ordoner un nouveau déplacement
+      flag_distance += distance;//On incrémente le flag_distance du nombre de case que l'on souhaite avancer
   }
 
-  if(distance == 0){
-      //printf("bye\n\r");
-      while(flag_deplacement_fini != 1);
-          flag_rotation_finie = 0;
-          flag_cap += cap;
+  if(distance == 0)//si l'on souhaite modifier le cap, l'argument distance est alors nul
+  {
+      while(flag_deplacement_fini != 1);//on vérifie que l'on avance plus avant d'ordoner une rotation
+      flag_rotation_finie = 0;//on met remet le flag_rotation_finie à 0 car on va de nouveau pivoter
+      flag_cap += cap;//on incrémente le cap d'autant de quart de tour que l'on souhaite faire
   }
 }
 
-void test1(){
+/*Fonction de test et de démonstration de la communication, elle ne prend aucun arguments
+ *Cette fonction diffèrent légèrement d'un robot à l'autre car/ il faut que l'un des deux initie la manoeuvre
+ *Le premier robot scrute la présence d'un message "OK" le canal de communication, ce message signifiant que
+ * l'action a été effectué avec succès.
+ * Le second robot avance puis emet un message OK à la fin de son déplacement.
+ * Ensuite les rôles s'inverse et l'on fait la même manoeuvre mais en reculant afin de revenir aux positions initiales*/
+void test_communication()
+{
+    WaitFor(OK);//uniquement le robot 1
 
-    WaitFor(OK);
+    /*première partie de la manoeuvre*/
 
-    deplacement(1,0);
-    while(flag_deplacement_fini != 1)
+    deplacement(1,0);//on avance d'une case
+    while(flag_deplacement_fini != 1)//On attent la fin du deplacement avant d'envoyer le message
     {
         osDelay(1000);
     }
 
-    ok();
-    WaitFor(OK);
+    /* Echanges de message OK*/
 
-    //WaitFor(OK);
-    //ok();
+    ok();//uniquement le robot 1
+    WaitFor(OK);//uniquement le robot 1
+
+    WaitFor(OK);//uniquement le robot 2
+    ok();//uniquement le robot 2
+
+    /*seconde partie de la manoeuvre*/
 
     deplacement(-1,0);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    osDelay(4000);
-}
-
-void test2(){
-    deplacement(2,0);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(-2,0);
-    while(flag_deplacement_fini != 1)
+    while(flag_deplacement_fini != 1)//on attent la fin de second déplacement avant de finir la fonction
     {
         osDelay(1000);
     }
 }
 
-void test3(){//dessine un carré
-    deplacement(1,0);
-    while(flag_deplacement_fini != 1)
+/* Cette fonction est une fonction de démonstration visant à évaluer la présision de déplacements et rotation
+ * si les déplacements du robot sont précis et correctement réglés le robot devrait revenir sur sa position initiale
+ * Cette fonction ne prend aucun argument, appelle la fonction deplacement et modifie directement la valeur du
+ * flag_deplacement_fini;
+ * Le robot dessine un carré au sol en avançant puis pivotant quatre fois
+ * Il est possible d'appeler plusieurs fois cette fonction pour observer la dérive au bout d'un plus grand nombre de
+ *  déplacements*/
+void carre(){
+    int i =0;
+    for(i=0; i<4; i++)
     {
-        osDelay(1000);
-    }
+        deplacement(1,0);
+        while(flag_deplacement_fini != 1)
+        {
+            osDelay(1000);
+        }
 
-    deplacement(0,1);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(1,0);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(0,1);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(1,0);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(0,1);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(1,0);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(0,1);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(1,0);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
-    }
-
-    deplacement(0,1);
-    while(flag_deplacement_fini != 1)
-    {
-        osDelay(1000);
+        deplacement(0,1);
+        while(flag_deplacement_fini != 1)
+        {
+            osDelay(1000);
+        }
     }
 }
 
-void avance_block(){
+/*Cette fonction ne prend aucun argument, fais appel à la fonction avancer_robot, utilise la valeur du flag_present
+ * et modifie la valeur des flags distance et deplacement_fini
+ * Suite à l'appel de cette fonction le robot avance jusqu'à ce que le capteur unidirectionel signale une présence.*/
+void avance_bloque()
+{
     while(!flag_present)
     {
-        //printf("avant ! \n\r");
         avancer_robot();
-        //printf("Value 1: %d\n\r", flag_distance);
-        //printf("defini: %d\n\n\r", flag_deplacement_fini);
     }
-    //printf("stop !\n\r");
     flag_distance = 0;
     flag_deplacement_fini = 1;
-    //printf("Value 1: %d\n\r", flag_distance);
-    //printf("defini: %d\n\n\r", flag_deplacement_fini);
 }
 
-void test4(){
-    for(;;)
+/*Cette fonction ne prend pas d'argument, elle n'est pas finie d'être developée non plus
+ * le but final étant de mener le robot dans un des quatre coin du terrain, pour l'instant le robot avance jusqu'à
+ * detecter une presence et puis tourne à droite. Par la suite cette fonction ferait appel à une autre qui testerai
+ * si le robot est dans un coin ou non.*/
+void test(){
+    for(;;)//la fonction est composée d'une boucle infinie
     {
-        avance_block();
-        pivoter_droite();
+        avance_block();//faisant avancer le robot jusqu'à ce qu'il détecte une présence
+        pivoter_droite();//puis le fais pivoter à droite
     }
 }
 
@@ -706,11 +662,19 @@ void uart(void const * argument)
   /* USER CODE END uart */
 }
 
+/*le code ia fait pour l'instant appel aux fonctions de démonstration écrites plus haut et devrait à terme
+ * enchainer des routines
+ * aller dans un coin
+ * vérifier sa position et celle du coéquipier
+ * définir d'un point de rendez-vous
+ * se rendre au point de rendez-vous
+ * réaliser l'action finale */
 void ia(void const * argument)
 {
   /* USER CODE BEGIN ia */
   /* Infinite loop */
-test4();
+
+    //écrire les appels de fonction ici
 }
   /* USER CODE END ia */
 

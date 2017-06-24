@@ -1,0 +1,35 @@
+	INTRO IA
+
+	La tâche IA doit gérer la prise de décision grâce à l'abstraction permise par les trois autres  tâches.
+Elle est organisée en routines se qui permet de découper ........ en plusieurs phases :
+	- Une première phase autonome ou chaque robot se rend dans un coin et prend 
+connaissance de sa postion en déterminant quel est ce coin.
+	- Une seconde phase de communication afin d'échanger les positions respectives, 
+de vérifier qu'aucun des robots ne possède d'informations faussées par sont coéquipier;
+de déterminer quel est le point de rendez vous et la position de chaque robot;
+	- Une troisième phase de déplacement où les robots sont de nouveau autonomes;
+	- Une dernière phase coopérative où les robots réalisent l'action finale.
+	
+Le déroulement du ....... se fait donc en alternant phase de coopération et phases autonomes.
+
+	OS TEMPS RÉEL
+	
+	Le programme est découpé en quatre tâches s'éxécutant en parallèle, une pour les capteurs, une pour les dépacements, une pour la communication et enfin, la dernière pour la prise de décision. Les différentes tâches communiquent entre elles grâce à des flags. Ils sont de deux types : les flags-indicateurs font remonter de l'information du bas niveau afin qu'elle soit prise en compte par l'IA et les flags-consignes indique au fonction bas niveau les objectifs fixé par l'IA.
+	
+	IA DEV
+	
+	le terrain étant connu et fixé, l'IA n'a pas besoin de s'adapter à la disposition des éléments composant le terrain cependant elle doit palier à deux problèmes :
+		- la position de départ est inconnue
+		- on ne peut pas différecier l'autre robot des éléments composants le terrain
+		
+Déterminer sa position sur un terrain connu
+
+	Les deux solutions qui ont été étudiées sont : 
+		- Cartographier la carte et la comparer régulièrement avec la carte du terrain afin de rechercher des similitudes.
+		- Se rendre dans une position identifiable dont les coordonnées sont connue
+		
+	La seconde étant plus complexe à mettre en place nous avons choisi la seconde.
+	
+Quelle position choisir et comment la déterminer ?
+
+	La première idée fut de mesurer la distance séparant la position initiale du robot avec les éléments dans les quatres directions. Cette solution à comme avantage de permettre de connaitre sa postion dès le début de .......... cependant elle présente aussi des inconvénients et n'est pas forcément adaptée à notre cas : L'autre robot peut modifier la distance mesuer
