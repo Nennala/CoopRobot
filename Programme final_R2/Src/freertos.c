@@ -260,7 +260,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     flag_adc = 1;
 }
 
-/* Cette fonction est utile pour la fonction printf su l'UART2 (UART connecté au PC) écrire
+/* Cette fonction est utile pour la fonction printf sur l'UART2 (UART connecté au PC) écrire
  * facilement les valeurs numériques sur cet UART */
 int _write(int file, char *ptr, int len) {
     UNUSED(file);
