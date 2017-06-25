@@ -60,6 +60,10 @@ Prise de décision
 	Donc pour choisir entre les deux zones de rendez vous, les robots choisissent la plus proche d'eux puis le premier robot réserve la place la plus proche de sa position actuelle et ne laisse donc pas le choix au second qui prend la place restante. L'avantage de ce type de prise de décison est qu'il peut être augmenté à un plus grand nombre de robots vu qu'il définit un ordre de priorité ne pouvant pas être remis en question.
 	
 ***
+***	
+	SIMULATEUR
+
+	Afin de valider les différents comportements 
 	
 	
 	
@@ -67,6 +71,4 @@ Prise de décision
 	
 	
 	
-	
-	
-	
+***
