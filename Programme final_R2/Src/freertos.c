@@ -46,6 +46,14 @@
   ******************************************************************************
   */
 
+/**
+ * *********************************************************************
+ * Auteurs : Daphné Porteries, Victor Cazaux et Thibault Vernay
+ * Date de création : 12 juin 2017
+ * Date de dernière modification : 25 juin 2017
+ * *********************************************************************
+ */
+
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
 #include "task.h"
@@ -100,31 +108,44 @@ struct Robot robot1, robot2; // Nous sommes robot1 et l'autre robot est  robot2
 /* USER CODE BEGIN FunctionPrototypes */
 
 /* BEGIN Fonctions pour les moteurs */
+
+/* Cette fonction permet d'allumer le moteur gauche. Elle prend en argument la variable sens qui est à 1 quand
+ * le moteur avance et à 0 quand celui-ci recule. Voir la datasheet du driver moteur pour les valeurs de ain1
+ * et ain2 */
 void alumer_gauche(int sens) {
-    HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, !sens);
-    HAL_GPIO_WritePin(ain2_GPIO_Port, ain2_Pin, sens);
+    HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, sens);
+    HAL_GPIO_WritePin(ain2_GPIO_Port, ain2_Pin, !sens);
 }
 
+/* Cette fonction permet d'allumer le moteur droit. Elle prend en argument la variable sens qui est à 1 quand
+ * le moteur avance et à 0 quand celui-ci recule. Voir la datasheet du driver moteur pour les valeurs de ain1
+ * et ain2 */
 void alumer_droite(int sens) {
-    HAL_GPIO_WritePin(bin1_GPIO_Port, bin1_Pin, !sens);
-    HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, sens);
+    HAL_GPIO_WritePin(bin1_GPIO_Port, bin1_Pin, sens);
+    HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, !sens);
 }
 
+/* Cette fonction permet d'éteindre le moteur gauche. */
 void eteindre_gauche() {
     HAL_GPIO_WritePin(ain1_GPIO_Port, ain1_Pin, 0);
     HAL_GPIO_WritePin(ain2_GPIO_Port, ain2_Pin, 0);
 }
 
+/* Cette fonction permet d'éteindre le moteur droit. */
 void eteindre_droite() {
     HAL_GPIO_WritePin(bin1_GPIO_Port, bin1_Pin, 0);
     HAL_GPIO_WritePin(bin2_GPIO_Port, bin2_Pin, 0);
 }
 
+/* Cette fonction permet de mettre au max décidé dans l'entête la valeur du rapport PWM. Elle fait appel à des
+ * fonctions de la HAL qui permettent de changer la valeur du CCR pour le timer3. */
 void pwm_max() {
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, PWM_MAX);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, PWM_MAX);
 }
 
+/* Cette fonction permet de changer la valeur du CCR du timer3 pour changer le rapport du PWM avec une temporisation
+ * pour le faire s'incrémenter jusqu'à la valeur finale définie dans l'entête du fichier. */
 void accelerer() {
     int pwm = 0;
     while (pwm != PWM_MAX) {
@@ -135,6 +156,8 @@ void accelerer() {
     }
 }
 
+/* Cette fonction permet de changer la valeur du CCR du timer3 pour changer le rapport du PWM avec une temporisation
+ * pour le faire se décrémenter jusqu'à 0 et provoquer l'arrêt du moteur. */
 void deccelerer() {
     int pwm = PWM_MAX;
     while (pwm != 0) {
@@ -145,73 +168,81 @@ void deccelerer() {
     }
 }
 
+/* Cette fonction permet d'avancer de 15 cm. Les paramètres de temporisation sont différents selons les robots. Elle 
+ * utilise les fonctions allumer et éteindre ainsi que les fonctions d'accélérations et de décélération avant d'éteindre
+ * les moteurs. */
 void avancer_robot() {
-    alumer_droite(0);
-    alumer_gauche(0);
-    accelerer();
-    osDelay(470);//robot2 : 470 robot1 : 850
-    deccelerer();
-    eteindre_droite();
-    eteindre_gauche();
-}
-
-void reculer_robot() {
+    // sens est à 1 pour avancer
     alumer_droite(1);
     alumer_gauche(1);
     accelerer();
-    osDelay(470);//robot2 : 470 robot1 : 850
+    osDelay(470); // robot2 : 470 robot1 : 850
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
 }
 
+/* Cette fonction permet de reculer de 15 cm. Les paramètres de temporisation sont différents selons les robots. Elle 
+ * utilise les fonctions allumer et éteindre ainsi que les fonctions d'accélérations et de décélération avant d'éteindre
+ * les moteurs. */
+void reculer_robot() {
+    // sens est à 0 pour reculer
+    alumer_droite(0);
+    alumer_gauche(0);
+    accelerer();
+    osDelay(470); // robot2 : 470 robot1 : 850
+    deccelerer();
+    eteindre_droite();
+    eteindre_gauche();
+}
 
+/* Cette fonction permet de pivoter à gauche de 90°. Les temporisation changent d'un robot à l'autre et ici on met le
+ * rapport du PWM au max avant d'effectuer la routine, de décélérer et de le remettre à 0 avant d'éteindre les moteurs. */
 void pivoter_gauche() {
     pwm_max();
     alumer_gauche(1);
     alumer_droite(0);
-    osDelay(40);//robot 2 : 40 robot1 : 130
+    osDelay(40); // robot2 : 40 robot1 : 130
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
 }
 
+/* Cette fonction permet de pivoter à droite de 90°. Les temporisation changent d'un robot à l'autre et ici on met le
+ * rapport du PWM au max avant d'effectuer la routine, de décélérer et de le remettre à 0 avant d'éteindre les moteurs. */
 void pivoter_droite() {
     pwm_max();
     alumer_droite(1);
     alumer_gauche(0);
-    osDelay(40);
+    osDelay(40); // robot2 : 40 robot1 : 130
     deccelerer();
     eteindre_droite();
     eteindre_gauche();
 }
 
-void gestion_moteurs()
-{
+/* Cette fonction permet en fonction de la valeur des indicateurs d'état flag_cap et flag_distance de définir les déplacements
+ * à effectuer et de décrémenter cette valeur. Elle permet également quand tous les déplacements et changements de cap sont finis
+ * de mettre l'indicateur d'état flag_deplacement_fini à 1. */
+void gestion_moteurs() {
     if (flag_distance > 0) {
       avancer_robot();
       flag_distance --;
     }
-
     if (flag_distance < 0) {
       reculer_robot();
       flag_distance ++;
     }
-
     if(flag_distance == 0){
       flag_deplacement_fini = 1;
     }
-
     if (flag_cap > 0) {
       pivoter_droite();
       flag_cap --;
     }
-
     if (flag_cap < 0) {
       pivoter_gauche();
       flag_cap ++;
     }
-
     if(flag_cap == 0){
       flag_rotation_finie = 1;
     }
@@ -220,12 +251,17 @@ void gestion_moteurs()
 /* END Fonctions pour les moteurs */
 
 /* BEGIN Fonctions ADC */
+
+/* Cette fonction est la fonction d'interruption de l'ADC, elle permet de mettre l'indicateur
+ * d'état flag_adc à 1 et à récupérer la valeur de l'ADC */
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
     UNUSED(hadc);
     adcValue = HAL_ADC_GetValue(hadc);
     flag_adc = 1;
 }
 
+/* Cette fonction est utile pour la fonction printf su l'UART2 (UART connecté au PC) écrire
+ * facilement les valeurs numériques sur cet UART */
 int _write(int file, char *ptr, int len) {
     UNUSED(file);
 
@@ -233,6 +269,9 @@ int _write(int file, char *ptr, int len) {
     return len;
 }
 
+/* Cette fonction est un étalonnage de l'ADC, il permet d'associer une distance à la valeur
+ * de retour de l'ADC. Les valeurs sont des fourchettes, l'ADC ayant un retour qui fluctue
+ * autour d'une distance. */
 int distance() {
     int value = 0;
     if (adcValue >= 3800) {
@@ -280,11 +319,12 @@ int distance() {
     if (adcValue >= 1780 && adcValue < 1850) {
         value = 20;
     }
-     //printf(" %d\n\r", adcValue);
-     //printf(" %d\n\r", value);
     return(value);
 }
 
+/* Cette fonction permet de définir pour quelle distance on considère qu'un objet est présent devant le
+ * capteur et met l'indicateur d'état flag_present à 1 si c'est le cas. Il le remet à 0 dans le cas
+ * contraire. */
 void estPresent() {
     int value;
     value = distance();
@@ -294,7 +334,6 @@ void estPresent() {
     else{
         flag_present = 0;
     }
-     //printf("%d\n\r", flag_present);
 }
 
 /* END Fonctions ADC */
