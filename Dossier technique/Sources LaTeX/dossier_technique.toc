@@ -3,7 +3,7 @@
 \contentsline {subsection}{\numberline {1.1}Sp\IeC {\'e}cification de l'\IeC {\'e}preuve}{2}
 \contentsline {subsection}{\numberline {1.2}Sp\IeC {\'e}cifications mat\IeC {\'e}rielles}{2}
 \contentsline {subsubsection}{\numberline {1.2.1}Micro-contr\IeC {\^o}leur}{2}
-\contentsline {subsubsection}{\numberline {1.2.2}D\IeC {\'e}placement}{2}
+\contentsline {subsubsection}{\numberline {1.2.2}D\IeC {\'e}placement}{3}
 \contentsline {subsubsection}{\numberline {1.2.3}Rep\IeC {\'e}rage dans l'espace}{3}
 \contentsline {subsubsection}{\numberline {1.2.4}Communication}{3}
 \contentsline {subsection}{\numberline {1.3}Sp\IeC {\'e}cifications logicielles}{3}
@@ -13,16 +13,20 @@
 \contentsline {section}{\numberline {2}\IeC {\'E}tude du mat\IeC {\'e}riel}{4}
 \contentsline {subsection}{\numberline {2.1}Magn\IeC {\'e}tom\IeC {\`e}tre 3 axes}{4}
 \contentsline {subsection}{\numberline {2.2}Moteurs \IeC {\`a} courant continus et pont en H}{4}
-\contentsline {subsection}{\numberline {2.3}Capteur de proximit\IeC {\'e} infrarouge}{4}
+\contentsline {subsection}{\numberline {2.3}Capteur de proximit\IeC {\'e} infrarouge}{5}
 \contentsline {section}{\numberline {3}\IeC {\'E}tude du logiciel}{5}
 \contentsline {subsection}{\numberline {3.1}Couche bas niveau}{5}
 \contentsline {subsubsection}{\numberline {3.1.1}Configuration de STM32CubeMx}{5}
 \contentsline {subsubsection}{\numberline {3.1.2}Commande des actionneurs}{6}
 \contentsline {subsubsection}{\numberline {3.1.3}Configuration des capteurs}{7}
 \contentsline {subsubsection}{\numberline {3.1.4}Fonctions primitives}{7}
-\contentsline {subsection}{\numberline {3.2}Couche communication}{7}
-\contentsline {subsubsection}{\numberline {3.2.1}Format des messages}{7}
+\contentsline {subsection}{\numberline {3.2}Couche communication}{8}
+\contentsline {subsubsection}{\numberline {3.2.1}Format des messages}{8}
 \contentsline {subsubsection}{\numberline {3.2.2}S\IeC {\'e}curisation des messages}{8}
 \contentsline {subsubsection}{\numberline {3.2.3}Traduction des message}{8}
 \contentsline {subsubsection}{\numberline {3.2.4}Fonctions}{8}
-\contentsline {subsection}{\numberline {3.3}Couche intelligence artificielle}{8}
+\contentsline {subsection}{\numberline {3.3}Couche intelligence artificielle}{9}
+\contentsline {subsubsection}{\numberline {3.3.1}Syst\IeC {\`e}me centralis\IeC {\'e}s/d\IeC {\'e}centralis\IeC {\'e}}{9}
+\contentsline {subsubsection}{\numberline {3.3.2}OS temps r\IeC {\'e}el}{9}
+\contentsline {subsubsection}{\numberline {3.3.3}Le robot}{9}
+\contentsline {subsubsection}{\numberline {3.3.4}Les probl\IeC {\'e}matiques}{9}

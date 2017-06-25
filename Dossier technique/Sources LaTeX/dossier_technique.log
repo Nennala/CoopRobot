@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.3)  25 JUN 2017 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.4.3)  25 JUN 2017 22:19
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -755,14 +755,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 
  []
 
+[1.1
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
-[1.1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 <epreuve.png, id=11, 307.1475pt x 505.89pt>
 File: epreuve.png Graphic file (type png)
  <use epreuve.png>
@@ -798,7 +797,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 117--118
 
  []
 
-
+[3.3]
 Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
@@ -808,7 +807,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 121--122
 
  []
 
-[3.3]
+
 Underfull \hbox (badness 10000) in paragraph at lines 123--124
 
  []
@@ -828,136 +827,238 @@ Overfull \hbox (28.45273pt too wide) in paragraph at lines 136--137
  [] 
  []
 
-<sharp_courbe.png, id=22, 441.90094pt x 325.96782pt>
+<driver.png, id=22, 508.14844pt x 249.93375pt>
+File: driver.png Graphic file (type png)
+ <use driver.png>
+Package pdftex.def Info: driver.png used on input line 147.
+(pdftex.def)             Requested size: 289.25217pt x 142.26378pt.
+ [4.4 <./mag_schematic.png (PNG copy)>] <sharp_courbe.png, id=28, 441.90094pt x
+ 325.96782pt>
 File: sharp_courbe.png Graphic file (type png)
- <use sharp_courbe.png>
-Package pdftex.def Info: sharp_courbe.png used on input line 151.
+
+<use sharp_courbe.png>
+Package pdftex.def Info: sharp_courbe.png used on input line 156.
 (pdftex.def)             Requested size: 284.52756pt x 209.89198pt.
-
-[4.4 <./mag_schematic.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 161--162
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 163--164
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 166--167
 
  []
 
 
-Overfull \hbox (11.62344pt too wide) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 168--169
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
+
+Overfull \hbox (11.62344pt too wide) in paragraph at lines 174--175
 \OT1/cmr/m/n/10 ke-file. Par exemple si j'al-lume l'UART2 avec la confi-gu-ra-t
 ion STM32CubeMX, le fi-chier stm32f3xx[]hal[]uart.h
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
-<diag_HAL.png, id=28, 642.4pt x 477.785pt>
+[5.5 <./driver.png (PNG copy)> <./sharp_courbe.png (PNG copy)>]
+<diag_HAL.png, id=32, 642.4pt x 477.785pt>
 File: diag_HAL.png Graphic file (type png)
  <use diag_HAL.png>
-Package pdftex.def Info: diag_HAL.png used on input line 172.
+Package pdftex.def Info: diag_HAL.png used on input line 177.
 (pdftex.def)             Requested size: 191.27075pt x 142.26378pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--176
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-[5.5 <./sharp_courbe.png (PNG copy)> <./diag_HAL.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 181--182
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
-<pwm.png, id=32, 60.225pt x 44.0847pt>
-File: pwm.png Graphic file (type png)
- <use pwm.png>
-Package pdftex.def Info: pwm.png used on input line 184.
-(pdftex.def)             Requested size: 194.37709pt x 142.26378pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 188--189
 
  []
 
+<pwm.png, id=33, 60.225pt x 44.0847pt>
+File: pwm.png Graphic file (type png)
+ <use pwm.png>
+Package pdftex.def Info: pwm.png used on input line 191.
+(pdftex.def)             Requested size: 194.37709pt x 142.26378pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+
+ []
+
+[6.6 <./diag_HAL.png (PNG copy)> <./pwm.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 205--206
-
- []
-
-[6.6 <./pwm.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 207--208
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
 
-Overfull \hbox (2.64545pt too wide) in paragraph at lines 213--214
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+
+Overfull \hbox (2.64545pt too wide) in paragraph at lines 220--221
 []\OT1/cmr/m/n/10 Les fonc-tions pri-mi-tives sont les fonc-tions proches du ma
 t^^Seriel qui sont donn^^Sees aux couches sup^^Serieures.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
 
  []
 
 [7.7]
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 248--249
+Underfull \hbox (badness 10000) in paragraph at lines 231--232
 
  []
 
-[8.8] (./dossier_technique.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--269
+
+ []
+
+[8.8]
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 278--279
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 296--297
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--300
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 305--306
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
+
+ []
+
+[9.9]
+Underfull \hbox (badness 10000) in paragraph at lines 314--315
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--321
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 324--325
+
+ []
+
+[10.10] (./dossier_technique.aux) ) 
 Here is how much of TeX's memory you used:
- 6774 strings out of 493013
- 109090 string characters out of 6135683
- 240604 words of memory out of 5000000
- 10191 multiletter control sequences out of 15000+600000
+ 6781 strings out of 493013
+ 109182 string characters out of 6135683
+ 240606 words of memory out of 5000000
+ 10197 multiletter control sequences out of 15000+600000
  8364 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,12n,43p,1225b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on dossier_technique.pdf (8 pages, 271668 bytes).
+ 37i,13n,43p,1368b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on dossier_technique.pdf (10 pages, 297124 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 81 PDF objects out of 1000 (max. 8388607)
+ 52 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

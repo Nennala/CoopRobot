@@ -139,9 +139,9 @@ INPUT dossier_technique.toc
 INPUT dossier_technique.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT dossier_technique.toc
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 OUTPUT dossier_technique.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT epreuve.png
 INPUT ./epreuve.png
 INPUT ./epreuve.png
@@ -149,6 +149,9 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT mag_schematic.png
 INPUT ./mag_schematic.png
 INPUT ./mag_schematic.png
+INPUT driver.png
+INPUT ./driver.png
+INPUT ./driver.png
 INPUT sharp_courbe.png
 INPUT ./sharp_courbe.png
 INPUT ./sharp_courbe.png
