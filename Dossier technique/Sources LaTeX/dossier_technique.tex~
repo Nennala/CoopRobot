@@ -7,6 +7,13 @@
  
 \usepackage{minted}
 
+\usepackage{fancyhdr}
+\usepackage{totpages}
+\pagestyle{fancy}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Coopération de robots}
+\fancyhead[R]{P2020}
+
 \title{Dossier technique\\Coopération de robots}
 \author{Thibault Vernay, Victor Cazaux, Daphné Porteries}
 

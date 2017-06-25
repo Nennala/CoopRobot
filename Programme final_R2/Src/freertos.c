@@ -339,10 +339,13 @@ void estPresent() {
 /* END Fonctions ADC */
 
 /* BEGIN Fonctions UART */
+
+/* Cette fonction prend en argument le message à transmettre et met en place la sécurisation par la
+ * méthode de XOR entre les bits et transmet trois octets avec la sécurisation. */
     void EnvoiMessage(uint8_t data){
         uint8_t eun, b, edeux, equatre, ehuit,eseize, etrentedeux, esoixantequatre, ecentvingthuit, k, z;
 
-        eun = (data & 0x01);
+        eun = (data & 0x01); /*MASK pour récupérer la valeur de chanque bit */
         edeux = (data & 0x02)/2;
         equatre =(data & 0x04)/4;
         ehuit = (data & 0x08)/8;
@@ -350,11 +353,13 @@ void estPresent() {
         etrentedeux = (data & 0x20)/32;
         esoixantequatre = (data & 0x40)/64;
         ecentvingthuit = (data & 0x80)/128;
-
+        
+        /*Mise en place des XOR et des 3 paquets*/
         b =  (ecentvingthuit^etrentedeux)*32 + (ecentvingthuit^esoixantequatre)*16 + (esoixantequatre^etrentedeux)*8 +ecentvingthuit*4 + esoixantequatre*2 + etrentedeux;
         k = (eseize^equatre)*32 +  (eseize^ehuit)*16 + (ehuit^equatre)*8 + eseize*4  + ehuit*2 + equatre;
         z = (0^eun)*32 + (0^edeux)*16 + (eun^edeux)*8 +edeux*2  + eun;
-
+        
+        /*Envoi des paquets */
         HAL_UART_Transmit(&huart1, &b, sizeof(data), 0xEEEE);
         osDelay(2);
         HAL_UART_Transmit(&huart1, &k, sizeof(data), 0xEEEE);
@@ -362,10 +367,14 @@ void estPresent() {
         HAL_UART_Transmit(&huart1, &z, sizeof(data), 0xEEEE);
         osDelay(2);
     }
-
+    
+/* Cette fonction ne prend pas d'arguments, elle récupère les trois octets qui sont transmis par l'autre
+ * robot, vérifie la sécurisation et extrait les données pour refaire l'octet original. */
     int ReceptionMessage(){
         uint8_t r, m, n, v, run, rdeux, rquatre, rhuit, rseize, rtrentedeux, ok, i;
         uint8_t rec[3];
+        
+        /*Récupération des messages*/
         HAL_UART_Receive(&huart1, &r, sizeof(uint8_t), 0xEEEE);
         HAL_UART_Receive(&huart1, &m, sizeof(uint8_t), 0xEEEE);
         HAL_UART_Receive(&huart1, &n, sizeof(uint8_t), 0xEEEE);
@@ -374,7 +383,7 @@ void estPresent() {
         rec[1] = m;
         rec[2] = n;
         ok = 1;
-        for (i =0; i<3; i++) {
+        for (i =0; i<3; i++) { /*MASK pour récupérer chaque bit*/
             run = (rec[i] & 0x01);
             rdeux = (rec[i] & 0x02)/2;
             rquatre =(rec[i] & 0x04)/4;
@@ -388,11 +397,14 @@ void estPresent() {
         r =  (r & 0x07)*32;
         m =  (m & 0x07)*4;
         n =  (n & 0x07);
+        
+        /*Recréation message original*/
         v =  r + m + n;
         if (ok == 1) {
             for (i = 0; i<5; i++)
             {
-                HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin);
+                /* Indicateur visuel pour la réception */
+                HAL_GPIO_TogglePin(led_GPIO_Port, led_Pin); 
                 osDelay(500);
             }
             return(v);
@@ -400,6 +412,7 @@ void estPresent() {
         else return(0);
     }
 
+    /* Cette fonction récupère la position et la stocke dans la structure robot correspondante */
     void recoitpos(){
         uint8_t a, x, y, c;
         a = ReceptionMessage();
@@ -411,12 +424,15 @@ void estPresent() {
         robot2.orientation = c;
     }
 
+    /* Cette fonction envoie deux octets, un contenant à la fois la position x et y et l'autre contenant l'orientation. */
     void envoipos(uint8_t x, uint8_t y , uint8_t c){
          x = x*16 + y;
          EnvoiMessage(x);
          EnvoiMessage(c);
     }
 
+    /* Cette fonction sert à affecter à chaque message reçu un comportement, pour le moment pas tous les messages
+     * ont un comportement associé. */
     void Traduction(uint8_t msg){
         if (msg == 0x05) {
            envoipos(robot1.posx, robot1.posy, robot1.orientation);
@@ -468,10 +484,13 @@ void estPresent() {
         }
     }
 
+    /* Attend de reçevoir un certain message fournit en argument */
     void WaitFor(uint8_t z) {
         while (z != ReceptionMessage()) ;
     }
 
+    /* Les fonctions suivantes sont des fonctions avec un nom explicite pour l'IA permettant d'envoyer le
+     * message correspondant. */
     void TaPosition() {
         EnvoiMessage(0x05);
     }
@@ -508,6 +527,9 @@ void estPresent() {
         EnvoiMessage(0x0C);
     }
 
+    /* Cette fonction particulière se démarque des autres. Elle permet de définir qui devient le maître dans les
+     * décisions, le tirage aléatoire donne la priorité à celui qui a le plus grand nombre. Cette fonction renvoie
+     un indicateur p permettant de savoir si on a gagné le tir ou pas. */
     int Random() {
         int a, p;
         EnvoiMessage(0x0D);
