@@ -27,7 +27,7 @@
 
 \section{Spécifications}
 
-La spécification qui suit est la spécification que nous avons établi au début du projet. Pas toutes les contraintes spécifiées ont été satisfaites et pas tous les capteurs ont été utilisés mais celle-ci donne une vue globale de ce projet.
+La spécification qui suit est la spécification que nous avons établie au début du projet. Pas toutes les contraintes spécifiées ont été satisfaites et pas tous les capteurs ont été utilisés mais celle-ci donne une vue globale de ce projet.
 
 L'objectif de ce projet est de créer deux robots capables de coopérer pour venir à bout d'une épreuve définie qui oblige une coopération. \\
 
@@ -73,7 +73,7 @@ Ici deux capteurs SHARP sont utilisés pour mesurer les distances. L’un d’en
 
 \subsubsection{Communication}
 
-Pour la communication, le protocole UART sera utilisé mais la communication filaire est trop contraignante sur une épreuve (risques d’accrocher les fils dans le décors et risque de perturbations  avec la longueur du fil) ce sont donc deux modules radio à sens unique qui seront utilisés.
+Pour la communication, le protocole UART sera utilisé, mais la communication filaire est trop contraignante sur une épreuve (risques d’accrocher les fils dans le décors et risque de perturbations  avec la longueur du fil) ce sont donc deux modules radio à sens unique qui seront utilisés.
 
 \subsection{Spécifications logicielles}
 
@@ -112,7 +112,7 @@ Cette couche doit gérer indépendamment du reste la communication entre les deu
 
 \subsubsection{Couche IA}
 
-Cette couche définie la connaissance de l’épreuve du robot ainsi que la façon que celui-ci aura de quadriller son environnement. Cette couche utilise toutes les fonctions des couches inférieure et donc se positionne en couche de haut niveau. Elle permet de créer les déplacement du robots en fonctions de son environnement, de définir comment celui-ci va repérer où est le deuxième robot et également quelle méthode de prise de décision ceux-ci vont utiliser. \\
+Cette couche définie la connaissance de l’épreuve du robot ainsi que la façon dont celui-ci quadrille son environnement. Cette couche utilise toutes les fonctions des couches inférieure et donc se positionne en couche de haut niveau. Elle permet de créer les déplacements du robots en fonctions de son environnement, de définir comment celui-ci va repérer où est le deuxième robot et également quelle méthode de prise de décision ceux-ci vont utiliser. \\
 
 Quadrillage de la zone~:\\
 
@@ -120,17 +120,17 @@ On utilise le fait que les fonctions élémentaires font avancer de 10 cm pour q
 
 Repérage du deuxième robot~: \\
 
-Les robots vont se déplacer en balayant la zone en cherchant un déplacement anormal qui ne soit pas de 10 cm, s’ils ne se trouvent toujours pas, il vont tourner pour chercher dans une autre direction. \\
+Les robots vont se déplacer en balayant la zone en cherchant un déplacement anormal qui ne soit pas de 10 cm, s’ils ne se trouvent toujours pas, ils vont tourner pour chercher dans une autre direction. \\
 
 Prise de décision~: \\
 
-Pour la prise de décision les robots vont utiliser un tirage pseudo aléatoire et comparer les numéros obtenus, celui qui a le numéro le plus grand deviens prioritaire et indique à l’autre qu’il est prioritaire.
+Les robots doivent être capables de prendre une décision et de définir un ordre de priorité. Il ne peut y avoir d'indécision.
 
 \section{Étude du matériel}
 
 \subsection{Magnétomètre 3 axes}
 
-Le magnétomètre que nous aurions aimé avoir est le MAG3110FCR1 qui est un composant nécessitant la création d'une carte d’accueil avec des condensateurs de découplages pour les alimentations (dont les valeurs sont spécifiées dans la documentation du composant). Ce composant utilise le protocole $I^2C$ qui permet d'utiliser que deux lignes, la ligne SDA et la ligne SCL réciproquement pour les données et pour l'horloge. Le composant en $I^2C$ dispose d'une adresse sur 7 bits aligné à gauche à laquelle il faut ajouté le bit d'écriture ou de lecture pour en faire une information sur 8 bits. En plus de l'alimentation et des lignes destinées à l'$I^2C$ ce capteur possède une ligne destinée aux interruptions.
+Le magnétomètre que nous aurions aimé avoir est le MAG3110FCR1 qui est un composant nécessitant la création d'une carte d’accueil avec des condensateurs de découplages pour les alimentations (dont les valeurs sont spécifiées dans la documentation du composant). Ce composant utilise le protocole $I^2C$ qui permet d'utiliser que deux lignes, la ligne SDA et la ligne SCL réciproquement pour les données et pour l'horloge. Le composant en $I^2C$ dispose d'une adresse sur 7 bits aligné à gauche à laquelle il faut ajouter le bit d'écriture ou de lecture pour en faire une information sur 8 bits. En plus de l'alimentation et des lignes destinées à l'$I^2C$ ce capteur possède une ligne destinée aux interruptions.
 
 \begin{center}
   \includegraphics[width=17cm]{mag_schematic.png}
@@ -141,7 +141,7 @@ Ce capteur utilise l'effet Hall, mais nous n'avons pas vraiment eu le temps d'en
 
 \subsection{Moteurs à courant continus et pont en H}
 
-Pour contrôler nos deux moteurs à courant continu nous avons à disposition un driver moteur embarquant un pont en H qui possède pour chaque moteur deux entrées de sens et une entrée PWM. L'alimentation fournie à ce driver moteur est celle qui alimentera les moteurs, les pins d'entrée ne servant qu'au contrôle de l'état des sorties. L'état haut sur les sortie correspond à alimenter les moteurs avec la tension fournie par les batteries et l'état bas à la masse. Pour tout état haut du PWM d'un moteur en entrée l'alimentation est activée, pour chaque état bas elle est coupée~; le moteur étant assimilé à une bobine, elle se charge et la tension est intégrée ce qui alimente le moteur finalement avec la tension moyenne du signal de sortie. Réguler le rapport cyclique du moteur permet donc de gérer la vitesse de celui-ci.
+Pour contrôler nos deux moteurs à courant continu nous avons à disposition un driver moteur embarquant un pont en H qui possède pour chaque moteur deux entrées de sens et une entrée PWM. L'alimentation fournie à ce driver moteur est celle qui alimentera les moteurs, les pins d'entrée ne servant qu'au contrôle de l'état des sorties. L'état haut sur les sorties correspond à alimenter les moteurs avec la tension fournie par les batteries et l'état bas à la masse. Pour tout état haut du PWM d'un moteur en entrée l'alimentation est activée, pour chaque état bas elle est coupée~; le moteur étant assimilé à une bobine, elle se charge et la tension est intégrée ce qui alimente le moteur finalement avec la tension moyenne du signal de sortie. Réguler le rapport cyclique du moteur permet donc de gérer la vitesse de celui-ci.
 
 \begin{center}
   \includegraphics[height=5cm]{driver.png}
@@ -157,13 +157,30 @@ Le capteur de proximité infrarouge est un capteur SHARP. C'est un capteur de me
   \captionof{figure}{Courbe d'étalonnage de distance du capteur SHARP}
 \end{center}
 
+\subsection{Circuit d'alimentation}
+
+L'alimentation est basée sur une batterie Li-Po possédant une tension de sortie allant de 8,4 V en début de charge à 7.8 V en fin de charge. On utilise un régulateur linéaire afin de disposer d'une tension de 5V pour alimenter le micro-contrôleur et les capteurs. Deux condensateurs sont mis de part et d'autres du régulateur, reliant ainsi la tension d'alimentation à la masse comme il est possible de le voir sur le schéma ci-dessous. En partant de la batterie et en allant vers la sortie 5V, nous avons un premier condensateur chimique polarisé de 470 micro-Farad qui sert de réservoir d’énergie pour éviter les chutes de tension dues aux pics de courant pouvant provenir du montage, deux condensateurs plastique encadre le régulateur, ce sont des condensateurs de découplage, leur rôle est d’atténuer le bruit produit notamment par les moteurs à courant continu. Enfin le dernier condensateur est un condensateur polarisé au tantale qui lui aussi sert de réserve d'énergie. De plus, nous avons rajouté une diode de puissance en entrée du montage par mesure de sécurité afin d'éviter la circulation de courant si l'on branche la batterie en inverse, cela provoque une légère chute de 0.7V par rapport à la sortie de tension de la batterie et réduit légèrement la vitesse de rotation maximale des moteurs sans pour autant porter atteinte au bon fonctionnement du montage.
+
+\begin{center}
+  \includegraphics[height=4cm]{alim.png}
+  \captionof{figure}{Circuit d'alimentation}
+\end{center}
+
+La fonctionnalité du montage se valide aisément avec une alimentation stabilisée et un voltmètre, Pour une tension de 8V en entrée du montage on mesurait une tension de 4.98V en sortie du montage. Comme c'est un montage de puissance nous conseillons de vérifier le câblage avant d'alimenter la carte Nucléo avec, pour cela on utilise un testeur de continuité permettant de détecter des cours circuits éventuels. Ensuite, on peut brancher la batterie sans connecter la Nucléo et vérifier la tension en trois points à l'aide d'un multimètre~: \\
+
+\begin{itemize}
+  \item en sortie de la batterie environ 9V quand la batterie en pleine~;
+  \item après la diode environ 8.4V quand la batterie en pleine~;
+  \item en sortie du montage, sur le connecteur où l'on va brancher le micro-contrôleur environ 5V tant que la sortie de la batterie ne passe pas en dessous de 5V (ce qui signifie que cela fait longtemps qu'elle aurait dû être rechargée !).
+\end{itemize} 
+
 \section{Étude du logiciel}
 
 \subsection{Couche bas niveau}
 
 \subsubsection{Configuration de STM32CubeMx}
 
-Lors de l'utilisation d'une carte microcontrôleur telle que la STM8S ou la Nucléo STM32F3xx, il est nécessaire de configurer les ports, les pins, les différents registres des timers et des ADC avant même de commencer le code à proprement parlé. Dans le cas d'une carte STM32, il existe un outils très pratique nommé STM32CubeMX permettant de configurer préalablement les bons registres, ports et pins et de générer un ensemble de fichiers projet avec un Makefile adapté au projet. \\
+Lors de l'utilisation d'une carte micro-contrôleur telle que la STM8S ou la Nucléo STM32F3xx, il est nécessaire de configurer les ports, les pins, les différents registres des timers et des ADC avant même de commencer le code à proprement parlé. Dans le cas d'une carte STM32, il existe un outil très pratique nommé STM32CubeMX permettant de configurer préalablement les bons registres, ports et pins et de générer un ensemble de fichiers projet avec un Makefile adapté au projet. \\
 
 Les fichiers s'organisent de la manière suivante~: \\
 \begin{itemize}
@@ -171,17 +188,15 @@ Les fichiers s'organisent de la manière suivante~: \\
   \item fichiers contenant les fonctions de la ``HAL'' pour chaque module de la carte. \\
 \end{itemize}
 
-À chaque génération de projet, STM32CubeMx va inclure les bonnes bibliothèques au main et au Makefile. Par exemple si j'allume l'UART2 avec la configuration STM32CubeMX, le fichier stm32f3xx\_hal\_uart.h sera inclus et son .c associé sera compilé. La ``HAL'' (Hardware Abstraction Layout) est comme son nom l'indique une couche d'abstraction matérielle qui va se charger de mettre les bonnes valeurs dans les bons registres lors de l'initialisation mais également lors de l'utilisation. Elle embarque donc un certain nombre de fonctions générique de manipulation du matériel facilitant l'utilisation de la carte. La mise en place de la HAL s'illustre de la manière suivante~:\\
+À chaque génération de projet, STM32CubeMx va inclure les bonnes bibliothèques au main et au Makefile. Par exemple si j'allume l'UART2 avec la configuration STM32CubeMX, le fichier stm32f3xx\_hal\_uart.h sera inclus et son .c associé sera compilé. La ``HAL'' (Hardware Abstraction Layer) est comme son nom l'indique une couche d'abstraction matérielle qui va se charger de mettre les bonnes valeurs dans les bons registres lors de l'initialisation mais également lors de l'utilisation. Elle embarque donc un certain nombre de fonctions génériques de manipulation du matériel facilitant l'utilisation de la carte. La mise en place de la HAL s'illustre de la manière suivante~:\\
 
 \begin{center}
   \includegraphics[height=5cm]{diag_HAL.png}
 \end{center}
 
-STM32CubeMx va aussi permettre autre chose~: la mise en place d'un OS temps réel nommé FreeRTOS permettant de paralléliser les tâches. Ainsi nous allons créer plusieurs tâches avec cet OS et profiter de sa gestion simplifiée des temporisations. Il faudra également gérer le HEAP (le tas) et la taille de STACK (la pile) lors de la mise en place de celui-ci. La ``STACK'' est la taille dans la mémoire maximum que peu prendre le programme lors de son exécution tandis que le ``HEAP'' existe lors de cas d'allocations dynamiques de la mémoire. Dans le cas de FreeRTOS toutes tâche créée est allouée dynamiquement dans la mémoire en fonction de la taille de sa Stack notamment. Il faut donc penser à avoir de la marge côté Heap et tester quelles valeurs maximale la carte accepte en fonction de la taille de sa RAM. La valeur max n'est pas mentionnée dans la doc, il faut donc tester empiriquement car une valeur trop élevée du Heap pose des problèmes lors du linkage et crée une erreur de ``RAM overflowed''. \\
+STM32CubeMx va aussi permettre autre chose~: la mise en place d'un OS temps réel nommé FreeRTOS permettant de paralléliser les tâches. Ainsi nous allons créer plusieurs tâches avec cet OS et profiter de sa gestion simplifiée des temporisations. Il faudra également gérer le HEAP (le tas) et la taille de STACK (la pile) lors de la mise en place de celui-ci. La ``STACK'' est la taille dans la mémoire maximum que peut prendre le programme lors de son exécution tandis que le ``HEAP'' existe lors de cas d'allocations dynamiques de la mémoire. Dans le cas de FreeRTOS toute tâche créée est allouée dynamiquement dans la mémoire en fonction de la taille de sa Stack notamment. Il faut donc penser à avoir de la marge côté Heap et tester quelles valeurs maximale la carte accepte en fonction de la taille de sa RAM. La valeur max n'est pas mentionnée dans la documentation, il faut donc tester empiriquement car une valeur trop élevée du Heap pose des problèmes lors du linkage et crée une erreur de ``RAM overflowed''. \\
 
-Lors de l'activation de FreeRTOS, les fonctions et les processus sont écris dans ``freertos.c'' et les processus initialement déclaré dans le main sont déclaré avec le mot clé ``\_\_weak'' que nous aborderons plus tard. \\
-
-Niveau matériel, trois tâches indépendantes serons créées~: une pour l'ADC, une pour les moteurs et une pour la gestion de l'UART. Nous parlerons dans cette partie des deux premières.
+Lors de l'activation de FreeRTOS, les fonctions et les processus sont écrits dans ``freertos.c'' et les processus initialement déclarés dans le main sont déclarés avec le mot clé ``\_\_weak'' que nous aborderons plus tard. \\
 
 \subsubsection{Commande des actionneurs}
 
@@ -192,7 +207,7 @@ Le driver moteur nécessite deux pins de commandes par moteur et un PWM par mote
   \captionof{figure}{Explication du principe du PWM}
 \end{center}
 
-Nous avons donc plusieurs calculs à notre disposition pour avoir une certaine fréquence de PWM et un certain rapport cyclique~: \\
+Nous avons donc à disposition plusieurs calculs pour avoir une certaine fréquence de PWM et un certain rapport cyclique~: \\
 
 \begin{center}
   $timer\_tick\_frequency = Timer\_default\_set \div ( prescaller\_set + 1 )$ \\
@@ -201,17 +216,17 @@ Nous avons donc plusieurs calculs à notre disposition pour avoir une certaine f
   $pulse\_lenght = ((TIM\_period + 1) \times DutyCycle) \div 100 - 1$ \\
 \end{center} 
 
-où ``DutyCycle'' est une valeur exprimée en pourcent qui représente notre rapport cyclique. Ainsi avec notre horloge à 64MHz nous choisissons un prescaller de $999$ (pour diviser la fréquence du timer par $1000$, on veut maintenant une fréquence de PWM de 100Hz, on effectue donc la troisième ligne de calcul et on trouve que la valeur de l'ARR doit être de $639$ pour atteindre cette fréquence. Maintenant si on veut un rapport cyclique de $0,25$ il faut un ``DutyCycle'' de $25\%$ on obtient donc que $159$ est la valeur à mettre pour la comparaison du PWM. Si nous voulons que nos deux moteurs aillent à la même vitesse il faut donc que les deux PWM soient configurés à l'identique. Nous utiliserons ici qu'un seul timer, le timer 2 qui possède quatre lignes sur lesquelles on peut configurer des PWM, ici la ligne 1 et 4. \\
+où ``DutyCycle'' est une valeur exprimée en pourcent qui représente notre rapport cyclique. Ainsi avec notre horloge à 64MHz nous choisissons un prescaler de $999$ (pour diviser la fréquence du timer par $1000$, on veut maintenant une fréquence de PWM de 100Hz, on effectue donc la troisième ligne de calcul et on trouve que la valeur de l'ARR doit être de $639$ pour atteindre cette fréquence. Maintenant si on veut un rapport cyclique de $0,25$ il faut un ``DutyCycle'' de $25\%$ on obtient donc que $159$ est la valeur à mettre pour la comparaison du PWM. Si nous voulons que nos deux moteurs aillent à la même vitesse il faut donc que les deux PWM soient configurés à l'identique. Nous utiliserons ici qu'un seul timer, le timer 2 qui possède quatre lignes sur lesquelles on peut configurer des PWM, ici la ligne 1 et 4. \\
 
 Ces calculs ont été testés à l’oscilloscope par observation du signal produit et mesure de sa fréquence et de son rapport cyclique. \\
 
-D'après la datasheet, pour que le moteur fonctionne et s'allume, il faut que la ligne reliée à l'entrée standby soit à l'état haut et que les deux lignes d'entrées soient de valeur opposées. Ainsi on initialise la ligne reliée à l'entrée standby à l'état haut et on crée diverse fonctions permettant d'allumer les moteurs dans un sens ou dans l'autre en fonction du tableau d'états fourni dans la datasheet du pont en H. Ces fonctions vont permettre de créer les autres fonctions de déplacements~: avancer, reculer, tourner à droite ou à gauche. Moduler le pwm grâce aux fonctions de la HAL permet également de faire des routines d'accélération et de décélération.
+D'après la datasheet, pour que le moteur fonctionne et s'allume, il faut que la ligne reliée à l'entrée standby soit à l'état haut et que les deux lignes d'entrées soient de valeur opposées. Ainsi on initialise la ligne reliée à l'entrée standby à l'état haut et on crée diverses fonctions permettant d'allumer les moteurs dans un sens ou dans l'autre en fonction du tableau d'états fourni dans la datasheet du pont en H. Ces fonctions vont permettre de créer les autres fonctions de déplacements~: avancer, reculer, tourner à droite ou à gauche. Moduler le pwm grâce aux fonctions de la HAL permet également de faire des routines d'accélération et de décélération.
 
 \subsubsection{Configuration des capteurs}
 
 Le capteur de détection des distances est un capteur infrarouge SHARP. À partir de sa véritable distance minimale pour laquelle la tension renvoyée est maximale il effectue une courbe de tension à allure exponentielle inverse. La valeur en tension doit être récupérée par une entrée analogique, puis traduite en fonction de la précision voulue (ici sur 12 bits donc en valeur numérique entre $0$ et $4095$ pour $3,3V$) et ensuite étalonné pour que la valeur récupérée par la carte soit traduite en distance. Pour travailler plutôt avec des variables dites ``drapeau'' nous utiliserons ici l'ADC avec des interruptions toutes les 10 millisecondes (après une tentative ratée d'utilisation de la DMA avec un timer pour commander l'ADC, l'erreur est encore inconnue).\\
 
-Pour ce faire il faut configurer l'ADC avec une résolution de 12 bits. augmenter le nombre de cycles quand le temps entre deux conversions devient faible (ici le temps entre deux conversions sera de 10 millisecondes) et activer les interruptions avec NVIC qui est un module de la carte gérant les interruptions. Utiliser la conversion continue ne marchait pas dans notre cas sans véritables explications, nous avons décidé de nous en passer. Niveau code, il faut démarrer l'ADC avec la HAL et les interruptions, récupérer dans le code le prototype de la fonction ``HAL\_ADC\_ConvCompltCallback'' qui s’exécutera à chaque fois qu'une conversion sera terminée. Cette fonction est déclarée en ``\_\_weak'' ce qui signifie que si elle est déclarée dans un autre fichier, lors de la compilation seule celle qui n'a pas le mot clé ``\_\_weak'' sera compilée, l'autre sera ignorée. Elle est vide, il faut donc coder son contenu. Ici nous décidons d'utiliser des variables drapeau pour indiquer l'état de la variable qui stocke la donnée. Cette fonction positionne donc l'état du drapeau à 1 et récupère la valeur de l'ADC dans une variable globale au fichier. \\
+Pour ce faire il faut configurer l'ADC avec une résolution de 12 bits. Augmenter le nombre de cycles quand le temps entre deux conversions devient faible (ici le temps entre deux conversions sera de 10 millisecondes) et activer les interruptions avec NVIC qui est un module de la carte gérant les interruptions. Utiliser la conversion continue ne marchait pas dans notre cas sans véritables explications, nous avons décidé de nous en passer. Niveau code, il faut démarrer l'ADC avec la HAL et les interruptions, récupérer dans le code le prototype de la fonction ``HAL\_ADC\_ConvCompltCallback'' qui s’exécutera à chaque fois qu'une conversion sera terminée. Cette fonction est déclarée en ``\_\_weak'' ce qui signifie que si elle est déclarée dans un autre fichier, lors de la compilation seule celle qui n'a pas le mot clé ``\_\_weak'' sera compilée, l'autre sera ignorée. Elle est vide, il faut donc coder son contenu. Ici nous décidons d'utiliser des flags indicateurs pour indiquer l'état de la variable qui stocke la donnée. Cette fonction positionne donc l'état du flag à 1 et récupère la valeur de l'ADC dans une variable globale au fichier. \\
 
 La tâche associée à l'ADC n'a plus qu'à vérifier l'état du drapeau, traiter la valeur de l'ADC et remettre la valeur du drapeau à 0.
 
@@ -228,7 +243,7 @@ Les fonctions primitives sont les fonctions proches du matériel qui sont donné
   \item est présent. \\
 \end{itemize}
 
-Les fonctions de déplacement mettent en place l'allumage séparé des moteurs, la gestions du PWM avec les routines d'accélération et de décélération et les temporisations permettant pour les déplacement linéaires de parcourir 15 cm (longueur d'une case pour l'IA) et pour les fonctions tournante d'atteindre approximativement un angle de 90 degrés (difficile sans boussole). La fonction ``distance frontale'' quant à elle va prendre en compte la distance traduite du capteur mais risque des erreurs quand cette distance est inférieure à 5 cm (chute de tension brutale). La fonctions ``est présent'' permet de détecter un objet dans une distance définie par l'utilisateur. \\
+Les fonctions de déplacement mettent en place l'allumage séparé des moteurs, la gestion du PWM avec les routines d'accélération et de décélération et les temporisations permettant pour les déplacements linéaires de parcourir 15 cm (longueur d'une case pour l'IA) et pour les fonctions tournante d'atteindre à peu près un angle de 90 degrés (difficile sans boussole). La fonction ``distance frontale'' quant à elle va prendre en compte la distance traduite du capteur, mais risque des erreurs quand cette distance est inférieure à 5 cm (chute de tension brutale). La fonctions ``est présent'' permet de détecter un objet dans une distance définie par l'utilisateur. \\
 
 À ces fonctions s'ajoutent une fonction plus haut niveau nommée ``gestion moteur'' qui elle va se servir des indicateurs d'état mis en place par l'intelligence artificielle pour décider de quel déplacement est à effectuer et d'effectuer des déplacements tant que les indicateurs d'états ne sont pas nuls. Quand ceux-ci le sont, elle positionne l'indicateur d'état ``déplacement fini'' ou ``rotation finie'' à l'état haut.
 
@@ -250,9 +265,9 @@ Les messages envoyés sont des uint8\_t donc il faut ensuite les ``traduire'' en
 
 \subsubsection{Fonctions}
 
-\underline{Fonction EnvoiMessage~:} Tout d'abord la fonction récupère la valeur de chaque bit du message grâce à des masques, elle le sépare en 3, puis elle applique des XOR entre les bits d'un même paquet. Elle envoie ensuite chaque paquet dans un ordre précis : les 3 bits de poids forts puis les 3 bits centraux et enfin les deux bits de poids faible. L'ordre d'émission est important pour permettre à la réception de recréer le bon message. \\
+\underline{Fonction EnvoiMessage~:} Tout d'abord, la fonction récupère la valeur de chaque bit du message grâce à des masques, elle le sépare en trois, puis elle applique des XOR entre les bits d'un même paquet. Elle envoie ensuite chaque paquet dans un ordre précis : les 3 bits de poids forts puis les 3 bits centraux et enfin les deux bits de poids faible. L'ordre d'émission est important pour permettre à la réception de recréer le bon message. \\
 
-\underline{Fonction ReceptionMessage~:} Tout d'abord cette fonction reçoit les 3 paquets. Elle récupère la valeur de chaque bit grâce à des masques. La fonction vérifie que les valeurs des XOR soient cohérentes par rapport aux bits de données. Grace à un Nouveau masque on élimine ensuite les bits de XOR pour garder uniquement les données. On utilise ensuite l'ordre de réception des données pour reformer l'octet d'origine. \\
+\underline{Fonction ReceptionMessage~:} Tout d'abord, cette fonction reçoit les trois paquets. Elle récupère la valeur de chaque bit grâce à des masques. La fonction vérifie que les valeurs des XOR soient cohérentes par rapport aux bits de données. Grace à un Nouveau masque on élimine ensuite les bits de XOR pour garder uniquement les données. On utilise ensuite l'ordre de réception des données pour reformer l'octet d'origine. \\
 
 Tests effectués~: \\
 \begin{itemize}
@@ -265,27 +280,27 @@ Tests effectués~: \\
 
 \subsubsection{Système centralisés/décentralisé}
 
-Dans un système centralisé, un ordinateur calcule toutes les actions de chaque exécuteur (robot) et les transmets à ces derniers qui les exécutent. À l'inverse, dans un système décentralisé c'est le comportement de chaque robot qui défini le comportement global. \\
+Dans un système centralisé, un ordinateur calcule toutes les actions de chaque exécuteur (robot) et les transmets à ces derniers qui les exécutent. À l'inverse, dans un système décentralisé c'est le comportement de chaque robot qui définie le comportement global. \\
 
-Nous ne somme pas dans le cas d'un système centralisé car chaque robot participe à la réflexion et reste libre du choix de ses actions. Il y a absence de relation maître-esclave ce qui est contraire à l'objectif du projet. Bien que cette solution aurait pu être envisagée nous ne somme pas non plus dans un système décentralisé car ce n'est pas le comportement de nos robots qui définis un comportement global. Nous somme dans un cas de coopération, chaque robot prend les décisions le concernant lui même mais il tiens compte de l'état de son coéquipier. \\
+Nous ne sommes pas dans le cas d'un système centralisé car chaque robot participe à la réflexion et reste libre du choix de ses actions. Il y a absence de relation maître-esclave ce qui est contraire à l'objectif du projet. Bien que cette solution aurait pu être envisagée nous ne sommes pas non plus dans un système décentralisé car ce n'est pas le comportement de nos robots qui définie un comportement global. Nous sommes dans un cas de coopération, chaque robot prend les décisions le concernant lui-même mais il tiens compte de l'état de son coéquipier. \\
 
-La tâche IA gère la prise de décision grâce à l'abstraction permise par les trois autres tâches. Elle est organisée en routines se qui permet de découper l'épreuve en plusieurs phases~: \\
+\subsubsection{OS temps réel}
+Le programme est découpé en quatre tâches s’exécutant en parallèle, une pour les capteurs, une pour les déplacements, une pour la communication et enfin, la dernière pour la prise de décision. Les différentes tâches communiquent entre elles grâce à des flags. Ils sont de deux types : les flags-indicateurs font remonter de l'information du bas niveau afin qu'elle soit prise en compte par l'IA et les flags-consignes indique aux fonctions bas niveau les objectifs fixés par l'IA. \\
+
+La tâche IA gère la prise de décision grâce à l'abstraction permise par les trois autres tâches. Elle est organisée en routines ce qui permet de découper l'épreuve en plusieurs phases~: \\
 
 \begin{itemize}
-  \item une première phase autonome ou chaque robot se rend dans un coin et prend connaissance de sa postion en déterminant quel est ce coin~;
-  \item une seconde phase de communication afin d'échanger les positions respectives, de vérifier qu'aucun des robots ne possède d'informations faussées par sont coéquipier, de déterminer quel est le point de rendez vous et la position de chaque robot~;
+  \item une première phase autonome ou chaque robot se rend dans un coin et prend connaissance de sa position en déterminant quel est ce coin~;
+  \item une seconde phase de communication afin d'échanger les positions respectives, de vérifier qu'aucun des robots ne possède d'informations faussées par son coéquipier, de déterminer quel est le point de rendez-vous et la position de chaque robot~;
   \item une troisième phase de déplacement où les robots sont de nouveau autonomes~;
   \item une dernière phase coopérative où les robots réalisent l'action finale. \\
 \end{itemize}
 
 Le déroulement de l'épreuve se fait donc en alternant phase de coopération et phases autonomes.
 
-\subsubsection{OS temps réel}
-Le programme est découpé en quatre tâches s'éxécutant en parallèle, une pour les capteurs, une pour les dépacements, une pour la communication et enfin, la dernière pour la prise de décision. Les différentes tâches communiquent entre elles grâce à des flags. Ils sont de deux types : les flags-indicateurs font remonter de l'information du bas niveau afin qu'elle soit prise en compte par l'IA et les flags-consignes indique au fonction bas niveau les objectifs fixé par l'IA.
-
 \subsubsection{Le robot}
 
-Du point de vue de l'IA le robot est représenté par sa position actuelle dans le repère carthésien fixe du terrain, par son orientation ainsi que part l'état des flags-indicateurs des trois tâches bas niveau.
+Du point de vue de l'IA le robot est représenté par sa position actuelle dans le repère cartésien fixe du terrain, par son orientation ainsi que par l'état des flags-indicateurs des trois tâches bas niveau.
 
 \subsubsection{Les problématiques}
 
@@ -309,11 +324,11 @@ La première étant plus complexe à mettre en place nous avons choisi la second
 
 \underline{Savoir quelle position choisir et comment la calculer} \\
 
-La première idée fut de mesurer la distance séparant la position initiale du robot avec les éléments dans les quatre directions. Cette solution à comme avantage de permettre de connaître sa position dès le début de l'épreuve cependant elle présente aussi des inconvénients et n'est pas forcément adaptée à notre cas : L'autre robot peut modifier la distance mesurée, la solution nécessite donc la coopération immédiate des deux robots et deux prises de mesure : une seconde prise de mesure après le déplacement d'un des deux robots pouvoir déterminer si il modifiait la distance mesurée par l'autre robot et donc la corriger si tel était le cas. Second problème, la carte dispose de deux axes de symétrie axial et d'un centre de symétrie, à cause de cela plusieurs cases ont la même pondération. Cette solution ayant été évaluée avant que nous prenions la décision de rajouter une boussole à notre robot nous n'avions pas de moyen facile pour différencier les cases en question. \\
+La première idée fut de mesurer la distance séparant la position initiale du robot avec les éléments dans les quatre directions. Cette solution à comme avantage de permettre de connaître sa position dès le début de l'épreuve cependant elle présente aussi des inconvénients et n'est pas forcément adaptée à notre cas : L'autre robot peut modifier la distance mesurée, la solution nécessite donc la coopération immédiate des deux robots et deux prises de mesure : une seconde prise de mesure après le déplacement d'un des deux robots pouvoir déterminer s'il modifiait la distance mesurée par l'autre robot et donc la corriger si tel était le cas. Second problème, la carte dispose de deux axes de symétrie axial et d'un centre de symétrie, à cause de cela plusieurs cases ont la même pondération. Cette solution ayant été évaluée avant que nous prenions la décision de rajouter une boussole à notre robot nous n'avions pas de moyen facile pour différencier les cases en question. \\
 
-La solution fut donc abandonnée au profit de la suivante. Si, au lieu de prendre des mesures depuis notre position de départ, nous utilisions notre déplacement dans l'espace afin de déterminer notre position. Nous avons eu l'idée de nous rendre dans les coins, il n'y a que quatre coin sur le terrain, ils est facile d'y aller lorsque l'on ne connaît pas notre position, il ne manquera plus qu'a identifier dans quel coin nous somme, mais cela se fait aisément une fois le deux robots dans un angle. En même temps, afin d'avoir un retour d'information sur nos déplacements, nous avons pris la décision d'inclure une boussole, dès lors l'orientation du robot étant connue, il nous suffit de tester quel sont les murs de notre coin pour retrouver notre position. \\
+La solution fut donc abandonnée au profit de la suivante. Si, au lieu de prendre des mesures depuis notre position de départ, nous utilisions notre déplacement dans l'espace afin de déterminer notre position. Nous avons eu l'idée de nous rendre dans les coins, il n'y a que quatre coins sur le terrain, il est facile d'y aller lorsque l'on ne connaît pas notre position, il ne manquera plus qu'a identifier dans quel coin nous sommes, mais cela se fait aisément une fois le deux robots dans un angle. En même temps, afin d'avoir un retour d'information sur nos déplacements, nous avons pris la décision d'inclure une boussole, dès lors l'orientation du robot étant connue, il nous suffit de tester quels sont les murs de notre coin pour retrouver notre position. \\
 
-Nous pouvions donc déterminer notre position, enfin presque. Il restait une configuration possible faussant cette information : que faire si le second robot est déjà dans l'angle, que je le détecte donc comme un mur ? Cela a pour effet de fausser les coordonnés d'un des deux robots. Cependant, il est relativement facile de déterminer si nous somme dans une telle situation : nos robots communicant entre eux, ils suffit de les faire vérifier qu'ils ne pensent pas être tout les deux sur la même case du terrain. Si tel est le cas alors on met en place un second type de coopération, les robots ne font plus que s'échanger des informations qu'ils ont récupérer indépendamment, ils réalisent une action commune pour créer de l'information et l'utiliser immédiatement après. En s'orientant dans la même direction, dos au mur commun puis dans une seconde direction il est possible  de déterminer quel est le robot qui est réellement dans l'angle et quel est le robot qui se trompe sur sa position et donc de rectifier cette dernière. Avec se choix, les robots déterminent leur position dans un premier temps, on connaît donc suffisamment d'information pour éliminer immédiatement le second problème à savoir faire la distinction entre le robot coéquipier et les éléments constituants le terrain. \\
+Nous pouvions donc déterminer notre position, enfin presque. Il restait une configuration possible faussant cette information : que faire si le second robot est déjà dans l'angle, que je le détecte donc comme un mur ? Cela a pour effet de fausser les coordonnés d'un des deux robots. Cependant, il est relativement facile de déterminer si nous sommes dans une telle situation : nos robots communicant entre eux, il suffit de les faire vérifier qu'ils ne pensent pas être tous les deux sur la même case du terrain. Si tel est le cas alors on met en place un second type de coopération, les robots ne font plus que s'échanger des informations qu'ils ont récupérées indépendamment, ils réalisent une action commune pour créer de l'information et l'utiliser immédiatement après. En s'orientant dans la même direction, dos au mur commun puis dans une seconde direction il est possible  de déterminer quel est le robot qui est réellement dans l'angle et quel est le robot qui se trompe sur sa position et donc de rectifier cette dernière. Avec ce choix, les robots déterminent leur position dans un premier temps, on connaît donc suffisamment d'information pour éliminer immédiatement le second problème à savoir faire la distinction entre le robot coéquipier et les éléments constituants le terrain. \\
 
 \underline{Prise de décision} \\
 
@@ -324,6 +339,6 @@ Une fois ces étapes réalisées les principales difficultés sont éliminées. 
   \item l'initiative revient au robot ayant terminé l'action précédente en premier. \\
 \end{itemize}
 
-Donc pour choisir entre les deux zones de rendez vous, les robots choisissent la plus proche d'eux puis le premier robot réserve la place la plus proche de sa position actuelle et ne laisse donc pas le choix au second qui prend la place restante. L'avantage de ce type de prise de décison est qu'il peut être augmenté à un plus grand nombre de robots vu qu'il définit un ordre de priorité ne pouvant pas être remis en question.
+Donc pour choisir entre les deux zones de rendez-vous, les robots choisissent la plus proche d'eux puis le premier robot réserve la place la plus proche de sa position actuelle et ne laisse donc pas le choix au second qui prend la place restante. L'avantage de ce type de prise de décision est qu'il peut être augmenté à un plus grand nombre de robots vu qu'il définit un ordre de priorité ne pouvant pas être remis en question.
 
 \end{document}

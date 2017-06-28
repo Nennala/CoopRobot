@@ -155,6 +155,9 @@ INPUT ./driver.png
 INPUT sharp_courbe.png
 INPUT ./sharp_courbe.png
 INPUT ./sharp_courbe.png
+INPUT alim.png
+INPUT ./alim.png
+INPUT ./alim.png
 INPUT diag_HAL.png
 INPUT ./diag_HAL.png
 INPUT ./diag_HAL.png
